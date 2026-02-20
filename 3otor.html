@@ -31,7 +31,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, 'Arial', sans-serif;
+        }
+
+        /* دعم الخطوط العربية */
+        :lang(ar) * {
+            font-family: 'Segoe UI', Tahoma, 'Arial', 'Traditional Arabic', sans-serif;
         }
 
         body {
@@ -42,6 +47,13 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* إصلاح خلفية الجسم في الهواتف - fixed لا يعمل جيداً على iOS */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
         }
 
         /* شريط اللغة الجديد */
@@ -86,6 +98,13 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
+            margin-top: 5px;
+        }
+
+        /* في اللغات LTR تنزل القائمة من اليسار */
+        html[dir="ltr"] .lang-dropdown {
+            right: auto;
+            left: 0;
         }
 
         .lang-dropdown.active {
@@ -270,9 +289,10 @@
             position: fixed;
             top: 0;
             left: -100%;
-            width: 320px;
+            width: 300px;
+            max-width: 85vw;
             height: 100vh;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.97);
             box-shadow: 5px 0 15px rgba(0,0,0,0.1);
             z-index: 1099;
             transition: var(--transition);
@@ -284,6 +304,18 @@
 
         .mobile-nav.active {
             left: 0;
+        }
+
+        /* في اللغات LTR القائمة تخرج من اليمين */
+        html[dir="ltr"] .mobile-nav {
+            left: auto;
+            right: -100%;
+            border-right: none;
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        html[dir="ltr"] .mobile-nav.active {
+            right: 0;
         }
 
         .mobile-nav-header {
@@ -730,8 +762,9 @@
             top: 0;
             left: -400px;
             width: 380px;
+            max-width: 100vw;
             height: 100vh;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.97);
             box-shadow: 5px 0 15px rgba(0,0,0,0.1);
             z-index: 1100;
             transition: var(--transition);
@@ -743,6 +776,18 @@
 
         .cart-sidebar.active {
             left: 0;
+        }
+
+        /* في اللغات LTR السلة تخرج من اليمين */
+        html[dir="ltr"] .cart-sidebar {
+            left: auto;
+            right: -400px;
+            border-right: none;
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        html[dir="ltr"] .cart-sidebar.active {
+            right: 0;
         }
 
         .cart-header {
@@ -780,10 +825,16 @@
         .cart-item-image {
             width: 80px;
             height: 80px;
+            min-width: 80px;
             background-size: cover;
             background-position: center;
             border-radius: 5px;
             margin-left: 10px;
+        }
+
+        html[dir="ltr"] .cart-item-image {
+            margin-left: 0;
+            margin-right: 10px;
         }
 
         .cart-item-details {
@@ -1083,7 +1134,8 @@
         /* التجاوب مع جميع الأجهزة */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 10px;
+                padding: 8px 12px;
+                gap: 8px;
             }
 
             .main-nav {
@@ -1094,50 +1146,210 @@
                 display: flex;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .logo-image {
+                height: 38px;
             }
 
-            .hero p {
+            /* تصغير زر اللغة في الهاتف */
+            .current-lang {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+                gap: 5px;
+            }
+
+            .lang-dropdown {
+                width: 150px;
+                right: 0;
+            }
+
+            html[dir="ltr"] .lang-dropdown {
+                right: auto;
+                left: 0;
+            }
+
+            /* تصغير أيقونة السلة */
+            .cart-icon {
+                padding: 8px;
                 font-size: 1.1rem;
             }
 
+            /* الهيرو */
+            .hero {
+                height: auto;
+                min-height: 85vh;
+                padding: 80px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 12px;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 1rem;
+            }
+
+            /* أقسام العطور */
             .perfume-categories {
                 flex-direction: column;
                 align-items: center;
+                gap: 12px;
+                margin: 1.5rem 0;
+                padding: 0 15px;
             }
 
             .category-btn {
-                width: 80%;
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+                padding: 12px 20px;
+                font-size: 1rem;
             }
 
+            /* شبكة المنتجات */
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+
+            .product-image {
+                height: 180px;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .product-title {
+                font-size: 1.1rem;
+            }
+
+            .product-desc {
+                font-size: 0.85rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .add-to-cart, .view-details {
+                font-size: 0.9rem;
+                padding: 9px 12px;
+            }
+
+            /* قسم الاتصال */
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            /* السلة */
             .cart-sidebar {
                 width: 100%;
                 left: -100%;
             }
 
-            .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            html[dir="ltr"] .cart-sidebar {
+                right: -100%;
+                left: auto;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .logo-image {
-                height: 40px;
-            }
-
+            /* نافذة المنتج */
             .modal-body {
                 grid-template-columns: 1fr;
             }
 
             .modal-image {
-                height: 300px;
+                height: 250px;
             }
 
-            .product-actions {
-                flex-direction: column;
+            .modal-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            /* الفوتر */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* القائمة الجانبية للهاتف */
+            .mobile-nav {
+                width: 85vw;
+                max-width: 320px;
+            }
+
+            .mobile-nav-section {
+                padding: 12px;
+            }
+        }
+
+        /* شاشات صغيرة جداً */
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            .current-lang span {
+                display: none;
+            }
+
+            .current-lang {
+                padding: 6px 8px;
+            }
+        }
+
+        /* تحسينات اللمس للهواتف */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-icon:hover,
+            .category-btn:hover,
+            .product-card:hover,
+            .contact-card:hover {
+                transform: none;
+            }
+
+            .btn:hover {
+                transform: none;
+            }
+
+            .add-to-cart,
+            .view-details,
+            .checkout-btn,
+            .category-btn {
+                min-height: 44px;
+            }
+
+            .cart-icon,
+            .hamburger-menu {
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     </style>
@@ -1464,7 +1676,7 @@
                 <div class="contact-card">
                     <i class="fas fa-envelope"></i>
                     <h3 data-key="email">البريد الإلكتروني</h3>
-                    <p><a href="mailto:info@diamondperfumes.com" data-key="emailAddress">info@diamondperfumes.com</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#f79e999198b7939e969a98999387928591829a9284d994989a" data-key="emailAddress"><span class="__cf_email__" data-cfemail="aac3c4ccc5eacec3cbc7c5c4cedacfd8ccdfc7cfd984c9c5c7">[email&#160;protected]</span></a></p>
                 </div>
             </div>
         </div>
@@ -1544,7 +1756,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // نظام قائمة الهاتف المحمول
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const mobileNav = document.getElementById('mobileNav');
@@ -1556,12 +1768,15 @@
             mobileNav.classList.add('active');
             overlay.classList.add('active');
             hamburgerMenu.classList.add('active');
+            // منع تمرير الصفحة عند فتح القائمة
+            document.body.style.overflow = 'hidden';
         }
 
         function closeMobileNavFunc() {
             mobileNav.classList.remove('active');
             overlay.classList.remove('active');
             hamburgerMenu.classList.remove('active');
+            document.body.style.overflow = '';
             
             // إغلاق جميع الأقسام عند إغلاق القائمة
             mobileNavSections.forEach(section => {
@@ -1569,9 +1784,18 @@
             });
         }
 
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            cartSidebar.classList.remove('active');
+            productModal.classList.remove('active');
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
         hamburgerMenu.addEventListener('click', openMobileNav);
         closeMobileNav.addEventListener('click', closeMobileNavFunc);
-        overlay.addEventListener('click', closeMobileNavFunc);
 
         // إغلاق قائمة الهاتف عند النقر على رابط
         document.querySelectorAll('.mobile-nav-link').forEach(link => {
@@ -1973,9 +2197,25 @@
                 }
             });
             
-            // تغيير اتجاه الصفحة
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            // تغيير اتجاه الصفحة والـ html
+            const isRTL = lang === 'ar';
+            document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
+            
+            // تعديل اتجاه القائمة الجانبية للهاتف
+            if (isRTL) {
+                mobileNav.style.left = '';
+                mobileNav.style.right = '';
+                mobileNav.style.borderRight = '1px solid rgba(255,255,255,0.5)';
+                mobileNav.style.borderLeft = '';
+            } else {
+                mobileNav.style.left = 'auto';
+                mobileNav.style.borderRight = '';
+                mobileNav.style.borderLeft = '1px solid rgba(255,255,255,0.5)';
+            }
+
+            // إغلاق القائمة الجانبية عند تغيير اللغة إن كانت مفتوحة
+            closeMobileNavFunc();
         }
 
         // نظام تصفية المنتجات حسب الفئة
@@ -2016,11 +2256,13 @@
         cartIcon.addEventListener('click', () => {
             cartSidebar.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
 
         closeCart.addEventListener('click', () => {
             cartSidebar.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
 
         // إضافة منتج إلى السلة
@@ -2048,6 +2290,7 @@
                 updateCart();
                 cartSidebar.classList.add('active');
                 overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
         });
 
@@ -2073,7 +2316,7 @@
                 cartItems.appendChild(cartItem);
             });
             
-            cartTotal.textContent = `${translations[currentLang].cartTitle.split(' ')[0]}: $${total}`;
+            cartTotal.textContent = `${translations[currentLang].cartTitle}: $${total}`;
             cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
             
             // إضافة حدث إزالة العنصر
@@ -2128,11 +2371,7 @@
         closeModal.addEventListener('click', () => {
             productModal.classList.remove('active');
             overlay.classList.remove('active');
-        });
-
-        overlay.addEventListener('click', () => {
-            productModal.classList.remove('active');
-            overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
 
         // عرض تفاصيل المنتج
@@ -2183,6 +2422,7 @@
             
             productModal.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         // نظام نافذة محتوى الفوتر
@@ -2204,11 +2444,7 @@
         closeFooterModal.addEventListener('click', () => {
             footerModal.classList.remove('active');
             overlay.classList.remove('active');
-        });
-
-        overlay.addEventListener('click', () => {
-            footerModal.classList.remove('active');
-            overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
 
         // عرض محتوى الفوتر
@@ -2425,7 +2661,7 @@
                         </ul>
                         
                         <p>لأي استفسارات حول سياسة الخصوصية، يمكنكم التواصل معنا على privacy@diamondperfumes.com</p>
-                    `;
+                          `;
                     break;
             }
             
