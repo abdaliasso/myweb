@@ -1,0 +1,2586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="pageTitle">دراجات النار - متجر الدراجات النارية</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #e94560;
+            --light-color: #f5f5f5;
+            --dark-color: #0f3460;
+            --text-light: #ffffff;
+            --text-dark: #222831;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --radius: 10px;
+            --gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--gradient), url('https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* شريط اللغة المحسن */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .current-lang {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+        }
+
+        .current-lang:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        .current-lang i {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--secondary-color);
+            border-radius: var(--radius);
+            width: 180px;
+            box-shadow: var(--shadow);
+            z-index: 1001;
+            display: none;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-dropdown.active {
+            display: block;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        .lang-flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        /* الهيدر المعدل */
+        header {
+            background: rgba(26, 26, 46, 0.9);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* القائمة الرئيسية المعدلة */
+        .main-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: var(--radius);
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .nav-icon:hover {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .favorites-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: var(--radius);
+        }
+
+        .favorites-icon:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* زر الهامبرجر المحسن */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            z-index: 1100;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-light);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* قائمة الهاتف المحمول المحسنة */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 320px;
+            height: 100vh;
+            background: var(--secondary-color);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+            z-index: 1099;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-header h3 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        .close-mobile-nav {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .close-mobile-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-color);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent-color);
+            border-color: rgba(233, 69, 96, 0.3);
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        /* أقسام القائمة الجانبية */
+        .mobile-nav-sections {
+            margin-top: 20px;
+        }
+
+        .mobile-nav-section {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .mobile-nav-section:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-section.active {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .mobile-nav-section h4 {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-nav-section h4 i {
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .mobile-nav-section.active h4 i {
+            transform: rotate(90deg);
+        }
+
+        .mobile-section-content {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-section.active .mobile-section-content {
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* الهيرو سيكشن */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.8)), url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(15, 52, 96, 0.7) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), var(--dark-color));
+            color: var(--text-light);
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--dark-color), var(--accent-color));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.6);
+        }
+
+        /* أقسام الدراجات */
+        .motorcycle-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--accent-color);
+            color: var(--text-light);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        /* قسم الدراجات */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            position: relative;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+        }
+
+        .motorcycles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .motorcycle-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .motorcycle-card.active {
+            display: block;
+        }
+
+        .motorcycle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: rgba(233, 69, 96, 0.3);
+        }
+
+        .motorcycle-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .motorcycle-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+        }
+
+        .motorcycle-card:hover .motorcycle-image {
+            transform: scale(1.05);
+        }
+
+        .motorcycle-info {
+            padding: 1.5rem;
+        }
+
+        .motorcycle-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .motorcycle-desc {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .motorcycle-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .motorcycle-details span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .motorcycle-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px rgba(233, 69, 96, 0.5);
+        }
+
+        .motorcycle-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-favorites {
+            background: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .add-to-favorites:hover {
+            background: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        .view-details {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .view-details:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* صفحة اتصل بنا */
+        .contact-section {
+            padding: 5rem 0;
+            background: rgba(15, 52, 96, 0.7);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: rgba(233, 69, 96, 0.3);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-color);
+        }
+
+        /* سلة المفضلة */
+        .favorites-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 380px;
+            height: 100vh;
+            background: var(--secondary-color);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .favorites-sidebar.active {
+            left: 0;
+        }
+
+        .favorites-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-header h3 {
+            color: var(--text-light);
+        }
+
+        .close-favorites {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .favorites-items {
+            margin-bottom: 20px;
+        }
+
+        .favorites-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .favorites-item-details {
+            flex: 1;
+        }
+
+        .favorites-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .favorites-item-price {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .favorites-item-remove {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .contact-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        /* الفوتر */
+        footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* نافذة تفاصيل الدراجة */
+        .motorcycle-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .motorcycle-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--secondary-color);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 1;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius);
+        }
+
+        .modal-details h3 {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .motorcycle-price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .motorcycle-full-desc {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* نافذة محتوى الفوتر */
+        .footer-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .footer-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer-modal-content {
+            background: var(--secondary-color);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .close-footer-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 1;
+        }
+
+        .footer-modal-body {
+            margin-top: 2rem;
+        }
+
+        .footer-modal-body h3 {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-modal-body h4 {
+            color: var(--accent-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-modal-body p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-modal-body ul, .footer-modal-body ol {
+            color: rgba(255, 255, 255, 0.8);
+            margin-right: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* التجاوب مع جميع الأجهزة */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .motorcycle-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 80%;
+            }
+
+            .favorites-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .motorcycles-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+
+            .motorcycle-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر المعدل -->
+    <header>
+        <div class="nav-container">
+            <button class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg" alt=">دراجات النار - متجر الدراجات النارية" class="logo-image">
+                <span class="store-name" data-key="storeName">دراجات النار</span>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#home" class="nav-icon">
+                    <i class="fas fa-home"></i>
+                    <span data-key="home">الرئيسية</span>
+                </a>
+                <a href="#motorcycles" class="nav-icon">
+                    <i class="fas fa-motorcycle"></i>
+                    <span data-key="motorcycles">الدراجات</span>
+                </a>
+                <a href="#contact" class="nav-icon">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contactUs">اتصل بنا</span>
+                </a>
+            </nav>
+
+            <div class="language-selector">
+                <div class="current-lang" id="currentLang">
+                    <span>العربية</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" data-lang="ar">
+                        <img src="https://flagcdn.com/w40/sa.png" class="lang-flag" alt="العربية">
+                        <span>العربية</span>
+                    </div>
+                    <div class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w40/us.png" class="lang-flag" alt="English">
+                        <span>English</span>
+                    </div>
+                    <div class="lang-option" data-lang="fr">
+                        <img src="https://flagcdn.com/w40/fr.png" class="lang-flag" alt="Français">
+                        <span>Français</span>
+                    </div>
+                    <div class="lang-option" data-lang="de">
+                        <img src="https://flagcdn.com/w40/de.png" class="lang-flag" alt="Deutsch">
+                        <span>Deutsch</span>
+                    </div>
+                    <div class="lang-option" data-lang="it">
+                        <img src="https://flagcdn.com/w40/it.png" class="lang-flag" alt="Italiano">
+                        <span>Italiano</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favorites-icon" id="favoritesIcon">
+                <i class="fas fa-heart"></i>
+                <span class="favorites-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- قائمة الهاتف المحمول المحسنة -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3 data-key="menu">القائمة</h3>
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link" id="mobileHomeLink">
+                <i class="fas fa-home"></i>
+                <span data-key="home">الرئيسية</span>
+            </a>
+            <a href="#motorcycles" class="mobile-nav-link" id="mobileMotorcyclesLink">
+                <i class="fas fa-motorcycle"></i>
+                <span data-key="motorcycles">الدراجات</span>
+            </a>
+            <a href="#contact" class="mobile-nav-link" id="mobileContactLink">
+                <i class="fas fa-phone-alt"></i>
+                <span data-key="contactUs">اتصل بنا</span>
+            </a>
+        </div>
+        
+        <div class="mobile-nav-sections">
+            <div class="mobile-nav-section" data-section="about">
+                <h4><i class="fas fa-users"></i> <span data-key="about">من نحن</span></h4>
+                <div class="mobile-section-content" data-key="aboutContent">
+                    <p>نحن متجر دراجات نارية رائد مهمتنا مساعدتك في العثور على الدراجة المثالية التي تناسب احتياجاتك وميزانيتك. نقدم مجموعة واسعة من الدراجات النارية في أفضل الموديلات والماركات العالمية.</p>
+                    <h5 data-key="ourVision">رؤيتنا</h5>
+                    <p data-key="visionText">أن نكون الوجهة الأولى للبحث عن الدراجات النارية في المنطقة.</p>
+                    <h5 data-key="ourMission">رسالتنا</h5>
+                    <p data-key="missionText">تقديم تجربة استثنائية للعملاء من خلال خدمة مهنية ودراجات بجودة عالية.</p>
+                    <h5 data-key="ourValues">قيمنا</h5>
+                    <ul>
+                        <li data-key="value1">الصدق والشفافية</li>
+                        <li data-key="value2">الجودة والتميز</li>
+                        <li data-key="value3">رضا العملاء أولاً</li>
+                        <li data-key="value4">الابتكار والتطوير</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mobile-nav-section" data-section="quality">
+                <h4><i class="fas fa-award"></i> <span data-key="quality">الجودة والضمان</span></h4>
+                <div class="mobile-section-content" data-key="qualityContent">
+                    <p>نحن نضمن جودة جميع الدراجات النارية المعروضة ونقدم ضمانات للمشترين. نحرص على أن تكون جميع الدراجات مطابقة للمواصفات والمقاييس المعتمدة.</p>
+                    <h5 data-key="qualityStandards">معايير الجودة</h5>
+                    <ul>
+                        <li data-key="standard1">قطع غيار أصلية</li>
+                        <li data-key="standard2">تصميم متميز</li>
+                        <li data-key="standard3">فحص فني شامل</li>
+                        <li data-key="standard4">خدمات ما بعد البيع</li>
+                    </ul>
+                    <h5 data-key="warranties">الضمانات المقدمة</h5>
+                    <ul>
+                        <li data-key="warranty1">ضمان صحة المعلومات</li>
+                        <li data-key="warranty2">ضمان جودة المحرك</li>
+                        <li data-key="warranty3">ضمان الخدمات</li>
+                        <li data-key="warranty4">دعم فني مستمر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mobile-nav-section" data-section="faq">
+                <h4><i class="fas fa-question-circle"></i> <span data-key="faq">الأسئلة الشائعة</span></h4>
+                <div class="mobile-section-content" data-key="faqContent">
+                    <p>يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول خدماتنا وعمليات الشراء في قسم الأسئلة الشائعة على موقعنا.</p>
+                    <h5 data-key="motorcycleQuestions">أسئلة حول الدراجات</h5>
+                    <div class="faq-item">
+                        <p><strong data-key="faqQuestion1">س: كيف أختار الدراجة المناسبة لي؟</strong></p>
+                        <p data-key="faqAnswer1">ج: ننصحك بتحديد ميزانيتك والنوع المفضل (رياضية، كلاسيكية، إلخ) وسيساعدك فريقنا في العثور على الدراجة المناسبة.</p>
+                    </div>
+                    <div class="faq-item">
+                        <p><strong data-key="faqQuestion2">س: هل يمكنني تجربة الدراجة قبل الشراء؟</strong></p>
+                        <p data-key="faqAnswer2">ج: نعم، يمكنك حجز موعد لتجربة أي دراجة معروضة مع أحد مندوبينا.</p>
+                    </div>
+                    <h5 data-key="financeQuestions">أسئلة حول التمويل</h5>
+                    <div class="faq-item">
+                        <p><strong data-key="faqQuestion3">س: هل تقدمون تمويلاً للدراجات؟</strong></p>
+                        <p data-key="faqAnswer3">ج: نعم، نتعاون مع أفضل البنوك والمؤسسات التمويلية لتقديم أفضل عروض التمويل.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-nav-section" data-section="returns">
+                <h4><i class="fas fa-exchange-alt"></i> <span data-key="returns">سياسة الإرجاع</span></h4>
+                <div class="mobile-section-content" data-key="returnsContent">
+                    <h5 data-key="returnConditions">شروط الإرجاع</h5>
+                    <ul>
+                        <li data-key="condition1">يجب أن تكون الدراجة في حالتها الأصلية</li>
+                        <li data-key="condition2">يجب تقديم طلب الإرجاع خلال 7 أيام من الشراء</li>
+                        <li data-key="condition3">يتم خصم رسوم إدارية بنسبة 5% من قيمة العربون</li>
+                    </ul>
+                    <h5 data-key="returnSteps">خطوات الإرجاع</h5>
+                    <ol>
+                        <li data-key="step1">الاتصال بخدمة العملاء</li>
+                        <li data-key="step2">تعبئة نموذج الإرجاع</li>
+                        <li data-key="step3">مراجعة المستندات</li>
+                        <li data-key="step4">استلام المبلغ خلال 10 أيام عمل</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mobile-nav-section" data-section="privacy">
+                <h4><i class="fas fa-shield-alt"></i> <span data-key="privacy">سياسة الخصوصية</span></h4>
+                <div class="mobile-section-content" data-key="privacyContent">
+                    <h5 data-key="dataWeCollect">البيانات التي نجمعها</h5>
+                    <ul>
+                        <li data-key="data1">الاسم وبيانات الاتصال</li>
+                        <li data-key="data2">تفضيلات البحث عن الدراجات</li>
+                        <li data-key="data3">بيانات الدفع (محفوظة بشكل آمن)</li>
+                        <li data-key="data4">سجل الزيارات والمعاينات</li>
+                    </ul>
+                    <h5 data-key="howWeUseData">كيف نستخدم بياناتك</h5>
+                    <ul>
+                        <li data-key="use1">تقديم الخدمات المناسبة</li>
+                        <li data-key="use2">تحسين تجربة البحث</li>
+                        <li data-key="use3">إرسال عروض خاصة (بموافقتك)</li>
+                        <li data-key="use4">تحليل أنماط البحث</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الهيرو سيكشن -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-key="heroTitle">دراجات نارية تعكس شغفك</h1>
+            <p data-key="heroDesc">اكتشف مجموعتنا الحصرية من الدراجات النارية التي صممت بعناية لتليق بالأذواق المميزة. قوة استثنائية وتصميم لا ينسى.</p>
+            <a href="#motorcycles" class="btn" data-key="exploreNow">استكشف الآن</a>
+        </div>
+    </section>
+
+    <!-- أقسام الدراجات -->
+    <div class="container">
+        <div class="motorcycle-categories">
+            <button class="category-btn all active" data-category="all">
+                <i class="fas fa-star"></i>
+                <span data-key="allMotorcycles">جميع الدراجات</span>
+            </button>
+            <button class="category-btn sport" data-category="sport">
+                <i class="fas fa-bolt"></i>
+                <span data-key="sportMotorcycles">دراجات رياضية</span>
+            </button>
+            <button class="category-btn classic" data-category="classic">
+                <i class="fas fa-history"></i>
+                <span data-key="classicMotorcycles">دراجات كلاسيكية</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- قسم الدراجات -->
+    <section class="section" id="motorcycles">
+        <div class="container">
+            <h2 class="section-title" data-key="ourMotorcycles">دراجاتنا</h2>
+            <div class="motorcycles-grid">
+                <!-- الدراجة 1 - رياضية -->
+                <div class="motorcycle-card active" data-category="sport">
+                    <div class="motorcycle-badge" data-key="new">جديد</div>
+                    <div class="motorcycle-image" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="motorcycle-info">
+                        <h3 class="motorcycle-title" data-key="motorcycle1Title">Yamaha R1</h3>
+                        <p class="motorcycle-desc" data-key="motorcycle1Desc">دراجة رياضية فائقة السرعة مع محرك 1000 سي سي</p>
+                        <div class="motorcycle-details">
+                            <span><i class="fas fa-tachometer-alt"></i> 1000 <span data-key="cc">سي سي</span></span>
+                            <span><i class="fas fa-horse-head"></i> 200 <span data-key="hp">حصان</span></span>
+                            <span><i class="fas fa-weight"></i> 200 <span data-key="kg">كجم</span></span>
+                        </div>
+                        <div class="motorcycle-price">$15,000</div>
+                        <div class="motorcycle-actions">
+                            <button class="add-to-favorites" data-key="addToFavorites">إضافة للمفضلة</button>
+                            <button class="view-details" data-key="viewDetails" data-motorcycle="1">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- الدراجة 2 - كلاسيكية -->
+                <div class="motorcycle-card active" data-category="classic">
+                    <div class="motorcycle-image" style="background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="motorcycle-info">
+                        <h3 class="motorcycle-title" data-key="motorcycle2Title">Harley Davidson</h3>
+                        <p class="motorcycle-desc" data-key="motorcycle2Desc">دراجة كلاسيكية أمريكية مع تصميم عصري</p>
+                        <div class="motorcycle-details">
+                            <span><i class="fas fa-tachometer-alt"></i> 1200 <span data-key="cc">سي سي</span></span>
+                            <span><i class="fas fa-horse-head"></i> 80 <span data-key="hp">حصان</span></span>
+                            <span><i class="fas fa-weight"></i> 250 <span data-key="kg">كجم</span></span>
+                        </div>
+                        <div class="motorcycle-price">$12,500</div>
+                        <div class="motorcycle-actions">
+                            <button class="add-to-favorites" data-key="addToFavorites">إضافة للمفضلة</button>
+                            <button class="view-details" data-key="viewDetails" data-motorcycle="2">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- الدراجة 3 - رياضية -->
+                <div class="motorcycle-card active" data-category="sport">
+                    <div class="motorcycle-badge" data-key="bestseller">الأكثر طلباً</div>
+                    <div class="motorcycle-image" style="background-image: url('https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="motorcycle-info">
+                        <h3 class="motorcycle-title" data-key="motorcycle3Title">Kawasaki Ninja</h3>
+                        <p class="motorcycle-desc" data-key="motorcycle3Desc">دراجة رياضية خفيفة الوزن مع أداء متميز</p>
+                        <div class="motorcycle-details">
+                            <span><i class="fas fa-tachometer-alt"></i> 650 <span data-key="cc">سي سي</span></span>
+                            <span><i class="fas fa-horse-head"></i> 68 <span data-key="hp">حصان</span></span>
+                            <span><i class="fas fa-weight"></i> 193 <span data-key="kg">كجم</span></span>
+                        </div>
+                        <div class="motorcycle-price">$8,200</div>
+                        <div class="motorcycle-actions">
+                            <button class="add-to-favorites" data-key="addToFavorites">إضافة للمفضلة</button>
+                            <button class="view-details" data-key="viewDetails" data-motorcycle="3">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة اتصل بنا -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title" data-key="contactUs">اتصل بنا</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 data-key="address">العنوان</h3>
+                    <p data-key="addressContent">شارع الشيخ زايد، دبي، الإمارات العربية المتحدة</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3 data-key="phone">الهاتف</h3>
+                    <p><a href="tel:+97142234567" data-key="phoneNumber">+971 4 223 4567</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3 data-key="email">البريد الإلكتروني</h3>
+                    <p><a href="mailto:info@motorcycles.com" data-key="emailAddress">info@motorcycles.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- سلة المفضلة -->
+    <div class="favorites-sidebar" id="favoritesSidebar">
+        <div class="favorites-header">
+            <h3 data-key="favoritesTitle">المفضلة</h3>
+            <button class="close-favorites" id="closeFavorites">&times;</button>
+        </div>
+        <div class="favorites-items" id="favoritesItems">
+            <!-- سيتم إضافة العناصر هنا ديناميكياً -->
+        </div>
+        <button class="contact-btn" id="contactBtn">
+            <i class="fab fa-whatsapp"></i> <span data-key="contactUs">تواصل معنا عبر واتساب</span>
+        </button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- نافذة تفاصيل الدراجة -->
+    <div class="motorcycle-modal" id="motorcycleModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة محتوى الفوتر -->
+    <div class="footer-modal" id="footerModal">
+        <div class="footer-modal-content">
+            <button class="close-footer-modal" id="closeFooterModal">&times;</button>
+            <div class="footer-modal-body" id="footerModalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-key="aboutFooter">عن الشركة</h3>
+                <ul>
+                    <li><a data-key="about" data-content="about">من نحن</a></li>
+                    <li><a data-key="quality" data-content="quality">الجودة والضمان</a></li>
+                    <li><a data-key="blog" data-content="blog">المدونة</a></li>
+                    <li><a data-key="faqFooter" data-content="faq">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="customerService">خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#contact" data-key="contactUs">اتصل بنا</a></li>
+                    <li><a data-key="shipping" data-content="shipping">الشحن والتوصيل</a></li>
+                    <li><a data-key="returns" data-content="returns">الإرجاع والاستبدال</a></li>
+                    <li><a data-key="privacy" data-content="privacy">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="connectWithUs">تواصل معنا</h3>
+                <p data-key="connectDesc">تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والدراجات الجديدة</p>
+                <div class="social-links">
+                    <a href="https://replace.me/instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://replace.me/facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://replace.me/x" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://replace.me/tiktok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://replace.me/whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 <span class="store-name" data-key="storeName">دراجات النار</span>. <span data-key="allRights">جميع الحقوق محفوظة</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // نظام قائمة الهاتف المحمول
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const overlay = document.getElementById('overlay');
+        const mobileNavSections = document.querySelectorAll('.mobile-nav-section');
+
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            hamburgerMenu.classList.add('active');
+        }
+
+        function closeMobileNavFunc() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            
+            // إغلاق جميع الأقسام عند إغلاق القائمة
+            mobileNavSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+
+        hamburgerMenu.addEventListener('click', openMobileNav);
+        closeMobileNav.addEventListener('click', closeMobileNavFunc);
+        overlay.addEventListener('click', closeMobileNavFunc);
+
+        // إغلاق قائمة الهاتف عند النقر على رابط
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileNavFunc);
+        });
+
+        // نظام الأقسام القابلة للطي
+        mobileNavSections.forEach(section => {
+            section.addEventListener('click', function() {
+                // إغلاق جميع الأقسام الأخرى
+                mobileNavSections.forEach(s => {
+                    if (s !== this) {
+                        s.classList.remove('active');
+                    }
+                });
+                // فتح/إغلاق القسم الحالي
+                this.classList.toggle('active');
+            });
+        });
+
+        // نظام اللغات المتكامل والشامل
+        const translations = {
+            ar: {
+                // النصوص العامة
+                pageTitle: "دراجات النار - متجر الدراجات النارية",
+                storeName: "دراجات النار",
+                home: "الرئيسية",
+                motorcycles: "الدراجات",
+                contactUs: "اتصل بنا",
+                menu: "القائمة",
+                about: "من نحن",
+                quality: "الجودة والضمان",
+                faq: "الأسئلة الشائعة",
+                returns: "سياسة الإرجاع",
+                privacy: "سياسة الخصوصية",
+                blog: "المدونة",
+                allRights: "جميع الحقوق محفوظة",
+                
+                // الهيرو سيكشن
+                heroTitle: "دراجات نارية تعكس شغفك",
+                heroDesc: "اكتشف مجموعتنا الحصرية من الدراجات النارية التي صممت بعناية لتليق بالأذواق المميزة. قوة استثنائية وتصميم لا ينسى.",
+                exploreNow: "استكشف الآن",
+                
+                // أقسام الدراجات
+                ourMotorcycles: "دراجاتنا",
+                allMotorcycles: "جميع الدراجات",
+                sportMotorcycles: "دراجات رياضية",
+                classicMotorcycles: "دراجات كلاسيكية",
+                new: "جديد",
+                bestseller: "الأكثر طلباً",
+                
+                // تفاصيل الدراجات
+                cc: "سي سي",
+                hp: "حصان",
+                kg: "كجم",
+                addToFavorites: "إضافة للمفضلة",
+                viewDetails: "عرض التفاصيل",
+                
+                // الدراجات
+                motorcycle1Title: "Yamaha R1",
+                motorcycle1Desc: "دراجة رياضية فائقة السرعة مع محرك 1000 سي سي",
+                motorcycle1FullDesc: "دراجة Yamaha R1 الرياضية تقدم تجربة قيادة استثنائية في واحدة من أفضل الدراجات الرياضية في العالم. تتميز الدراجة بتصميم عدواني ومحرك قوي 1000 سي سي ينتج 200 حصان. تحتوي على نظام تعليق متطور ونظام فرامل مزدوج وعدة أنظمة مساعدة للسائق. مثالية لمحبي السرعة والأداء العالي.",
+                
+                motorcycle2Title: "Harley Davidson",
+                motorcycle2Desc: "دراجة كلاسيكية أمريكية مع تصميم عصري",
+                motorcycle2FullDesc: "دراجة Harley Davidson الكلاسيكية تجمع بين الأصالة الأمريكية والتصميم العصري. تتميز بمحرك V-Twin سعة 1200 سي سي ينتج 80 حصان وتصميم مريح للرحلات الطويلة. تحتوي على مقعد مريح ونظام صوتي مدمج وإطارات عريضة للثبات. مثالية لمحبي الرحلات الطويلة والتصميم الكلاسيكي.",
+                
+                motorcycle3Title: "Kawasaki Ninja",
+                motorcycle3Desc: "دراجة رياضية خفيفة الوزن مع أداء متميز",
+                motorcycle3FullDesc: "دراجة Kawasaki Ninja الرياضية تقدم أداءً متميزاً في فئة الدراجات المتوسطة. تتميز بمحرك 650 سي سي ينتج 68 حصان وتصميم خفيف الوزن (193 كجم) للمناورة السهلة. تحتوي على نظام تعليق أمامي مقلوب ونظام فرامل مزدوج وشاشة رقمية متطورة. مثالية للاستخدام اليومي والرحلات القصيرة.",
+                
+                // اتصل بنا
+                address: "العنوان",
+                addressContent: "شارع الشيخ زايد، دبي، الإمارات العربية المتحدة",
+                phone: "الهاتف",
+                phoneNumber: "+971 4 223 4567",
+                email: "البريد الإلكتروني",
+                emailAddress: "info@motorcycles.com",
+                
+                // المفضلة
+                favoritesTitle: "المفضلة",
+                
+                // الفوتر
+                aboutFooter: "عن الشركة",
+                faqFooter: "الأسئلة الشائعة",
+                customerService: "خدمة العملاء",
+                shipping: "الشحن والتوصيل",
+                connectWithUs: "تواصل معنا",
+                connectDesc: "تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والدراجات الجديدة",
+                
+                // محتوى الأقسام
+                aboutContent: `
+                    <p>نحن متجر دراجات نارية رائد مهمتنا مساعدتك في العثور على الدراجة المثالية التي تناسب احتياجاتك وميزانيتك. نقدم مجموعة واسعة من الدراجات النارية في أفضل الموديلات والماركات العالمية.</p>
+                    <h5>رؤيتنا</h5>
+                    <p>أن نكون الوجهة الأولى للبحث عن الدراجات النارية في المنطقة.</p>
+                    <h5>رسالتنا</h5>
+                    <p>تقديم تجربة استثنائية للعملاء من خلال خدمة مهنية ودراجات بجودة عالية.</p>
+                    <h5>قيمنا</h5>
+                    <ul>
+                        <li>الصدق والشفافية</li>
+                        <li>الجودة والتميز</li>
+                        <li>رضا العملاء أولاً</li>
+                        <li>الابتكار والتطوير</li>
+                    </ul>
+                `,
+                ourVision: "رؤيتنا",
+                visionText: "أن نكون الوجهة الأولى للبحث عن الدراجات النارية في المنطقة.",
+                ourMission: "رسالتنا",
+                missionText: "تقديم تجربة استثنائية للعملاء من خلال خدمة مهنية ودراجات بجودة عالية.",
+                ourValues: "قيمنا",
+                value1: "الصدق والشفافية",
+                value2: "الجودة والتميز",
+                value3: "رضا العملاء أولاً",
+                value4: "الابتكار والتطوير",
+                
+                qualityContent: `
+                    <p>نحن نضمن جودة جميع الدراجات النارية المعروضة ونقدم ضمانات للمشترين. نحرص على أن تكون جميع الدراجات مطابقة للمواصفات والمقاييس المعتمدة.</p>
+                    <h5>معايير الجودة</h5>
+                    <ul>
+                        <li>قطع غيار أصلية</li>
+                        <li>تصميم متميز</li>
+                        <li>فحص فني شامل</li>
+                        <li>خدمات ما بعد البيع</li>
+                    </ul>
+                    <h5>الضمانات المقدمة</h5>
+                    <ul>
+                        <li>ضمان صحة المعلومات</li>
+                        <li>ضمان جودة المحرك</li>
+                        <li>ضمان الخدمات</li>
+                        <li>دعم فني مستمر</li>
+                    </ul>
+                `,
+                qualityStandards: "معايير الجودة",
+                standard1: "قطع غيار أصلية",
+                standard2: "تصميم متميز",
+                standard3: "فحص فني شامل",
+                standard4: "خدمات ما بعد البيع",
+                warranties: "الضمانات المقدمة",
+                warranty1: "ضمان صحة المعلومات",
+                warranty2: "ضمان جودة المحرك",
+                warranty3: "ضمان الخدمات",
+                warranty4: "دعم فني مستمر",
+                
+                faqContent: `
+                    <p>يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول خدماتنا وعمليات الشراء في قسم الأسئلة الشائعة على موقعنا.</p>
+                    <h5>أسئلة حول الدراجات</h5>
+                    <div class="faq-item">
+                        <p><strong>س: كيف أختار الدراجة المناسبة لي؟</strong></p>
+                        <p>ج: ننصحك بتحديد ميزانيتك والنوع المفضل (رياضية، كلاسيكية، إلخ) وسيساعدك فريقنا في العثور على الدراجة المناسبة.</p>
+                    </div>
+                    <div class="faq-item">
+                        <p><strong>س: هل يمكنني تجربة الدراجة قبل الشراء؟</strong></p>
+                        <p>ج: نعم، يمكنك حجز موعد لتجربة أي دراجة معروضة مع أحد مندوبينا.</p>
+                    </div>
+                    <h5>أسئلة حول التمويل</h5>
+                    <div class="faq-item">
+                        <p><strong>س: هل تقدمون تمويلاً للدراجات؟</strong></p>
+                        <p>ج: نعم، نتعاون مع أفضل البنوك والمؤسسات التمويلية لتقديم أفضل عروض التمويل.</p>
+                    </div>
+                `,
+                motorcycleQuestions: "أسئلة حول الدراجات",
+                faqQuestion1: "س: كيف أختار الدراجة المناسبة لي؟",
+                faqAnswer1: "ج: ننصحك بتحديد ميزانيتك والنوع المفضل (رياضية، كلاسيكية، إلخ) وسيساعدك فريقنا في العثور على الدراجة المناسبة.",
+                faqQuestion2: "س: هل يمكنني تجربة الدراجة قبل الشراء؟",
+                faqAnswer2: "ج: نعم، يمكنك حجز موعد لتجربة أي دراجة معروضة مع أحد مندوبينا.",
+                financeQuestions: "أسئلة حول التمويل",
+                faqQuestion3: "س: هل تقدمون تمويلاً للدراجات؟",
+                faqAnswer3: "ج: نعم، نتعاون مع أفضل البنوك والمؤسسات التمويلية لتقديم أفضل عروض التمويل.",
+                
+                returnsContent: `
+                    <h5>شروط الإرجاع</h5>
+                    <ul>
+                        <li>يجب أن تكون الدراجة في حالتها الأصلية</li>
+                        <li>يجب تقديم طلب الإرجاع خلال 7 أيام من الشراء</li>
+                        <li>يتم خصم رسوم إدارية بنسبة 5% من قيمة العربون</li>
+                    </ul>
+                    <h5>خطوات الإرجاع</h5>
+                    <ol>
+                        <li>الاتصال بخدمة العملاء</li>
+                        <li>تعبئة نموذج الإرجاع</li>
+                        <li>مراجعة المستندات</li>
+                        <li>استلام المبلغ خلال 10 أيام عمل</li>
+                    </ol>
+                `,
+                returnConditions: "شروط الإرجاع",
+                condition1: "يجب أن تكون الدراجة في حالتها الأصلية",
+                condition2: "يجب تقديم طلب الإرجاع خلال 7 أيام من الشراء",
+                condition3: "يتم خصم رسوم إدارية بنسبة 5% من قيمة العربون",
+                returnSteps: "خطوات الإرجاع",
+                step1: "الاتصال بخدمة العملاء",
+                step2: "تعبئة نموذج الإرجاع",
+                step3: "مراجعة المستندات",
+                step4: "استلام المبلغ خلال 10 أيام عمل",
+                
+                privacyContent: `
+                    <h5>البيانات التي نجمعها</h5>
+                    <ul>
+                        <li>الاسم وبيانات الاتصال</li>
+                        <li>تفضيلات البحث عن الدراجات</li>
+                        <li>بيانات الدفع (محفوظة بشكل آمن)</li>
+                        <li>سجل الزيارات والمعاينات</li>
+                    </ul>
+                    <h5>كيف نستخدم بياناتك</h5>
+                    <ul>
+                        <li>تقديم الخدمات المناسبة</li>
+                        <li>تحسين تجربة البحث</li>
+                        <li>إرسال عروض خاصة (بموافقتك)</li>
+                        <li>تحليل أنماط البحث</li>
+                    </ul>
+                `,
+                dataWeCollect: "البيانات التي نجمعها",
+                data1: "الاسم وبيانات الاتصال",
+                data2: "تفضيلات البحث عن الدراجات",
+                data3: "بيانات الدفع (محفوظة بشكل آمن)",
+                data4: "سجل الزيارات والمعاينات",
+                howWeUseData: "كيف نستخدم بياناتك",
+                use1: "تقديم الخدمات المناسبة",
+                use2: "تحسين تجربة البحث",
+                use3: "إرسال عروض خاصة (بموافقتك)",
+                use4: "تحليل أنماط البحث",
+                
+                // واتساب
+                whatsappMessage: "مرحباً، أنا مهتم بالدراجات التالية:\n",
+                whatsappInfo: "\n\nالاسم: \nرقم الهاتف: \nالوقت المناسب للاتصال:"
+            },
+            en: {
+                // General texts
+                pageTitle: "Fire Bikes - Motorcycle Store",
+                storeName: "Fire Bikes",
+                home: "Home",
+                motorcycles: "Motorcycles",
+                contactUs: "Contact Us",
+                menu: "Menu",
+                about: "About Us",
+                quality: "Quality & Warranty",
+                faq: "FAQ",
+                returns: "Return Policy",
+                privacy: "Privacy Policy",
+                blog: "Blog",
+                allRights: "All Rights Reserved",
+                
+                // Hero section
+                heroTitle: "Motorcycles That Reflect Your Passion",
+                heroDesc: "Discover our exclusive collection of motorcycles carefully designed to suit distinctive tastes. Exceptional power and unforgettable design.",
+                exploreNow: "Explore Now",
+                
+                // Motorcycle sections
+                ourMotorcycles: "Our Motorcycles",
+                allMotorcycles: "All Motorcycles",
+                sportMotorcycles: "Sport Motorcycles",
+                classicMotorcycles: "Classic Motorcycles",
+                new: "New",
+                bestseller: "Most Popular",
+                
+                // Motorcycle details
+                cc: "CC",
+                hp: "HP",
+                kg: "Kg",
+                addToFavorites: "Add to Favorites",
+                viewDetails: "View Details",
+                
+                // Motorcycles
+                motorcycle1Title: "Yamaha R1",
+                motorcycle1Desc: "Super sport bike with 1000cc engine",
+                motorcycle1FullDesc: "The Yamaha R1 sport bike offers an exceptional riding experience in one of the best sport bikes in the world. The bike features an aggressive design and a powerful 1000cc engine that produces 200 horsepower. It contains an advanced suspension system, dual braking system, and several rider assistance systems. Ideal for speed lovers and high performance.",
+                
+                motorcycle2Title: "Harley Davidson",
+                motorcycle2Desc: "American classic bike with modern design",
+                motorcycle2FullDesc: "The Harley Davidson classic bike combines American authenticity with modern design. It features a 1200cc V-Twin engine that produces 80 horsepower and a comfortable design for long trips. It contains a comfortable seat, integrated sound system, and wide tires for stability. Ideal for long trips and classic design lovers.",
+                
+                motorcycle3Title: "Kawasaki Ninja",
+                motorcycle3Desc: "Lightweight sport bike with excellent performance",
+                motorcycle3FullDesc: "The Kawasaki Ninja sport bike offers excellent performance in the medium bike category. It features a 650cc engine that produces 68 horsepower and a lightweight design (193 kg) for easy maneuverability. It contains an inverted front suspension system, dual braking system, and advanced digital display. Ideal for daily use and short trips.",
+                
+                // Contact Us
+                address: "Address",
+                addressContent: "Sheikh Zayed Road, Dubai, UAE",
+                phone: "Phone",
+                phoneNumber: "+971 4 223 4567",
+                email: "Email",
+                emailAddress: "info@motorcycles.com",
+                
+                // Favorites
+                favoritesTitle: "Favorites",
+                
+                // Footer
+                aboutFooter: "About Company",
+                faqFooter: "FAQ",
+                customerService: "Customer Service",
+                shipping: "Shipping & Delivery",
+                connectWithUs: "Connect With Us",
+                connectDesc: "Follow us on social media to know the latest offers and new motorcycles",
+                
+                // Section content
+                aboutContent: `
+                    <p>We are a leading motorcycle store whose mission is to help you find the perfect bike that suits your needs and budget. We offer a wide range of motorcycles in the best models and global brands.</p>
+                    <h5>Our Vision</h5>
+                    <p>To be the first destination for motorcycle search in the region.</p>
+                    <h5>Our Mission</h5>
+                    <p>Providing an exceptional customer experience through professional service and high-quality motorcycles.</p>
+                    <h5>Our Values</h5>
+                    <ul>
+                        <li>Honesty and Transparency</li>
+                        <li>Quality and Excellence</li>
+                        <li>Customer Satisfaction First</li>
+                        <li>Innovation and Development</li>
+                    </ul>
+                `,
+                ourVision: "Our Vision",
+                visionText: "To be the first destination for motorcycle search in the region.",
+                ourMission: "Our Mission",
+                missionText: "Providing an exceptional customer experience through professional service and high-quality motorcycles.",
+                ourValues: "Our Values",
+                value1: "Honesty and Transparency",
+                value2: "Quality and Excellence",
+                value3: "Customer Satisfaction First",
+                value4: "Innovation and Development",
+                
+                qualityContent: `
+                    <p>We guarantee the quality of all motorcycles listed and provide warranties to buyers. We ensure that all motorcycles comply with approved specifications and standards.</p>
+                    <h5>Quality Standards</h5>
+                    <ul>
+                        <li>Original spare parts</li>
+                        <li>Distinctive design</li>
+                        <li>Comprehensive technical inspection</li>
+                        <li>After-sales services</li>
+                    </ul>
+                    <h5>Provided Warranties</h5>
+                    <ul>
+                        <li>Information accuracy warranty</li>
+                        <li>Engine quality warranty</li>
+                        <li>Services warranty</li>
+                        <li>Continuous technical support</li>
+                    </ul>
+                `,
+                qualityStandards: "Quality Standards",
+                standard1: "Original spare parts",
+                standard2: "Distinctive design",
+                standard3: "Comprehensive technical inspection",
+                standard4: "After-sales services",
+                warranties: "Provided Warranties",
+                warranty1: "Information accuracy warranty",
+                warranty2: "Engine quality warranty",
+                warranty3: "Services warranty",
+                warranty4: "Continuous technical support",
+                
+                faqContent: `
+                    <p>You can find answers to the most common questions about our services and purchasing processes in the FAQ section on our website.</p>
+                    <h5>Motorcycle Questions</h5>
+                    <div class="faq-item">
+                        <p><strong>Q: How do I choose the right motorcycle for me?</strong></p>
+                        <p>A: We advise you to determine your budget and preferred type (sport, classic, etc.) and our team will help you find the suitable motorcycle.</p>
+                    </div>
+                    <div class="faq-item">
+                        <p><strong>Q: Can I test the motorcycle before purchasing?</strong></p>
+                        <p>A: Yes, you can book an appointment to test any listed motorcycle with one of our representatives.</p>
+                    </div>
+                    <h5>Finance Questions</h5>
+                    <div class="faq-item">
+                        <p><strong>Q: Do you offer financing for motorcycles?</strong></p>
+                        <p>A: Yes, we cooperate with the best banks and financial institutions to provide the best financing offers.</p>
+                    </div>
+                `,
+                motorcycleQuestions: "Motorcycle Questions",
+                faqQuestion1: "Q: How do I choose the right motorcycle for me?",
+                faqAnswer1: "A: We advise you to determine your budget and preferred type (sport, classic, etc.) and our team will help you find the suitable motorcycle.",
+                faqQuestion2: "Q: Can I test the motorcycle before purchasing?",
+                faqAnswer2: "A: Yes, you can book an appointment to test any listed motorcycle with one of our representatives.",
+                financeQuestions: "Finance Questions",
+                faqQuestion3: "Q: Do you offer financing for motorcycles?",
+                faqAnswer3: "A: Yes, we cooperate with the best banks and financial institutions to provide the best financing offers.",
+                
+                returnsContent: `
+                    <h5>Return Conditions</h5>
+                    <ul>
+                        <li>The motorcycle must be in its original condition</li>
+                        <li>Return request must be submitted within 7 days of purchase</li>
+                        <li>Administrative fees of 5% of the deposit value are deducted</li>
+                    </ul>
+                    <h5>Return Steps</h5>
+                    <ol>
+                        <li>Contact customer service</li>
+                        <li>Fill out the return form</li>
+                        <li>Review documents</li>
+                        <li>Receive amount within 10 working days</li>
+                    </ol>
+                `,
+                returnConditions: "Return Conditions",
+                condition1: "The motorcycle must be in its original condition",
+                condition2: "Return request must be submitted within 7 days of purchase",
+                condition3: "Administrative fees of 5% of the deposit value are deducted",
+                returnSteps: "Return Steps",
+                step1: "Contact customer service",
+                step2: "Fill out the return form",
+                step3: "Review documents",
+                step4: "Receive amount within 10 working days",
+                
+                privacyContent: `
+                    <h5>Data We Collect</h5>
+                    <ul>
+                        <li>Name and contact information</li>
+                        <li>Motorcycle search preferences</li>
+                        <li>Payment data (securely stored)</li>
+                        <li>Visit and inspection history</li>
+                    </ul>
+                    <h5>How We Use Your Data</h5>
+                    <ul>
+                        <li>Providing appropriate services</li>
+                        <li>Improving search experience</li>
+                        <li>Sending special offers (with your consent)</li>
+                        <li>Analyzing search patterns</li>
+                    </ul>
+                `,
+                dataWeCollect: "Data We Collect",
+                data1: "Name and contact information",
+                data2: "Motorcycle search preferences",
+                data3: "Payment data (securely stored)",
+                data4: "Visit and inspection history",
+                howWeUseData: "How We Use Your Data",
+                use1: "Providing appropriate services",
+                use2: "Improving search experience",
+                use3: "Sending special offers (with your consent)",
+                use4: "Analyzing search patterns",
+                
+                // WhatsApp
+                whatsappMessage: "Hello, I'm interested in the following motorcycles:\n",
+                whatsappInfo: "\n\nName: \nPhone Number: \nBest Time to Call:"
+            },
+            fr: {
+                // Textes généraux
+                pageTitle: "Motos de Feu - Magasin de Motos",
+                storeName: "Motos de Feu",
+                home: "Accueil",
+                motorcycles: "Motos",
+                contactUs: "Contactez-nous",
+                menu: "Menu",
+                about: "À propos de nous",
+                quality: "Qualité et Garantie",
+                faq: "FAQ",
+                returns: "Politique de Retour",
+                privacy: "Politique de Confidentialité",
+                blog: "Blog",
+                allRights: "Tous Droits Réservés",
+                
+                // Section Hero
+                heroTitle: "Motos Qui Reflètent Votre Passion",
+                heroDesc: "Découvrez notre collection exclusive de motos soigneusement conçues pour correspondre aux goûts distinctifs. Puissance exceptionnelle et design inoubliable.",
+                exploreNow: "Explorer Maintenant",
+                
+                // Sections de motos
+                ourMotorcycles: "Nos Motos",
+                allMotorcycles: "Toutes les Motos",
+                sportMotorcycles: "Motos Sportives",
+                classicMotorcycles: "Motos Classiques",
+                new: "Nouveau",
+                bestseller: "Le Plus Populaire",
+                
+                // Détails des motos
+                cc: "CC",
+                hp: "CV",
+                kg: "Kg",
+                addToFavorites: "Ajouter aux Favoris",
+                viewDetails: "Voir les Détails",
+                
+                // Motos
+                motorcycle1Title: "Yamaha R1",
+                motorcycle1Desc: "Moto super sportive avec moteur 1000cc",
+                motorcycle1FullDesc: "La moto sportive Yamaha R1 offre une expérience de conduite exceptionnelle dans l'une des meilleures motos sportives au monde. La moto présente un design agressif et un moteur puissant de 1000cc qui produit 200 chevaux. Elle contient un système de suspension avancé, un système de freinage double et plusieurs systèmes d'assistance au conducteur. Idéale pour les amateurs de vitesse et de hautes performances.",
+                
+                motorcycle2Title: "Harley Davidson",
+                motorcycle2Desc: "Moto classique américaine avec design moderne",
+                motorcycle2FullDesc: "La moto classique Harley Davidson combine l'authenticité américaine avec un design moderne. Elle dispose d'un moteur V-Twin de 1200cc qui produit 80 chevaux et d'un design confortable pour les longs trajets. Elle contient une selle confortable, un système sonore intégré et des pneus larges pour la stabilité. Idéale pour les longs trajets et les amateurs de design classique.",
+                
+                motorcycle3Title: "Kawasaki Ninja",
+                motorcycle3Desc: "Moto sportive légère avec excellente performance",
+                motorcycle3FullDesc: "La moto sportive Kawasaki Ninja offre une excellente performance dans la catégorie des motos moyennes. Elle dispose d'un moteur de 650cc qui produit 68 chevaux et d'un design léger (193 kg) pour une maniabilité facile. Elle contient un système de suspension avant inversé, un système de freinage double et un affichage numérique avancé. Idéale pour un usage quotidien et les courts trajets.",
+                
+                // Contactez-nous
+                address: "Adresse",
+                addressContent: "Sheikh Zayed Road, Dubaï, EAU",
+                phone: "Téléphone",
+                phoneNumber: "+971 4 223 4567",
+                email: "E-mail",
+                emailAddress: "info@motorcycles.com",
+                
+                // Favoris
+                favoritesTitle: "Favoris",
+                
+                // Pied de page
+                aboutFooter: "À Propos de l'Entreprise",
+                faqFooter: "FAQ",
+                customerService: "Service Client",
+                shipping: "Livraison",
+                connectWithUs: "Connectez avec Nous",
+                connectDesc: "Suivez-nous sur les réseaux sociaux pour connaître les dernières offres et nouvelles motos",
+                
+                // Contenu des sections
+                aboutContent: `
+                    <p>Nous sommes un magasin de motos leader dont la mission est de vous aider à trouver la moto parfaite qui correspond à vos besoins et à votre budget. Nous proposons une large gamme de motos dans les meilleurs modèles et marques mondiales.</p>
+                    <h5>Notre Vision</h5>
+                    <p>Être la première destination pour la recherche de motos dans la région.</p>
+                    <h5>Notre Mission</h5>
+                    <p>Fournir une expérience client exceptionnelle grâce à un service professionnel et des motos de haute qualité.</p>
+                    <h5>Nos Valeurs</h5>
+                    <ul>
+                        <li>Honnêteté et Transparence</li>
+                        <li>Qualité et Excellence</li>
+                        <li>Satisfaction Client d'Abord</li>
+                        <li>Innovation et Développement</li>
+                    </ul>
+                `,
+                ourVision: "Notre Vision",
+                visionText: "Être la première destination pour la recherche de motos dans la région.",
+                ourMission: "Notre Mission",
+                missionText: "Fournir une expérience client exceptionnelle grâce à un service professionnel et des motos de haute qualité.",
+                ourValues: "Nos Valeurs",
+                value1: "Honnêteté et Transparence",
+                value2: "Qualitée et Excellence",
+                value3: "Satisfaction Client d'Abord",
+                value4: "Innovation et Développement",
+                
+                qualityContent: `
+                    <p>Nous garantissons la qualité de toutes les motos listées et fournissons des garanties aux acheteurs. Nous veillons à ce que toutes les motos respectent les spécifications et normes approuvées.</p>
+                    <h5>Normes de Qualité</h5>
+                    <ul>
+                        <li>Pièces de rechange d'origine</li>
+                        <li>Design distinctif</li>
+                        <li>Inspection technique complète</li>
+                        <li>Services après-vente</li>
+                    </ul>
+                    <h5>Garanties Fournies</h5>
+                    <ul>
+                        <li>Garantie d'exactitude des informations</li>
+                        <li>Garantie de qualité du moteur</li>
+                        <li>Garantie des services</li>
+                        <li>Support technique continu</li>
+                    </ul>
+                `,
+                qualityStandards: "Normes de Qualité",
+                standard1: "Pièces de rechange d'origine",
+                standard2: "Design distinctif",
+                standard3: "Inspection technique complète",
+                standard4: "Services après-vente",
+                warranties: "Garanties Fournies",
+                warranty1: "Garantie d'exactitude des informations",
+                warranty2: "Garantie de qualité du moteur",
+                warranty3: "Garantie des services",
+                warranty4: "Support technique continu",
+                
+                faqContent: `
+                    <p>Vous pouvez trouver des réponses aux questions les plus courantes sur nos services et processus d'achat dans la section FAQ de notre site Web.</p>
+                    <h5>Questions sur les Motos</h5>
+                    <div class="faq-item">
+                        <p><strong>Q: Comment choisir la moto qui me convient ?</strong></p>
+                        <p>R: Nous vous conseillons de déterminer votre budget et le type préféré (sportive, classique, etc.) et notre équipe vous aidera à trouver la moto convenable.</p>
+                    </div>
+                    <div class="faq-item">
+                        <p><strong>Q: Puis-je essayer la moto avant l'achat ?</strong></p>
+                        <p>R: Oui, vous pouvez réserver un rendez-vous pour essayer toute moto listée avec l'un de nos représentants.</p>
+                    </div>
+                    <h5>Questions sur le Financement</h5>
+                    <div class="faq-item">
+                        <p><strong>Q: Offrez-vous un financement pour les motos ?</strong></p>
+                        <p>R: Oui, nous coopérons avec les meilleures banques et institutions financières pour fournir les meilleures offres de financement.</p>
+                    </div>
+                `,
+                motorcycleQuestions: "Questions sur les Motos",
+                faqQuestion1: "Q: Comment choisir la moto qui me convient ?",
+                faqAnswer1: "R: Nous vous conseillons de déterminer votre budget et le type préféré (sportive, classique, etc.) et notre équipe vous aidera à trouver la moto convenable.",
+                faqQuestion2: "Q: Puis-je essayer la moto avant l'achat ?",
+                faqAnswer2: "R: Oui, vous pouvez réserver un rendez-vous pour essayer toute moto listée avec l'un de nos représentants.",
+                financeQuestions: "Questions sur le Financement",
+                faqQuestion3: "Q: Offrez-vous un financement pour les motos ?",
+                faqAnswer3: "R: Oui, nous coopérons avec les meilleures banques et institutions financières pour fournir les meilleures offres de financement.",
+                
+                returnsContent: `
+                    <h5>Conditions de Retour</h5>
+                    <ul>
+                        <li>La moto doit être dans son état d'origine</li>
+                        <li>La demande de retour doit être soumise dans les 7 jours suivant l'achat</li>
+                        <li>Des frais administratifs de 5% de la valeur des arrhes sont déduits</li>
+                    </ul>
+                    <h5>Étapes de Retour</h5>
+                    <ol>
+                        <li>Contacter le service client</li>
+                        <li>Remplir le formulaire de retour</li>
+                        <li>Examiner les documents</li>
+                        <li>Recevoir le montant dans les 10 jours ouvrables</li>
+                    </ol>
+                `,
+                returnConditions: "Conditions de Retour",
+                condition1: "La moto doit être dans son état d'origine",
+                condition2: "La demande de retour doit être soumise dans les 7 jours suivant l'achat",
+                condition3: "Des frais administratifs de 5% de la valeur des arrhes sont déduits",
+                returnSteps: "Étapes de Retour",
+                step1: "Contacter le service client",
+                step2: "Remplir le formulaire de retour",
+                step3: "Examiner les documents",
+                step4: "Recevoir le montant dans les 10 jours ouvrables",
+                
+                privacyContent: `
+                    <h5>Données que Nous Collectons</h5>
+                    <ul>
+                        <li>Nom et informations de contact</li>
+                        <li>Préférences de recherche de moto</li>
+                        <li>Données de paiement (stockées en toute sécurité)</li>
+                        <li>Historique des visites et inspections</li>
+                    </ul>
+                    <h5>Comment Nous Utilisons Vos Données</h5>
+                    <ul>
+                        <li>Fourniture de services appropriés</li>
+                        <li>Amélioration de l'expérience de recherche</li>
+                        <li>Envoi d'offres spéciales (avec votre consentement)</li>
+                        <li>Analyse des modèles de recherche</li>
+                    </ul>
+                `,
+                dataWeCollect: "Données que Nous Collectons",
+                data1: "Nom et informations de contact",
+                data2: "Préférences de recherche de moto",
+                data3: "Données de paiement (stockées en toute sécurité)",
+                data4: "Historique des visites et inspections",
+                howWeUseData: "Comment Nous Utilisons Vos Données",
+                use1: "Fourniture de services appropriés",
+                use2: "Amélioration de l'expérience de recherche",
+                use3: "Envoi d'offres spéciales (avec votre consentement)",
+                use4: "Analyse des modèles de recherche",
+                
+                // WhatsApp
+                whatsappMessage: "Bonjour, je suis intéressé par les motos suivantes :\n",
+                whatsappInfo: "\n\nNom : \nNuméro de Téléphone : \nMeilleur Moment pour Appeler :"
+            }
+        };
+
+        // نظام اختيار اللغة
+        const currentLangElement = document.getElementById('currentLang');
+        const langDropdown = document.getElementById('langDropdown');
+        const langOptions = document.querySelectorAll('.lang-option');
+        
+        let currentLang = 'ar';
+
+        // فتح وإغلاق قائمة اللغات
+        currentLangElement.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-down');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-up');
+        });
+
+        // إغلاق قائمة اللغات عند النقر خارجها
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('active');
+            currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+            currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+        });
+
+        // منع إغلاق القائمة عند النقر داخلها
+        langDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // تغيير اللغة
+        langOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                langDropdown.classList.remove('active');
+                currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+                currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+            });
+        });
+
+        // تغيير اللغة الشامل
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // تحديث عنوان الصفحة
+            document.title = translations[lang].pageTitle;
+            
+            // تحديث اسم المتجر
+            document.querySelectorAll('.store-name').forEach(element => {
+                element.textContent = translations[lang].storeName;
+            });
+            
+            // تحديث النص الحالي للغة
+            currentLangElement.querySelector('span').textContent = document.querySelector(`.lang-option[data-lang="${lang}"] span`).textContent;
+            
+            // تحديث كل النصوص التي تحتوي على data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // تحديث محتوى الأقسام في القائمة الجانبية
+            document.querySelectorAll('.mobile-section-content[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // تغيير اتجاه الصفحة
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        // نظام تصفية الدراجات حسب الفئة
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const motorcycleCards = document.querySelectorAll('.motorcycle-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشاط للزر المختار
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // تصفية الدراجات
+                motorcycleCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // نظام المفضلة
+        let favorites = [];
+        const favoritesIcon = document.getElementById('favoritesIcon');
+        const favoritesSidebar = document.getElementById('favoritesSidebar');
+        const closeFavorites = document.getElementById('closeFavorites');
+        const favoritesItems = document.getElementById('favoritesItems');
+        const contactBtn = document.getElementById('contactBtn');
+        const favoritesCount = document.querySelector('.favorites-count');
+
+        // فتح وإغلاق المفضلة
+        favoritesIcon.addEventListener('click', () => {
+            favoritesSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeFavorites.addEventListener('click', () => {
+            favoritesSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // إضافة دراجة إلى المفضلة
+        document.querySelectorAll('.add-to-favorites').forEach(button => {
+            button.addEventListener('click', function() {
+                const motorcycleCard = this.closest('.motorcycle-card');
+                const title = motorcycleCard.querySelector('.motorcycle-title').textContent;
+                const price = motorcycleCard.querySelector('.motorcycle-price').textContent;
+                const image = motorcycleCard.querySelector('.motorcycle-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كانت الدراجة موجودة بالفعل
+                const existingItem = favorites.find(item => item.title === title);
+                
+                if (!existingItem) {
+                    favorites.push({
+                        title,
+                        price,
+                        image
+                    });
+                    
+                    updateFavorites();
+                    favoritesSidebar.classList.add('active');
+                    overlay.classList.add('active');
+                }
+            });
+        });
+
+        // تحديث المفضلة
+        function updateFavorites() {
+            favoritesItems.innerHTML = '';
+            
+            favorites.forEach((item, index) => {
+                const favoritesItem = document.createElement('div');
+                favoritesItem.className = 'favorites-item';
+                favoritesItem.innerHTML = `
+                    <div class="favorites-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="favorites-item-details">
+                        <div class="favorites-item-title">${item.title}</div>
+                        <div class="favorites-item-price">${item.price}</div>
+                    </div>
+                    <button class="favorites-item-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                `;
+                
+                favoritesItems.appendChild(favoritesItem);
+            });
+            
+            favoritesCount.textContent = favorites.length;
+            
+            // إضافة حدث إزالة العنصر
+            document.querySelectorAll('.favorites-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    favorites.splice(index, 1);
+                    updateFavorites();
+                });
+            });
+        }
+
+        // التواصل عبر واتساب
+        contactBtn.addEventListener('click', function() {
+            if (favorites.length === 0) {
+                alert(translations[currentLang].favoritesTitle + ' ' + (currentLang === 'ar' ? 'فارغة' : 'is empty'));
+                return;
+            }
+            
+            let message = translations[currentLang].whatsappMessage;
+            
+            favorites.forEach(item => {
+                message += `- ${item.title} (${item.price})\n`;
+            });
+            
+            message += translations[currentLang].whatsappInfo;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/971500000000?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        });
+
+        // نظام عرض تفاصيل الدراجة
+        const motorcycleModal = document.getElementById('motorcycleModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalBody = document.getElementById('modalBody');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+
+        // فتح نافذة تفاصيل الدراجة
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const motorcycleId = this.getAttribute('data-motorcycle');
+                showMotorcycleDetails(motorcycleId);
+            });
+        });
+
+        // إغلاق نافذة تفاصيل الدراجة
+        closeModal.addEventListener('click', () => {
+            motorcycleModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            motorcycleModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض تفاصيل الدراجة
+        function showMotorcycleDetails(motorcycleId) {
+            const motorcycleKey = `motorcycle${motorcycleId}Title`;
+            const motorcycleDescKey = `motorcycle${motorcycleId}FullDesc`;
+            const motorcyclePrice = document.querySelector(`[data-motorcycle="${motorcycleId}"]`).closest('.motorcycle-card').querySelector('.motorcycle-price').textContent;
+            const motorcycleImage = document.querySelector(`[data-motorcycle="${motorcycleId}"]`).closest('.motorcycle-card').querySelector('.motorcycle-image').style.backgroundImage;
+            
+            modalBody.innerHTML = `
+                <div class="modal-image" style="${motorcycleImage}"></div>
+                <div class="modal-details">
+                    <h3>${translations[currentLang][motorcycleKey]}</h3>
+                    <div class="motorcycle-price">${motorcyclePrice}</div>
+                    <p class="motorcycle-full-desc">${translations[currentLang][motorcycleDescKey]}</p>
+                    <div class="modal-features">
+                        <div class="modal-feature"><i class="fas fa-tachometer-alt"></i> ${translations[currentLang].cc}</div>
+                        <div class="modal-feature"><i class="fas fa-horse-head"></i> ${translations[currentLang].hp}</div>
+                        <div class="modal-feature"><i class="fas fa-weight"></i> ${translations[currentLang].kg}</div>
+                        <div class="modal-feature"><i class="fas fa-gas-pump"></i> ${translations[currentLang].fuel || 'Fuel'}</div>
+                        <div class="modal-feature"><i class="fas fa-cogs"></i> ${translations[currentLang].gears || 'Gears'}</div>
+                        <div class="modal-feature"><i class="fas fa-palette"></i> ${translations[currentLang].colors || 'Colors'}</div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="add-to-favorites">${translations[currentLang].addToFavorites}</button>
+                        <button class="contact-btn">${translations[currentLang].contactUs}</button>
+                    </div>
+                </div>
+            `;
+            
+            // إضافة حدث إضافة إلى المفضلة داخل النافذة
+            modalBody.querySelector('.add-to-favorites').addEventListener('click', function() {
+                const motorcycleCard = document.querySelector(`[data-motorcycle="${motorcycleId}"]`).closest('.motorcycle-card');
+                const title = motorcycleCard.querySelector('.motorcycle-title').textContent;
+                const price = motorcycleCard.querySelector('.motorcycle-price').textContent;
+                const image = motorcycleCard.querySelector('.motorcycle-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كانت الدراجة موجودة بالفعل
+                const existingItem = favorites.find(item => item.title === title);
+                
+                if (!existingItem) {
+                    favorites.push({
+                        title,
+                        price,
+                        image
+                    });
+                    
+                    updateFavorites();
+                    motorcycleModal.classList.remove('active');
+                    overlay.classList.remove('active');
+                    favoritesSidebar.classList.add('active');
+                }
+            });
+            
+            // إضافة حدث التواصل داخل النافذة
+            modalBody.querySelector('.contact-btn').addEventListener('click', function() {
+                let message = translations[currentLang].whatsappMessage;
+                message += `- ${translations[currentLang][motorcycleKey]} (${motorcyclePrice})\n`;
+                message += translations[currentLang].whatsappInfo;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappURL = `https://wa.me/971500000000?text=${encodedMessage}`;
+                
+                window.open(whatsappURL, '_blank');
+            });
+            
+            motorcycleModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // نظام نافذة محتوى الفوتر
+        const footerModal = document.getElementById('footerModal');
+        const closeFooterModal = document.getElementById('closeFooterModal');
+        const footerModalBody = document.getElementById('footerModalBody');
+        const footerLinks = document.querySelectorAll('.footer-column a[data-content]');
+
+        // فتح نافذة محتوى الفوتر
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contentKey = this.getAttribute('data-content');
+                showFooterContent(contentKey);
+            });
+        });
+
+        // إغلاق نافذة محتوى الفوتر
+        closeFooterModal.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض محتوى الفوتر
+        function showFooterContent(contentKey) {
+            let content = '';
+            
+            switch(contentKey) {
+                case 'about':
+                    content = translations[currentLang].aboutContent;
+                    break;
+                case 'quality':
+                    content = translations[currentLang].qualityContent;
+                    break;
+                case 'blog':
+                    content = `
+                        <h3>${translations[currentLang].blog}</h3>
+                        <p>${currentLang === 'ar' ? 'مرحباً بكم في مدونة دراجات النار، حيث نشارككم أحدث مقالاتنا ونصائحنا حول عالم الدراجات النارية.' : 'Welcome to Fire Bikes blog, where we share our latest articles and tips about the motorcycle world.'}</p>
+                        
+                        <h4>${currentLang === 'ar' ? 'أحدث المقالات' : 'Latest Articles'}</h4>
+                        <ul>
+                            <li><strong>${currentLang === 'ar' ? 'كيف تختار الدراجة المناسبة:' : 'How to Choose the Right Motorcycle:'}</strong> ${currentLang === 'ar' ? 'نصائح عملية لاختيار دراجة تناسب احتياجاتك وميزانيتك.' : 'Practical tips for choosing a motorcycle that suits your needs and budget.'}</li>
+                            <li><strong>${currentLang === 'ar' ? 'أسعار الدراجات النارية:' : 'Motorcycle Prices:'}</strong> ${currentLang === 'ar' ? 'تحليل شامل لأسعار الدراجات في مختلف الماركات العالمية.' : 'Comprehensive analysis of motorcycle prices in different global brands.'}</li>
+                            <li><strong>${currentLang === 'ar' ? 'التمويل للدراجات:' : 'Motorcycle Financing:'}</strong> ${currentLang === 'ar' ? 'دليل شامل للحصول على أفضل عروض التمويل.' : 'Comprehensive guide to getting the best financing offers.'}</li>
+                        </ul>
+                    `;
+                    break;
+                case 'faq':
+                    content = translations[currentLang].faqContent;
+                    break;
+                case 'shipping':
+                    content = `
+                        <h3>${translations[currentLang].shipping}</h3>
+                        <p>${currentLang === 'ar' ? 'نحن نحرص على تسليم الدراجات في أسرع وقت ممكن وبأعلى معايير الجودة.' : 'We are keen to deliver motorcycles as quickly as possible and with the highest quality standards.'}</p>
+                        
+                        <h4>${currentLang === 'ar' ? 'مناطق التوصيل' : 'Delivery Areas'}</h4>
+                        <p>${currentLang === 'ar' ? 'نقوم بتسليم الدراجات في جميع أنحاء الإمارات العربية المتحدة:' : 'We deliver motorcycles throughout the United Arab Emirates:'}</p>
+                        <ul>
+                            <li>${currentLang === 'ar' ? 'دبي - تسليم خلال 2-4 أيام' : 'Dubai - Delivery within 2-4 days'}</li>
+                            <li>${currentLang === 'ar' ? 'أبوظبي، الشارقة - تسليم خلال 3-5 أيام' : 'Abu Dhabi, Sharjah - Delivery within 3-5 days'}</li>
+                            <li>${currentLang === 'ar' ? 'باقي الإمارات - تسليم خلال 4-7 أيام' : 'Other Emirates - Delivery within 4-7 days'}</li>
+                        </ul>
+                    `;
+                    break;
+                case 'returns':
+                    content = translations[currentLang].returnsContent;
+                    break;
+                case 'privacy':
+                    content = translations[currentLang].privacyContent;
+                    break;
+            }
+            
+            footerModalBody.innerHTML = content;
+            footerModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+    </script>
+</body>
+</html>

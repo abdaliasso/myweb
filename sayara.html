@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="pageTitle">سيارات النخبة - Elite Cars</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0c0c0c;
+            --secondary-color: #d4af37;
+            --accent-color: #c1121f;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a1a;
+            --text-light: #ffffff;
+            --text-dark: #0c0c0c;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0,0,0,0.3);
+            --radius: 10px;
+            --gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0c0c0c;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* شريط اللغة المحسن */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .current-lang {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .current-lang:hover {
+            background: var(--secondary-color);
+            color: var(--text-dark);
+        }
+
+        .current-lang i {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: var(--radius);
+            width: 180px;
+            box-shadow: var(--shadow);
+            z-index: 1001;
+            display: none;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-dropdown.active {
+            display: block;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: var(--secondary-color);
+            color: var(--text-dark);
+        }
+
+        .lang-flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        /* الهيدر المعدل */
+        header {
+            background: rgba(12, 12, 12, 0.95);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 2px solid var(--secondary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* القائمة الرئيسية المعدلة */
+        .main-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: var(--radius);
+            cursor: pointer;
+            min-width: 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-icon::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-icon:hover::before {
+            width: 100%;
+        }
+
+        .nav-icon:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .favorites-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: var(--radius);
+        }
+
+        .favorites-icon:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* زر الهامبرجر المحسن */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            z-index: 1100;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-light);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* الهيرو سيكشن */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            background: 
+                linear-gradient(rgba(12, 12, 12, 0.7), rgba(26, 26, 26, 0.8)), 
+                url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, #0c0c0c);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            animation: fadeIn 1.5s ease;
+            font-weight: 800;
+            background: linear-gradient(to right, #d4af37, #f7ef8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            animation: fadeIn 2s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), #b8941f);
+            color: var(--text-dark);
+            padding: 16px 40px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 2.5s ease;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        /* أقسام السيارات */
+        .car-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--secondary-color);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .category-btn:hover::before, .category-btn.active::before {
+            width: 100%;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            color: var(--text-dark);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: transparent;
+        }
+
+        /* قسم السيارات */
+        .section {
+            padding: 5rem 0;
+            background: #0c0c0c;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 3rem;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 150px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .car-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .car-card.active {
+            display: block;
+        }
+
+        .car-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: var(--secondary-color);
+        }
+
+        .car-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            z-index: 1;
+            box-shadow: 0 3px 10px rgba(193, 18, 31, 0.3);
+        }
+
+        .car-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+        }
+
+        .car-card:hover .car-image {
+            transform: scale(1.05);
+        }
+
+        .car-info {
+            padding: 1.8rem;
+        }
+
+        .car-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .car-desc {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .car-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .car-details span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            color: var(--text-light);
+        }
+
+        .car-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .car-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .add-to-favorites {
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-favorites:hover {
+            background: #b8941f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .view-details {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .view-details:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* صفحة اتصل بنا */
+        .contact-section {
+            padding: 5rem 0;
+            background: 
+                linear-gradient(rgba(12, 12, 12, 0.9), rgba(26, 26, 26, 0.9)), 
+                url('https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border-color: var(--secondary-color);
+        }
+
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .contact-card a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.9;
+        }
+
+        .contact-card a:hover {
+            color: var(--secondary-color);
+            opacity: 1;
+        }
+
+        /* سلة المفضلة */
+        .favorites-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 380px;
+            height: 100vh;
+            background: rgba(12, 12, 12, 0.95);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            color: var(--text-light);
+            border-right: 2px solid var(--secondary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .favorites-sidebar.active {
+            left: 0;
+        }
+
+        .favorites-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .favorites-header h3 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        .close-favorites {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .close-favorites:hover {
+            color: var(--secondary-color);
+        }
+
+        .favorites-items {
+            margin-bottom: 20px;
+        }
+
+        .favorites-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .favorites-item-details {
+            flex: 1;
+        }
+
+        .favorites-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .favorites-item-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .favorites-item-remove {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .favorites-item-remove:hover {
+            transform: scale(1.2);
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* الفوتر */
+        footer {
+            background: rgba(12, 12, 12, 0.95);
+            color: var(--text-light);
+            padding: 4rem 0 1.5rem;
+            border-top: 2px solid var(--secondary-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            color: var(--text-light);
+            margin-bottom: 1.8rem;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+            opacity: 1;
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* نافذة تفاصيل السيارة */
+        .car-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .car-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--secondary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-color);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: #a00e17;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .modal-details h3 {
+            color: var(--text-light);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .car-price {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .modal-details .car-full-desc {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1.8rem;
+        }
+
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .modal-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            color: var(--text-light);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* نافذة محتوى الفوتر */
+        .footer-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .footer-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer-modal-content {
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--secondary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-footer-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-color);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .close-footer-modal:hover {
+            background: #a00e17;
+            transform: rotate(90deg);
+        }
+
+        .footer-modal-body {
+            margin-top: 2rem;
+        }
+
+        .footer-modal-body h3 {
+            color: var(--text-light);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-modal-body h4 {
+            color: var(--secondary-color);
+            margin: 1.8rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .footer-modal-body p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-modal-body ul, .footer-modal-body ol {
+            color: var(--text-light);
+            margin-right: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-modal-body li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* التجاوب مع جميع الأجهزة */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .car-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 80%;
+            }
+
+            .favorites-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .cars-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+
+            .car-actions {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .car-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* قائمة الهاتف المحمول المحسنة */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 320px;
+            height: 100vh;
+            background: rgba(12, 12, 12, 0.95);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            z-index: 1099;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            border-right: 2px solid var(--secondary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-nav-header h3 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        .close-mobile-nav {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .close-mobile-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--secondary-color);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر المعدل -->
+    <header>
+        <div class="nav-container">
+            <button class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg" alt="سيارات النخبة - Elite Cars" class="logo-image">
+                <span class="store-name" data-key="storeName">سيارات النخبة</span>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#home" class="nav-icon">
+                    <i class="fas fa-home"></i>
+                    <span data-key="home">الرئيسية</span>
+                </a>
+                <a href="#cars" class="nav-icon">
+                    <i class="fas fa-car"></i>
+                    <span data-key="cars">السيارات</span>
+                </a>
+                <a href="#contact" class="nav-icon">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contactUs">اتصل بنا</span>
+                </a>
+            </nav>
+
+            <div class="language-selector">
+                <div class="current-lang" id="currentLang">
+                    <span>العربية</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" data-lang="ar">
+                        <img src="https://flagcdn.com/w40/sa.png" class="lang-flag" alt="العربية">
+                        <span>العربية</span>
+                    </div>
+                    <div class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w40/us.png" class="lang-flag" alt="English">
+                        <span>English</span>
+                    </div>
+                    <div class="lang-option" data-lang="fr">
+                        <img src="https://flagcdn.com/w40/fr.png" class="lang-flag" alt="Français">
+                        <span>Français</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="favorites-icon" id="favoritesIcon">
+                <i class="fas fa-heart"></i>
+                <span class="favorites-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- قائمة الهاتف المحمول المحسنة -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3 data-key="menu">القائمة</h3>
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link" id="mobileHomeLink">
+                <i class="fas fa-home"></i>
+                <span data-key="home">الرئيسية</span>
+            </a>
+            <a href="#cars" class="mobile-nav-link" id="mobileCarsLink">
+                <i class="fas fa-car"></i>
+                <span data-key="cars">السيارات</span>
+            </a>
+            <a href="#contact" class="mobile-nav-link" id="mobileContactLink">
+                <i class="fas fa-phone-alt"></i>
+                <span data-key="contactUs">اتصل بنا</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- الهيرو سيكشن -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-key="heroTitle">سيارات النخبة تجسد أناقتك</h1>
+            <p data-key="heroDesc">اكتشف مجموعتنا الحصرية من السيارات الفاخرة التي صممت بعناية لتليق بالأذواق الراقية. أداء استثنائي وتصميم لا ينسى.</p>
+            <a href="#cars" class="btn" data-key="exploreNow">استكشف المجموعة</a>
+        </div>
+    </section>
+
+    <!-- أقسام السيارات -->
+    <div class="container">
+        <div class="car-categories">
+            <button class="category-btn all active" data-category="all">
+                <i class="fas fa-star"></i>
+                <span data-key="allCars">جميع السيارات</span>
+            </button>
+            <button class="category-btn sedan" data-category="sedan">
+                <i class="fas fa-car"></i>
+                <span data-key="sedanCars">سيدان</span>
+            </button>
+            <button class="category-btn suv" data-category="suv">
+                <i class="fas fa-truck"></i>
+                <span data-key="suvCars">دفع رباعي</span>
+            </button>
+            <button class="category-btn sports" data-category="sports">
+                <i class="fas fa-bolt"></i>
+                <span data-key="sportsCars">رياضية</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- قسم السيارات -->
+    <section class="section" id="cars">
+        <div class="container">
+            <h2 class="section-title" data-key="ourCars">سياراتنا المميزة</h2>
+            <div class="cars-grid">
+                <!-- السيارة 1 - سيدان -->
+                <div class="car-card active" data-category="sedan">
+                    <div class="car-badge" data-key="new">جديد</div>
+                    <div class="car-image" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="car-info">
+                        <h3 class="car-title" data-key="car1Title">مرسيدس بنز الفئة S</h3>
+                        <p class="car-desc" data-key="car1Desc">سيارة سيدان فاخرة بتصميم أنيق وأداء متميز</p>
+                        <div class="car-details">
+                            <span><i class="fas fa-tachometer-alt"></i> 2023 <span data-key="model">موديل</span></span>
+                            <span><i class="fas fa-gas-pump"></i> <span data-key="hybrid">هايبرد</span></span>
+                            <span><i class="fas fa-cogs"></i> <span data-key="automatic">أوتوماتيك</span></span>
+                        </div>
+                        <div class="car-price">$120,000</div>
+                        <div class="car-actions">
+                            <button class="add-to-favorites" data-key="addToFavorites"><i class="fas fa-heart"></i> إضافة للمفضلة</button>
+                            <button class="view-details" data-key="viewDetails" data-car="1"><i class="fas fa-eye"></i> عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- السيارة 2 - دفع رباعي -->
+                <div class="car-card active" data-category="suv">
+                    <div class="car-image" style="background-image: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80')"></div>
+                    <div class="car-info">
+                        <h3 class="car-title" data-key="car2Title">رينج روفر سبورت</h3>
+                        <p class="car-desc" data-key="car2Desc">سيارة دفع رباعي فاخرة مع قدرات طرق وعرة متميزة</p>
+                        <div class="car-details">
+                            <span><i class="fas fa-tachometer-alt"></i> 2023 <span data-key="model">موديل</span></span>
+                            <span><i class="fas fa-gas-pump"></i> <span data-key="gasoline">بنزين</span></span>
+                            <span><i class="fas fa-cogs"></i> <span data-key="automatic">أوتوماتيك</span></span>
+                        </div>
+                        <div class="car-price">$150,000</div>
+                        <div class="car-actions">
+                            <button class="add-to-favorites" data-key="addToFavorites"><i class="fas fa-heart"></i> إضافة للمفضلة</button>
+                            <button class="view-details" data-key="viewDetails" data-car="2"><i class="fas fa-eye"></i> عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- السيارة 3 - رياضية -->
+                <div class="car-card active" data-category="sports">
+                    <div class="car-badge" data-key="bestseller">الأكثر طلباً</div>
+                    <div class="car-image" style="background-image: url('https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="car-info">
+                        <h3 class="car-title" data-key="car3Title">بورشه 911</h3>
+                        <p class="car-desc" data-key="car3Desc">سيارة رياضية خارقة بأداء استثنائي وتصميم لا ينسى</p>
+                        <div class="car-details">
+                            <span><i class="fas fa-tachometer-alt"></i> 2023 <span data-key="model">موديل</span></span>
+                            <span><i class="fas fa-gas-pump"></i> <span data-key="gasoline">بنزين</span></span>
+                            <span><i class="fas fa-cogs"></i> <span data-key="automatic">أوتوماتيك</span></span>
+                        </div>
+                        <div class="car-price">$180,000</div>
+                        <div class="car-actions">
+                            <button class="add-to-favorites" data-key="addToFavorites"><i class="fas fa-heart"></i> إضافة للمفضلة</button>
+                            <button class="view-details" data-key="viewDetails" data-car="3"><i class="fas fa-eye"></i> عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة اتصل بنا -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title" data-key="contactUs">اتصل بنا</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 data-key="address">العنوان</h3>
+                    <p data-key="addressContent">دبي مارينا، دبي، الإمارات العربية المتحدة</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3 data-key="phone">الهاتف</h3>
+                    <p><a href="tel:+97142234567" data-key="phoneNumber">+971 4 223 4567</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3 data-key="email">البريد الإلكتروني</h3>
+                    <p><a href="mailto:info@elitecars.com" data-key="emailAddress">info@elitecars.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- سلة المفضلة -->
+    <div class="favorites-sidebar" id="favoritesSidebar">
+        <div class="favorites-header">
+            <h3 data-key="favoritesTitle">المفضلة</h3>
+            <button class="close-favorites" id="closeFavorites">&times;</button>
+        </div>
+        <div class="favorites-items" id="favoritesItems">
+            <!-- سيتم إضافة العناصر هنا ديناميكياً -->
+        </div>
+        <button class="contact-btn" id="contactBtn">
+            <i class="fab fa-whatsapp"></i> <span data-key="contactUs">تواصل معنا عبر واتساب</span>
+        </button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- نافذة تفاصيل السيارة -->
+    <div class="car-modal" id="carModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة محتوى الفوتر -->
+    <div class="footer-modal" id="footerModal">
+        <div class="footer-modal-content">
+            <button class="close-footer-modal" id="closeFooterModal">&times;</button>
+            <div class="footer-modal-body" id="footerModalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-key="aboutFooter">عن الشركة</h3>
+                <ul>
+                    <li><a data-key="about" data-content="about">من نحن</a></li>
+                    <li><a data-key="quality" data-content="quality">الجودة والضمان</a></li>
+                    <li><a data-key="blog" data-content="blog">المدونة</a></li>
+                    <li><a data-key="faqFooter" data-content="faq">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="customerService">خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#contact" data-key="contactUs">اتصل بنا</a></li>
+                    <li><a data-key="shipping" data-content="shipping">التسليم</a></li>
+                    <li><a data-key="returns" data-content="returns">الإرجاع والاستبدال</a></li>
+                    <li><a data-key="privacy" data-content="privacy">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="connectWithUs">تواصل معنا</h3>
+                <p data-key="connectDesc">تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والسيارات الجديدة</p>
+                <div class="social-links">
+                    <a href="https://replace.me/instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://replace.me/facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://replace.me/x" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://replace.me/tiktok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://replace.me/whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 <span class="store-name" data-key="storeName">سيارات النخبة</span>. <span data-key="allRights">جميع الحقوق محفوظة</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // نظام قائمة الهاتف المحمول
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const overlay = document.getElementById('overlay');
+
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            hamburgerMenu.classList.add('active');
+        }
+
+        function closeMobileNavFunc() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+        }
+
+        hamburgerMenu.addEventListener('click', openMobileNav);
+        closeMobileNav.addEventListener('click', closeMobileNavFunc);
+        overlay.addEventListener('click', closeMobileNavFunc);
+
+        // إغلاق قائمة الهاتف عند النقر على رابط
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileNavFunc);
+        });
+
+        // نظام اللغات المتكامل والشامل
+        const translations = {
+            ar: {
+                // النصوص العامة
+                pageTitle: "سيارات النخبة - Elite Cars",
+                storeName: "سيارات النخبة",
+                home: "الرئيسية",
+                cars: "السيارات",
+                contactUs: "اتصل بنا",
+                menu: "القائمة",
+                about: "من نحن",
+                quality: "الجودة والضمان",
+                faq: "الأسئلة الشائعة",
+                returns: "سياسة الإرجاع",
+                privacy: "سياسة الخصوصية",
+                blog: "المدونة",
+                allRights: "جميع الحقوق محفوظة",
+                
+                // الهيرو سيكشن
+                heroTitle: "سيارات النخبة تجسد أناقتك",
+                heroDesc: "اكتشف مجموعتنا الحصرية من السيارات الفاخرة التي صممت بعناية لتليق بالأذواق الراقية. أداء استثنائي وتصميم لا ينسى.",
+                exploreNow: "استكشف المجموعة",
+                
+                // أقسام السيارات
+                ourCars: "سياراتنا المميزة",
+                allCars: "جميع السيارات",
+                sedanCars: "سيدان",
+                suvCars: "دفع رباعي",
+                sportsCars: "رياضية",
+                new: "جديد",
+                bestseller: "الأكثر طلباً",
+                
+                // تفاصيل السيارات
+                model: "موديل",
+                hybrid: "هايبرد",
+                gasoline: "بنزين",
+                automatic: "أوتوماتيك",
+                addToFavorites: "إضافة للمفضلة",
+                viewDetails: "عرض التفاصيل",
+                
+                // السيارات
+                car1Title: "مرسيدس بنز الفئة S",
+                car1Desc: "سيارة سيدان فاخرة بتصميم أنيق وأداء متميز",
+                car1FullDesc: "مرسيدس بنز الفئة S تقدم تجربة قيادة استثنائية في واحدة من أرقى السيارات السيدان في فئتها. تتميز السيارة بتصميم داخلي أنيق وأداء متميز مع محرك هايبرد اقتصادي. تحتوي على أحدث أنظمة الترفيه والملاحة وأنظمة الأمان المتطورة. تتوفر بخيارات متعددة للمحركات والتجهيزات الداخلية.",
+                
+                car2Title: "رينج روفر سبورت",
+                car2Desc: "سيارة دفع رباعي فاخرة مع قدرات طرق وعرة متميزة",
+                car2FullDesc: "رينج روفر سبورت تجمع بين الفخامة والأداء المتميز في سيارة دفع رباعي. تتميز بتصميم رياضي وقدرات طرق وعرة استثنائية. تحتوي على مقاعد جلدية فاخرة وأنظمة ترفيه متطورة ومساحات تخزين واسعة. مثالية للاستخدام اليومي والرحلات الطويلة.",
+                
+                car3Title: "بورشه 911",
+                car3Desc: "سيارة رياضية خارقة بأداء استثنائي وتصميم لا ينسى",
+                car3FullDesc: "بورشه 911 هي أيقونة السيارات الرياضية التي تجمع بين التراث والابتكار. تتميز بأداء استثنائي مع محرك خلفي وتصميم كلاسيكي لا ينسى. توفر تجربة قيادة رياضية بحتة مع راحة مقبولة للاستخدام اليومي. تحتوي على أحدث التقنيات وأنظمة الأمان المتطورة.",
+                
+                // اتصل بنا
+                address: "العنوان",
+                addressContent: "دبي مارينا، دبي، الإمارات العربية المتحدة",
+                phone: "الهاتف",
+                phoneNumber: "+971 4 223 4567",
+                email: "البريد الإلكتروني",
+                emailAddress: "info@elitecars.com",
+                
+                // المفضلة
+                favoritesTitle: "المفضلة",
+                
+                // الفوتر
+                aboutFooter: "عن الشركة",
+                faqFooter: "الأسئلة الشائعة",
+                customerService: "خدمة العملاء",
+                shipping: "التسليم",
+                connectWithUs: "تواصل معنا",
+                connectDesc: "تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والسيارات الجديدة",
+                
+                // محتوى صفحات الفوتر
+                aboutContent: `
+                    <h3>من نحن</h3>
+                    <p>سيارات النخبة هي شركة رائدة في مجال بيع السيارات الفاخرة في منطقة الشرق الأوسط. تأسست الشركة في عام 2005 بهدف تقديم أفضل السيارات الفاخرة لعملائنا الكرام.</p>
+                    
+                    <h4>رؤيتنا</h4>
+                    <p>أن نكون الوجهة الأولى لشراء السيارات الفاخرة في المنطقة، من خلال تقديم تجربة فريدة وخدمة استثنائية.</p>
+                    
+                    <h4>رسالتنا</h4>
+                    <p>تقديم أفضل السيارات الفاخرة مع ضمان الجودة والكفاءة، وبناء علاقات طويلة الأمد مع عملائنا من خلال خدمة مميزة.</p>
+                    
+                    <h4>قيمنا</h4>
+                    <ul>
+                        <li>الجودة والتميز في كل ما نقدمه</li>
+                        <li>الصدق والشفافية في التعامل</li>
+                        <li>الابتكار والتطوير المستمر</li>
+                        <li>رضا العملاء هو أولويتنا القصوى</li>
+                    </ul>
+                    
+                    <h4>فريقنا</h4>
+                    <p>نحن فريق من الخبراء والمختصين في مجال السيارات، نعمل معاً لتقديم أفضل الخدمات ونصائح الخبراء لعملائنا.</p>
+                `,
+                
+                qualityContent: `
+                    <h3>الجودة والضمان</h3>
+                    <p>نحن في سيارات النخبة نضمن جودة جميع السيارات المعروضة في معارضنا، ونقدم ضمانات شاملة تغطي جميع أجزاء السيارة.</p>
+                    
+                    <h4>معايير الجودة</h4>
+                    <ul>
+                        <li>فحص فني شامل لكل سيارة قبل العرض</li>
+                        <li>استخدام قطع غيار أصلية فقط</li>
+                        <li>فحص شامل لأنظمة السلامة والأمان</li>
+                        <li>تأكيد تاريخ الصيانة والخدمات السابقة</li>
+                    </ul>
+                    
+                    <h4>الضمانات المقدمة</h4>
+                    <ul>
+                        <li>ضمان المحرك لمدة 5 سنوات أو 100,000 كم</li>
+                        <li>ضمان ناقل الحركة لمدة 3 سنوات</li>
+                        <li>ضمان أنظمة الكهرباء والإلكترونيات لمدة 2 سنة</li>
+                        <li>خدمة طوارئ على الطريق مجاناً لمدة سنة</li>
+                    </ul>
+                    
+                    <h4>خدمات ما بعد البيع</h4>
+                    <p>نقدم مجموعة شاملة من خدمات ما بعد البيع تشمل الصيانة الدورية والإصلاحات وخدمات الطوارئ.</p>
+                `,
+                
+                blogContent: `
+                    <h3>المدونة</h3>
+                    <p>مرحباً بكم في مدونة سيارات النخبة، حيث نشارككم أحدث المقالات والنصائح حول عالم السيارات الفاخرة.</p>
+                    
+                    <h4>أحدث المقالات</h4>
+                    
+                    <h5>كيف تختار السيارة الفاخرة المناسبة لك</h5>
+                    <p>اختيار السيارة الفاخرة المناسبة يتطلب النظر في عدة عوامل مثل الميزانية، الاحتياجات الشخصية، والاستخدام اليومي. في هذه المقالة، نقدم دليلاً شاملاً لمساعدتك في اتخاذ القرار الصحيح.</p>
+                    
+                    <h5>أفضل 5 سيارات فاخرة لعام 2023</h5>
+                    <p>اكتشف أحدث السيارات الفاخرة التي أطلقت هذا العام، مع تحليل مفصل لمميزات كل سيارة وأسعارها.</p>
+                    
+                    <h5>نصائح للعناية بالسيارة الفاخرة</h5>
+                    <p>تعلم كيفية العناية بسيارتك الفاخرة للحفاظ على قيمتها وأدائها المتميز عبر السنين.</p>
+                    
+                    <h5>مستقبل السيارات الكهربائية الفاخرة</h5>
+                    <p>استكشف أحدث التطورات في عالم السيارات الكهربائية الفاخرة وما يمكن توقعه في المستقبل القريب.</p>
+                `,
+                
+                faqContent: `
+                    <h3>الأسئلة الشائعة</h3>
+                    <p>هنا ستجد إجابات للأسئلة الأكثر شيوعاً حول خدماتنا وعمليات الشراء.</p>
+                    
+                    <h4>أسئلة حول الشراء</h4>
+                    
+                    <h5>كيف أختار السيارة المناسبة لي؟</h5>
+                    <p>ننصحك بتحديد ميزانيتك أولاً، ثم التفكير في احتياجاتك الشخصية مثل حجم السيارة، نوع الوقود، والمواصفات التقنية. فريقنا متاح دائماً لتقديم النصائح والخبرات.</p>
+                    
+                    <h5>هل يمكنني تجربة السيارة قبل الشراء؟</h5>
+                    <p>نعم، يمكنك حجز موعد لتجربة أي سيارة معروضة في معارضنا. فقط اتصل بنا لترتيب الموعد.</p>
+                    
+                    <h5>ما هي خيارات الدفع المتاحة؟</h5>
+                    <p>نقدم عدة خيارات للدفع تشمل الدفع النقدي، التحويل البنكي، والتمويل عبر البنوك المتعاونة معنا.</p>
+                    
+                    <h4>أسئلة حول الضمان والخدمات</h4>
+                    
+                    <h5>ما هي مدة الضمان المقدم؟</h5>
+                    <p>تختلف مدة الضمان حسب نوع السيارة، لكن معظم سياراتنا تأتي بضمان يتراوح بين 2-5 سنوات.</p>
+                    
+                    <h5>هل تقدمون خدمة ما بعد البيع؟</h5>
+                    <p>نعم، نقدم مجموعة شاملة من خدمات ما بعد البيع تشمل الصيانة الدورية والإصلاحات وخدمات الطوارئ.</p>
+                `,
+                
+                shippingContent: `
+                    <h3>سياسة التسليم</h3>
+                    <p>نحن في سيارات النخبة نحرص على تسليم سياراتنا للعملاء في أسرع وقت ممكن وبأعلى معايير الجودة.</p>
+                    
+                    <h4>مناطق التسليم</h4>
+                    <p>نقوم بتسليم السيارات في جميع أنحاء الإمارات العربية المتحدة:</p>
+                    <ul>
+                        <li>دبي - التسليم خلال 2-4 أيام</li>
+                        <li>أبوظبي، الشارقة - التسليم خلال 3-5 أيام</li>
+                        <li>باقي الإمارات - التسليم خلال 4-7 أيام</li>
+                    </ul>
+                    
+                    <h4>تكاليف التسليم</h4>
+                    <p>التسليم داخل مدينة دبي مجاني. للتسليم خارج دبي، تختلف التكاليف حسب المسافة والموقع.</p>
+                    
+                    <h4>إجراءات التسليم</h4>
+                    <ol>
+                        <li>تأكيد الطلب والدفع</li>
+                        <li>فحص السيارة النهائي</li>
+                        <li>ترتيب موعد التسليم</li>
+                        <li>تسليم السيارة وتوقيع الأوراق</li>
+                        <li>شرح ميزات السيارة وخدمات الضمان</li>
+                    </ol>
+                    
+                    <h4>المستندات المطلوبة</h4>
+                    <ul>
+                        <li>هوية الإمارات أو جواز السفر</li>
+                        <li>رخصة القيادة</li>
+                        <li>إثبات العنوان</li>
+                    </ul>
+                `,
+                
+                returnsContent: `
+                    <h3>سياسة الإرجاع والاستبدال</h3>
+                    <p>نسعى في سيارات النخبة لضمان رضاكم التام عن سياراتنا، وفي حال عدم الرضا نقدم سياسة مرنة للإرجاع والاستبدال.</p>
+                    
+                    <h4>شروط الإرجاع</h4>
+                    <ul>
+                        <li>يجب أن يتم طلب الإرجاع خلال 7 أيام من استلام السيارة</li>
+                        <li>يجب أن تكون السيارة في حالتها الأصلية دون أي تلف أو تعديل</li>
+                        <li>يجب ألا تزيد المسافة المقطوعة عن 500 كم</li>
+                        <li>يجب إعادة جميع المستندات والملحقات الأصلية</li>
+                    </ul>
+                    
+                    <h4>إجراءات الإرجاع</h4>
+                    <ol>
+                        <li>الاتصال بخدمة العملاء وطلب الإرجاع</li>
+                        <li>تعبئة نموذج الإرجاع</li>
+                        <li>فحص السيارة من قبل الفنيين</li>
+                        <li>استلام المبلغ خلال 10 أيام عمل</li>
+                    </ol>
+                    
+                    <h4>الاستبدال</h4>
+                    <p>في حال رغبتكم في استبدال السيارة، نقدم لكم خيار استبدالها بأي سيارة أخرى متوفرة في معارضنا مع تسوية الفروق السعرية.</p>
+                    
+                    <h4>الرسوم الإدارية</h4>
+                    <p>يتم خصم رسوم إدارية بنسبة 5% من قيمة العربون في حال الإرجاع.</p>
+                `,
+                
+                privacyContent: `
+                    <h3>سياسة الخصوصية</h3>
+                    <p>نحن في سيارات النخبة نحرص على حماية خصوصية بيانات عملائنا ونلتزم بأعلى معايير الأمان لحماية معلوماتكم.</p>
+                    
+                    <h4>البيانات التي نجمعها</h4>
+                    <ul>
+                        <li>الاسم وبيانات الاتصال</li>
+                        <li>عنوان السكن والعمل</li>
+                        <li>تفضيلات البحث عن السيارات</li>
+                        <li>بيانات الدفع (محفوظة بشكل آمن)</li>
+                        <li>سجل الزيارات والمعاينات</li>
+                    </ul>
+                    
+                    <h4>كيف نستخدم بياناتك</h4>
+                    <ul>
+                        <li>تقديم الخدمات المناسبة لاحتياجاتك</li>
+                        <li>تحسين تجربة البحث والشراء</li>
+                        <li>إرسال عروض خاصة (بموافقتك)</li>
+                        <li>تحليل أنماط البحث والشراء</li>
+                        <li>التواصل معكم بشأن خدمات ما بعد البيع</li>
+                    </ul>
+                    
+                    <h4>حماية البيانات</h4>
+                    <p>نستخدم أحدث تقنيات التشفير لحماية بياناتكم الشخصية وبيانات الدفع. كما أننا لا نشارك بياناتكم مع أي جهات خارجية دون موافقتكم.</p>
+                    
+                    <h4>حقوقكم</h4>
+                    <p>لديكم الحق في الاطلاع على بياناتكم، تصحيحها، أو حذفها في أي وقت. للقيام بذلك، يمكنكم الاتصال بخدمة العملاء.</p>
+                `,
+                
+                // واتساب
+                whatsappMessage: "مرحباً، أنا مهتم بالسيارات التالية:\n",
+                whatsappInfo: "\n\nالاسم: \nرقم الهاتف: \nالوقت المناسب للاتصال:"
+            },
+            en: {
+                // General texts
+                pageTitle: "Elite Cars - سيارات النخبة",
+                storeName: "Elite Cars",
+                home: "Home",
+                cars: "Cars",
+                contactUs: "Contact Us",
+                menu: "Menu",
+                about: "About Us",
+                quality: "Quality & Warranty",
+                faq: "FAQ",
+                returns: "Return Policy",
+                privacy: "Privacy Policy",
+                blog: "Blog",
+                allRights: "All Rights Reserved",
+                
+                // Hero section
+                heroTitle: "Elite Cars Embody Your Elegance",
+                heroDesc: "Discover our exclusive collection of luxury cars carefully designed to suit sophisticated tastes. Exceptional performance and unforgettable design.",
+                exploreNow: "Explore Collection",
+                
+                // Car sections
+                ourCars: "Our Premium Cars",
+                allCars: "All Cars",
+                sedanCars: "Sedan",
+                suvCars: "SUV",
+                sportsCars: "Sports",
+                new: "New",
+                bestseller: "Most Popular",
+                
+                // Car details
+                model: "Model",
+                hybrid: "Hybrid",
+                gasoline: "Gasoline",
+                automatic: "Automatic",
+                addToFavorites: "Add to Favorites",
+                viewDetails: "View Details",
+                
+                // Cars
+                car1Title: "Mercedes-Benz S-Class",
+                car1Desc: "Luxury sedan with elegant design and excellent performance",
+                car1FullDesc: "The Mercedes-Benz S-Class offers an exceptional driving experience in one of the finest sedans in its class. The car features elegant interior design and excellent performance with an economical hybrid engine. It includes the latest entertainment, navigation and advanced safety systems. Available with multiple engine options and interior configurations.",
+                
+                car2Title: "Range Rover Sport",
+                car2Desc: "Luxury SUV with excellent off-road capabilities",
+                car2FullDesc: "Range Rover Sport combines luxury and outstanding performance in an SUV. It features a sporty design and exceptional off-road capabilities. It contains luxurious leather seats, advanced entertainment systems and spacious storage. Ideal for daily use and long trips.",
+                
+                car3Title: "Porsche 911",
+                car3Desc: "Super sports car with exceptional performance and unforgettable design",
+                car3FullDesc: "Porsche 911 is an icon of sports cars that combines heritage and innovation. It features exceptional performance with a rear engine and unforgettable classic design. It provides a pure sports driving experience with acceptable comfort for daily use. It contains the latest technologies and advanced safety systems.",
+                
+                // Contact Us
+                address: "Address",
+                addressContent: "Dubai Marina, Dubai, UAE",
+                phone: "Phone",
+                phoneNumber: "+971 4 223 4567",
+                email: "Email",
+                emailAddress: "info@elitecars.com",
+                
+                // Favorites
+                favoritesTitle: "Favorites",
+                
+                // Footer
+                aboutFooter: "About Company",
+                faqFooter: "FAQ",
+                customerService: "Customer Service",
+                shipping: "Delivery",
+                connectWithUs: "Connect With Us",
+                connectDesc: "Follow us on social media to know the latest offers and new cars",
+                
+                // Footer pages content
+                aboutContent: `
+                    <h3>About Us</h3>
+                    <p>Elite Cars is a leading company in the luxury car sales sector in the Middle East. The company was founded in 2005 with the aim of providing the best luxury cars to our valued customers.</p>
+                    
+                    <h4>Our Vision</h4>
+                    <p>To be the premier destination for luxury car purchases in the region, by providing a unique experience and exceptional service.</p>
+                    
+                    <h4>Our Mission</h4>
+                    <p>To provide the best luxury cars with guaranteed quality and efficiency, and build long-term relationships with our customers through distinctive service.</p>
+                    
+                    <h4>Our Values</h4>
+                    <ul>
+                        <li>Quality and excellence in everything we offer</li>
+                        <li>Honesty and transparency in dealings</li>
+                        <li>Innovation and continuous development</li>
+                        <li>Customer satisfaction is our top priority</li>
+                    </ul>
+                    
+                    <h4>Our Team</h4>
+                    <p>We are a team of experts and specialists in the automotive field, working together to provide the best services and expert advice to our customers.</p>
+                `,
+                
+                qualityContent: `
+                    <h3>Quality & Warranty</h3>
+                    <p>At Elite Cars, we guarantee the quality of all cars displayed in our showrooms, and we provide comprehensive warranties covering all parts of the car.</p>
+                    
+                    <h4>Quality Standards</h4>
+                    <ul>
+                        <li>Comprehensive technical inspection for each car before display</li>
+                        <li>Use of genuine spare parts only</li>
+                        <li>Comprehensive inspection of safety and security systems</li>
+                        <li>Confirmation of maintenance history and previous services</li>
+                    </ul>
+                    
+                    <h4>Warranties Provided</h4>
+                    <ul>
+                        <li>Engine warranty for 5 years or 100,000 km</li>
+                        <li>Transmission warranty for 3 years</li>
+                        <li>Electrical and electronic systems warranty for 2 years</li>
+                        <li>Free roadside assistance for one year</li>
+                    </ul>
+                    
+                    <h4>After-Sales Services</h4>
+                    <p>We provide a comprehensive range of after-sales services including periodic maintenance, repairs, and emergency services.</p>
+                `,
+                
+                blogContent: `
+                    <h3>Blog</h3>
+                    <p>Welcome to the Elite Cars blog, where we share the latest articles and tips about the world of luxury cars.</p>
+                    
+                    <h4>Latest Articles</h4>
+                    
+                    <h5>How to Choose the Right Luxury Car for You</h5>
+                    <p>Choosing the right luxury car requires considering several factors such as budget, personal needs, and daily use. In this article, we provide a comprehensive guide to help you make the right decision.</p>
+                    
+                    <h5>Top 5 Luxury Cars for 2023</h5>
+                    <p>Discover the latest luxury cars launched this year, with detailed analysis of each car's features and prices.</p>
+                    
+                    <h5>Tips for Maintaining Your Luxury Car</h5>
+                    <p>Learn how to care for your luxury car to maintain its value and exceptional performance over the years.</p>
+                    
+                    <h5>The Future of Luxury Electric Cars</h5>
+                    <p>Explore the latest developments in the world of luxury electric cars and what to expect in the near future.</p>
+                `,
+                
+                faqContent: `
+                    <h3>Frequently Asked Questions</h3>
+                    <p>Here you will find answers to the most common questions about our services and purchasing processes.</p>
+                    
+                    <h4>Purchase Questions</h4>
+                    
+                    <h5>How do I choose the right car for me?</h5>
+                    <p>We advise you to determine your budget first, then think about your personal needs such as car size, fuel type, and technical specifications. Our team is always available to provide advice and expertise.</p>
+                    
+                    <h5>Can I test drive the car before purchasing?</h5>
+                    <p>Yes, you can book an appointment to test drive any car displayed in our showrooms. Just contact us to arrange the appointment.</p>
+                    
+                    <h5>What payment options are available?</h5>
+                    <p>We offer several payment options including cash payment, bank transfer, and financing through our partner banks.</p>
+                    
+                    <h4>Warranty and Services Questions</h4>
+                    
+                    <h5>What is the warranty period provided?</h5>
+                    <p>The warranty period varies depending on the car type, but most of our cars come with a warranty ranging from 2-5 years.</p>
+                    
+                    <h5>Do you offer after-sales service?</h5>
+                    <p>Yes, we provide a comprehensive range of after-sales services including periodic maintenance, repairs, and emergency services.</p>
+                `,
+                
+                shippingContent: `
+                    <h3>Delivery Policy</h3>
+                    <p>At Elite Cars, we strive to deliver our cars to customers as quickly as possible and with the highest quality standards.</p>
+                    
+                    <h4>Delivery Areas</h4>
+                    <p>We deliver cars throughout the United Arab Emirates:</p>
+                    <ul>
+                        <li>Dubai - Delivery within 2-4 days</li>
+                        <li>Abu Dhabi, Sharjah - Delivery within 3-5 days</li>
+                        <li>Other Emirates - Delivery within 4-7 days</li>
+                    </ul>
+                    
+                    <h4>Delivery Costs</h4>
+                    <p>Delivery within Dubai city is free. For delivery outside Dubai, costs vary depending on distance and location.</p>
+                    
+                    <h4>Delivery Procedures</h4>
+                    <ol>
+                        <li>Order confirmation and payment</li>
+                        <li>Final car inspection</li>
+                        <li>Arranging delivery appointment</li>
+                        <li>Car delivery and document signing</li>
+                        <li>Explanation of car features and warranty services</li>
+                    </ol>
+                    
+                    <h4>Required Documents</h4>
+                    <ul>
+                        <li>UAE ID or passport</li>
+                        <li>Driver's license</li>
+                        <li>Proof of address</li>
+                    </ul>
+                `,
+                
+                returnsContent: `
+                    <h3>Return & Exchange Policy</h3>
+                    <p>At Elite Cars, we strive to ensure your complete satisfaction with our cars, and in case of dissatisfaction, we offer a flexible return and exchange policy.</p>
+                    
+                    <h4>Return Conditions</h4>
+                    <ul>
+                        <li>Return request must be made within 7 days of receiving the car</li>
+                        <li>The car must be in its original condition without any damage or modification</li>
+                        <li>Distance traveled should not exceed 500 km</li>
+                        <li>All original documents and accessories must be returned</li>
+                    </ul>
+                    
+                    <h4>Return Procedures</h4>
+                    <ol>
+                        <li>Contact customer service and request a return</li>
+                        <li>Fill out the return form</li>
+                        <li>Car inspection by technicians</li>
+                        <li>Receiving the amount within 10 working days</li>
+                    </ol>
+                    
+                    <h4>Exchange</h4>
+                    <p>If you wish to exchange the car, we offer you the option to exchange it for any other car available in our showrooms with price difference settlement.</p>
+                    
+                    <h4>Administrative Fees</h4>
+                    <p>An administrative fee of 5% of the deposit value is deducted in case of return.</p>
+                `,
+                
+                privacyContent: `
+                    <h3>Privacy Policy</h3>
+                    <p>At Elite Cars, we are committed to protecting our customers' privacy and adhere to the highest security standards to protect your information.</p>
+                    
+                    <h4>Data We Collect</h4>
+                    <ul>
+                        <li>Name and contact information</li>
+                        <li>Home and work address</li>
+                        <li>Car search preferences</li>
+                        <li>Payment data (securely stored)</li>
+                        <li>Visit and inspection history</li>
+                    </ul>
+                    
+                    <h4>How We Use Your Data</h4>
+                    <ul>
+                        <li>Providing services appropriate to your needs</li>
+                        <li>Improving search and purchase experience</li>
+                        <li>Sending special offers (with your consent)</li>
+                        <li>Analyzing search and purchase patterns</li>
+                        <li>Communicating with you regarding after-sales services</li>
+                    </ul>
+                    
+                    <h4>Data Protection</h4>
+                    <p>We use the latest encryption technologies to protect your personal data and payment information. We do not share your data with any external parties without your consent.</p>
+                    
+                    <h4>Your Rights</h4>
+                    <p>You have the right to access, correct, or delete your data at any time. To do this, you can contact customer service.</p>
+                `,
+                
+                // WhatsApp
+                whatsappMessage: "Hello, I'm interested in the following cars:\n",
+                whatsappInfo: "\n\nName: \nPhone Number: \nBest Time to Call:"
+            }
+        };
+
+        // نظام اختيار اللغة
+        const currentLangElement = document.getElementById('currentLang');
+        const langDropdown = document.getElementById('langDropdown');
+        const langOptions = document.querySelectorAll('.lang-option');
+        
+        let currentLang = 'ar';
+
+        // فتح وإغلاق قائمة اللغات
+        currentLangElement.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-down');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-up');
+        });
+
+        // إغلاق قائمة اللغات عند النقر خارجها
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('active');
+            currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+            currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+        });
+
+        // منع إغلاق القائمة عند النقر داخلها
+        langDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // تغيير اللغة
+        langOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                langDropdown.classList.remove('active');
+                currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+                currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+            });
+        });
+
+        // تغيير اللغة الشامل
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // تحديث عنوان الصفحة
+            document.title = translations[lang].pageTitle;
+            
+            // تحديث اسم المتجر
+            document.querySelectorAll('.store-name').forEach(element => {
+                element.textContent = translations[lang].storeName;
+            });
+            
+            // تحديث النص الحالي للغة
+            currentLangElement.querySelector('span').textContent = document.querySelector(`.lang-option[data-lang="${lang}"] span`).textContent;
+            
+            // تحديث كل النصوص التي تحتوي على data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // تغيير اتجاه الصفحة
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        // نظام تصفية السيارات حسب الفئة
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const carCards = document.querySelectorAll('.car-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشاط للزر المختار
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // تصفية السيارات
+                carCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // نظام المفضلة
+        let favorites = [];
+        const favoritesIcon = document.getElementById('favoritesIcon');
+        const favoritesSidebar = document.getElementById('favoritesSidebar');
+        const closeFavorites = document.getElementById('closeFavorites');
+        const favoritesItems = document.getElementById('favoritesItems');
+        const contactBtn = document.getElementById('contactBtn');
+        const favoritesCount = document.querySelector('.favorites-count');
+
+        // فتح وإغلاق المفضلة
+        favoritesIcon.addEventListener('click', () => {
+            favoritesSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeFavorites.addEventListener('click', () => {
+            favoritesSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // إضافة سيارة إلى المفضلة
+        document.querySelectorAll('.add-to-favorites').forEach(button => {
+            button.addEventListener('click', function() {
+                const carCard = this.closest('.car-card');
+                const title = carCard.querySelector('.car-title').textContent;
+                const price = carCard.querySelector('.car-price').textContent;
+                const image = carCard.querySelector('.car-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كانت السيارة موجودة بالفعل
+                const existingItem = favorites.find(item => item.title === title);
+                
+                if (!existingItem) {
+                    favorites.push({
+                        title,
+                        price,
+                        image
+                    });
+                    
+                    updateFavorites();
+                    favoritesSidebar.classList.add('active');
+                    overlay.classList.add('active');
+                }
+            });
+        });
+
+        // تحديث المفضلة
+        function updateFavorites() {
+            favoritesItems.innerHTML = '';
+            
+            favorites.forEach((item, index) => {
+                const favoritesItem = document.createElement('div');
+                favoritesItem.className = 'favorites-item';
+                favoritesItem.innerHTML = `
+                    <div class="favorites-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="favorites-item-details">
+                        <div class="favorites-item-title">${item.title}</div>
+                        <div class="favorites-item-price">${item.price}</div>
+                    </div>
+                    <button class="favorites-item-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                `;
+                
+                favoritesItems.appendChild(favoritesItem);
+            });
+            
+            favoritesCount.textContent = favorites.length;
+            
+            // إضافة حدث إزالة العنصر
+            document.querySelectorAll('.favorites-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    favorites.splice(index, 1);
+                    updateFavorites();
+                });
+            });
+        }
+
+        // التواصل عبر واتساب
+        contactBtn.addEventListener('click', function() {
+            if (favorites.length === 0) {
+                alert(translations[currentLang].favoritesTitle + ' ' + (currentLang === 'ar' ? 'فارغة' : 'is empty'));
+                return;
+            }
+            
+            let message = translations[currentLang].whatsappMessage;
+            
+            favorites.forEach(item => {
+                message += `- ${item.title} (${item.price})\n`;
+            });
+            
+            message += translations[currentLang].whatsappInfo;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/971500000000?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        });
+
+        // نظام عرض تفاصيل السيارة
+        const carModal = document.getElementById('carModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalBody = document.getElementById('modalBody');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+
+        // فتح نافذة تفاصيل السيارة
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const carId = this.getAttribute('data-car');
+                showCarDetails(carId);
+            });
+        });
+
+        // إغلاق نافذة تفاصيل السيارة
+        closeModal.addEventListener('click', () => {
+            carModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            carModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض تفاصيل السيارة
+        function showCarDetails(carId) {
+            const carKey = `car${carId}Title`;
+            const carDescKey = `car${carId}FullDesc`;
+            const carPrice = document.querySelector(`[data-car="${carId}"]`).closest('.car-card').querySelector('.car-price').textContent;
+            const carImage = document.querySelector(`[data-car="${carId}"]`).closest('.car-card').querySelector('.car-image').style.backgroundImage;
+            
+            modalBody.innerHTML = `
+                <div class="modal-image" style="${carImage}"></div>
+                <div class="modal-details">
+                    <h3>${translations[currentLang][carKey]}</h3>
+                    <div class="car-price">${carPrice}</div>
+                    <p class="car-full-desc">${translations[currentLang][carDescKey]}</p>
+                    <div class="modal-features">
+                        <div class="modal-feature"><i class="fas fa-tachometer-alt"></i> ${translations[currentLang].model} 2023</div>
+                        <div class="modal-feature"><i class="fas fa-gas-pump"></i> ${carId === '1' ? translations[currentLang].hybrid : translations[currentLang].gasoline}</div>
+                        <div class="modal-feature"><i class="fas fa-cogs"></i> ${translations[currentLang].automatic}</div>
+                        <div class="modal-feature"><i class="fas fa-car"></i> ${carId === '1' ? translations[currentLang].sedanCars : (carId === '2' ? translations[currentLang].suvCars : translations[currentLang].sportsCars)}</div>
+                        <div class="modal-feature"><i class="fas fa-palette"></i> ${currentLang === 'ar' ? 'ألوان متعددة' : 'Multiple Colors'}</div>
+                        <div class="modal-feature"><i class="fas fa-shield-alt"></i> ${currentLang === 'ar' ? 'ضمان شامل' : 'Comprehensive Warranty'}</div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="add-to-favorites"><i class="fas fa-heart"></i> ${translations[currentLang].addToFavorites}</button>
+                        <button class="contact-btn"><i class="fab fa-whatsapp"></i> ${translations[currentLang].contactUs}</button>
+                    </div>
+                </div>
+            `;
+            
+            // إضافة حدث إضافة إلى المفضلة داخل النافذة
+            modalBody.querySelector('.add-to-favorites').addEventListener('click', function() {
+                const carCard = document.querySelector(`[data-car="${carId}"]`).closest('.car-card');
+                const title = carCard.querySelector('.car-title').textContent;
+                const price = carCard.querySelector('.car-price').textContent;
+                const image = carCard.querySelector('.car-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كانت السيارة موجودة بالفعل
+                const existingItem = favorites.find(item => item.title === title);
+                
+                if (!existingItem) {
+                    favorites.push({
+                        title,
+                        price,
+                        image
+                    });
+                    
+                    updateFavorites();
+                    carModal.classList.remove('active');
+                    overlay.classList.remove('active');
+                    favoritesSidebar.classList.add('active');
+                }
+            });
+            
+            // إضافة حدث التواصل داخل النافذة
+            modalBody.querySelector('.contact-btn').addEventListener('click', function() {
+                let message = translations[currentLang].whatsappMessage;
+                message += `- ${translations[currentLang][carKey]} (${carPrice})\n`;
+                message += translations[currentLang].whatsappInfo;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappURL = `https://wa.me/971500000000?text=${encodedMessage}`;
+                
+                window.open(whatsappURL, '_blank');
+            });
+            
+            carModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // نظام نافذة محتوى الفوتر
+        const footerModal = document.getElementById('footerModal');
+        const closeFooterModal = document.getElementById('closeFooterModal');
+        const footerModalBody = document.getElementById('footerModalBody');
+        const footerLinks = document.querySelectorAll('.footer-column a[data-content]');
+
+        // فتح نافذة محتوى الفوتر
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contentKey = this.getAttribute('data-content');
+                showFooterContent(contentKey);
+            });
+        });
+
+        // إغلاق نافذة محتوى الفوتر
+        closeFooterModal.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض محتوى الفوتر
+        function showFooterContent(contentKey) {
+            let content = '';
+            
+            switch(contentKey) {
+                case 'about':
+                    content = translations[currentLang].aboutContent;
+                    break;
+                case 'quality':
+                    content = translations[currentLang].qualityContent;
+                    break;
+                case 'blog':
+                    content = translations[currentLang].blogContent;
+                    break;
+                case 'faq':
+                    content = translations[currentLang].faqContent;
+                    break;
+                case 'shipping':
+                    content = translations[currentLang].shippingContent;
+                    break;
+                case 'returns':
+                    content = translations[currentLang].returnsContent;
+                    break;
+                case 'privacy':
+                    content = translations[currentLang].privacyContent;
+                    break;
+            }
+            
+            footerModalBody.innerHTML = content;
+            footerModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+    </script>
+</body>
+</html>

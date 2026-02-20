@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قهوة وشوكولاتة - Coffee & Chocolate</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5D4037;
+            --secondary: #795548;
+            --accent: #8D6E63;
+            --dark: #4E342E;
+            --darker: #3E2723;
+            --transition: all 0.3s ease;
+            --light: #EFEBE9;
+            --medium: #A1887F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Amiri', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--darker);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('https://i.postimg.cc/HnC5cLZZ/Whats-App-Image-2025-10-19-at-16-01-35.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* شريط اللغة */
+        .language-bar {
+            background: var(--darker);
+            color: var(--light);
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .language-options {
+            display: inline-flex;
+            gap: 15px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--light);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            color: var(--darker);
+            background: var(--accent);
+            border-color: var(--light);
+            transform: translateY(-2px);
+        }
+
+        /* الهيدر المعدل */
+        header {
+            background: rgba(79, 55, 45, 0.95);
+            color: var(--light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* القائمة الرئيسية المعدلة */
+        .main-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 10px;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .nav-icon:hover {
+            background: rgba(141, 110, 99, 0.3);
+            color: var(--light);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--light);
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .cart-icon:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+            background: rgba(141, 110, 99, 0.3);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--dark);
+            color: var(--light);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* القائمة الجانبية */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(141, 110, 99, 0.3);
+            color: var(--light);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 350px;
+            height: 100vh;
+            background: rgba(79, 55, 45, 0.95);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--accent);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .sidebar-header h3 {
+            color: var(--light);
+            font-size: 1.5rem;
+        }
+
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .close-sidebar:hover {
+            background: rgba(141, 110, 99, 0.3);
+            color: var(--light);
+        }
+
+        .sidebar-content {
+            padding: 10px 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(141, 110, 99, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(141, 110, 99, 0.4);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .sidebar-section:hover {
+            background: rgba(141, 110, 99, 0.3);
+            transform: translateX(-5px);
+        }
+
+        .sidebar-section.active {
+            background: rgba(141, 110, 99, 0.4);
+            border-color: var(--accent);
+        }
+
+        .sidebar-section h4 {
+            color: var(--light);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-section h4 i {
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .sidebar-section.active h4 i {
+            transform: rotate(90deg);
+        }
+
+        .section-content {
+            color: var(--light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .sidebar-section.active .section-content {
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* الصفحات */
+        .page {
+            display: none;
+            min-height: 70vh;
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* الهيرو سيكشن */
+        .hero {
+            background: linear-gradient(rgba(93, 64, 55, 0.7), rgba(62, 39, 35, 0.7)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            color: var(--light);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: var(--light);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--light);
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(141, 110, 99, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--dark), var(--accent));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(141, 110, 99, 0.5);
+        }
+
+        /* أقسام المنتجات */
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: rgba(161, 136, 127, 0.3);
+            border: 2px solid var(--accent);
+            color: var(--light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: rgba(161, 136, 127, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-btn.coffee.active {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-color: var(--dark);
+            color: var(--light);
+        }
+
+        .category-btn.chocolate.active {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            border-color: var(--accent);
+            color: var(--light);
+        }
+
+        .category-btn.all.active {
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            border-color: var(--dark);
+            color: var(--light);
+        }
+
+        /* قسم المنتجات */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--light);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--dark));
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(79, 55, 45, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(141, 110, 99, 0.4);
+            display: none;
+        }
+
+        .product-card.active {
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(141, 110, 99, 0.2);
+            border: 1px solid var(--accent);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .product-desc {
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--light);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--dark), var(--accent));
+        }
+
+        .view-details {
+            background: rgba(161, 136, 127, 0.3);
+            color: var(--light);
+            border: 1px solid var(--accent);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .view-details:hover {
+            background: rgba(161, 136, 127, 0.5);
+            border-color: var(--dark);
+        }
+
+        /* صفحة اتصل بنا */
+        .contact-section {
+            padding: 5rem 0;
+            background: rgba(79, 55, 45, 0.7);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(79, 55, 45, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(141, 110, 99, 0.4);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(141, 110, 99, 0.1);
+            border: 1px solid var(--accent);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-card p {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-card a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+
+        /* صفحة عن المتجر */
+        .about-section {
+            padding: 5rem 0;
+            background: rgba(79, 55, 45, 0.7);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .about-text p {
+            color: var(--light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .about-image {
+            height: 400px;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* صفحة الشحن والتوصيل */
+        .shipping-section, .privacy-section, .quality-section, .faq-section {
+            padding: 5rem 0;
+            background: rgba(79, 55, 45, 0.7);
+        }
+
+        .shipping-content, .privacy-content, .quality-content, .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .shipping-item, .privacy-item, .quality-item, .faq-item {
+            background: rgba(79, 55, 45, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(141, 110, 99, 0.4);
+        }
+
+        .shipping-item h3, .privacy-item h3, .quality-item h3, .faq-item h3 {
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shipping-item p, .privacy-item p, .quality-item p, .faq-item p {
+            color: var(--light);
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .faq-answer {
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            opacity: 0.9;
+        }
+
+        /* صفحة المدونة */
+        .blog-section {
+            padding: 5rem 0;
+            background: rgba(79, 55, 45, 0.7);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: rgba(79, 55, 45, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(141, 110, 99, 0.4);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(141, 110, 99, 0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .blog-date {
+            color: var(--light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .blog-excerpt {
+            color: var(--light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .blog-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover {
+            color: var(--accent);
+        }
+
+        /* سلة التسوق */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 380px;
+            height: 100vh;
+            background: rgba(79, 55, 45, 0.95);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--accent);
+        }
+
+        .cart-sidebar.active {
+            left: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .cart-header h3 {
+            color: var(--light);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(141, 110, 99, 0.4);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .cart-item-price {
+            color: var(--light);
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff5252;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--light);
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* الفوتر */
+        footer {
+            background: var(--darker);
+            color: var(--light);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--accent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(141, 110, 99, 0.3);
+            border-radius: 50%;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--darker);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--accent);
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+
+        /* نافذة تفاصيل المنتج */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(79, 55, 45, 0.95);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid var(--accent);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+            z-index: 1;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .modal-details h3 {
+            color: var(--light);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-full-desc {
+            color: var(--light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* التجاوب مع جميع الأجهزة */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .product-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 80%;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط اللغات -->
+    <div class="language-bar">
+        <div class="language-options">
+            <button class="lang-btn active" data-lang="ar">العربية</button>
+            <button class="lang-btn" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="fr">Français</button>
+        </div>
+    </div>
+
+    <!-- الهيدر المعدل -->
+    <header>
+        <div class="nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a href="#" class="logo" data-page="home">
+            <img src="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg" alt=" قهوة وشوكولاتة" class="logo-image">
+                <span class="store-name">قهوة وشوكولاتة</span>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#" class="nav-icon" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span data-key="home">الرئيسية</span>
+                </a>
+                <a href="#" class="nav-icon" data-page="products">
+                    <i class="fas fa-coffee"></i>
+                    <span data-key="products">المنتجات</span>
+                </a>
+                <a href="#" class="nav-icon" data-page="contact">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contactUs">اتصل بنا</span>
+                </a>
+            </nav>
+
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- الصفحات -->
+    <main>
+        <!-- الصفحة الرئيسية -->
+        <section id="home-page" class="page active">
+            <!-- الهيرو سيكشن -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 data-key="heroTitle">قهوة وشوكولاتة - نكهات لا تُقاوم</h1>
+                    <p data-key="heroDesc">اكتشف عالمًا من النكهات مع أجود أنواع القهوة والشوكولاتة. منتجات طازجة وعالية الجودة من أفضل المزارع حول العالم.</p>
+                    <a href="#" class="btn" data-page="products" data-key="shopNow">تسوق الآن</a>
+                </div>
+            </section>
+
+            <!-- أقسام المنتجات -->
+            <div class="container">
+                <div class="product-categories">
+                    <button class="category-btn all active" data-category="all">
+                        <i class="fas fa-star"></i>
+                        <span data-key="allProducts">جميع المنتجات</span>
+                    </button>
+                    <button class="category-btn coffee" data-category="coffee">
+                        <i class="fas fa-coffee"></i>
+                        <span data-key="coffeeProducts">القهوة</span>
+                    </button>
+                    <button class="category-btn chocolate" data-category="chocolate">
+                        <i class="fas fa-cookie"></i>
+                        <span data-key="chocolateProducts">الشوكولاتة</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- قسم المنتجات المميزة -->
+            <section class="section" id="featured">
+                <div class="container">
+                    <h2 class="section-title" data-key="featuredProducts">منتجات مميزة</h2>
+                    <div class="products-grid">
+                        <!-- المنتج 1 - قهوة -->
+                        <div class="product-card active" data-category="coffee">
+                            <div class="product-badge" data-key="new">جديد</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product1Title">قهوة أرابيكا الإثيوبية</h3>
+                                <p class="product-desc" data-key="product1Desc">قهوة عربية غنية بنكهات الفواكه والزهور، من أفضل مزارع إثيوبيا</p>
+                                <div class="product-price">$18</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="1">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 2 - شوكولاتة -->
+                        <div class="product-card active" data-category="chocolate">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1575377427642-087cf684f29d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product2Title">شوكولاتة بلجيكية داكنة</h3>
+                                <p class="product-desc" data-key="product2Desc">شوكولاتة بلجيكية فاخرة بنسبة 70% كاكاو، ناعمة وغنية بالنكهة</p>
+                                <div class="product-price">$12</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="2">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 3 - قهوة -->
+                        <div class="product-card active" data-category="coffee">
+                            <div class="product-badge" data-key="bestseller">الأكثر مبيعاً</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product3Title">خلطة القهوة الإيطالية</h3>
+                                <p class="product-desc" data-key="product3Desc">خلطة قهوة إيطالية تقليدية، قوية ومكتملة الجسم مع نكهة غنية</p>
+                                <div class="product-price">$22</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="3">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم جديدنا هذا الأسبوع -->
+            <section class="section" id="new">
+                <div class="container">
+                    <h2 class="section-title" data-key="newThisWeek">جديدنا هذا الأسبوع</h2>
+                    <div class="products-grid">
+                        <!-- المنتج 4 - شوكولاتة -->
+                        <div class="product-card active" data-category="chocolate">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1553452118-621e1f860f43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product4Title">شوكولاتة سويسرية بالبندق</h3>
+                                <p class="product-desc" data-key="product4Desc">شوكولاتة سويسرية فاخرة مع قطع البندق الكاملة، ناعمة وذات مذاق رائع</p>
+                                <div class="product-price">$16</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="4">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 5 - قهوة -->
+                        <div class="product-card active" data-category="coffee">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product5Title">قهوة كولومبية العضوية</h3>
+                                <p class="product-desc" data-key="product5Desc">قهوة كولومبية عضوية معتمدة، متوسطة التحميص مع نكهات الشوكولاتة والكراميل</p>
+                                <div class="product-price">$20</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="5">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 6 - شوكولاتة -->
+                        <div class="product-card active" data-category="chocolate">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1575377427642-087cf684f29d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product6Title">شوكولاتة بالبرتقال واللوز</h3>
+                                <p class="product-desc" data-key="product6Desc">شوكولاتة داكنة بنكهة البرتقال الطبيعي وقطع اللوز المحمص</p>
+                                <div class="product-price">$14</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="6">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- صفحة المنتجات -->
+        <section id="products-page" class="page">
+            <div class="container">
+                <h2 class="section-title">جميع المنتجات</h2>
+                <div class="product-categories">
+                    <button class="category-btn all active" data-category="all">
+                        <i class="fas fa-star"></i>
+                        <span data-key="allProducts">جميع المنتجات</span>
+                    </button>
+                    <button class="category-btn coffee" data-category="coffee">
+                        <i class="fas fa-coffee"></i>
+                        <span data-key="coffeeProducts">القهوة</span>
+                    </button>
+                    <button class="category-btn chocolate" data-category="chocolate">
+                        <i class="fas fa-cookie"></i>
+                        <span data-key="chocolateProducts">الشوكولاتة</span>
+                    </button>
+                </div>
+                <div class="products-grid">
+                    <!-- سيتم عرض جميع المنتجات هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة اتصل بنا -->
+        <section id="contact-page" class="page">
+            <div class="contact-section">
+                <div class="contact-container">
+                    <h2 class="section-title" data-key="contactUs">اتصل بنا</h2>
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3 data-key="address">العنوان</h3>
+                            <p data-key="addressContent">شارع محمد الخامس، الدار البيضاء، المغرب</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-phone"></i>
+                            <h3 data-key="phone">الهاتف</h3>
+                            <p><a href="tel:+212522345678" data-key="phoneNumber">+212 522 345 678</a></p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3 data-key="email">البريد الإلكتروني</h3>
+                            <p><a href="mailto:info@coffee-chocolate.com" data-key="emailAddress">info@coffee-chocolate.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة سياسة الخصوصية -->
+        <section id="privacy-page" class="page">
+            <div class="privacy-section">
+                <div class="container">
+                    <h2 class="section-title">سياسة الخصوصية</h2>
+                    <div class="privacy-content">
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-shield-alt"></i> معلومات ن جمعها</h3>
+                            <p>نحن نلتزم بحماية خصوصيتك. ن collect المعلومات التالية:</p>
+                            <ul>
+                                <li>المعلومات الشخصية (الاسم، البريد الإلكتروني، العنوان) عند إنشاء حساب أو إتمام عملية شراء</li>
+                                <li>معلومات الدفع (بطاقات الائتمان) التي تتم معالجتها بشكل آمن من خلال مزودي الدفع الموثوقين</li>
+                                <li>معلومات التصفح والتفاعل مع الموقع لتحسين تجربة المستخدم</li>
+                            </ul>
+                        </div>
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-lock"></i> كيفية استخدام المعلومات</h3>
+                            <p>نستخدم المعلومات التي ن collectها ل:</p>
+                            <ul>
+                                <li>معالجة طلباتك وإدارة حسابك</li>
+                                <li>تحسين منتجاتنا وخدماتنا</li>
+                                <li>إرسال تحديثات حول منتجاتنا وعروضنا الخاصة (يمكنك إلغاء الاشتراك في أي وقت)</li>
+                                <li>توفير خدمة عملاء متميزة</li>
+                            </ul>
+                        </div>
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-handshake"></i> مشاركة المعلومات</h3>
+                            <p>نحن لا نبيع أو نؤجر أو نشارك معلوماتك الشخصية مع أطراف ثالثة لأغراض تسويقية. قد نشارك معلومات محدودة مع:</p>
+                            <ul>
+                                <li>مزودي الخدمات الذين يساعدوننا في تشغيل موقعنا ومعالجة المدفوعات</li>
+                                <li>سلطات إنفاذ القانون عندما يقتضي القانون ذلك</li>
+                            </ul>
+                        </div>
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-cookie"></i> ملفات تعريف الارتباط (Cookies)</h3>
+                            <p>نستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح وتذكر تفضيلاتك. يمكنك تعطيل ملفات تعريف الارتباط من خلال إعدادات المتصفح، لكن هذا قد يؤثر على وظائف الموقع.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة الجودة والضمان -->
+        <section id="quality-page" class="page">
+            <div class="quality-section">
+                <div class="container">
+                    <h2 class="section-title">الجودة والضمان</h2>
+                    <div class="quality-content">
+                        <div class="quality-item">
+                            <h3><i class="fas fa-award"></i> معايير الجودة</h3>
+                            <p>نحن نلتزم بأعلى معايير الجودة في جميع منتجاتنا:</p>
+                            <ul>
+                                <li>جميع حبوب القهوة من أفضل المزارع حول العالم</li>
+                                <li>الشوكولاتة مصنوعة من أجود أنواع الكاكاو</li>
+                                <li>نفحص كل منتج بعناية قبل شحنه للتأكد من جودته</li>
+                                <li>نستخدم فقط المكونات الطبيعية والعضوية</li>
+                            </ul>
+                        </div>
+                        <div class="quality-item">
+                            <h3><i class="fas fa-certificate"></i> ضمان الجودة</h3>
+                            <p>نحن نضمن جودة جميع منتجاتنا ونقدم:</p>
+                            <ul>
+                                <li>ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج</li>
+                                <li>ضمان نضارة المنتجات وخلوها من العيوب</li>
+                                <li>إرجاع مجاني للمنتجات التي لا تفي بتوقعاتك</li>
+                                <li>دعم فني متواصل لمساعدتك في أي استفسار</li>
+                            </ul>
+                        </div>
+                        <div class="quality-item">
+                            <h3><i class="fas fa-hands-helping"></i> خدمة ما بعد البيع</h3>
+                            <p>نحن لا نبيع منتجات فحسب، بل نقدم تجربة شاملة:</p>
+                            <ul>
+                                <li>فريق خدمة عملاء متاح على مدار الساعة طوال أيام الأسبوع</li>
+                                <li>نصائح لتخزين وتحضير القهوة والشوكولاتة للحفاظ على جودتها</li>
+                                <li>إمكانية تخصيص الطلبات حسب رغبتك (للطلبات الكبيرة)</li>
+                                <li>تحديثات منتظمة حول المنتجات الجديدة والعروض الخاصة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة الأسئلة الشائعة -->
+        <section id="faq-page" class="page">
+            <div class="faq-section">
+                <div class="container">
+                    <h2 class="section-title">الأسئلة الشائعة</h2>
+                    <div class="faq-content">
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> أسئلة حول المنتجات</h3>
+                            <div class="faq-question">هل القهوة طازجة ومحمصة حديثاً؟</div>
+                            <div class="faq-answer">نعم، جميع حبوب القهوة لدينا محمصة حديثاً وتصل إليك في ذروة نضارتها. نحن نحمص القهوة أسبوعياً لضمان الجودة والنكهة المثلى.</div>
+                            
+                            <div class="faq-question">ما هي أنواع الشوكولاتة المتوفرة؟</div>
+                            <div class="faq-answer">نوفر مجموعة متنوعة من الشوكولاتة تشمل الشوكولاتة الداكنة (70% كاكاو)، الشوكولاتة بالحليب، والشوكولاتة البيضاء، بالإضافة إلى نكهات مختلفة مثل البندق، البرتقال، والنعناع.</div>
+                            
+                            <div class="faq-question">هل تقدمون قهوة بدون كافيين؟</div>
+                            <div class="faq-answer">نعم، نوفر خيارات من القهوة منزوعة الكافيين باستخدام عملية طبيعية لإزالة الكافيين مع الحفاظ على النكهة.</div>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-shipping-fast"></i> أسئلة حول الشحن والتوصيل</h3>
+                            <div class="faq-question">كم تستغرق مدة التوصيل؟</div>
+                            <div class="faq-answer">مدة التوصيل داخل المغرب تتراوح بين 2-5 أيام عمل. للتوصيل الدولي، تتراوح بين 7-14 يوم عمل حسب الوجهة.</div>
+                            
+                            <div class="faq-question">هل الشحن مجاني؟</div>
+                            <div class="faq-answer">نعم، الشحن مجاني للطلبات التي تزيد عن 300 درهم داخل المغرب. للطلبات الأقل من ذلك، تبلغ تكلفة الشحن 30 درهم.</div>
+                            
+                            <div class="faq-question">هل تقدمون خدمة التوصيل السريع؟</div>
+                            <div class="faq-answer">نعم، نقدم خدمة التوصيل السريع داخل المدن الكبرى خلال 24 ساعة بتكلفة إضافية 50 درهم.</div>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-undo"></i> أسئلة حول الإرجاع والاستبدال</h3>
+                            <div class="faq-question">ما هي سياسة الإرجاع؟</div>
+                            <div class="faq-answer">يمكنك إرجاع المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مفتوح.</div>
+                            
+                            <div class="faq-question">كيف يمكنني إرجاع منتج؟</div>
+                            <div class="faq-answer">اتصل بفريق خدمة العملاء على الرقم المخصص، وسنزودك بتعليمات مفصلة حول عملية الإرجاع.</div>
+                            
+                            <div class="faq-question">متى سأسترد أموالي؟</div>
+                            <div class="faq-answer">سيتم استرداد المبلغ خلال 5-7 أيام عمل من استلامنا للمنتج المرتجع.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة عن المتجر -->
+        <section id="about-page" class="page">
+            <div class="about-section">
+                <div class="container">
+                    <h2 class="section-title">عن متجر قهوة وشوكولاتة</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>شغفنا بالنكهات الراقية</h2>
+                            <p>نحن متجر متخصص في بيع أجود أنواع القهوة والشوكولاتة من حول العالم. نقدم منتجات طازجة وعالية الجودة من أفضل المزارع والمصانع.</p>
+                            <p>نحن نؤمن بأن القهوة والشوكولاتة ليست مجرد منتجات، بل هي تجارب حسيّة فريدة. لذلك نعمل مباشرة مع المزارعين والمصنعين لنقدم لكم منتجات تجمع بين الجودة والنكهة المميزة.</p>
+                            <p>نحن نضمن جودة جميع منتجاتنا ونستخدم فقط أفضل المكونات. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.</p>
+                            <a href="#" class="btn" data-page="contact">اتصل بنا</a>
+                        </div>
+                        <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة الشحن والتوصيل -->
+        <section id="shipping-page" class="page">
+            <div class="shipping-section">
+                <div class="container">
+                    <h2 class="section-title">الشحن والتوصيل</h2>
+                    <div class="shipping-content">
+                        <div class="shipping-item">
+                            <h3><i class="fas fa-shipping-fast"></i> سياسة الشحن</h3>
+                            <p>نحن نقدم خدمة الشحن لجميع أنحاء المغرب مع إمكانية التوصيل الدولي لبعض البلدان. مدة التوصيل داخل المغرب تتراوح بين 2-5 أيام عمل، بينما التوصيل الدولي يستغرق 7-14 يوم عمل.</p>
+                        </div>
+                        <div class="shipping-item">
+                            <h3><i class="fas fa-money-bill-wave"></i> تكاليف الشحن</h3>
+                            <p>الشحن داخل المغرب مجاني للطلبات التي تزيد عن 300 درهم. للطلبات الأقل من ذلك، تبلغ تكلفة الشحن 30 درهم. للشحن الدولي، تختلف التكلفة حسب البلد والوزن.</p>
+                        </div>
+                        <div class="shipping-item">
+                            <h3><i class="fas fa-undo"></i> سياسة الإرجاع</h3>
+                            <p>يمكنك إرجاع أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مفتوح. سيتم استرداد المبلغ خلال 5-7 أيام عمل.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة المدونة -->
+        <section id="blog-page" class="page">
+            <div class="blog-section">
+                <div class="container">
+                    <h2 class="section-title">مدونة قهوة وشوكولاتة</h2>
+                    <div class="blog-grid">
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="blog-content">
+                                <h3 class="blog-title">فن تحميص القهوة: دليل شامل</h3>
+                                <div class="blog-date">15 مارس 2023</div>
+                                <p class="blog-excerpt">اكتشف أسرار تحميص القهوة وكيف تؤثر درجة التحميص على نكهة القهوة. تعلم الفرق بين التحميص الفاتح، المتوسط، والغامق...</p>
+                                <a href="#" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1575377427642-087cf684f29d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="blog-content">
+                                <h3 class="blog-title">تاريخ الشوكولاتة: من حضارة المايا إلى عالمنا</h3>
+                                <div class="blog-date">10 فبراير 2023</div>
+                                <p class="blog-excerpt">رحلة شغف عبر تاريخ الشوكولاتة، من مشروب النخبة في حضارة المايا إلى المنتج العالمي الذي نعرفه اليوم...</p>
+                                <a href="#" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="blog-content">
+                                <h3 class="blog-title">القهوة والشوكولاتة: ثنائي لا يقاوم</h3>
+                                <div class="blog-date">5 يناير 2023</div>
+                                <p class="blog-excerpt">اكتشف كيف تتناغم نكهات القهوة والشوكولاتة معاً. نصائح لتذوق القهوة والشوكولاتة معاً للحصول على تجربة فريدة...</p>
+                                <a href="#" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- القائمة الجانبية -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3 data-key="menu">القائمة</h3>
+            <button class="close-sidebar" id="closeSidebar">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-section" data-section="about">
+                <h4><i class="fas fa-users"></i> <span data-key="about">من نحن</span></h4>
+                <div class="section-content">
+                    <p data-key="aboutContent">نحن متجر متخصص في بيع أجود أنواع القهوة والشوكولاتة من حول العالم. نقدم منتجات طازجة وعالية الجودة من أفضل المزارع والمصانع.</p>
+                    <a href="#" class="btn" data-page="about" style="margin-top: 10px; display: inline-block;">تعرف على المزيد</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section" data-section="quality">
+                <h4><i class="fas fa-award"></i> <span data-key="quality">الجودة والضمان</span></h4>
+                <div class="section-content">
+                    <p data-key="qualityContent">نحن نضمن جودة جميع منتجاتنا ونستخدم فقط أفضل المكونات. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.</p>
+                    <a href="#" class="btn" data-page="quality" style="margin-top: 10px; display: inline-block;">تعرف على المزيد</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section" data-section="blog">
+                <h4><i class="fas fa-blog"></i> <span data-key="blog">المدونة</span></h4>
+                <div class="section-content">
+                    <p data-key="blogContent">اكتشف مقالاتنا حول القهوة والشوكولاتة، نصائح التخزين، طرق التحضير، وأكثر من ذلك.</p>
+                    <a href="#" class="btn" data-page="blog" style="margin-top: 10px; display: inline-block;">تصفح المدونة</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section" data-section="faq">
+                <h4><i class="fas fa-question-circle"></i> <span data-key="faq">الأسئلة الشائعة</span></h4>
+                <div class="section-content">
+                    <p data-key="faqContent">يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول منتجاتنا وخدماتنا في قسم الأسئلة الشائعة على موقعنا.</p>
+                    <a href="#" class="btn" data-page="faq" style="margin-top: 10px; display: inline-block;">تصفح الأسئلة</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section" data-section="shipping">
+                <h4><i class="fas fa-shipping-fast"></i> <span data-key="shipping">شحن وتوصيل</span></h4>
+                <div class="section-content">
+                    <p data-key="shippingContent">نحن نقدم خدمة الشحن لجميع أنحاء المغرب مع إمكانية التوصيل الدولي لبعض البلدان.</p>
+                    <a href="#" class="btn" data-page="shipping" style="margin-top: 10px; display: inline-block;">تعرف على المزيد</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section" data-section="returns">
+                <h4><i class="fas fa-exchange-alt"></i> <span data-key="returns">الإرجاع والاستبدال</span></h4>
+                <div class="section-content">
+                    <p data-key="returnsContent">يمكنك إرجاع أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مفتوح.</p>
+                    <a href="#" class="btn" data-page="shipping" style="margin-top: 10px; display: inline-block;">تعرف على المزيد</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section" data-section="privacy">
+                <h4><i class="fas fa-shield-alt"></i> <span data-key="privacy">سياسة الخصوصية</span></h4>
+                <div class="section-content">
+                    <p data-key="privacyContent">نحن نحترم خصوصيتك ولا نشارك معلوماتك الشخصية مع أي طرف ثالث. يمكنك قراءة سياسة الخصوصية الكاملة على موقعنا.</p>
+                    <a href="#" class="btn" data-page="privacy" style="margin-top: 10px; display: inline-block;">تعرف على المزيد</a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section" data-section="contact">
+                <h4><i class="fas fa-phone-alt"></i> <span data-key="contactUs">اتصل بنا</span></h4>
+                <div class="section-content">
+                    <p data-key="contactContent">يمكنك التواصل معنا عبر الهاتف أو البريد الإلكتروني أو زيارة متجرنا. فريق خدمة العملاء متاح لمساعدتك من الساعة 9 صباحًا حتى 6 مساءً.</p>
+                    <a href="#" class="btn" data-page="contact" style="margin-top: 10px; display: inline-block;">اتصل بنا الآن</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- سلة التسوق -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-key="cartTitle">سلة التسوق</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- سيتم إضافة العناصر هنا ديناميكياً -->
+        </div>
+        <div class="cart-total" id="cartTotal">المجموع: $0</div>
+        <button class="checkout-btn" id="checkoutBtn">
+            <i class="fab fa-whatsapp"></i> <span data-key="checkout">إتمام الطلب عبر واتساب</span>
+        </button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- نافذة تفاصيل المنتج -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-key="aboutFooter">عن المتجر</h3>
+                <ul>
+                    <li><a data-page="about">من نحن</a></li>
+                    <li><a data-page="quality">الجودة والضمان</a></li>
+                    <li><a data-page="blog">المدونة</a></li>
+                    <li><a data-page="faq">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="customerService">خدمة العملاء</h3>
+                <ul>
+                    <li><a data-page="contact">اتصل بنا</a></li>
+                    <li><a data-page="shipping">الشحن والتوصيل</a></li>
+                    <li><a data-page="returns">الإرجاع والاستبدال</a></li>
+                    <li><a data-page="privacy">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="connectWithUs">تواصل معنا</h3>
+                <p data-key="connectDesc">تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة</p>
+                <div class="social-links">
+                    <a href="https://replace.me/instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://replace.me/facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://replace.me/x" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://replace.me/tiktok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://replace.me/whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 <span class="store-name">قهوة وشوكولاتة</span>. <span data-key="allRights">جميع الحقوق محفوظة</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // نظام الصفحات
+        const pages = document.querySelectorAll('.page');
+        const pageLinks = document.querySelectorAll('[data-page]');
+        
+        // إظهار الصفحة المطلوبة وإخفاء الآخرين
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // إغلاق القائمة الجانبية إذا كانت مفتوحة
+            closeSidebarFunc();
+        }
+        
+        // إضافة حدث النقر لجميع روابط الصفحات
+        pageLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+                
+                // التمرير إلى أعلى الصفحة
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // نظام القائمة الجانبية
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+        const sidebarSections = document.querySelectorAll('.sidebar-section');
+
+        // فتح وإغلاق الشريط الجانبي
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function closeSidebarFunc() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            // إغلاق جميع الأقسام عند إغلاق الشريط
+            sidebarSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+
+        mobileMenuBtn.addEventListener('click', openSidebar);
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        overlay.addEventListener('click', closeSidebarFunc);
+
+        // نظام الأقسام القابلة للطي
+        sidebarSections.forEach(section => {
+            section.addEventListener('click', function() {
+                // إغلاق جميع الأقسام الأخرى
+                sidebarSections.forEach(s => {
+                    if (s !== this) {
+                        s.classList.remove('active');
+                    }
+                });
+                // فتح/إغلاق القسم الحالي
+                this.classList.toggle('active');
+            });
+        });
+
+        // نظام تصفية المنتجات حسب الفئة
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشاط للزر المختار
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // تصفية المنتجات
+                productCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // نظام اللغات المتكامل
+        const translations = {
+            ar: {
+                storeName: "قهوة وشوكولاتة",
+                home: "الرئيسية",
+                products: "المنتجات",
+                contactUs: "اتصل بنا",
+                menu: "القائمة",
+                about: "من نحن",
+                aboutContent: "نحن متجر متخصص في بيع أجود أنواع القهوة والشوكولاتة من حول العالم. نقدم منتجات طازجة وعالية الجودة من أفضل المزارع والمصانع.",
+                quality: "الجودة والضمان",
+                qualityContent: "نحن نضمن جودة جميع منتجاتنا ونستخدم فقط أفضل المكونات. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.",
+                blog: "المدونة",
+                blogContent: "اكتشف مقالاتنا حول القهوة والشوكولاتة، نصائح التخزين، طرق التحضير، وأكثر من ذلك.",
+                faq: "الأسئلة الشائعة",
+                faqContent: "يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول منتجاتنا وخدماتنا في قسم الأسئلة الشائعة على موقعنا.",
+                shipping: "شحن وتوصيل",
+                shippingContent: "نحن نقدم خدمة الشحن لجميع أنحاء المغرب مع إمكانية التوصيل الدولي لبعض البلدان.",
+                returns: "الإرجاع والاستبدال",
+                returnsContent: "يمكنك إرجاع أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مفتوح.",
+                privacy: "سياسة الخصوصية",
+                privacyContent: "نحن نحترم خصوصيتك ولا نشارك معلوماتك الشخصية مع أي طرف ثالث. يمكنك قراءة سياسة الخصوصية الكاملة على موقعنا.",
+                contactContent: "يمكنك التواصل معنا عبر الهاتف أو البريد الإلكتروني أو زيارة متجرنا. فريق خدمة العملاء متاح لمساعدتك من الساعة 9 صباحًا حتى 6 مساءً.",
+                heroTitle: "قهوة وشوكولاتة - نكهات لا تُقاوم",
+                heroDesc: "اكتشف عالمًا من النكهات مع أجود أنواع القهوة والشوكولاتة. منتجات طازجة وعالية الجودة من أفضل المزارع حول العالم.",
+                shopNow: "تسوق الآن",
+                featuredProducts: "منتجات مميزة",
+                newThisWeek: "جديدنا هذا الأسبوع",
+                allProducts: "جميع المنتجات",
+                coffeeProducts: "القهوة",
+                chocolateProducts: "الشوكولاتة",
+                new: "جديد",
+                product1Title: "قهوة أرابيكا الإثيوبية",
+                product1Desc: "قهوة عربية غنية بنكهات الفواكه والزهور، من أفضل مزارع إثيوبيا",
+                product1FullDesc: "قهوة أرابيكا إثيوبية من منطقة ييرغاشيف، معروفة بنكهاتها الفريدة من الفواكه الحمضية والزهور. تُحمص بشكل متوسط للحفاظ على تعقيد نكهاتها الطبيعية. مثالية لمحبي القهوة الذين يبحثون عن تجربة فريدة وغنية بالنكهات.",
+                product2Title: "شوكولاتة بلجيكية داكنة",
+                product2Desc: "شوكولاتة بلجيكية فاخرة بنسبة 70% كاكاو، ناعمة وغنية بالنكهة",
+                product2FullDesc: "شوكولاتة بلجيكية داكنة فاخرة مصنوعة من أفضل حبوب الكاكاو من غانا. تحتوي على 70% كاكاو مما يجعلها غنية بالنكهة مع حلاوة متوازنة. تتميز بنعومة فائقة وذوبان سلس في الفم. مثالية لمحبي الشوكولاتة الداكنة.",
+                product3Title: "خلطة القهوة الإيطالية",
+                product3Desc: "خلطة قهوة إيطالية تقليدية، قوية ومكتملة الجسم مع نكهة غنية",
+                product3FullDesc: "خلطة قهوة إيطالية تقليدية تجمع بين حبوب أرابيكا وروبوستا من أفضل المزارع. تحميص غامق يعطي نكهة قوية وجسم كامل مع لمسة من الحلاوة الطبيعية. مثالية لتحضير الإسبريسو والقهوة سريعة التحضير.",
+                product4Title: "شوكولاتة سويسرية بالبندق",
+                product4Desc: "شوكولاتة سويسرية فاخرة مع قطع البندق الكاملة، ناعمة وذات مذاق رائع",
+                product4FullDesc: "شوكولاتة سويسرية فاخرة بالحليب مع قطع بندق كاملة محمصة. تتميز بنعومة فائقة ونكهة غنية متوازنة بين حلاوة الشوكولاتة وقرمشة البندق. مصنوعة وفق أرقى المعايير السويسرية في صناعة الشوكولاتة.",
+                product5Title: "قهوة كولومبية العضوية",
+                product5Desc: "قهوة كولومبية عضوية معتمدة، متوسطة التحميص مع نكهات الشوكولاتة والكراميل",
+                product5FullDesc: "قهوة كولومبية عضوية معتمدة من منطقة هويلا، معروفة بنكهاتها المتوازنة من الشوكولاتة والكراميل مع لمسة حمضية لطيفة. تحميص متوسط يحافظ على تعقيد نكهاتها الطبيعية. مثالية للاستمتاع في أي وقت من اليوم.",
+                product6Title: "شوكولاتة بالبرتقال واللوز",
+                product6Desc: "شوكولاتة داكنة بنكهة البرتقال الطبيعي وقطع اللوز المحمص",
+                product6FullDesc: "شوكولاتة داكنة فاخرة بنسبة 60% كاكاو، مع نكهة البرتقال الطبيعية وقطع لوز محمص. تجمع بين مرارة الشوكولاتة الداكنة وحلاوة البرتقال وقرمشة اللوز. تجربة نكهة فريدة ومتوازنة.",
+                addToCart: "أضف إلى السلة",
+                viewDetails: "عرض التفاصيل",
+                bestseller: "الأكثر مبيعاً",
+                cartTitle: "سلة التسوق",
+                checkout: "إتمام الطلب عبر واتساب",
+                address: "العنوان",
+                addressContent: "شارع محمد الخامس، الدار البيضاء، المغرب",
+                phone: "الهاتف",
+                phoneNumber: "+212 522 345 678",
+                email: "البريد الإلكتروني",
+                emailAddress: "info@coffee-chocolate.com",
+                aboutFooter: "عن المتجر",
+                blog: "المدونة",
+                faqFooter: "الأسئلة الشائعة",
+                customerService: "خدمة العملاء",
+                shipping: "الشحن والتوصيل",
+                connectWithUs: "تواصل معنا",
+                connectDesc: "تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة",
+                allRights: "جميع الحقوق محفوظة",
+                whatsappMessage: "مرحباً، أريد طلب المنتجات التالية:\n",
+                whatsappTotal: "\nالمجموع: $",
+                whatsappInfo: "\n\nالاسم: \nالعنوان: \nرقم الهاتف:"
+            },
+            en: {
+                storeName: "Coffee & Chocolate",
+                home: "Home",
+                products: "Products",
+                contactUs: "Contact Us",
+                menu: "Menu",
+                about: "About Us",
+                aboutContent: "We are a store specialized in selling the finest types of coffee and chocolate from around the world. We offer fresh, high-quality products from the best farms and factories.",
+                quality: "Quality & Warranty",
+                qualityContent: "We guarantee the quality of all our products and use only the best ingredients. We offer a 30-day return guarantee if you are not satisfied with the product.",
+                blog: "Blog",
+                blogContent: "Discover our articles about coffee and chocolate, storage tips, preparation methods, and more.",
+                faq: "FAQ",
+                faqContent: "You can find answers to the most common questions about our products and services in the FAQ section on our website.",
+                shipping: "Shipping & Delivery",
+                shippingContent: "We offer shipping services throughout Morocco with the possibility of international delivery to some countries.",
+                returns: "Returns & Exchange",
+                returnsContent: "You can return or exchange the product within 14 days of receipt. The product must be in its original condition and unopened.",
+                privacy: "Privacy Policy",
+                privacyContent: "We respect your privacy and do not share your personal information with any third party. You can read the full privacy policy on our website.",
+                contactContent: "You can contact us by phone, email or visit our store. The customer service team is available to assist you from 9am to 6pm.",
+                heroTitle: "Coffee & Chocolate - Irresistible Flavors",
+                heroDesc: "Discover a world of flavors with the finest types of coffee and chocolate. Fresh, high-quality products from the best farms around the world.",
+                shopNow: "Shop Now",
+                featuredProducts: "Featured Products",
+                newThisWeek: "New This Week",
+                allProducts: "All Products",
+                coffeeProducts: "Coffee",
+                chocolateProducts: "Chocolate",
+                new: "New",
+                product1Title: "Ethiopian Arabica Coffee",
+                product1Desc: "Arabica coffee rich in fruity and floral flavors, from the best Ethiopian farms",
+                product1FullDesc: "Ethiopian Arabica coffee from the Yirgacheffe region, known for its unique flavors of citrus fruits and flowers. Medium roasted to preserve the complexity of its natural flavors. Ideal for coffee lovers looking for a unique and flavor-rich experience.",
+                product2Title: "Belgian Dark Chocolate",
+                product2Desc: "Luxurious Belgian chocolate with 70% cocoa, smooth and rich in flavor",
+                product2FullDesc: "Luxurious Belgian dark chocolate made from the finest cocoa beans from Ghana. Contains 70% cocoa making it rich in flavor with balanced sweetness. Features exceptional smoothness and smooth melting in the mouth. Ideal for dark chocolate lovers.",
+                product3Title: "Italian Coffee Blend",
+                product3Desc: "Traditional Italian coffee blend, strong and full-bodied with rich flavor",
+                product3FullDesc: "Traditional Italian coffee blend combining Arabica and Robusta beans from the best farms. Dark roast gives a strong flavor and full body with a touch of natural sweetness. Ideal for preparing espresso and quick coffee.",
+                product4Title: "Swiss Chocolate with Hazelnuts",
+                product4Desc: "Luxurious Swiss chocolate with whole hazelnut pieces, smooth and delicious",
+                product4FullDesc: "Luxurious Swiss milk chocolate with whole roasted hazelnut pieces. Features exceptional smoothness and rich flavor balanced between the sweetness of chocolate and the crunch of hazelnuts. Made according to the finest Swiss standards in chocolate making.",
+                product5Title: "Colombian Organic Coffee",
+                product5Desc: "Certified organic Colombian coffee, medium roast with chocolate and caramel flavors",
+                product5FullDesc: "Certified organic Colombian coffee from the Huila region, known for its balanced flavors of chocolate and caramel with a gentle acidic touch. Medium roast preserves the complexity of its natural flavors. Ideal for enjoying at any time of the day.",
+                product6Title: "Chocolate with Orange and Almonds",
+                product6Desc: "Dark chocolate with natural orange flavor and roasted almond pieces",
+                product6FullDesc: "Luxurious dark chocolate with 60% cocoa, with natural orange flavor and roasted almond pieces. Combines the bitterness of dark chocolate with the sweetness of orange and the crunch of almonds. A unique and balanced flavor experience.",
+                addToCart: "Add to Cart",
+                viewDetails: "View Details",
+                bestseller: "Bestseller",
+                cartTitle: "Shopping Cart",
+                checkout: "Complete Order via WhatsApp",
+                address: "Address",
+                addressContent: "Mohammed V Street, Casablanca, Morocco",
+                phone: "Phone",
+                phoneNumber: "+212 522 345 678",
+                email: "Email",
+                emailAddress: "info@coffee-chocolate.com",
+                aboutFooter: "About Store",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Customer Service",
+                shipping: "Shipping & Delivery",
+                connectWithUs: "Connect With Us",
+                connectDesc: "Follow us on social media to know the latest offers and new products",
+                allRights: "All Rights Reserved",
+                whatsappMessage: "Hello, I would like to order the following products:\n",
+                whatsappTotal: "\nTotal: $",
+                whatsappInfo: "\n\nName: \nAddress: \nPhone Number:"
+            },
+            fr: {
+                storeName: "Café & Chocolat",
+                home: "Accueil",
+                products: "Produits",
+                contactUs: "Contactez-nous",
+                menu: "Menu",
+                about: "À propos de nous",
+                aboutContent: "Nous sommes un magasin spécialisé dans la vente des meilleurs types de café et de chocolat du monde entier. Nous proposons des produits frais et de haute qualité des meilleures fermes et usines.",
+                quality: "Qualité et Garantie",
+                qualityContent: "Nous garantissons la qualité de tous nos produits et n'utilisons que les meilleurs ingrédients. Nous offrons une garantie de retour de 30 jours si vous n'êtes pas satisfait du produit.",
+                blog: "Blog",
+                blogContent: "Découvrez nos articles sur le café et le chocolat, conseils de stockage, méthodes de préparation, et plus encore.",
+                faq: "FAQ",
+                faqContent: "Vous pouvez trouver des réponses aux questions les plus courantes sur nos produits et services dans la section FAQ de notre site Web.",
+                shipping: "Livraison",
+                shippingContent: "Nous proposons des services de livraison dans tout le Maroc avec la possibilité de livraison internationale vers certains pays.",
+                returns: "Retours et Échanges",
+                returnsContent: "Vous pouvez retourner ou échanger le produit dans les 14 jours suivant la réception. Le produit doit être dans son état d'origine et non ouvert.",
+                privacy: "Politique de Confidentialité",
+                privacyContent: "Nous respectons votre vie privée et ne partageons pas vos informations personnelles avec des tiers. Vous pouvez lire la politique de confidentialité complète sur notre site Web.",
+                contactContent: "Vous pouvez nous contacter par téléphone, email ou visiter notre magasin. L'équipe du service client est disponible pour vous aider de 9h à 18h.",
+                heroTitle: "Café & Chocolat - Saveurs Irrésistibles",
+                heroDesc: "Découvrez un monde de saveurs avec les meilleurs types de café et de chocolat. Produits frais et de haute qualité des meilleures fermes du monde entier.",
+                shopNow: "Acheter Maintenant",
+                featuredProducts: "Produits en Vedette",
+                newThisWeek: "Nouveautés de la Semaine",
+                allProducts: "Tous les Produits",
+                coffeeProducts: "Café",
+                chocolateProducts: "Chocolat",
+                new: "Nouveau",
+                product1Title: "Café Arabica Éthiopien",
+                product1Desc: "Café arabica riche en saveurs fruitées et florales, des meilleures fermes éthiopiennes",
+                product1FullDesc: "Café Arabica éthiopien de la région de Yirgacheffe, connu pour ses saveurs uniques d'agrumes et de fleurs. Torréfaction moyenne pour préserver la complexité de ses saveurs naturelles. Idéal pour les amateurs de café à la recherche d'une expérience unique et riche en saveurs.",
+                product2Title: "Chocolat Belge Noir",
+                product2Desc: "Chocolat belge luxueux avec 70% de cacao, lisse et riche en saveur",
+                product2FullDesc: "Chocolat noir belge luxueux à base des meilleures fèves de cacao du Ghana. Contient 70% de cacao ce qui le rend riche en saveur avec une douceur équilibrée. Caractéristiques : une douceur exceptionnelle et une fonte douce en bouche. Idéal pour les amateurs de chocolat noir.",
+                product3Title: "Mélange de Café Italien",
+                product3Desc: "Mélange de café italien traditionnel, fort et corsé avec une saveur riche",
+                product3FullDesc: "Mélange de café italien traditionnel combinant des grains Arabica et Robusta des meilleures fermes. Torréfaction foncée donne une saveur forte et un corps complet avec une touche de douceur naturelle. Idéal pour préparer l'espresso et le café rapide.",
+                product4Title: "Chocolat Suisse aux Noisettes",
+                product4Desc: "Chocolat suisse luxueux avec des morceaux de noisettes entières, lisse et délicieux",
+                product4FullDesc: "Chocolat au lait suisse luxueux avec des morceaux de noisettes entières grillées. Caractéristiques : une douceur exceptionnelle et une saveur riche équilibrée entre la douceur du chocolat et le croquant des noisettes. Fabriqué selon les normes suisses les plus fines en chocolaterie.",
+                product5Title: "Café Colombien Biologique",
+                product5Desc: "Café colombien biologique certifié, torréfaction moyenne avec des saveurs de chocolat et caramel",
+                product5FullDesc: "Café colombien biologique certifié de la région de Huila, connu pour ses saveurs équilibrées de chocolat et caramel avec une touche acide douce. Torréfaction moyenne préserve la complexité de ses saveurs naturelles. Idéal pour profiter à tout moment de la journée.",
+                product6Title: "Chocolat à l'Orange et aux Amandes",
+                product6Desc: "Chocolat noir avec saveur d'orange naturelle et morceaux d'amandes grillées",
+                product6FullDesc: "Chocolat noir luxueux avec 60% de cacao, avec saveur d'orange naturelle et morceaux d'amandes grillées. Combine l'amertume du chocolat noir avec la douceur de l'orange et le croquant des amandes. Une expérience de saveur unique et équilibrée.",
+                addToCart: "Ajouter au Panier",
+                viewDetails: "Voir les Détails",
+                bestseller: "Meilleure Vente",
+                cartTitle: "Panier d'Achat",
+                checkout: "Terminer la Commande via WhatsApp",
+                address: "Adresse",
+                addressContent: "Rue Mohammed V, Casablanca, Maroc",
+                phone: "Téléphone",
+                phoneNumber: "+212 522 345 678",
+                email: "E-mail",
+                emailAddress: "info@coffee-chocolate.com",
+                aboutFooter: "À Propos du Magasin",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Service Client",
+                shipping: "Livraison",
+                connectWithUs: "Connectez avec Nous",
+                connectDesc: "Suivez-nous sur les réseaux sociaux pour connaître les dernières offres et nouveaux produits",
+                allRights: "Tous Droits Réservés",
+                whatsappMessage: "Bonjour, je souhaite commander les produits suivants :\n",
+                whatsappTotal: "\nTotal : $",
+                whatsappInfo: "\n\nNom : \nAdresse : \nNuméro de Téléphone :"
+            }
+        };
+
+        // تغيير اللغة
+        let currentLang = 'ar';
+        
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentLang = this.getAttribute('data-lang');
+                document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.lang = currentLang;
+                
+                // تحديث اسم المتجر
+                document.querySelectorAll('.store-name').forEach(element => {
+                    element.textContent = translations[currentLang].storeName;
+                });
+                
+                // تحديث كل النصوص
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[currentLang][key]) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translations[currentLang][key];
+                        } else {
+                            element.textContent = translations[currentLang][key];
+                        }
+                    }
+                });
+            });
+        });
+
+        // نظام سلة التسوق
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartCount = document.querySelector('.cart-count');
+
+        // فتح وإغلاق السلة
+        cartIcon.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // إضافة منتج إلى السلة
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+            });
+        });
+
+        // تحديث السلة
+        function updateCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price} x ${item.quantity}</div>
+                    </div>
+                    <button class="cart-item-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `${translations[currentLang].cartTitle.split(' ')[0]}: $${total}`;
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // إضافة حدث إزالة العنصر
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        // إتمام الطلب عبر واتساب
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert(translations[currentLang].cartTitle + ' ' + (currentLang === 'ar' ? 'فارغة' : 'is empty'));
+                return;
+            }
+            
+            let message = translations[currentLang].whatsappMessage;
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `- ${item.title} (${item.quantity} x $${item.price})\n`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `${translations[currentLang].whatsappTotal}${total}`;
+            message += translations[currentLang].whatsappInfo;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/212600000000?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        });
+
+        // نظام عرض تفاصيل المنتج
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalBody = document.getElementById('modalBody');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+
+        // فتح نافذة تفاصيل المنتج
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                showProductDetails(productId);
+            });
+        });
+
+        // إغلاق نافذة تفاصيل المنتج
+        closeModal.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض تفاصيل المنتج
+        function showProductDetails(productId) {
+            const productKey = `product${productId}Title`;
+            const productDescKey = `product${productId}FullDesc`;
+            const productPrice = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-price').textContent;
+            const productImage = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-image').style.backgroundImage;
+            
+            modalBody.innerHTML = `
+                <div class="modal-image" style="${productImage}"></div>
+                <div class="modal-details">
+                    <h3>${translations[currentLang][productKey]}</h3>
+                    <div class="product-price">${productPrice}</div>
+                    <p class="product-full-desc">${translations[currentLang][productDescKey]}</p>
+                    <div class="modal-actions">
+                        <button class="add-to-cart">${translations[currentLang].addToCart}</button>
+                    </div>
+                </div>
+            `;
+            
+            // إضافة حدث إضافة إلى السلة داخل النافذة
+            modalBody.querySelector('.add-to-cart').addEventListener('click', function() {
+                const productCard = document.querySelector(`[data-product="${productId}"]`).closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                productModal.classList.remove('active');
+                overlay.classList.remove('active');
+                cartSidebar.classList.add('active');
+            });
+            
+            productModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,2497 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمال طبيعي - Natural Beauty</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E8F4F8;
+            --secondary: #B8D8D8;
+            --accent: #7FB3B3;
+            --dark: #4A7B7B;
+            --darker: #2C4A4A;
+            --transition: all 0.3s ease;
+            --light: #F5F9FA;
+            --medium: #D1E8E8;
+            --pink: #F8D7DA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Amiri', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--light) 100%);
+            color: var(--darker);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%234A7B7B" opacity="0.05" d="M20,20 C30,10 70,10 80,20 C90,30 90,70 80,80 C70,90 30,90 20,80 C10,70 10,30 20,20 Z"/></svg>');
+        }
+
+        /* شريط اللغة المعدل */
+        .language-bar {
+            background: var(--dark);
+            color: var(--primary);
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--accent);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .language-selector {
+            display: inline-block;
+            position: relative;
+        }
+
+        .language-btn {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-btn:hover {
+            color: var(--darker);
+            background: var(--accent);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--darker);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 10px 0;
+            min-width: 150px;
+            z-index: 1002;
+            display: none;
+            margin-top: 5px;
+        }
+
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 15px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-option:hover {
+            background: var(--accent);
+            color: var(--darker);
+        }
+
+        .lang-option.active {
+            background: var(--accent);
+            color: var(--darker);
+        }
+
+        /* الهيدر المعدل */
+        header {
+            background: rgba(232, 244, 248, 0.95);
+            color: var(--darker);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--darker);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* القائمة الرئيسية المعدلة */
+        .main-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--darker);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 10px;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .nav-icon:hover {
+            background: rgba(184, 216, 216, 0.2);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--darker);
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .cart-icon:hover {
+            color: var(--dark);
+            transform: scale(1.1);
+            background: rgba(184, 216, 216, 0.2);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--dark);
+            color: var(--primary);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* زر الهامبرجر في الجهة اليسرى */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--darker);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: var(--transition);
+            order: -1; /* هذا سيضعه في البداية (الجهة اليسرى) */
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(184, 216, 216, 0.2);
+            color: var(--dark);
+        }
+
+        /* القائمة الجانبية */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 350px;
+            height: 100vh;
+            background: rgba(232, 244, 248, 0.98);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--accent);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .sidebar-header h3 {
+            color: var(--darker);
+            font-size: 1.5rem;
+        }
+
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--darker);
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .close-sidebar:hover {
+            background: rgba(184, 216, 216, 0.2);
+            color: var(--dark);
+        }
+
+        .sidebar-content {
+            padding: 10px 0;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 10px 15px;
+            color: var(--darker);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 5px;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(184, 216, 216, 0.2);
+            color: var(--dark);
+            padding-right: 20px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* بقية الأنماط تبقى كما هي */
+        .page {
+            display: none;
+            min-height: 70vh;
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(232, 244, 248, 0.8), rgba(245, 249, 250, 0.8)), url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--darker);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            color: var(--darker);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--primary);
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(127, 179, 179, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--dark), var(--accent));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(127, 179, 179, 0.5);
+        }
+
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: rgba(184, 216, 216, 0.2);
+            border: 2px solid var(--accent);
+            color: var(--darker);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: rgba(184, 216, 216, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-btn.skincare.active {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-color: var(--dark);
+            color: var(--primary);
+        }
+
+        .category-btn.haircare.active {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            border-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .category-btn.all.active {
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            border-color: var(--dark);
+            color: var(--primary);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--darker);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--dark));
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 216, 216, 0.3);
+            display: none;
+        }
+
+        .product-card.active {
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(184, 216, 216, 0.2);
+            border: 1px solid var(--accent);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--darker);
+        }
+
+        .product-desc {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--primary);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--dark), var(--accent));
+        }
+
+        .view-details {
+            background: rgba(184, 216, 216, 0.2);
+            color: var(--darker);
+            border: 1px solid var(--accent);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .view-details:hover {
+            background: rgba(184, 216, 216, 0.4);
+            border-color: var(--dark);
+        }
+
+        .contact-section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(184, 216, 216, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(184, 216, 216, 0.1);
+            border: 1px solid var(--accent);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--darker);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-card p {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--darker);
+        }
+
+        .about-section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--darker);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .about-text p {
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            height: 400px;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .shipping-section, .privacy-section, .quality-section, .faq-section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .shipping-content, .privacy-content, .quality-content, .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .shipping-item, .privacy-item, .quality-item, .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(184, 216, 216, 0.3);
+        }
+
+        .shipping-item h3, .privacy-item h3, .quality-item h3, .faq-item h3 {
+            color: var(--darker);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shipping-item p, .privacy-item p, .quality-item p, .faq-item p {
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--darker);
+        }
+
+        .faq-answer {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .blog-section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(184, 216, 216, 0.3);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(184, 216, 216, 0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--darker);
+        }
+
+        .blog-date {
+            color: var(--dark);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: var(--dark);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover {
+            color: var(--darker);
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 380px;
+            height: 100vh;
+            background: rgba(232, 244, 248, 0.95);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--accent);
+        }
+
+        .cart-sidebar.active {
+            left: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .cart-header h3 {
+            color: var(--darker);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--darker);
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(184, 216, 216, 0.3);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--darker);
+        }
+
+        .cart-item-price {
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff5252;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--darker);
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        footer {
+            background: var(--darker);
+            color: var(--primary);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--accent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(184, 216, 216, 0.2);
+            border-radius: 50%;
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--darker);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--accent);
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .product-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(232, 244, 248, 0.95);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid var(--accent);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--darker);
+            z-index: 1;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .modal-details h3 {
+            color: var(--darker);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-full-desc {
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* التجاوب مع جميع الأجهزة */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .product-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 80%;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط اللغات في الأعلى -->
+    <div class="language-bar">
+        <div class="language-selector">
+            <button class="language-btn" id="languageBtn">
+                <i class="fas fa-globe"></i>
+                <span id="currentLang">العربية</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                <div class="lang-option active" data-lang="ar">
+                    <i class="fas fa-check"></i>
+                    <span>العربية</span>
+                </div>
+                <div class="lang-option" data-lang="en">
+                    <i class="fas fa-check"></i>
+                    <span>English</span>
+                </div>
+                <div class="lang-option" data-lang="fr">
+                    <i class="fas fa-check"></i>
+                    <span>Français</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الهيدر المعدل -->
+    <header>
+        <div class="nav-container">
+            <!-- زر الهامبرجر في الجهة اليسرى -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a href="#" class="logo" data-page="home">
+                <img src="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg" alt="جمال طبيعي - Natural Beauty" class="logo-image">
+                <span class="store-name">جمال طبيعي</span>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#" class="nav-icon" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span data-key="home">الرئيسية</span>
+                </a>
+                <a href="#" class="nav-icon" data-page="products">
+                    <i class="fas fa-spa"></i>
+                    <span data-key="products">المنتجات</span>
+                </a>
+                <a href="#" class="nav-icon" data-page="contact">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contactUs">اتصل بنا</span>
+                </a>
+            </nav>
+
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- الصفحات -->
+    <main>
+        <!-- الصفحة الرئيسية -->
+        <section id="home-page" class="page active">
+            <!-- الهيرو سيكشن -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 data-key="heroTitle">جمال طبيعي</h1>
+                    <p data-key="heroDesc">اكتشف جمال بشرتك مع منتجات العناية الطبيعية المصنوعة بعناية. مستحضرات طبيعية، زيوت عضوية، ومنتجات عناية بالبشرة والشعر بأجود المكونات.</p>
+                    <a href="#" class="btn" data-page="products" data-key="shopNow">تسوق الآن</a>
+                </div>
+            </section>
+
+            <!-- أقسام المنتجات -->
+            <div class="container">
+                <div class="product-categories">
+                    <button class="category-btn all active" data-category="all">
+                        <i class="fas fa-star"></i>
+                        <span data-key="allProducts">جميع المنتجات</span>
+                    </button>
+                    <button class="category-btn skincare" data-category="skincare">
+                        <i class="fas fa-spa"></i>
+                        <span data-key="skincare">العناية بالبشرة</span>
+                    </button>
+                    <button class="category-btn haircare" data-category="haircare">
+                        <i class="fas fa-air-freshener"></i>
+                        <span data-key="haircare">العناية بالشعر</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- قسم المنتجات المميزة -->
+            <section class="section" id="featured">
+                <div class="container">
+                    <h2 class="section-title" data-key="featuredProducts">منتجات مميزة</h2>
+                    <div class="products-grid">
+                        <!-- المنتج 1 - عناية بالبشرة -->
+                        <div class="product-card active" data-category="skincare">
+                            <div class="product-badge" data-key="new">جديد</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product1Title">سيروم فيتامين سي</h3>
+                                <p class="product-desc" data-key="product1Desc">سيروم طبيعي لتوحيد لون البشرة وتفتيح البقع الداكنة</p>
+                                <div class="product-price">$45</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="1">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 2 - عناية بالشعر -->
+                        <div class="product-card active" data-category="haircare">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product2Title">زيت الأرجان المغربي</h3>
+                                <p class="product-desc" data-key="product2Desc">زيت طبيعي لترطيب وتغذية الشعر والبشرة</p>
+                                <div class="product-price">$32</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="2">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 3 - عناية بالبشرة -->
+                        <div class="product-card active" data-category="skincare">
+                            <div class="product-badge" data-key="bestseller">الأكثر مبيعاً</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product3Title">مرطب يومي بالصبار</h3>
+                                <p class="product-desc" data-key="product3Desc">مرطب خفيف مناسب لجميع أنواع البشرة</p>
+                                <div class="product-price">$28</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="3">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم جديدنا هذا الأسبوع -->
+            <section class="section" id="new">
+                <div class="container">
+                    <h2 class="section-title" data-key="newThisWeek">جديدنا هذا الأسبوع</h2>
+                    <div class="products-grid">
+                        <!-- المنتج 4 - عناية بالشعر -->
+                        <div class="product-card active" data-category="haircare">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product4Title">شامبو طبيعي باللافندر</h3>
+                                <p class="product-desc" data-key="product4Desc">شامبو لطيف ينظف الشعر بلطف دون تجريده من زيوتة الطبيعية</p>
+                                <div class="product-price">$22</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="4">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 5 - عناية بالبشرة -->
+                        <div class="product-card active" data-category="skincare">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product5Title">مقشر طبيعي بالقهوة</h3>
+                                <p class="product-desc" data-key="product5Desc">مقشر لطيف يزيل الخلايا الميتة وينشط الدورة الدموية</p>
+                                <div class="product-price">$35</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="5">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 6 - عناية بالشعر -->
+                        <div class="product-card active" data-category="haircare">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1596704011097-4c67c0bb5e82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product6Title">بلسم مغذي بالعسل</h3>
+                                <p class="product-desc" data-key="product6Desc">بلسم عميق يغذي الشعر ويمنحه لمعاناً طبيعياً</p>
+                                <div class="product-price">$26</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="6">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- صفحة المنتجات -->
+        <section id="products-page" class="page">
+            <div class="container">
+                <h2 class="section-title" data-key="allProducts">جميع المنتجات</h2>
+                <div class="product-categories">
+                    <button class="category-btn all active" data-category="all">
+                        <i class="fas fa-star"></i>
+                        <span data-key="allProducts">جميع المنتجات</span>
+                    </button>
+                    <button class="category-btn skincare" data-category="skincare">
+                        <i class="fas fa-spa"></i>
+                        <span data-key="skincare">العناية بالبشرة</span>
+                    </button>
+                    <button class="category-btn haircare" data-category="haircare">
+                        <i class="fas fa-air-freshener"></i>
+                        <span data-key="haircare">العناية بالشعر</span>
+                    </button>
+                </div>
+                <div class="products-grid">
+                    <!-- سيتم عرض جميع المنتجات هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة اتصل بنا -->
+        <section id="contact-page" class="page">
+            <div class="contact-section">
+                <div class="contact-container">
+                    <h2 class="section-title" data-key="contactUs">اتصل بنا</h2>
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3 data-key="address">العنوان</h3>
+                            <p data-key="addressContent">شارع محمد الخامس، الدار البيضاء، المغرب</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-phone"></i>
+                            <h3 data-key="phone">الهاتف</h3>
+                            <p><a href="tel:+212522345678" data-key="phoneNumber">+212 522 345 678</a></p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3 data-key="email">البريد الإلكتروني</h3>
+                            <p><a href="mailto:info@naturalbeauty.com" data-key="emailAddress">info@naturalbeauty.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة سياسة الخصوصية -->
+        <section id="privacy-page" class="page">
+            <div class="privacy-section">
+                <div class="container">
+                    <h2 class="section-title" data-key="privacyPolicy">سياسة الخصوصية</h2>
+                    <div class="privacy-content">
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-shield-alt"></i> <span data-key="infoWeCollect">معلومات ن جمعها</span></h3>
+                            <p data-key="privacyDesc1">نحن نلتزم بحماية خصوصيتك. ن collect المعلومات التالية:</p>
+                            <ul>
+                                <li data-key="privacyItem1">المعلومات الشخصية (الاسم، البريد الإلكتروني، العنوان) عند إنشاء حساب أو إتمام عملية شراء</li>
+                                <li data-key="privacyItem2">معلومات الدفع (بطاقات الائتمان) التي تتم معالجتها بشكل آمن من خلال مزودي الدفع الموثوقين</li>
+                                <li data-key="privacyItem3">معلومات التصفح والتفاعل مع الموقع لتحسين تجربة المستخدم</li>
+                            </ul>
+                        </div>
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-lock"></i> <span data-key="howWeUseInfo">كيفية استخدام المعلومات</span></h3>
+                            <p data-key="privacyDesc2">نستخدم المعلومات التي ن collect ها ل:</p>
+                            <ul>
+                                <li data-key="privacyItem4">معالجة طلباتك وإدارة حسابك</li>
+                                <li data-key="privacyItem5">تحسين منتجاتنا وخدماتنا</li>
+                                <li data-key="privacyItem6">إرسال تحديثات حول منتجاتنا وعروضنا الخاصة (يمكنك إلغاء الاشتراك في أي وقت)</li>
+                                <li data-key="privacyItem7">توفير خدمة عملاء متميزة</li>
+                            </ul>
+                        </div>
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-handshake"></i> <span data-key="infoSharing">مشاركة المعلومات</span></h3>
+                            <p data-key="privacyDesc3">نحن لا نبيع أو نؤجر أو نشارك معلوماتك الشخصية مع أطراف ثالثة لأغراض تسويقية. قد نشارك معلومات محدودة مع:</p>
+                            <ul>
+                                <li data-key="privacyItem8">مزودي الخدمات الذين يساعدوننا في تشغيل موقعنا ومعالجة المدفوعات</li>
+                                <li data-key="privacyItem9">سلطات إنفاذ القانون عندما يقتضي القانون ذلك</li>
+                            </ul>
+                        </div>
+                        <div class="privacy-item">
+                            <h3><i class="fas fa-cookie"></i> <span data-key="cookies">ملفات تعريف الارتباط (Cookies)</span></h3>
+                            <p data-key="privacyDesc4">نستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح وتذكر تفضيلاتك. يمكنك تعطيل ملفات تعريف الارتباط من خلال إعدادات المتصفح، لكن هذا قد يؤثر على وظائف الموقع.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة الجودة والضمان -->
+        <section id="quality-page" class="page">
+            <div class="quality-section">
+                <div class="container">
+                    <h2 class="section-title" data-key="qualityWarranty">الجودة والضمان</h2>
+                    <div class="quality-content">
+                        <div class="quality-item">
+                            <h3><i class="fas fa-award"></i> <span data-key="qualityStandards">معايير الجودة</span></h3>
+                            <p data-key="qualityDesc1">نحن نلتزم بأعلى معايير الجودة في جميع منتجاتنا:</p>
+                            <ul>
+                                <li data-key="qualityItem1">جميع المكونات المستخدمة طبيعية ومختارة بعناية</li>
+                                <li data-key="qualityItem2">منتجاتنا خالية من المواد الكيميائية الضارة والبارابين</li>
+                                <li data-key="qualityItem3">نفحص كل منتج بعناية قبل شحنه للتأكد من خلوه من العيوب</li>
+                                <li data-key="qualityItem4">نستخدم فقط المكونات الطبيعية والصديقة للبيئة</li>
+                            </ul>
+                        </div>
+                        <div class="quality-item">
+                            <h3><i class="fas fa-certificate"></i> <span data-key="qualityGuarantee">ضمان الجودة</span></h3>
+                            <p data-key="qualityDesc2">نحن نضمن جودة جميع منتجاتنا ونقدم:</p>
+                            <ul>
+                                <li data-key="qualityItem5">ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج</li>
+                                <li data-key="qualityItem6">ضمان ضد عيوب الصنعة لمدة 6 أشهر</li>
+                                <li data-key="qualityItem7">إصلاح مجاني للمشاكل الناتجة عن عيوب في التصنيع</li>
+                                <li data-key="qualityItem8">دعم فني متواصل لمساعدتك في أي استفسار</li>
+                            </ul>
+                        </div>
+                        <div class="quality-item">
+                            <h3><i class="fas fa-hands-helping"></i> <span data-key="afterSales">خدمة ما بعد البيع</span></h3>
+                            <p data-key="qualityDesc3">نحن لا نبيع منتجات فحسب، بل نقدم تجربة شاملة:</p>
+                            <ul>
+                                <li data-key="qualityItem9">فريق خدمة عملاء متاح على مدار الساعة طوال أيام الأسبوع</li>
+                                <li data-key="qualityItem10">نصائح للعناية بالبشرة والشعر باستخدام منتجاتنا</li>
+                                <li data-key="qualityItem11">إمكانية تخصيص المنتجات حسب رغبتك (للطلبات الكبيرة)</li>
+                                <li data-key="qualityItem12">تحديثات منتظمة حول صيانة المنتجات والعناية بها</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة الأسئلة الشائعة -->
+        <section id="faq-page" class="page">
+            <div class="faq-section">
+                <div class="container">
+                    <h2 class="section-title" data-key="faq">الأسئلة الشائعة</h2>
+                    <div class="faq-content">
+                        <div class="faq-item">
+                            <h3><i class="fas fa-question-circle"></i> <span data-key="productQuestions">أسئلة حول المنتجات</span></h3>
+                            <div class="faq-question" data-key="faqQuestion1">هل منتجاتكم مناسبة لجميع أنواع البشرة؟</div>
+                            <div class="faq-answer" data-key="faqAnswer1">نعم، منتجاتنا مصممة لتناسب جميع أنواع البشرة. ومع ذلك، ننصح دائماً باختبار المنتج على منطقة صغيرة من الجلد قبل الاستخدام الكامل.</div>
+                            
+                            <div class="faq-question" data-key="faqQuestion2">ما هي المكونات المستخدمة في منتجاتكم؟</div>
+                            <div class="faq-answer" data-key="faqAnswer2">نستخدم مجموعة متنوعة من المكونات الطبيعية مثل الزيوت العضوية، المستخلصات النباتية، والفيتامينات الطبيعية. جميع منتجاتنا خالية من البارابين والكبريتات.</div>
+                            
+                            <div class="faq-question" data-key="faqQuestion3">هل المنتجات مصنوعة يدويًا؟</div>
+                            <div class="faq-answer" data-key="faqAnswer3">نعم، معظم منتجاتنا تحتوي على عناصر مصنوعة يدويًا، خاصة المستخلصات والخلطات التي تتم بواسطة خبراء في مجال التجميل الطبيعي.</div>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-shipping-fast"></i> <span data-key="shippingQuestions">أسئلة حول الشحن والتوصيل</span></h3>
+                            <div class="faq-question" data-key="faqQuestion4">كم تستغرق مدة التوصيل؟</div>
+                            <div class="faq-answer" data-key="faqAnswer4">مدة التوصيل داخل المغرب تتراوح بين 2-5 أيام عمل. للتوصيل الدولي، تتراوح بين 7-14 يوم عمل حسب الوجهة.</div>
+                            
+                            <div class="faq-question" data-key="faqQuestion5">هل الشحن مجاني؟</div>
+                            <div class="faq-answer" data-key="faqAnswer5">نعم، الشحن مجاني للطلبات التي تزيد عن 500 درهم داخل المغرب. للطلبات الأقل من ذلك، تبلغ تكلفة الشحن 30 درهم.</div>
+                            
+                            <div class="faq-question" data-key="faqQuestion6">هل تقدمون خدمة التوصيل السريع؟</div>
+                            <div class="faq-answer" data-key="faqAnswer6">نعم، نقدم خدمة التوصيل السريع داخل المدن الكبرى خلال 24 ساعة بتكلفة إضافية 50 درهم.</div>
+                        </div>
+                        <div class="faq-item">
+                            <h3><i class="fas fa-undo"></i> <span data-key="returnQuestions">أسئلة حول الإرجاع والاستبدال</span></h3>
+                            <div class="faq-question" data-key="faqQuestion7">ما هي سياسة الإرجاع؟</div>
+                            <div class="faq-answer" data-key="faqAnswer7">يمكنك إرجاع المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مستخدم.</div>
+                            
+                            <div class="faq-question" data-key="faqQuestion8">كيف يمكنني إرجاع منتج؟</div>
+                            <div class="faq-answer" data-key="faqAnswer8">اتصل بفريق خدمة العملاء على الرقم المخصص، وسنزودك بتعليمات مفصلة حول عملية الإرجاع.</div>
+                            
+                            <div class="faq-question" data-key="faqQuestion9">متى سأسترد أموالي؟</div>
+                            <div class="faq-answer" data-key="faqAnswer9">سيتم استرداد المبلغ خلال 5-7 أيام عمل من استلامنا للمنتج المرتجع.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة عن المتجر -->
+        <section id="about-page" class="page">
+            <div class="about-section">
+                <div class="container">
+                    <h2 class="section-title" data-key="aboutStore">عن متجر جمال طبيعي</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2 data-key="aboutTitle">جمالك هو هويتنا</h2>
+                            <p data-key="aboutDesc1">نحن متجر متخصص في بيع منتجات العناية بالبشرة والشعر الطبيعية. نقدم أجود أنواع المستحضرات الطبيعية، الزيوت العضوية، ومنتجات التجميل المصنوعة بمكونات طبيعية وعالية الجودة.</p>
+                            <p data-key="aboutDesc2">نحن نؤمن بأن الجمال الحقيقي يأتي من الطبيعة. لذلك نعمل مع أفضل الخبراء في مجال التجميل الطبيعي لنقدم لكم منتجات تجمع بين الفعالية والأمان والاستدامة.</p>
+                            <p data-key="aboutDesc3">نحن نضمن جودة جميع منتجاتنا ونستخدم أفضل المكونات الطبيعية. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.</p>
+                            <a href="#" class="btn" data-page="contact" data-key="contactUs">اتصل بنا</a>
+                        </div>
+                        <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة الشحن والتوصيل -->
+        <section id="shipping-page" class="page">
+            <div class="shipping-section">
+                <div class="container">
+                    <h2 class="section-title" data-key="shippingDelivery">الشحن والتوصيل</h2>
+                    <div class="shipping-content">
+                        <div class="shipping-item">
+                            <h3><i class="fas fa-shipping-fast"></i> <span data-key="shippingPolicy">سياسة الشحن</span></h3>
+                            <p data-key="shippingDesc1">نحن نقدم خدمة الشحن لجميع أنحاء المغرب مع إمكانية التوصيل الدولي لبعض البلدان. مدة التوصيل داخل المغرب تتراوح بين 2-5 أيام عمل، بينما التوصيل الدولي يستغرق 7-14 يوم عمل.</p>
+                        </div>
+                        <div class="shipping-item">
+                            <h3><i class="fas fa-money-bill-wave"></i> <span data-key="shippingCosts">تكاليف الشحن</span></h3>
+                            <p data-key="shippingDesc2">الشحن داخل المغرب مجاني للطلبات التي تزيد عن 500 درهم. للطلبات الأقل من ذلك، تبلغ تكلفة الشحن 30 درهم. للشحن الدولي، تختلف التكلفة حسب البلد والوزن.</p>
+                        </div>
+                        <div class="shipping-item">
+                            <h3><i class="fas fa-undo"></i> <span data-key="returnPolicy">سياسة الإرجاع</span></h3>
+                            <p data-key="shippingDesc3">يمكنك إرجاع أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مستخدم. سيتم استرداد المبلغ خلال 5-7 أيام عمل.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة المدونة -->
+        <section id="blog-page" class="page">
+            <div class="blog-section">
+                <div class="container">
+                    <h2 class="section-title" data-key="blog">مدونة جمال طبيعي</h2>
+                    <div class="blog-grid">
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="blog-content">
+                                <h3 class="blog-title" data-key="blogTitle1">فوائد الزيوت الطبيعية للبشرة</h3>
+                                <div class="blog-date" data-key="blogDate1">15 مارس 2023</div>
+                                <p class="blog-excerpt" data-key="blogExcerpt1">الزيوت الطبيعية هي سر جمال البشرة منذ القدم. اكتشف كيف يمكن للزيوت الطبيعية أن تحسن صحة بشرتك...</p>
+                                <a href="#" class="blog-link" data-key="readMore">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="blog-content">
+                                <h3 class="blog-title" data-key="blogTitle2">كيف تختارين منتجات العناية المناسبة لبشرتك</h3>
+                                <div class="blog-date" data-key="blogDate2">10 فبراير 2023</div>
+                                <p class="blog-excerpt" data-key="blogExcerpt2">اختيار منتجات العناية بالبشرة المناسبة يمكن أن يكون محيراً. تعلمي كيفية تحديد نوع بشرتك واختيار المنتجات المناسبة...</p>
+                                <a href="#" class="blog-link" data-key="readMore">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80')"></div>
+                            <div class="blog-content">
+                                <h3 class="blog-title" data-key="blogTitle3">روتين العناية بالبشرة في الصباح والمساء</h3>
+                                <div class="blog-date" data-key="blogDate3">5 يناير 2023</div>
+                                <p class="blog-excerpt" data-key="blogExcerpt3">روتين العناية بالبشرة المنتظم هو أساس البشرة الصحية. تعرف على الخطوات الأساسية للعناية بالبشرة صباحاً ومساءً...</p>
+                                <a href="#" class="blog-link" data-key="readMore">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- القائمة الجانبية -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3 data-key="menu">القائمة</h3>
+            <button class="close-sidebar" id="closeSidebar">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <a href="#" class="sidebar-link" data-page="about">
+                <i class="fas fa-users"></i> <span data-key="about">من نحن</span>
+            </a>
+            <a href="#" class="sidebar-link" data-page="quality">
+                <i class="fas fa-award"></i> <span data-key="quality">الجودة والضمان</span>
+            </a>
+            <a href="#" class="sidebar-link" data-page="blog">
+                <i class="fas fa-blog"></i> <span data-key="blog">المدونة</span>
+            </a>
+            <a href="#" class="sidebar-link" data-page="faq">
+                <i class="fas fa-question-circle"></i> <span data-key="faq">الأسئلة الشائعة</span>
+            </a>
+            <a href="#" class="sidebar-link" data-page="contact">
+                <i class="fas fa-phone-alt"></i> <span data-key="contactUs">اتصل بنا</span>
+            </a>
+            <a href="#" class="sidebar-link" data-page="shipping">
+                <i class="fas fa-shipping-fast"></i> <span data-key="shipping">شحن وتوصيل</span>
+            </a>
+            <a href="#" class="sidebar-link" data-page="returns">
+                <i class="fas fa-exchange-alt"></i> <span data-key="returns">الإرجاع والاستبدال</span>
+            </a>
+            <a href="#" class="sidebar-link" data-page="privacy">
+                <i class="fas fa-shield-alt"></i> <span data-key="privacy">سياسة الخصوصية</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- سلة التسوق -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-key="cartTitle">سلة التسوق</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- سيتم إضافة العناصر هنا ديناميكياً -->
+        </div>
+        <div class="cart-total" id="cartTotal">المجموع: $0</div>
+        <button class="checkout-btn" id="checkoutBtn">
+            <i class="fab fa-whatsapp"></i> <span data-key="checkout">إتمام الطلب عبر واتساب</span>
+        </button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- نافذة تفاصيل المنتج -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-key="aboutFooter">عن المتجر</h3>
+                <ul>
+                    <li><a data-page="about"><span data-key="about">من نحن</span></a></li>
+                    <li><a data-page="quality"><span data-key="quality">الجودة والضمان</span></a></li>
+                    <li><a data-page="blog"><span data-key="blog">المدونة</span></a></li>
+                    <li><a data-page="faq"><span data-key="faq">الأسئلة الشائعة</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="customerService">خدمة العملاء</h3>
+                <ul>
+                    <li><a data-page="contact"><span data-key="contactUs">اتصل بنا</span></a></li>
+                    <li><a data-page="shipping"><span data-key="shipping">الشحن والتوصيل</span></a></li>
+                    <li><a data-page="returns"><span data-key="returns">الإرجاع والاستبدال</span></a></li>
+                    <li><a data-page="privacy"><span data-key="privacy">سياسة الخصوصية</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="connectWithUs">تواصل معنا</h3>
+                <p data-key="connectDesc">تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة</p>
+                <div class="social-links">
+                    <a href="https://replace.me/instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://replace.me/facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://replace.me/x" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://replace.me/tiktok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://replace.me/whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 <span class="store-name">جمال طبيعي</span>. <span data-key="allRights">جميع الحقوق محفوظة</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // نظام اللغات المتكامل والشامل
+        const translations = {
+            ar: {
+                // الهيدر والقوائم
+                home: "الرئيسية",
+                products: "المنتجات",
+                contactUs: "اتصل بنا",
+                menu: "القائمة",
+                about: "من نحن",
+                quality: "الجودة والضمان",
+                faq: "الأسئلة الشائعة",
+                returns: "الإرجاع والاستبدال",
+                privacy: "سياسة الخصوصية",
+                shipping: "شحن وتوصيل",
+                cartTitle: "سلة التسوق",
+                checkout: "إتمام الطلب عبر واتساب",
+                
+                // الصفحة الرئيسية
+                storeName: "جمال طبيعي",
+                heroTitle: "جمال طبيعي",
+                heroDesc: "اكتشف جمال بشرتك مع منتجات العناية الطبيعية المصنوعة بعناية. مستحضرات طبيعية، زيوت عضوية، ومنتجات عناية بالبشرة والشعر بأجود المكونات.",
+                shopNow: "تسوق الآن",
+                featuredProducts: "منتجات مميزة",
+                newThisWeek: "جديدنا هذا الأسبوع",
+                allProducts: "جميع المنتجات",
+                skincare: "العناية بالبشرة",
+                haircare: "العناية بالشعر",
+                new: "جديد",
+                bestseller: "الأكثر مبيعاً",
+                addToCart: "أضف إلى السلة",
+                viewDetails: "عرض التفاصيل",
+                
+                // المنتجات
+                product1Title: "سيروم فيتامين سي",
+                product1Desc: "سيروم طبيعي لتوحيد لون البشرة وتفتيح البقع الداكنة",
+                product1FullDesc: "سيروم فيتامين سي الطبيعي مصنوع يدويًا من أجود أنواع المكونات العضوية. يتميز بتركيبة خفيفة سريعة الامتصاص تساعد على توحيد لون البشرة وتفتيح البقع الداكنة. مناسب لجميع أنواع البشرة، ويساعد على تحفيز إنتاج الكولاجين لمكافحة علامات الشيخوخة. متوفر بعدة أحجام تناسب جميع الاحتياجات.",
+                product2Title: "زيت الأرجان المغربي",
+                product2Desc: "زيت طبيعي لترطيب وتغذية الشعر والبشرة",
+                product2FullDesc: "زيت الأرجان المغربي الطبيعي المستخلص من أشجار الأرجان النادرة. يتميز بتركيبته الغنية بالفيتامينات والأحماض الدهنية التي تغذي الشعر والبشرة بعمق. يساعد على ترطيب البشرة الجافة، وتقوية الشعر ومنحه لمعاناً طبيعياً. مثالي للاستخدام اليومي كمرطب أو كعلاج عميق.",
+                product3Title: "مرطب يومي بالصبار",
+                product3Desc: "مرطب خفيف مناسب لجميع أنواع البشرة",
+                product3FullDesc: "مرطب يومي خفيف مصنوع من مستخلص الصبار الطبيعي وفيتامين E. يتميز بقوامه الخفيف سريع الامتصاص الذي لا يترك ملمساً دهنياً. يناسب جميع أنواع البشرة، بما في ذلك البشرة الدهنية والحساسة. يوفر ترطيباً عميقاً طوال اليوم ويحمي البشرة من الجفاف والعوامل الخارجية.",
+                product4Title: "شامبو طبيعي باللافندر",
+                product4Desc: "شامبو لطيف ينظف الشعر بلطف دون تجريده من زيوتة الطبيعية",
+                product4FullDesc: "شامبو طبيعي مصنوع من مستخلص اللافندر العضوي ومكونات طبيعية لطيفة. يتميز برغوة ناعمة تنظف الشعر بعمق دون تجريده من زيوتة الطبيعية. مناسب للاستخدام اليومي، ويساعد على تهدئة فروة الرأس ومنح الشعر لمعاناً طبيعياً. خالي من الكبريتات والبارابين.",
+                product5Title: "مقشر طبيعي بالقهوة",
+                product5Desc: "مقشر لطيف يزيل الخلايا الميتة وينشط الدورة الدموية",
+                product5FullDesc: "مقشر طبيعي للجسم مصنوع من حبيبات القهوة الطبيعية والزيوت المغذية. يساعد على إزالة الخلايا الميتة بلطف، وتنشيط الدورة الدموية، وتحسين ملمس الجلد. مناسب لجميع أنواع البشرة، ويساعد على تقليل مظهر السيلوليت. يمكن استخدامه 2-3 مرات أسبوعياً للحصول على أفضل النتائج.",
+                product6Title: "بلسم مغذي بالعسل",
+                product6Desc: "بلسم عميق يغذي الشعر ويمنحه لمعاناً طبيعياً",
+                product6FullDesc: "بلسم طبيعي عميق التغذية مصنوع من العسل الخام والزيوت المغذية. يساعد على ترطيب الشعر بعمق، وإصلاح الأطراف المتقصفة، ومنح الشعر لمعاناً طبيعياً. مناسب لجميع أنواع الشعر، وخاصة الشعر الجاف والمتضرر. يمكن استخدامه بعد الشامبو للحصول على شعر ناعم وسهل التصفيف.",
+                
+                // صفحة اتصل بنا
+                address: "العنوان",
+                addressContent: "شارع محمد الخامس، الدار البيضاء، المغرب",
+                phone: "الهاتف",
+                phoneNumber: "+212 522 345 678",
+                email: "البريد الإلكتروني",
+                emailAddress: "info@naturalbeauty.com",
+                
+                // صفحة سياسة الخصوصية
+                privacyPolicy: "سياسة الخصوصية",
+                infoWeCollect: "معلومات ن جمعها",
+                privacyDesc1: "نحن نلتزم بحماية خصوصيتك. ن collect المعلومات التالية:",
+                privacyItem1: "المعلومات الشخصية (الاسم، البريد الإلكتروني، العنوان) عند إنشاء حساب أو إتمام عملية شراء",
+                privacyItem2: "معلومات الدفع (بطاقات الائتمان) التي تتم معالجتها بشكل آمن من خلال مزودي الدفع الموثوقين",
+                privacyItem3: "معلومات التصفح والتفاعل مع الموقع لتحسين تجربة المستخدم",
+                howWeUseInfo: "كيفية استخدام المعلومات",
+                privacyDesc2: "نستخدم المعلومات التي ن collect ها ل:",
+                privacyItem4: "معالجة طلباتك وإدارة حسابك",
+                privacyItem5: "تحسين منتجاتنا وخدماتنا",
+                privacyItem6: "إرسال تحديثات حول منتجاتنا وعروضنا الخاصة (يمكنك إلغاء الاشتراك في أي وقت)",
+                privacyItem7: "توفير خدمة عملاء متميزة",
+                infoSharing: "مشاركة المعلومات",
+                privacyDesc3: "نحن لا نبيع أو نؤجر أو نشارك معلوماتك الشخصية مع أطراف ثالثة لأغراض تسويقية. قد نشارك معلومات محدودة مع:",
+                privacyItem8: "مزودي الخدمات الذين يساعدوننا في تشغيل موقعنا ومعالجة المدفوعات",
+                privacyItem9: "سلطات إنفاذ القانون عندما يقتضي القانون ذلك",
+                cookies: "ملفات تعريف الارتباط (Cookies)",
+                privacyDesc4: "نستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح وتذكر تفضيلاتك. يمكنك تعطيل ملفات تعريف الارتباط من خلال إعدادات المتصفح، لكن هذا قد يؤثر على وظائف الموقع.",
+                
+                // صفحة الجودة والضمان
+                qualityWarranty: "الجودة والضمان",
+                qualityStandards: "معايير الجودة",
+                qualityDesc1: "نحن نلتزم بأعلى معايير الجودة في جميع منتجاتنا:",
+                qualityItem1: "جميع المكونات المستخدمة طبيعية ومختارة بعناية",
+                qualityItem2: "منتجاتنا خالية من المواد الكيميائية الضارة والبارابين",
+                qualityItem3: "نفحص كل منتج بعناية قبل شحنه للتأكد من خلوه من العيوب",
+                qualityItem4: "نستخدم فقط المكونات الطبيعية والصديقة للبيئة",
+                qualityGuarantee: "ضمان الجودة",
+                qualityDesc2: "نحن نضمن جودة جميع منتجاتنا ونقدم:",
+                qualityItem5: "ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج",
+                qualityItem6: "ضمان ضد عيوب الصنعة لمدة 6 أشهر",
+                qualityItem7: "إصلاح مجاني للمشاكل الناتجة عن عيوب في التصنيع",
+                qualityItem8: "دعم فني متواصل لمساعدتك في أي استفسار",
+                afterSales: "خدمة ما بعد البيع",
+                qualityDesc3: "نحن لا نبيع منتجات فحسب، بل نقدم تجربة شاملة:",
+                qualityItem9: "فريق خدمة عملاء متاح على مدار الساعة طوال أيام الأسبوع",
+                qualityItem10: "نصائح للعناية بالبشرة والشعر باستخدام منتجاتنا",
+                qualityItem11: "إمكانية تخصيص المنتجات حسب رغبتك (للطلبات الكبيرة)",
+                qualityItem12: "تحديثات منتظمة حول صيانة المنتجات والعناية بها",
+                
+                // صفحة الأسئلة الشائعة
+                productQuestions: "أسئلة حول المنتجات",
+                faqQuestion1: "هل منتجاتكم مناسبة لجميع أنواع البشرة؟",
+                faqAnswer1: "نعم، منتجاتنا مصممة لتناسب جميع أنواع البشرة. ومع ذلك، ننصح دائماً باختبار المنتج على منطقة صغيرة من الجلد قبل الاستخدام الكامل.",
+                faqQuestion2: "ما هي المكونات المستخدمة في منتجاتكم؟",
+                faqAnswer2: "نستخدم مجموعة متنوعة من المكونات الطبيعية مثل الزيوت العضوية، المستخلصات النباتية، والفيتامينات الطبيعية. جميع منتجاتنا خالية من البارابين والكبريتات.",
+                faqQuestion3: "هل المنتجات مصنوعة يدويًا؟",
+                faqAnswer3: "نعم، معظم منتجاتنا تحتوي على عناصر مصنوعة يدويًا، خاصة المستخلصات والخلطات التي تتم بواسطة خبراء في مجال التجميل الطبيعي.",
+                shippingQuestions: "أسئلة حول الشحن والتوصيل",
+                faqQuestion4: "كم تستغرق مدة التوصيل؟",
+                faqAnswer4: "مدة التوصيل داخل المغرب تتراوح بين 2-5 أيام عمل. للتوصيل الدولي، تتراوح بين 7-14 يوم عمل حسب الوجهة.",
+                faqQuestion5: "هل الشحن مجاني؟",
+                faqAnswer5: "نعم، الشحن مجاني للطلبات التي تزيد عن 500 درهم داخل المغرب. للطلبات الأقل من ذلك، تبلغ تكلفة الشحن 30 درهم.",
+                faqQuestion6: "هل تقدمون خدمة التوصيل السريع؟",
+                faqAnswer6: "نعم، نقدم خدمة التوصيل السريع داخل المدن الكبرى خلال 24 ساعة بتكلفة إضافية 50 درهم.",
+                returnQuestions: "أسئلة حول الإرجاع والاستبدال",
+                faqQuestion7: "ما هي سياسة الإرجاع؟",
+                faqAnswer7: "يمكنك إرجاع المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مستخدم.",
+                faqQuestion8: "كيف يمكنني إرجاع منتج؟",
+                faqAnswer8: "اتصل بفريق خدمة العملاء على الرقم المخصص، وسنزودك بتعليمات مفصلة حول عملية الإرجاع.",
+                faqQuestion9: "متى سأسترد أموالي؟",
+                faqAnswer9: "سيتم استرداد المبلغ خلال 5-7 أيام عمل من استلامنا للمنتج المرتجع.",
+                
+                // صفحة عن المتجر
+                aboutStore: "عن متجر جمال طبيعي",
+                aboutTitle: "جمالك هو هويتنا",
+                aboutDesc1: "نحن متجر متخصص في بيع منتجات العناية بالبشرة والشعر الطبيعية. نقدم أجود أنواع المستحضرات الطبيعية، الزيوت العضوية، ومنتجات التجميل المصنوعة بمكونات طبيعية وعالية الجودة.",
+                aboutDesc2: "نحن نؤمن بأن الجمال الحقيقي يأتي من الطبيعة. لذلك نعمل مع أفضل الخبراء في مجال التجميل الطبيعي لنقدم لكم منتجات تجمع بين الفعالية والأمان والاستدامة.",
+                aboutDesc3: "نحن نضمن جودة جميع منتجاتنا ونستخدم أفضل المكونات الطبيعية. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.",
+                
+                // صفحة الشحن والتوصيل
+                shippingDelivery: "الشحن والتوصيل",
+                shippingPolicy: "سياسة الشحن",
+                shippingDesc1: "نحن نقدم خدمة الشحن لجميع أنحاء المغرب مع إمكانية التوصيل الدولي لبعض البلدان. مدة التوصيل داخل المغرب تتراوح بين 2-5 أيام عمل، بينما التوصيل الدولي يستغرق 7-14 يوم عمل.",
+                shippingCosts: "تكاليف الشحن",
+                shippingDesc2: "الشحن داخل المغرب مجاني للطلبات التي تزيد عن 500 درهم. للطلبات الأقل من ذلك، تبلغ تكلفة الشحن 30 درهم. للشحن الدولي، تختلف التكلفة حسب البلد والوزن.",
+                returnPolicy: "سياسة الإرجاع",
+                shippingDesc3: "يمكنك إرجاع أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام. يجب أن يكون المنتج في حالته الأصلية وغير مستخدم. سيتم استرداد المبلغ خلال 5-7 أيام عمل.",
+                
+                // صفحة المدونة
+                blog: "مدونة جمال طبيعي",
+                blogTitle1: "فوائد الزيوت الطبيعية للبشرة",
+                blogDate1: "15 مارس 2023",
+                blogExcerpt1: "الزيوت الطبيعية هي سر جمال البشرة منذ القدم. اكتشف كيف يمكن للزيوت الطبيعية أن تحسن صحة بشرتك...",
+                blogTitle2: "كيف تختارين منتجات العناية المناسبة لبشرتك",
+                blogDate2: "10 فبراير 2023",
+                blogExcerpt2: "اختيار منتجات العناية بالبشرة المناسبة يمكن أن يكون محيراً. تعلمي كيفية تحديد نوع بشرتك واختيار المنتجات المناسبة...",
+                blogTitle3: "روتين العناية بالبشرة في الصباح والمساء",
+                blogDate3: "5 يناير 2023",
+                blogExcerpt3: "روتين العناية بالبشرة المنتظم هو أساس البشرة الصحية. تعرف على الخطوات الأساسية للعناية بالبشرة صباحاً ومساءً...",
+                readMore: "اقرأ المزيد",
+                
+                // الفوتر
+                aboutFooter: "عن المتجر",
+                customerService: "خدمة العملاء",
+                connectWithUs: "تواصل معنا",
+                connectDesc: "تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة",
+                allRights: "جميع الحقوق محفوظة",
+                
+                // رسالة واتساب
+                whatsappMessage: "مرحباً، أريد طلب المنتجات التالية:\n",
+                whatsappTotal: "\nالمجموع: $",
+                whatsappInfo: "\n\nالاسم: \nالعنوان: \nرقم الهاتف:"
+            },
+            en: {
+                // الهيدر والقوائم
+                home: "Home",
+                products: "Products",
+                contactUs: "Contact Us",
+                menu: "Menu",
+                about: "About Us",
+                quality: "Quality & Warranty",
+                faq: "FAQ",
+                returns: "Returns & Exchange",
+                privacy: "Privacy Policy",
+                shipping: "Shipping & Delivery",
+                cartTitle: "Shopping Cart",
+                checkout: "Complete Order via WhatsApp",
+                
+                // الصفحة الرئيسية
+                storeName: "Natural Beauty",
+                heroTitle: "Natural Beauty",
+                heroDesc: "Discover your skin's beauty with carefully crafted natural care products. Natural preparations, organic oils, and skin and hair care products with the finest ingredients.",
+                shopNow: "Shop Now",
+                featuredProducts: "Featured Products",
+                newThisWeek: "New This Week",
+                allProducts: "All Products",
+                skincare: "Skincare",
+                haircare: "Haircare",
+                new: "New",
+                bestseller: "Bestseller",
+                addToCart: "Add to Cart",
+                viewDetails: "View Details",
+                
+                // المنتجات
+                product1Title: "Vitamin C Serum",
+                product1Desc: "Natural serum to even skin tone and lighten dark spots",
+                product1FullDesc: "Natural Vitamin C serum handmade from the finest organic ingredients. Features a lightweight, fast-absorbing formula that helps even skin tone and lighten dark spots. Suitable for all skin types, and helps stimulate collagen production to fight signs of aging. Available in several sizes to suit all needs.",
+                product2Title: "Moroccan Argan Oil",
+                product2Desc: "Natural oil to moisturize and nourish hair and skin",
+                product2FullDesc: "Natural Moroccan argan oil extracted from rare argan trees. Features a rich composition of vitamins and fatty acids that deeply nourish hair and skin. Helps moisturize dry skin, strengthen hair and give it natural shine. Ideal for daily use as a moisturizer or as a deep treatment.",
+                product3Title: "Aloe Vera Daily Moisturizer",
+                product3Desc: "Light moisturizer suitable for all skin types",
+                product3FullDesc: "Light daily moisturizer made from natural aloe vera extract and vitamin E. Features a lightweight, fast-absorbing texture that doesn't leave a greasy feel. Suitable for all skin types, including oily and sensitive skin. Provides deep hydration throughout the day and protects skin from dryness and external factors.",
+                product4Title: "Natural Lavender Shampoo",
+                product4Desc: "Gentle shampoo that cleans hair without stripping its natural oils",
+                product4FullDesc: "Natural shampoo made from organic lavender extract and gentle natural ingredients. Features a soft foam that deeply cleanses hair without stripping its natural oils. Suitable for daily use, and helps soothe the scalp and give hair natural shine. Free of sulfates and parabens.",
+                product5Title: "Natural Coffee Scrub",
+                product5Desc: "Gentle scrub that removes dead cells and stimulates blood circulation",
+                product5FullDesc: "Natural body scrub made from natural coffee granules and nourishing oils. Helps gently remove dead cells, stimulate blood circulation, and improve skin texture. Suitable for all skin types, and helps reduce the appearance of cellulite. Can be used 2-3 times weekly for best results.",
+                product6Title: "Honey Nourishing Conditioner",
+                product6Desc: "Deep conditioner that nourishes hair and gives it natural shine",
+                product6FullDesc: "Natural deep conditioning treatment made from raw honey and nourishing oils. Helps deeply moisturize hair, repair split ends, and give hair natural shine. Suitable for all hair types, especially dry and damaged hair. Can be used after shampoo for soft, easy-to-style hair.",
+                
+                // صفحة اتصل بنا
+                address: "Address",
+                addressContent: "Mohammed V Street, Casablanca, Morocco",
+                phone: "Phone",
+                phoneNumber: "+212 522 345 678",
+                email: "Email",
+                emailAddress: "info@naturalbeauty.com",
+                
+                // صفحة سياسة الخصوصية
+                privacyPolicy: "Privacy Policy",
+                infoWeCollect: "Information We Collect",
+                privacyDesc1: "We are committed to protecting your privacy. We collect the following information:",
+                privacyItem1: "Personal information (name, email, address) when creating an account or completing a purchase",
+                privacyItem2: "Payment information (credit cards) that is securely processed through trusted payment providers",
+                privacyItem3: "Browsing and interaction information with the site to improve user experience",
+                howWeUseInfo: "How We Use Information",
+                privacyDesc2: "We use the information we collect to:",
+                privacyItem4: "Process your orders and manage your account",
+                privacyItem5: "Improve our products and services",
+                privacyItem6: "Send updates about our products and special offers (you can unsubscribe at any time)",
+                privacyItem7: "Provide excellent customer service",
+                infoSharing: "Information Sharing",
+                privacyDesc3: "We do not sell, rent, or share your personal information with third parties for marketing purposes. We may share limited information with:",
+                privacyItem8: "Service providers who help us operate our site and process payments",
+                privacyItem9: "Law enforcement authorities when required by law",
+                cookies: "Cookies",
+                privacyDesc4: "We use cookies to improve the browsing experience and remember your preferences. You can disable cookies through your browser settings, but this may affect site functionality.",
+                
+                // صفحة الجودة والضمان
+                qualityWarranty: "Quality & Warranty",
+                qualityStandards: "Quality Standards",
+                qualityDesc1: "We adhere to the highest quality standards in all our products:",
+                qualityItem1: "All ingredients used are natural and carefully selected",
+                qualityItem2: "Our products are free from harmful chemicals and parabens",
+                qualityItem3: "We carefully inspect each product before shipping to ensure it is free from defects",
+                qualityItem4: "We use only natural and environmentally friendly ingredients",
+                qualityGuarantee: "Quality Guarantee",
+                qualityDesc2: "We guarantee the quality of all our products and offer:",
+                qualityItem5: "30-day return guarantee if you are not satisfied with the product",
+                qualityItem6: "6-month warranty against manufacturing defects",
+                qualityItem7: "Free repair for problems resulting from manufacturing defects",
+                qualityItem8: "Continuous technical support to assist you with any inquiries",
+                afterSales: "After-Sales Service",
+                qualityDesc3: "We don't just sell products, we provide a comprehensive experience:",
+                qualityItem9: "Customer service team available 24/7",
+                qualityItem10: "Tips for skin and hair care using our products",
+                qualityItem11: "Possibility to customize products according to your wishes (for large orders)",
+                qualityItem12: "Regular updates on product maintenance and care",
+                
+                // صفحة الأسئلة الشائعة
+                productQuestions: "Product Questions",
+                faqQuestion1: "Are your products suitable for all skin types?",
+                faqAnswer1: "Yes, our products are designed to suit all skin types. However, we always recommend testing the product on a small area of skin before full use.",
+                faqQuestion2: "What ingredients are used in your products?",
+                faqAnswer2: "We use a variety of natural ingredients like organic oils, plant extracts, and natural vitamins. All our products are free from parabens and sulfates.",
+                faqQuestion3: "Are the products handmade?",
+                faqAnswer3: "Yes, most of our products contain handmade elements, especially extracts and mixtures made by experts in natural cosmetics.",
+                shippingQuestions: "Shipping & Delivery Questions",
+                faqQuestion4: "How long does delivery take?",
+                faqAnswer4: "Delivery within Morocco takes 2-5 business days. For international delivery, it takes 7-14 business days depending on the destination.",
+                faqQuestion5: "Is shipping free?",
+                faqAnswer5: "Yes, shipping is free for orders over 500 dirhams within Morocco. For orders below that, shipping costs 30 dirhams.",
+                faqQuestion6: "Do you offer express delivery?",
+                faqAnswer6: "Yes, we offer express delivery within major cities within 24 hours for an additional cost of 50 dirhams.",
+                returnQuestions: "Return & Exchange Questions",
+                faqQuestion7: "What is the return policy?",
+                faqAnswer7: "You can return the product within 14 days of receipt. The product must be in its original condition and unused.",
+                faqQuestion8: "How can I return a product?",
+                faqAnswer8: "Contact the customer service team at the designated number, and we will provide you with detailed instructions on the return process.",
+                faqQuestion9: "When will I get my money back?",
+                faqAnswer9: "The amount will be refunded within 5-7 business days of us receiving the returned product.",
+                
+                // صفحة عن المتجر
+                aboutStore: "About Natural Beauty Store",
+                aboutTitle: "Your Beauty is Our Identity",
+                aboutDesc1: "We are a specialized store selling natural skin and hair care products. We offer the finest types of natural preparations, organic oils, and cosmetic products made with natural and high-quality ingredients.",
+                aboutDesc2: "We believe that true beauty comes from nature. Therefore, we work with the best experts in the field of natural cosmetics to provide you with products that combine effectiveness, safety, and sustainability.",
+                aboutDesc3: "We guarantee the quality of all our products and use the best natural ingredients. We offer a 30-day return guarantee if you are not satisfied with the product.",
+                
+                // صفحة الشحن والتوصيل
+                shippingDelivery: "Shipping & Delivery",
+                shippingPolicy: "Shipping Policy",
+                shippingDesc1: "We provide shipping service throughout Morocco with the possibility of international delivery to some countries. Delivery within Morocco takes 2-5 business days, while international delivery takes 7-14 business days.",
+                shippingCosts: "Shipping Costs",
+                shippingDesc2: "Shipping within Morocco is free for orders over 500 dirhams. For orders below that, shipping costs 30 dirhams. For international shipping, the cost varies by country and weight.",
+                returnPolicy: "Return Policy",
+                shippingDesc3: "You can return or exchange the product within 14 days of receipt. The product must be in its original condition and unused. The amount will be refunded within 5-7 business days.",
+                
+                // صفحة المدونة
+                blog: "Natural Beauty Blog",
+                blogTitle1: "Benefits of Natural Oils for Skin",
+                blogDate1: "March 15, 2023",
+                blogExcerpt1: "Natural oils have been the secret to skin beauty since ancient times. Discover how natural oils can improve your skin health...",
+                blogTitle2: "How to Choose the Right Skincare Products for Your Skin",
+                blogDate2: "February 10, 2023",
+                blogExcerpt2: "Choosing the right skincare products can be confusing. Learn how to determine your skin type and choose the right products...",
+                blogTitle3: "Morning and Evening Skincare Routine",
+                blogDate3: "January 5, 2023",
+                blogExcerpt3: "A regular skincare routine is the foundation of healthy skin. Learn about the basic steps for morning and evening skincare...",
+                readMore: "Read More",
+                
+                // الفوتر
+                aboutFooter: "About Store",
+                customerService: "Customer Service",
+                connectWithUs: "Connect With Us",
+                connectDesc: "Follow us on social media to know the latest offers and new products",
+                allRights: "All Rights Reserved",
+                
+                // رسالة واتساب
+                whatsappMessage: "Hello, I would like to order the following products:\n",
+                whatsappTotal: "\nTotal: $",
+                whatsappInfo: "\n\nName: \nAddress: \nPhone Number:"
+            },
+            fr: {
+                // الهيدر والقوائم
+                home: "Accueil",
+                products: "Produits",
+                contactUs: "Contactez-nous",
+                menu: "Menu",
+                about: "À propos de nous",
+                quality: "Qualité et Garantie",
+                faq: "FAQ",
+                returns: "Retours et Échanges",
+                privacy: "Politique de Confidentialité",
+                shipping: "Livraison",
+                cartTitle: "Panier d'Achat",
+                checkout: "Terminer la Commande via WhatsApp",
+                
+                // الصفحة الرئيسية
+                storeName: "Beauté Naturelle",
+                heroTitle: "Beauté Naturelle",
+                heroDesc: "Découvrez la beauté de votre peau avec des produits de soins naturels soigneusement élaborés. Préparations naturelles, huiles biologiques et produits de soins pour la peau et les cheveux avec les meilleurs ingrédients.",
+                shopNow: "Acheter Maintenant",
+                featuredProducts: "Produits en Vedette",
+                newThisWeek: "Nouveautés de la Semaine",
+                allProducts: "Tous les Produits",
+                skincare: "Soins de la Peau",
+                haircare: "Soins des Cheveux",
+                new: "Nouveau",
+                bestseller: "Meilleure Vente",
+                addToCart: "Ajouter au Panier",
+                viewDetails: "Voir les Détails",
+                
+                // المنتجات
+                product1Title: "Sérum Vitamine C",
+                product1Desc: "Sérum naturel pour uniformiser le teint et éclaircir les taches sombres",
+                product1FullDesc: "Sérum naturel à la vitamine C fait main à partir des meilleurs ingrédients biologiques. Caractérisé par une formule légère à absorption rapide qui aide à uniformiser le teint et à éclaircir les taches sombres. Convient à tous les types de peau et aide à stimuler la production de collagène pour lutter contre les signes de vieillissement. Disponible en plusieurs tailles pour convenir à tous les besoins.",
+                product2Title: "Huile d'Argan Marocaine",
+                product2Desc: "Huile naturelle pour hydrater et nourrir les cheveux et la peau",
+                product2FullDesc: "Huile d'argan marocaine naturelle extraite d'arbres d'argan rares. Caractérisée par une composition riche en vitamines et acides gras qui nourrissent profondément les cheveux et la peau. Aide à hydrater la peau sèche, à renforcer les cheveux et à leur donner un éclat naturel. Idéale pour une utilisation quotidienne comme hydratant ou comme traitement profond.",
+                product3Title: "Hydratant Quotidien à l'Aloe Vera",
+                product3Desc: "Hydratant léger adapté à tous les types de peau",
+                product3FullDesc: "Hydratant quotidien léger à base d'extrait naturel d'aloe vera et de vitamine E. Caractérisé par une texture légère à absorption rapide qui ne laisse pas de sensation grasse. Convient à tous les types de peau, y compris les peaux grasses et sensibles. Fournit une hydratation profonde tout au long de la journée et protège la peau de la sécheresse et des facteurs externes.",
+                product4Title: "Shampoing Naturel à la Lavande",
+                product4Desc: "Shampoing doux qui nettoie les cheveux sans les priver de leurs huiles naturelles",
+                product4FullDesc: "Shampoing naturel à base d'extrait de lavande biologique et d'ingrédients naturels doux. Caractérisé par une mousse douce qui nettoie en profondeur les cheveux sans les priver de leurs huiles naturelles. Convient pour une utilisation quotidienne et aide à apaiser le cuir chevelu et à donner aux cheveux un éclat naturel. Sans sulfates ni parabènes.",
+                product5Title: "Gommage Naturel au Café",
+                product5Desc: "Gommage doux qui élimine les cellules mortes et stimule la circulation sanguine",
+                product5FullDesc: "Gommage corporel naturel à base de granules de café naturels et d'huiles nourrissantes. Aide à éliminer doucement les cellules mortes, à stimuler la circulation sanguine et à améliorer la texture de la peau. Convient à tous les types de peau et aide à réduire l'apparence de la cellulite. Peut être utilisé 2 à 3 fois par semaine pour de meilleurs résultats.",
+                product6Title: "Après-shampoing Nourrissant au Miel",
+                product6Desc: "Après-shampoing profond qui nourrit les cheveux et leur donne un éclat naturel",
+                product6FullDesc: "Traitement conditionneur profond naturel à base de miel cru et d'huiles nourrissantes. Aide à hydrater profondément les cheveux, à réparer les pointes fourchues et à donner aux cheveux un éclat naturel. Convient à tous les types de cheveux, en particulier les cheveux secs et abîmés. Peut être utilisé après le shampoing pour des cheveux doux et faciles à coiffer.",
+                
+                // صفحة اتصل بنا
+                address: "Adresse",
+                addressContent: "Rue Mohammed V, Casablanca, Maroc",
+                phone: "Téléphone",
+                phoneNumber: "+212 522 345 678",
+                email: "E-mail",
+                emailAddress: "info@naturalbeauty.com",
+                
+                // صفحة سياسة الخصوصية
+                privacyPolicy: "Politique de Confidentialité",
+                infoWeCollect: "Informations que nous collectons",
+                privacyDesc1: "Nous nous engageons à protéger votre vie privée. Nous collectons les informations suivantes :",
+                privacyItem1: "Informations personnelles (nom, e-mail, adresse) lors de la création d'un compte ou de la finalisation d'un achat",
+                privacyItem2: "Informations de paiement (cartes de crédit) traitées de manière sécurisée par des fournisseurs de paiement de confiance",
+                privacyItem3: "Informations de navigation et d'interaction avec le site pour améliorer l'expérience utilisateur",
+                howWeUseInfo: "Comment nous utilisons les informations",
+                privacyDesc2: "Nous utilisons les informations que nous collectons pour :",
+                privacyItem4: "Traiter vos commandes et gérer votre compte",
+                privacyItem5: "Améliorer nos produits et services",
+                privacyItem6: "Envoyer des mises à jour sur nos produits et offres spéciales (vous pouvez vous désabonner à tout moment)",
+                privacyItem7: "Fournir un service client exceptionnel",
+                infoSharing: "Partage d'informations",
+                privacyDesc3: "Nous ne vendons, ne louons ni ne partageons vos informations personnelles avec des tiers à des fins marketing. Nous pouvons partager des informations limitées avec :",
+                privacyItem8: "Prestataires de services qui nous aident à exploiter notre site et à traiter les paiements",
+                privacyItem9: "Autorités répressives lorsque la loi l'exige",
+                cookies: "Cookies",
+                privacyDesc4: "Nous utilisons des cookies pour améliorer l'expérience de navigation et mémoriser vos préférences. Vous pouvez désactiver les cookies via les paramètres de votre navigateur, mais cela peut affecter les fonctionnalités du site.",
+                
+                // صفحة الجودة والضمان
+                qualityWarranty: "Qualité et Garantie",
+                qualityStandards: "Normes de Qualité",
+                qualityDesc1: "Nous adhérons aux normes de qualité les plus élevées dans tous nos produits :",
+                qualityItem1: "Tous les ingrédients utilisés sont naturels et soigneusement sélectionnés",
+                qualityItem2: "Nos produits sont exempts de produits chimiques nocifs et de parabènes",
+                qualityItem3: "Nous inspectons soigneusement chaque produit avant l'expédition pour nous assurer qu'il est exempt de défauts",
+                qualityItem4: "Nous utilisons uniquement des ingrédients naturels et respectueux de l'environnement",
+                qualityGuarantee: "Garantie de Qualité",
+                qualityDesc2: "Nous garantissons la qualité de tous nos produits et offrons :",
+                qualityItem5: "Garantie de retour de 30 jours si vous n'êtes pas satisfait du produit",
+                qualityItem6: "Garantie de 6 mois contre les défauts de fabrication",
+                qualityItem7: "Réparation gratuite pour les problèmes résultant de défauts de fabrication",
+                qualityItem8: "Support technique continu pour vous aider dans toutes vos demandes",
+                afterSales: "Service Après-Vente",
+                qualityDesc3: "Nous ne vendons pas seulement des produits, nous offrons une expérience complète :",
+                qualityItem9: "Équipe de service client disponible 24h/24 et 7j/7",
+                qualityItem10: "Conseils pour les soins de la peau et des cheveux utilisant nos produits",
+                qualityItem11: "Possibilité de personnaliser les produits selon vos souhaits (pour les grandes commandes)",
+                qualityItem12: "Mises à jour régulières sur l'entretien et les soins des produits",
+                
+                // صفحة الأسئلة الشائعة
+                productQuestions: "Questions sur les Produits",
+                faqQuestion1: "Vos produits conviennent-ils à tous les types de peau ?",
+                faqAnswer1: "Oui, nos produits sont conçus pour convenir à tous les types de peau. Cependant, nous recommandons toujours de tester le produit sur une petite zone de peau avant une utilisation complète.",
+                faqQuestion2: "Quels ingrédients sont utilisés dans vos produits ?",
+                faqAnswer2: "Nous utilisons une variété d'ingrédients naturels comme des huiles biologiques, des extraits de plantes et des vitamines naturelles. Tous nos produits sont exempts de parabènes et de sulfates.",
+                faqQuestion3: "Les produits sont-ils fabriqués à la main ?",
+                faqAnswer3: "Oui, la plupart de nos produits contiennent des éléments fabriqués à la main, en particulier les extraits et mélanges réalisés par des experts en cosmétiques naturelles.",
+                shippingQuestions: "Questions sur la Livraison",
+                faqQuestion4: "Combien de temps prend la livraison ?",
+                faqAnswer4: "La livraison au Maroc prend 2 à 5 jours ouvrables. Pour la livraison internationale, elle prend 7 à 14 jours ouvrables selon la destination.",
+                faqQuestion5: "La livraison est-elle gratuite ?",
+                faqAnswer5: "Oui, la livraison est gratuite pour les commandes de plus de 500 dirhams au Maroc. Pour les commandes inférieures, les frais de livraison sont de 30 dirhams.",
+                faqQuestion6: "Proposez-vous la livraison express ?",
+                faqAnswer6: "Oui, nous proposons la livraison express dans les grandes villes en 24 heures pour un coût supplémentaire de 50 dirhams.",
+                returnQuestions: "Questions sur les Retours et Échanges",
+                faqQuestion7: "Quelle est la politique de retour ?",
+                faqAnswer7: "Vous pouvez retourner le produit dans les 14 jours suivant la réception. Le produit doit être dans son état d'origine et non utilisé.",
+                faqQuestion8: "Comment puis-je retourner un produit ?",
+                faqAnswer8: "Contactez l'équipe du service client au numéro désigné, et nous vous fournirons des instructions détaillées sur le processus de retour.",
+                faqQuestion9: "Quand serai-je remboursé ?",
+                faqAnswer9: "Le montant sera remboursé dans les 5 à 7 jours ouvrables suivant la réception du produit retourné.",
+                
+                // صفحة عن المتجر
+                aboutStore: "À propos du Magasin Beauté Naturelle",
+                aboutTitle: "Votre Beauté est Notre Identité",
+                aboutDesc1: "Nous sommes un magasin spécialisé dans la vente de produits de soins naturels pour la peau et les cheveux. Nous proposons les meilleurs types de préparations naturelles, d'huiles biologiques et de produits cosmétiques fabriqués avec des ingrédients naturels et de haute qualité.",
+                aboutDesc2: "Nous croyons que la vraie beauté vient de la nature. C'est pourquoi nous travaillons avec les meilleurs experts dans le domaine des cosmétiques naturelles pour vous fournir des produits qui allient efficacité, sécurité et durabilité.",
+                aboutDesc3: "Nous garantissons la qualité de tous nos produits et utilisons les meilleurs ingrédients naturels. Nous offrons une garantie de retour de 30 jours si vous n'êtes pas satisfait du produit.",
+                
+                // صفحة الشحن والتوصيل
+                shippingDelivery: "Livraison",
+                shippingPolicy: "Politique de Livraison",
+                shippingDesc1: "Nous proposons un service de livraison dans tout le Maroc avec possibilité de livraison internationale vers certains pays. La livraison au Maroc prend 2 à 5 jours ouvrables, tandis que la livraison internationale prend 7 à 14 jours ouvrables.",
+                shippingCosts: "Frais de Livraison",
+                shippingDesc2: "La livraison au Maroc est gratuite pour les commandes de plus de 500 dirhams. Pour les commandes inférieures, les frais de livraison sont de 30 dirhams. Pour la livraison internationale, le coût varie selon le pays et le poids.",
+                returnPolicy: "Politique de Retour",
+                shippingDesc3: "Vous pouvez retourner ou échanger le produit dans les 14 jours suivant la réception. Le produit doit être dans son état d'origine et non utilisé. Le montant sera remboursé dans les 5 à 7 jours ouvrables.",
+                
+                // صفحة المدونة
+                blog: "Blog Beauté Naturelle",
+                blogTitle1: "Bienfaits des Huiles Naturelles pour la Peau",
+                blogDate1: "15 Mars 2023",
+                blogExcerpt1: "Les huiles naturelles sont le secret de la beauté de la peau depuis l'Antiquité. Découvrez comment les huiles naturelles peuvent améliorer la santé de votre peau...",
+                blogTitle2: "Comment Choisir les Produits de Soins Adaptés à Votre Peau",
+                blogDate2: "10 Février 2023",
+                blogExcerpt2: "Choisir les bons produits de soins peut être déroutant. Apprenez à déterminer votre type de peau et à choisir les bons produits...",
+                blogTitle3: "Routine de Soins Matin et Soir",
+                blogDate3: "5 Janvier 2023",
+                blogExcerpt3: "Une routine de soins régulière est la base d'une peau saine. Découvrez les étapes de base pour les soins matin et soir...",
+                readMore: "Lire la Suite",
+                
+                // الفوتر
+                aboutFooter: "À Propos du Magasin",
+                customerService: "Service Client",
+                connectWithUs: "Connectez avec Nous",
+                connectDesc: "Suivez-nous sur les réseaux sociaux pour connaître les dernières offres et nouveaux produits",
+                allRights: "Tous Droits Réservés",
+                
+                // رسالة واتساب
+                whatsappMessage: "Bonjour, je souhaite commander les produits suivants :\n",
+                whatsappTotal: "\nTotal : $",
+                whatsappInfo: "\n\nNom : \nAdresse : \nNuméro de Téléphone :"
+            }
+        };
+
+        // نظام الصفحات
+        const pages = document.querySelectorAll('.page');
+        const pageLinks = document.querySelectorAll('[data-page]');
+        
+        // إظهار الصفحة المطلوبة وإخفاء الآخرين
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // إغلاق القائمة الجانبية إذا كانت مفتوحة
+            closeSidebarFunc();
+        }
+        
+        // إضافة حدث النقر لجميع روابط الصفحات
+        pageLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+                
+                // التمرير إلى أعلى الصفحة
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // نظام القائمة الجانبية
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+
+        // فتح وإغلاق الشريط الجانبي
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function closeSidebarFunc() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        mobileMenuBtn.addEventListener('click', openSidebar);
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        overlay.addEventListener('click', closeSidebarFunc);
+
+        // تغيير اللغة
+        let currentLang = 'ar';
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLangText = document.getElementById('currentLang');
+        const langOptions = document.querySelectorAll('.lang-option');
+        
+        // فتح/إغلاق قائمة اللغات
+        languageBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            languageDropdown.classList.toggle('active');
+        });
+        
+        // إغلاق قائمة اللغات عند النقر خارجها
+        document.addEventListener('click', function() {
+            languageDropdown.classList.remove('active');
+        });
+        
+        // تغيير اللغة
+        langOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // تحديث النشاط
+                langOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentLang = this.getAttribute('data-lang');
+                currentLangText.textContent = this.querySelector('span').textContent;
+                
+                // تحديث اتجاه النص
+                document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.lang = currentLang;
+                
+                // تحديث كل النصوص
+                updateLanguage(currentLang);
+                
+                // إغلاق القائمة
+                languageDropdown.classList.remove('active');
+            });
+        });
+        
+        // تحديث النصوص حسب اللغة
+        function updateLanguage(lang) {
+            // تحديث اسم المتجر
+            document.querySelectorAll('.store-name').forEach(element => {
+                element.textContent = translations[lang].storeName;
+            });
+            
+            // تحديث كل النصوص
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        // نظام تصفية المنتجات حسب الفئة
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشاط للزر المختار
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // تصفية المنتجات
+                productCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // نظام سلة التسوق
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartCount = document.querySelector('.cart-count');
+
+        // فتح وإغلاق السلة
+        cartIcon.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // إضافة منتج إلى السلة
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+            });
+        });
+
+        // تحديث السلة
+        function updateCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price} x ${item.quantity}</div>
+                    </div>
+                    <button class="cart-item-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `${translations[currentLang].cartTitle.split(' ')[0]}: $${total}`;
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // إضافة حدث إزالة العنصر
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        // إتمام الطلب عبر واتساب
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert(translations[currentLang].cartTitle + ' ' + (currentLang === 'ar' ? 'فارغة' : 'is empty'));
+                return;
+            }
+            
+            let message = translations[currentLang].whatsappMessage;
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `- ${item.title} (${item.quantity} x $${item.price})\n`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `${translations[currentLang].whatsappTotal}${total}`;
+            message += translations[currentLang].whatsappInfo;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/212600000000?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        });
+
+        // نظام عرض تفاصيل المنتج
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalBody = document.getElementById('modalBody');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+
+        // فتح نافذة تفاصيل المنتج
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                showProductDetails(productId);
+            });
+        });
+
+        // إغلاق نافذة تفاصيل المنتج
+        closeModal.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض تفاصيل المنتج
+        function showProductDetails(productId) {
+            const productKey = `product${productId}Title`;
+            const productDescKey = `product${productId}FullDesc`;
+            const productPrice = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-price').textContent;
+            const productImage = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-image').style.backgroundImage;
+            
+            modalBody.innerHTML = `
+                <div class="modal-image" style="${productImage}"></div>
+                <div class="modal-details">
+                    <h3>${translations[currentLang][productKey]}</h3>
+                    <div class="product-price">${productPrice}</div>
+                    <p class="product-full-desc">${translations[currentLang][productDescKey]}</p>
+                    <div class="modal-actions">
+                        <button class="add-to-cart">${translations[currentLang].addToCart}</button>
+                    </div>
+                </div>
+            `;
+            
+            // إضافة حدث إضافة إلى السلة داخل النافذة
+            modalBody.querySelector('.add-to-cart').addEventListener('click', function() {
+                const productCard = document.querySelector(`[data-product="${productId}"]`).closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                productModal.classList.remove('active');
+                overlay.classList.remove('active');
+                cartSidebar.classList.add('active');
+            });
+            
+            productModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+    </script>
+</body>
+</html>

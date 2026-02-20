@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Web — بوابتي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --card: #1a1a28;
+      --border: rgba(255,255,255,0.07);
+      --accent: #f4a523;
+      --accent2: #e8610a;
+      --text: #f0ede8;
+      --muted: #8a8790;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(244,165,35,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(232,97,10,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      padding: 60px 0 20px;
+      text-align: center;
+    }
+
+    .logo-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #000;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 60px;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+      padding-bottom: 80px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(244,165,35,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(244,165,35,0.35);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(244,165,35,0.15);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card-info { flex: 1; min-width: 0; }
+
+    .card-title {
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .arrow {
+      font-size: 18px;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .card:hover .arrow {
+      color: var(--accent);
+      transform: translateX(-4px);
+    }
+
+    /* Stagger animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card:nth-child(1)  { animation-delay: 0.05s; }
+    .card:nth-child(2)  { animation-delay: 0.10s; }
+    .card:nth-child(3)  { animation-delay: 0.15s; }
+    .card:nth-child(4)  { animation-delay: 0.20s; }
+    .card:nth-child(5)  { animation-delay: 0.25s; }
+    .card:nth-child(6)  { animation-delay: 0.30s; }
+    .card:nth-child(7)  { animation-delay: 0.35s; }
+    .card:nth-child(8)  { animation-delay: 0.40s; }
+    .card:nth-child(9)  { animation-delay: 0.45s; }
+    .card:nth-child(10) { animation-delay: 0.50s; }
+    .card:nth-child(11) { animation-delay: 0.55s; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo-badge">MY WEB</div>
+    <h1>بوابة مواقعي</h1>
+    <p class="subtitle">اختر الموقع الذي تريد زيارته</p>
+  </header>
+
+  <div class="grid">
+
+    <a class="card" href="9ahwwA.html">
+      <div class="icon">☕</div>
+      <div class="card-info">
+        <div class="card-title">القهوة</div>
+        <div class="card-desc">9ahwwA</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="ahdya.html">
+      <div class="icon">🎁</div>
+      <div class="card-info">
+        <div class="card-title">الهدايا</div>
+        <div class="card-desc">ahdya</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="bachra.html">
+      <div class="icon">🌿</div>
+      <div class="card-info">
+        <div class="card-title">البحرة</div>
+        <div class="card-desc">bachra</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="cho9a9.html">
+      <div class="icon">🏠</div>
+      <div class="card-info">
+        <div class="card-title">شقق</div>
+        <div class="card-desc">cho9a9</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="darajat.html">
+      <div class="icon">🚲</div>
+      <div class="card-info">
+        <div class="card-title">الدراجات</div>
+        <div class="card-desc">darajat</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="ilktronik.html">
+      <div class="icon">💻</div>
+      <div class="card-info">
+        <div class="card-title">الإلكترونيك</div>
+        <div class="card-desc">ilktronik</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="3otor.html">
+      <div class="icon">🌸</div>
+      <div class="card-info">
+        <div class="card-title">العطور</div>
+        <div class="card-desc">3otor</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="khoobz.html">
+      <div class="icon">🍞</div>
+      <div class="card-info">
+        <div class="card-title">الخبز</div>
+        <div class="card-desc">khoobz</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="malabs.html">
+      <div class="icon">👗</div>
+      <div class="card-info">
+        <div class="card-title">الملابس</div>
+        <div class="card-desc">malabs</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="mat3am.html">
+      <div class="icon">🍽️</div>
+      <div class="card-info">
+        <div class="card-title">المطعم</div>
+        <div class="card-desc">mat3am</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+    <a class="card" href="sayara.html">
+      <div class="icon">🚗</div>
+      <div class="card-info">
+        <div class="card-title">السيارات</div>
+        <div class="card-desc">sayara</div>
+      </div>
+      <span class="arrow">←</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  My Web © 2025 — جميع الحقوق محفوظة
+</footer>
+
+</body>
+</html>

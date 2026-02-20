@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حلويات ومخبوزات لذيذة - Delicious Sweets & Bakery</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFF5EB;
+            --secondary: #E8D0B3;
+            --accent: #D4A574;
+            --dark: #8B7355;
+            --darker: #5D4C3A;
+            --transition: all 0.3s ease;
+            --light: #FFFDF9;
+            --medium: #F0E6D6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Amiri', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(255, 245, 235, 0.85), rgba(255, 253, 249, 0.9)), 
+                        url('https://i.postimg.cc/Tw2V3FZP/Whats-App-Image-2025-10-19-at-15-09-22.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--darker);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* شريط اللغة المحسّن */
+        .language-bar {
+            background: var(--darker);
+            color: var(--primary);
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--accent);
+            position: relative;
+            z-index: 1010;
+        }
+
+        .language-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-dropdown {
+            background: var(--dark);
+            color: var(--primary);
+            border: 1px solid var(--accent);
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown:hover {
+            background: var(--accent);
+        }
+
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--darker);
+            border: 1px solid var(--accent);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            z-index: 1020;
+            display: none;
+            min-width: 120px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .language-options.active {
+            display: block;
+        }
+
+        .language-option {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .language-option:hover {
+            background: var(--accent);
+        }
+
+        /* الهيدر المعدل */
+        header {
+            background: rgba(255, 245, 235, 0.95);
+            color: var(--darker);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--darker);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* القائمة الرئيسية المعدلة */
+        .main-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--darker);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 10px;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .nav-icon:hover {
+            background: rgba(232, 208, 179, 0.2);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--darker);
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .cart-icon:hover {
+            color: var(--dark);
+            transform: scale(1.1);
+            background: rgba(232, 208, 179, 0.2);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--dark);
+            color: var(--primary);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* القائمة الجانبية المحدثة */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--darker);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(232, 208, 179, 0.2);
+            color: var(--dark);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 320px;
+            height: 100vh;
+            background: rgba(255, 245, 235, 0.98);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-left: 1px solid var(--accent);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .sidebar-header h3 {
+            color: var(--darker);
+            font-size: 1.5rem;
+        }
+
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--darker);
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .close-sidebar:hover {
+            background: rgba(232, 208, 179, 0.2);
+            color: var(--dark);
+        }
+
+        .sidebar-content {
+            padding: 10px 0;
+        }
+
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: var(--darker);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            font-weight: 500;
+        }
+
+        .sidebar-nav-item:hover {
+            background: rgba(232, 208, 179, 0.2);
+            border-color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .sidebar-nav-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* بقية الأنماط مع تحسين الألوان */
+        .page {
+            display: none;
+            min-height: 70vh;
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(255, 245, 235, 0.7), rgba(255, 253, 249, 0.8));
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--darker);
+            border-radius: 15px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            color: var(--darker);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--primary);
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--dark), var(--accent));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.5);
+        }
+
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: rgba(232, 208, 179, 0.2);
+            border: 2px solid var(--accent);
+            color: var(--darker);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: rgba(232, 208, 179, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-btn.sweets.active {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-color: var(--dark);
+            color: var(--primary);
+        }
+
+        .category-btn.bakery.active {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            border-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .category-btn.all.active {
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            border-color: var(--dark);
+            color: var(--primary);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--darker);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--dark));
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(232, 208, 179, 0.3);
+            display: none;
+        }
+
+        .product-card.active {
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(232, 208, 179, 0.2);
+            border: 1px solid var(--accent);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--darker);
+        }
+
+        .product-desc {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: var(--primary);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--dark), var(--accent));
+        }
+
+        .view-details {
+            background: rgba(232, 208, 179, 0.2);
+            color: var(--darker);
+            border: 1px solid var(--accent);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .view-details:hover {
+            background: rgba(232, 208, 179, 0.4);
+            border-color: var(--dark);
+        }
+
+        /* بقية الأنماط متشابهة مع تحديث الألوان */
+        .contact-section, .about-section, .shipping-section, .privacy-section, .quality-section, .faq-section, .blog-section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .contact-card, .shipping-item, .privacy-item, .quality-item, .faq-item, .blog-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(232, 208, 179, 0.3);
+        }
+
+        footer {
+            background: var(--darker);
+            color: var(--primary);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--accent);
+        }
+
+        /* التجاوب مع جميع الأجهزة */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .product-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 80%;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .language-container {
+                justify-content: center;
+            }
+
+            .hero, .contact-section, .about-section, .shipping-section, .privacy-section, .quality-section, .faq-section, .blog-section {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط اللغات المحسّن -->
+    <div class="language-bar">
+        <div class="language-container">
+            <div class="language-selector">
+                <div class="language-dropdown" id="languageDropdown">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentLang">العربية</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-options" id="languageOptions">
+                    <div class="language-option" data-lang="ar">العربية</div>
+                    <div class="language-option" data-lang="en">English</div>
+                    <div class="language-option" data-lang="fr">Français</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الهيدر المعدل -->
+    <header>
+        <div class="nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a href="#" class="logo" data-page="home">
+                <img src="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg" alt="حلويات ومخبوزات لذيذة - Delicious Sweets & Bakery " class="logo-image">
+                <span class="store-name">حلويات ومخبوزات لذيذة</span>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#" class="nav-icon" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span data-key="home">الرئيسية</span>
+                </a>
+                <a href="#" class="nav-icon" data-page="products">
+                    <i class="fas fa-cookie"></i>
+                    <span data-key="products">المنتجات</span>
+                </a>
+                <a href="#" class="nav-icon" data-page="contact">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contactUs">اتصل بنا</span>
+                </a>
+            </nav>
+
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- الصفحات -->
+    <main>
+        <!-- الصفحة الرئيسية -->
+        <section id="home-page" class="page active">
+            <!-- الهيرو سيكشن -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 data-key="heroTitle">حلويات ومخبوزات لذيذة</h1>
+                    <p data-key="heroDesc">اكتشف عالمًا من النكهات الشهية. حلويات شرقية وغربية طازجة، كعك ومعجنات، وشوكولاتة فاخرة، كلها مصنوعة بأفضل المكونات وبحب.</p>
+                    <a href="#" class="btn" data-page="products" data-key="shopNow">تسوق الآن</a>
+                </div>
+            </section>
+
+            <!-- أقسام المنتجات -->
+            <div class="container">
+                <div class="product-categories">
+                    <button class="category-btn all active" data-category="all">
+                        <i class="fas fa-star"></i>
+                        <span data-key="allProducts">جميع المنتجات</span>
+                    </button>
+                    <button class="category-btn sweets" data-category="sweets">
+                        <i class="fas fa-candy-cane"></i>
+                        <span data-key="sweets">حلويات</span>
+                    </button>
+                    <button class="category-btn bakery" data-category="bakery">
+                        <i class="fas fa-bread-slice"></i>
+                        <span data-key="bakery">مخبوزات</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- قسم المنتجات المميزة -->
+            <section class="section" id="featured">
+                <div class="container">
+                    <h2 class="section-title" data-key="featuredProducts">منتجات مميزة</h2>
+                    <div class="products-grid">
+                        <!-- المنتج 1 - حلويات -->
+                        <div class="product-card active" data-category="sweets">
+                            <div class="product-badge" data-key="new">جديد</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1555507036-ab794f27d2e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product1Title">كنافة بالنوتيلا</h3>
+                                <p class="product-desc" data-key="product1Desc">كنافة مقرمشة محشوة بالنوتيلا الشهية ومغطاة بالفستق الحلبي</p>
+                                <div class="product-price">$18</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="1">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 2 - مخبوزات -->
+                        <div class="product-card active" data-category="bakery">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product2Title">كرواسون بالشوكولاتة</h3>
+                                <p class="product-desc" data-key="product2Desc">كرواسون طازج محشو بالشوكولاتة الذائبة ومغطى بالسكر البودرة</p>
+                                <div class="product-price">$8</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="2">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 3 - حلويات -->
+                        <div class="product-card active" data-category="sweets">
+                            <div class="product-badge" data-key="bestseller">الأكثر مبيعاً</div>
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product3Title">بسبوسة بالقشطة</h3>
+                                <p class="product-desc" data-key="product3Desc">بسبوسة ناعمة محشوة بالقشطة الطازجة ومغطاة بالجوز واللوز</p>
+                                <div class="product-price">$12</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="3">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم جديدنا هذا الأسبوع -->
+            <section class="section" id="new">
+                <div class="container">
+                    <h2 class="section-title" data-key="newThisWeek">جديدنا هذا الأسبوع</h2>
+                    <div class="products-grid">
+                        <!-- المنتج 4 - مخبوزات -->
+                        <div class="product-card active" data-category="bakery">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product4Title">تشيز كيك بالتوت</h3>
+                                <p class="product-desc" data-key="product4Desc">تشيز كيك كريمي مع طبقة من التوت الطازج وقاعدة بسكويت</p>
+                                <div class="product-price">$22</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="4">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 5 - حلويات -->
+                        <div class="product-card active" data-category="sweets">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1587314168485-3236d6710814?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1970&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product5Title">معمول بالتمر</h3>
+                                <p class="product-desc" data-key="product5Desc">معمول تقليدي محشو بتمر عالي الجودة ومزين بالمكسرات</p>
+                                <div class="product-price">$15</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="5">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- المنتج 6 - مخبوزات -->
+                        <div class="product-card active" data-category="bakery">
+                            <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1970&q=80')"></div>
+                            <div class="product-info">
+                                <h3 class="product-title" data-key="product6Title">دونات بالتوت البري</h3>
+                                <p class="product-desc" data-key="product6Desc">دونات طازجة محشوة بكريمة التوت البري ومغطاة بالسugar</p>
+                                <div class="product-price">$10</div>
+                                <div class="product-actions">
+                                    <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                                    <button class="view-details" data-key="viewDetails" data-product="6">عرض التفاصيل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- صفحة المنتجات -->
+        <section id="products-page" class="page">
+            <div class="container">
+                <h2 class="section-title">جميع المنتجات</h2>
+                <div class="product-categories">
+                    <button class="category-btn all active" data-category="all">
+                        <i class="fas fa-star"></i>
+                        <span data-key="allProducts">جميع المنتجات</span>
+                    </button>
+                    <button class="category-btn sweets" data-category="sweets">
+                        <i class="fas fa-candy-cane"></i>
+                        <span data-key="sweets">حلويات</span>
+                    </button>
+                    <button class="category-btn bakery" data-category="bakery">
+                        <i class="fas fa-bread-slice"></i>
+                        <span data-key="bakery">مخبوزات</span>
+                    </button>
+                </div>
+                <div class="products-grid">
+                    <!-- سيتم عرض جميع المنتجات هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- صفحة اتصل بنا -->
+        <section id="contact-page" class="page">
+            <div class="contact-section">
+                <div class="container">
+                    <h2 class="section-title" data-key="contactUs">اتصل بنا</h2>
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3 data-key="address">العنوان</h3>
+                            <p data-key="addressContent">شارع الحلويات، وسط المدينة، المغرب</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-phone"></i>
+                            <h3 data-key="phone">الهاتف</h3>
+                            <p><a href="tel:+212522345678" data-key="phoneNumber">+212 522 345 678</a></p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3 data-key="email">البريد الإلكتروني</h3>
+                            <p><a href="mailto:info@delicioussweets.com" data-key="emailAddress">info@delicioussweets.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بقية الصفحات تبقى كما هي -->
+
+    </main>
+
+    <!-- القائمة الجانبية المحدثة -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3 data-key="menu">القائمة</h3>
+            <button class="close-sidebar" id="closeSidebar">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <a href="#" class="sidebar-nav-item" data-page="about">
+                <i class="fas fa-users"></i> <span data-key="about">من نحن</span>
+            </a>
+            <a href="#" class="sidebar-nav-item" data-page="quality">
+                <i class="fas fa-award"></i> <span data-key="quality">جودة وضمان</span>
+            </a>
+            <a href="#" class="sidebar-nav-item" data-page="blog">
+                <i class="fas fa-blog"></i> <span data-key="blog">المدونة</span>
+            </a>
+            <a href="#" class="sidebar-nav-item" data-page="faq">
+                <i class="fas fa-question-circle"></i> <span data-key="faq">الأسئلة الشائعة</span>
+            </a>
+            <a href="#" class="sidebar-nav-item" data-page="contact">
+                <i class="fas fa-phone-alt"></i> <span data-key="contactUs">اتصل بنا</span>
+            </a>
+            <a href="#" class="sidebar-nav-item" data-page="shipping">
+                <i class="fas fa-shipping-fast"></i> <span data-key="shipping">شحن وتوصيل</span>
+            </a>
+            <a href="#" class="sidebar-nav-item" data-page="returns">
+                <i class="fas fa-exchange-alt"></i> <span data-key="returns">الإرجاع والاستبدال</span>
+            </a>
+            <a href="#" class="sidebar-nav-item" data-page="privacy">
+                <i class="fas fa-shield-alt"></i> <span data-key="privacy">سياسة الخصوصية</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- طبقة التغطية -->
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        // نظام الصفحات
+        const pages = document.querySelectorAll('.page');
+        const pageLinks = document.querySelectorAll('[data-page]');
+        
+        // إظهار الصفحة المطلوبة وإخفاء الآخرين
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // إغلاق القائمة الجانبية إذا كانت مفتوحة
+            closeSidebarFunc();
+            
+            // التمرير إلى أعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+        
+        // إضافة حدث النقر لجميع روابط الصفحات
+        pageLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+        
+        // نظام القائمة الجانبية
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+
+        // فتح وإغلاق الشريط الجانبي
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebarFunc() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuBtn.addEventListener('click', openSidebar);
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        overlay.addEventListener('click', closeSidebarFunc);
+
+        // نظام اللغات المحسّن والمصحح
+        const translations = {
+            ar: {
+                storeName: "حلويات ومخبوزات لذيذة",
+                home: "الرئيسية",
+                products: "المنتجات",
+                contactUs: "اتصل بنا",
+                menu: "القائمة",
+                about: "من نحن",
+                quality: "الجودة والضمان",
+                faq: "الأسئلة الشائعة",
+                returns: "الإرجاع والاستبدال",
+                privacy: "سياسة الخصوصية",
+                heroTitle: "حلويات ومخبوزات لذيذة",
+                heroDesc: "اكتشف عالمًا من النكهات الشهية. حلويات شرقية وغربية طازجة، كعك ومعجنات، وشوكولاتة فاخرة، كلها مصنوعة بأفضل المكونات وبحب.",
+                shopNow: "تسوق الآن",
+                featuredProducts: "منتجات مميزة",
+                newThisWeek: "جديدنا هذا الأسبوع",
+                allProducts: "جميع المنتجات",
+                sweets: "حلويات",
+                bakery: "مخبوزات",
+                new: "جديد",
+                product1Title: "كنافة بالنوتيلا",
+                product1Desc: "كنافة مقرمشة محشوة بالنوتيلا الشهية ومغطاة بالفستق الحلبي",
+                product1FullDesc: "كنافة بالنوتيلا هي تحفة حلويات تجمع بين القرمشة اللذيذة للكنافة والنعومة الفاخرة للنوتيلا. مصنوعة يدويًا من أجود أنواع العجائن ومحشوة بكمية وفيرة من النوتيلا عالية الجودة. تزين بالفستق الحلبي المقشر لتضيف نكهة ومظهرًا جذابًا. مثالية للقهوة الصباحية أو كتحلية بعد الوجبات.",
+                product2Title: "كرواسون بالشوكولاتة",
+                product2Desc: "كرواسون طازج محشو بالشوكولاتة الذائبة ومغطى بالسكر البودرة",
+                product2FullDesc: "كرواسون بالشوكولاتة هو تحفة فرنسية بأسلوب شرقي. مصنوع من عجينة رقيقة ومضغوطة بطريقة احترافية لتحقيق القوام الهش والمقرمش. محشو بشرائط من الشوكولاتة الداكنة عالية الجودة التي تذوب في الفم. يزين بالسكر البودرة الناعم لإضافة لمسة جمالية ونكهة حلوة متوازنة. مثالي مع القهوة أو الشاي.",
+                product3Title: "بسبوسة بالقشطة",
+                product3Desc: "بسبوسة ناعمة محشوة بالقشطة الطازجة ومغطاة بالجوز واللوز",
+                product3FullDesc: "بسبوسة بالقشطة هي تحفة من الحلويات الشرقية التقليدية بمذاق عصري. تتكون من طبقتين من البسبوسة الناعمة المحشوة بطبقة سميكة من القشطة الطازجة المصنوعة من الحليب كامل الدسم. تزين بمزيج من الجوز واللوز المحمص لإضافة قرمشة ونكهة غنية. مغطاة بشراب السكر المعطر بماء الورد لتعزيز النكهة.",
+                product4Title: "تشيز كيك بالتوت",
+                product4Desc: "تشيز كيك كريمي مع طبقة من التوت الطازج وقاعدة بسكويت",
+                product4FullDesc: "تشيز كيك بالتوت هو حلوى غربية بأسلوب شرقي. يتكون من قاعدة مقرمشة من البسكويت المطحون الممزوج بالزبدة، وطبقة كريمية سميكة من الجبن الكريمي عالي الجودة، وطبقة علوية من صلصة التوت الطازج المحضر يدويًا. يجمع بين نعومة الجبن الكريمي وحموضة التوت المنعشة. مثالي لمحبي الحلويات الكلاسيكية ذات النكهات المتوازنة.",
+                product5Title: "معمول بالتمر",
+                product5Desc: "معمول تقليدي محشو بتمر عالي الجودة ومزين بالمكسرات",
+                product5FullDesc: "معمول بالتمر هو حلوى تقليدية تشتهر بها المائدة العربية في المناسبات. مصنوع من عجينة ناعمة محشوة بمعجون التمر الطازج عالي الجودة. يتم تشكيله يدويًا باستخدام القوالب التقليدية المنقوشة ليعطي شكلاً جميلاً. يزين بمزيج من المكسرات المحمصة مثل الجوز واللوز والفستق. يعتبر خيارًا صحيًا ولذيذًا لمحبي الحلويات التقليدية.",
+                product6Title: "دونات بالتوت البري",
+                product6Desc: "دونات طازجة محشوة بكريمة التوت البري ومغطاة بالسكر",
+                product6FullDesc: "دونات بالتوت البري هي حلوى غربية بمذاق شرقي منعش. مصنوعة من عجينة خفيفة ورقيقة محشوة بكريمة التوت البري الحلوة والحامضة. تقلى بطريقة احترافية لتحقيق القوام الذهبي المقرمش من الخارج والناعم من الداخل. تزين بطبقة خفيفة من السكر البودرة لإضافة حلاوة متوازنة. مثالية كوجبة خفيفة أو مع فنجان القهوة.",
+                addToCart: "أضف إلى السلة",
+                viewDetails: "عرض التفاصيل",
+                bestseller: "الأكثر مبيعاً",
+                cartTitle: "سلة التسوق",
+                checkout: "إتمام الطلب عبر واتساب",
+                address: "العنوان",
+                addressContent: "شارع الحلويات، وسط المدينة، المغرب",
+                phone: "الهاتف",
+                phoneNumber: "+212 522 345 678",
+                email: "البريد الإلكتروني",
+                emailAddress: "info@delicioussweets.com",
+                aboutFooter: "عن المتجر",
+                blog: "المدونة",
+                faqFooter: "الأسئلة الشائعة",
+                customerService: "خدمة العملاء",
+                shipping: "الشحن والتوصيل",
+                connectWithUs: "تواصل معنا",
+                connectDesc: "تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة",
+                allRights: "جميع الحقوق محفوظة",
+                whatsappMessage: "مرحباً، أريد طلب المنتجات التالية:\n",
+                whatsappTotal: "\nالمجموع: $",
+                whatsappInfo: "\n\nالاسم: \nالعنوان: \nرقم الهاتف:"
+            },
+            en: {
+                storeName: "Delicious Sweets & Bakery",
+                home: "Home",
+                products: "Products",
+                contactUs: "Contact Us",
+                menu: "Menu",
+                about: "About Us",
+                quality: "Quality & Warranty",
+                faq: "FAQ",
+                returns: "Returns & Exchange",
+                privacy: "Privacy Policy",
+                heroTitle: "Delicious Sweets & Bakery",
+                heroDesc: "Discover a world of delicious flavors. Fresh Eastern and Western sweets, cakes, pastries, and luxury chocolates, all made with the best ingredients and love.",
+                shopNow: "Shop Now",
+                featuredProducts: "Featured Products",
+                newThisWeek: "New This Week",
+                allProducts: "All Products",
+                sweets: "Sweets",
+                bakery: "Bakery",
+                new: "New",
+                product1Title: "Kunafa with Nutella",
+                product1Desc: "Crispy kunafa filled with delicious Nutella and topped with pistachios",
+                product1FullDesc: "Kunafa with Nutella is a dessert masterpiece that combines the delicious crispiness of kunafa with the luxurious smoothness of Nutella. Handmade from the finest types of dough and filled with a generous amount of high-quality Nutella. Decorated with peeled pistachios to add flavor and an attractive appearance. Perfect for morning coffee or as a dessert after meals.",
+                product2Title: "Chocolate Croissant",
+                product2Desc: "Fresh croissant filled with melted chocolate and topped with powdered sugar",
+                product2FullDesc: "Chocolate croissant is a French masterpiece with an Eastern touch. Made from thin, professionally layered dough to achieve a flaky and crispy texture. Filled with strips of high-quality dark chocolate that melts in your mouth. Decorated with fine powdered sugar to add an aesthetic touch and balanced sweet flavor. Ideal with coffee or tea.",
+                product3Title: "Basbousa with Cream",
+                product3Desc: "Soft basbousa filled with fresh cream and topped with walnuts and almonds",
+                product3FullDesc: "Basbousa with cream is a masterpiece of traditional Eastern sweets with a modern taste. Consists of two layers of soft basbousa filled with a thick layer of fresh cream made from whole milk. Decorated with a mixture of roasted walnuts and almonds to add crunch and rich flavor. Covered with sugar syrup flavored with rose water to enhance the flavor.",
+                product4Title: "Cheesecake with Berries",
+                product4Desc: "Creamy cheesecake with a layer of fresh berries and biscuit base",
+                product4FullDesc: "Cheesecake with berries is a Western dessert with an Eastern touch. Consists of a crispy base of ground biscuits mixed with butter, a thick creamy layer of high-quality cream cheese, and a top layer of handmade fresh berry sauce. Combines the smoothness of cream cheese with the refreshing acidity of berries. Perfect for lovers of classic desserts with balanced flavors.",
+                product5Title: "Date Maamoul",
+                product5Desc: "Traditional maamoul filled with high-quality dates and decorated with nuts",
+                product5FullDesc: "Date maamoul is a traditional sweet famous in Arab tables on occasions. Made from soft dough filled with fresh, high-quality date paste. Hand-shaped using traditional engraved molds to give a beautiful shape. Decorated with a mixture of roasted nuts such as walnuts, almonds, and pistachios. Considered a healthy and delicious option for lovers of traditional sweets.",
+                product6Title: "Cranberry Donut",
+                product6Desc: "Fresh donut filled with cranberry cream and topped with sugar",
+                product6FullDesc: "Cranberry donut is a Western dessert with a refreshing Eastern flavor. Made from light and thin dough filled with sweet and sour cranberry cream. Fried professionally to achieve a golden crispy texture on the outside and soft on the inside. Decorated with a light layer of powdered sugar to add balanced sweetness. Perfect as a snack or with a cup of coffee.",
+                addToCart: "Add to Cart",
+                viewDetails: "View Details",
+                bestseller: "Bestseller",
+                cartTitle: "Shopping Cart",
+                checkout: "Complete Order via WhatsApp",
+                address: "Address",
+                addressContent: "Sweets Street, City Center, Morocco",
+                phone: "Phone",
+                phoneNumber: "+212 522 345 678",
+                email: "Email",
+                emailAddress: "info@delicioussweets.com",
+                aboutFooter: "About Store",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Customer Service",
+                shipping: "Shipping & Delivery",
+                connectWithUs: "Connect With Us",
+                connectDesc: "Follow us on social media to know the latest offers and new products",
+                allRights: "All Rights Reserved",
+                whatsappMessage: "Hello, I would like to order the following products:\n",
+                whatsappTotal: "\nTotal: $",
+                whatsappInfo: "\n\nName: \nAddress: \nPhone Number:"
+            },
+            fr: {
+                storeName: "Délices Sucrés & Pâtisserie",
+                home: "Accueil",
+                products: "Produits",
+                contactUs: "Contactez-nous",
+                menu: "Menu",
+                about: "À propos de nous",
+                quality: "Qualité et Garantie",
+                faq: "FAQ",
+                returns: "Retours et Échanges",
+                privacy: "Politique de Confidentialité",
+                heroTitle: "Délices Sucrés & Pâtisserie",
+                heroDesc: "Découvrez un monde de saveurs délicieuses. Sucreries orientales et occidentales fraîches, gâteaux, pâtisseries et chocolats de luxe, tous fabriqués avec les meilleurs ingrédients et amour.",
+                shopNow: "Acheter Maintenant",
+                featuredProducts: "Produits en Vedette",
+                newThisWeek: "Nouveautés de la Semaine",
+                allProducts: "Tous les Produits",
+                sweets: "Sucreries",
+                bakery: "Pâtisserie",
+                new: "Nouveau",
+                product1Title: "Kunafa au Nutella",
+                product1Desc: "Kunafa croustillant rempli de délicieux Nutella et garni de pistaches",
+                product1FullDesc: "Le Kunafa au Nutella est un chef-d'œuvre de dessert qui combine le croustillant délicieux du kunafa et la douceur luxueuse du Nutella. Fait main à partir des meilleures pâtes et rempli d'une quantité généreuse de Nutella de haute qualité. Décoré de pistaches pelées pour ajouter de la saveur et une apparence attrayante. Parfait pour le café du matin ou comme dessert après les repas.",
+                product2Title: "Croissant au Chocolat",
+                product2Desc: "Croissant frais rempli de chocolat fondu et saupoudré de sucre glace",
+                product2FullDesc: "Le croissant au chocolat est un chef-d'œuvre français avec une touche orientale. Fabriqué à partir d'une pâte fine et feuilletée de manière professionnelle pour obtenir une texture feuilletée et croustillante. Rempli de bandes de chocolat noir de haute qualité qui fond dans la bouche. Décoré de sucre glace fin pour ajouter une touche esthétique et une saveur sucrée équilibrée. Idéal avec du café ou du thé.",
+                product3Title: "Basbousa à la Crème",
+                product3Desc: "Basbousa moelleux rempli de crème fraîche et garni de noix et d'amandes",
+                product3FullDesc: "Le Basbousa à la crème est un chef-d'œuvre de sucreries orientales traditionnelles avec un goût moderne. Se compose de deux couches de basbousa moelleux rempli d'une épaisse couche de crème fraîche à base de lait entier. Décoré d'un mélange de noix et d'amandes grillées pour ajouter du croquant et une saveur riche. Recouvert de sirop de sucre parfumé à l'eau de rose pour rehausser la saveur.",
+                product4Title: "Cheesecake aux Baies",
+                product4Desc: "Cheesecake crémeux avec une couche de baies fraîches et une base de biscuits",
+                product4FullDesc: "Le Cheesecake aux baies est un dessert occidental avec une touche orientale. Se compose d'une base croustillante de biscuits moulus mélangés avec du beurre, une couche crémeuse épaisse de fromage à la crème de haute qualité et une couche supérieure de sauce aux baies fraîches faite maison. Combine la douceur du fromage à la crème et l'acidité rafraîchissante des baies. Parfait pour les amateurs de desserts classiques aux saveurs équilibrées.",
+                product5Title: "Maamoul aux Dattes",
+                product5Desc: "Maamoul traditionnel rempli de dattes de haute qualité et décoré de noix",
+                product5FullDesc: "Le Maamoul aux dattes est une sucrerie traditionnelle célèbre sur les tables arabes lors des occasions. Fabriqué à partir d'une pâte moelleuse remplie de pâte de dattes fraîche et de haute qualité. Façonné à la main à l'aide de moules traditionnels gravés pour donner une belle forme. Décoré d'un mélange de noix grillées telles que des noix, des amandes et des pistaches. Considéré comme une option saine et délicieuse pour les amateurs de sucreries traditionnelles.",
+                product6Title: "Donut à la Canneberge",
+                product6Desc: "Donut frais rempli de crème à la canneberge et saupoudré de sucre",
+                product6FullDesc: "Le Donut à la canneberge est un dessert occidental avec une saveur orientale rafraîchissante. Fabriqué à partir d'une pâte légère et fine remplie de crème à la canneberge sucrée et acidulée. Frit professionnellement pour obtenir une texture dorée et croustillante à l'extérieur et moelleuse à l'intérieur. Décoré d'une légère couche de sucre glace pour ajouter une douceur équilibrée. Parfait comme collation ou avec une tasse de café.",
+                addToCart: "Ajouter au Panier",
+                viewDetails: "Voir les Détails",
+                bestseller: "Meilleure Vente",
+                cartTitle: "Panier d'Achat",
+                checkout: "Terminer la Commande via WhatsApp",
+                address: "Adresse",
+                addressContent: "Rue des Sucreries, Centre-ville, Maroc",
+                phone: "Téléphone",
+                phoneNumber: "+212 522 345 678",
+                email: "E-mail",
+                emailAddress: "info@delicioussweets.com",
+                aboutFooter: "À Propos du Magasin",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Service Client",
+                shipping: "Livraison",
+                connectWithUs: "Connectez avec Nous",
+                connectDesc: "Suivez-nous sur les réseaux sociaux pour connaître les dernières offres et nouveaux produits",
+                allRights: "Tous Droits Réservés",
+                whatsappMessage: "Bonjour, je souhaite commander les produits suivants :\n",
+                whatsappTotal: "\nTotal : $",
+                whatsappInfo: "\n\nNom : \nAdresse : \nNuméro de Téléphone :"
+            }
+        };
+
+        // تغيير اللغة - الكود المحسّن
+        let currentLang = 'ar';
+        const languageDropdown = document.getElementById('languageDropdown');
+        const languageOptions = document.getElementById('languageOptions');
+        const currentLangText = document.getElementById('currentLang');
+        
+        // تهيئة النظام عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إظهار الصفحة الرئيسية عند التحميل
+            showPage('home');
+            
+            // تحديث النصوص باللغة العربية الافتراضية
+            updateLanguageTexts();
+            
+            // إضافة الأحداث للغات
+            setupLanguageEvents();
+        });
+        
+        // إعداد أحداث اللغة
+        function setupLanguageEvents() {
+            // فتح وإغلاق قائمة اللغات
+            if (languageDropdown) {
+                languageDropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    languageOptions.classList.toggle('active');
+                });
+            }
+            
+            // إغلاق قائمة اللغات عند النقر خارجها
+            document.addEventListener('click', function() {
+                if (languageOptions) {
+                    languageOptions.classList.remove('active');
+                }
+            });
+            
+            // منع إغلاق القائمة عند النقر داخلها
+            if (languageOptions) {
+                languageOptions.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+            
+            // تغيير اللغة
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    currentLang = this.getAttribute('data-lang');
+                    if (currentLangText) {
+                        currentLangText.textContent = this.textContent;
+                    }
+                    if (languageOptions) {
+                        languageOptions.classList.remove('active');
+                    }
+                    
+                    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+                    document.documentElement.lang = currentLang;
+                    
+                    updateLanguageTexts();
+                });
+            });
+        }
+        
+        // تحديث النصوص بناءً على اللغة المحددة
+        function updateLanguageTexts() {
+            // تحديث اسم المتجر
+            document.querySelectorAll('.store-name').forEach(element => {
+                element.textContent = translations[currentLang].storeName;
+            });
+            
+            // تحديث كل النصوص
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[currentLang][key];
+                    } else {
+                        element.textContent = translations[currentLang][key];
+                    }
+                }
+            });
+        }
+
+        // نظام تصفية المنتجات حسب الفئة
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشاط للزر المختار
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // تصفية المنتجات
+                productCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // نظام سلة التسوق
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.querySelector('.cart-count');
+
+        // إضافة منتج إلى السلة
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('.product-title').textContent;
+                const productPrice = productCard.querySelector('.product-price').textContent;
+                
+                // إضافة المنتج إلى السلة
+                cart.push({
+                    name: productName,
+                    price: productPrice
+                });
+                
+                // تحديث عدد العناصر في السلة
+                cartCount.textContent = cart.length;
+                
+                // إظهار رسالة تأكيد
+                alert(translations[currentLang].addToCart + ' ' + productName);
+            });
+        });
+
+        // إتمام الطلب عبر واتساب
+        cartIcon.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert('سلة التسوق فارغة');
+                return;
+            }
+            
+            let message = translations[currentLang].whatsappMessage;
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `- ${item.name}: ${item.price}\n`;
+                total += parseFloat(item.price.replace('$', ''));
+            });
+            
+            message += translations[currentLang].whatsappTotal + total;
+            message += translations[currentLang].whatsappInfo;
+            
+            // تشفير الرسالة للرابط
+            const encodedMessage = encodeURIComponent(message);
+            
+            // إنشاء رابط واتساب
+            const whatsappURL = `https://wa.me/212522345678?text=${encodedMessage}`;
+            
+            // فتح واتساب في نافذة جديدة
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+</body>
+</html>

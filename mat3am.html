@@ -1,0 +1,2662 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم النخبة - Elite Restaurant</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #27AE60;
+            --dark-green: #219653;
+            --light-green: #6FCF97;
+            --accent-orange: #F2994A;
+            --dark-orange: #E67E22;
+            --text-light: #F8F5F2;
+            --text-dark: #2A2A2A;
+            --transition: all 0.3s ease;
+            --gold: #E6B85C;
+            --gold-dark: #C99C42;
+            --white: #FFFFFF;
+            --light-bg: rgba(255, 255, 255, 0.15);
+            --medium-bg: rgba(255, 255, 255, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* شريط اللغة الجديد */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .current-lang {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--medium-bg);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .current-lang:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .current-lang i {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            width: 180px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            display: none;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-dropdown.active {
+            display: block;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: rgba(39, 174, 96, 0.3);
+        }
+
+        .lang-flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        /* الهيدر المعدل */
+        header {
+            background: rgba(0, 0, 0, 0.85);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--light-green);
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* القائمة الرئيسية المعدلة */
+        .main-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 10px;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .nav-icon:hover {
+            background: var(--light-bg);
+            color: var(--light-green);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .cart-icon:hover {
+            color: var(--light-green);
+            transform: scale(1.1);
+            background: var(--light-bg);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--accent-orange);
+            color: var(--text-light);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* زر الهامبرجر المحسن في الجهة اليسرى */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            z-index: 1100;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-light);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* قائمة الهاتف المحمول المحسنة في الجهة اليسرى */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 320px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1099;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-header h3 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        .close-mobile-nav {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .close-mobile-nav:hover {
+            background: var(--light-bg);
+            color: var(--light-green);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: var(--light-bg);
+            color: var(--light-green);
+            border-color: rgba(39, 174, 96, 0.3);
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        /* أقسام القائمة الجانبية */
+        .mobile-nav-sections {
+            margin-top: 20px;
+        }
+
+        .mobile-nav-section {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .mobile-nav-section:hover {
+            background: var(--medium-bg);
+        }
+
+        .mobile-nav-section.active {
+            background: var(--medium-bg);
+            border-color: var(--primary-green);
+        }
+
+        .mobile-nav-section h4 {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-nav-section h4 i {
+            color: var(--primary-green);
+            transition: var(--transition);
+        }
+
+        .mobile-nav-section.active h4 i {
+            transform: rotate(90deg);
+        }
+
+        .mobile-section-content {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-section.active .mobile-section-content {
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* الهيرو سيكشن */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(to right, var(--text-light), var(--light-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--text-light);
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--light-green), var(--primary-green));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.5);
+        }
+
+        /* أقسام الطعام */
+        .food-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .category-btn {
+            background: var(--light-bg);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--medium-bg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-btn.main.active {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            border-color: var(--light-green);
+        }
+
+        .category-btn.desserts.active {
+            background: linear-gradient(135deg, var(--accent-orange), var(--dark-orange));
+            border-color: var(--accent-orange);
+        }
+
+        .category-btn.drinks.active {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-color: var(--gold);
+        }
+
+        /* قسم المنتجات */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--text-light), var(--light-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--text-light), var(--light-green));
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .product-card.active {
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(39, 174, 96, 0.2);
+            border: 1px solid var(--primary-green);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--text-light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .product-desc {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--text-light);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--light-green), var(--primary-green));
+        }
+
+        .view-details {
+            background: var(--medium-bg);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .view-details:hover {
+            background: var(--light-bg);
+            border-color: var(--primary-green);
+        }
+
+        /* صفحة اتصل بنا */
+        .contact-section {
+            padding: 5rem 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(39, 174, 96, 0.2);
+            border: 1px solid var(--primary-green);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--light-green);
+        }
+
+        /* سلة التسوق */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 380px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-sidebar.active {
+            left: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-header h3 {
+            color: var(--text-light);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(39, 174, 96, 0.3);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .cart-item-price {
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff5252;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* الفوتر */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--light-green);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(39, 174, 96, 0.2);
+            border-radius: 50%;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-green);
+            color: var(--text-light);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* نافذة تفاصيل المنتج */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 1;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .modal-details h3 {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-full-desc {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* نافذة محتوى الفوتر */
+        .footer-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .footer-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer-modal-content {
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-footer-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 1;
+        }
+
+        .footer-modal-body {
+            margin-top: 2rem;
+        }
+
+        .footer-modal-body h3 {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-modal-body h4 {
+            color: var(--light-green);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-modal-body p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-modal-body ul, .footer-modal-body ol {
+            color: var(--text-light);
+            margin-right: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* التجاوب مع جميع الأجهزة */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .food-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 80%;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر المعدل -->
+    <header>
+        <div class="nav-container">
+            <button class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg" alt="مطعم النخبة - Elite Restaurant" class="logo-image">
+                <span class="store-name">مطعم النخبة</span>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#home" class="nav-icon">
+                    <i class="fas fa-home"></i>
+                    <span data-key="home">الرئيسية</span>
+                </a>
+                <a href="#products" class="nav-icon">
+                    <i class="fas fa-utensils"></i>
+                    <span data-key="products">قائمة الطعام</span>
+                </a>
+                <a href="#contact" class="nav-icon">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contactUs">اتصل بنا</span>
+                </a>
+            </nav>
+
+            <div class="language-selector">
+                <div class="current-lang" id="currentLang">
+                    <span>العربية</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" data-lang="ar">
+                        <img src="https://flagcdn.com/w40/sa.png" class="lang-flag" alt="العربية">
+                        <span>العربية</span>
+                    </div>
+                    <div class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w40/us.png" class="lang-flag" alt="English">
+                        <span>English</span>
+                    </div>
+                    <div class="lang-option" data-lang="fr">
+                        <img src="https://flagcdn.com/w40/fr.png" class="lang-flag" alt="Français">
+                        <span>Français</span>
+                    </div>
+                    <div class="lang-option" data-lang="de">
+                        <img src="https://flagcdn.com/w40/de.png" class="lang-flag" alt="Deutsch">
+                        <span>Deutsch</span>
+                    </div>
+                    <div class="lang-option" data-lang="it">
+                        <img src="https://flagcdn.com/w40/it.png" class="lang-flag" alt="Italiano">
+                        <span>Italiano</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- قائمة الهاتف المحمول المحسنة في الجهة اليسرى -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3 data-key="menu">القائمة</h3>
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link" id="mobileHomeLink">
+                <i class="fas fa-home"></i>
+                <span data-key="home">الرئيسية</span>
+            </a>
+            <a href="#products" class="mobile-nav-link" id="mobileProductsLink">
+                <i class="fas fa-utensils"></i>
+                <span data-key="products">قائمة الطعام</span>
+            </a>
+            <a href="#contact" class="mobile-nav-link" id="mobileContactLink">
+                <i class="fas fa-phone-alt"></i>
+                <span data-key="contactUs">اتصل بنا</span>
+            </a>
+        </div>
+        
+        <div class="mobile-nav-sections">
+            <div class="mobile-nav-section" data-section="about">
+                <h4><i class="fas fa-users"></i> <span data-key="about">من نحن</span></h4>
+                <div class="mobile-section-content">
+                    <p data-key="aboutContent">نحن مطعم النخبة، نقدم أجود أنواع المأكولات العالمية والعربية بأعلى معايير الجودة. مهمتنا هي تقديم تجربة طعام استثنائية تليق بذوقك الرفيع.</p>
+                    <h5 data-key="vision">رؤيتنا</h5>
+                    <p data-key="visionContent">أن نكون الوجهة الأولى لعشاق الطعام الفاخر في المنطقة.</p>
+                    <h5 data-key="mission">رسالتنا</h5>
+                    <p data-key="missionContent">تقديم تجربة طعام فريدة من خلال أطباق استثنائية تعكس ثقافات متنوعة.</p>
+                    <h5 data-key="values">قيمنا</h5>
+                    <ul>
+                        <li data-key="value1">الجودة والتميز</li>
+                        <li data-key="value2">الإبداع والابتكار</li>
+                        <li data-key="value3">الثقة والشفافية</li>
+                        <li data-key="value4">رضا العملاء أولاً</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mobile-nav-section" data-section="quality">
+                <h4><i class="fas fa-award"></i> <span data-key="quality">الجودة والضمان</span></h4>
+                <div class="mobile-section-content">
+                    <p data-key="qualityContent">نحن نضمن جودة جميع مكوناتنا ونستخدم أفضل المنتجات الطازجة. نقدم ضمان استرجاع إذا لم تكن راضيًا عن الطعام.</p>
+                    <h5 data-key="qualityStandards">معايير الجودة</h5>
+                    <ul>
+                        <li data-key="standard1">مكونات طازجة 100%</li>
+                        <li data-key="standard2">اختبارات جودة صارمة</li>
+                        <li data-key="standard3">تصنيع وفق أعلى المعايير الصحية</li>
+                        <li data-key="standard4">تغليف فاخر وحماية مثالية</li>
+                    </ul>
+                    <h5 data-key="warranties">الضمانات المقدمة</h5>
+                    <ul>
+                        <li data-key="warranty1">ضمان جودة الطعام</li>
+                        <li data-key="warranty2">ضمان الرضا التام</li>
+                        <li data-key="warranty3">ضمان استرجاع</li>
+                        <li data-key="warranty4">دعم فني مستمر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mobile-nav-section" data-section="faq">
+                <h4><i class="fas fa-question-circle"></i> <span data-key="faq">الأسئلة الشائعة</span></h4>
+                <div class="mobile-section-content">
+                    <p data-key="faqContent">يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول خدماتنا في قسم الأسئلة الشائعة على موقعنا.</p>
+                    <h5 data-key="foodQuestions">أسئلة حول الطعام</h5>
+                    <div class="faq-item">
+                        <p><strong data-key="faqQuestion1">س: هل يمكنني تخصيص طلبي؟</strong></p>
+                        <p data-key="faqAnswer1">ج: نعم، يمكنك تخصيص طلبياتك حسب رغبتك. فقط أضف ملاحظاتك عند الطلب.</p>
+                    </div>
+                    <div class="faq-item">
+                        <p><strong data-key="faqQuestion2">س: هل تقدمون خيارات نباتية؟</strong></p>
+                        <p data-key="faqAnswer2">ج: نعم، لدينا مجموعة متنوعة من الأطباق النباتية اللذيذة.</p>
+                    </div>
+                    <h5 data-key="shippingQuestions">أسئلة حول الشحن والتوصيل</h5>
+                    <div class="faq-item">
+                        <p><strong data-key="faqQuestion3">س: ما هي مدة التوصيل؟</strong></p>
+                        <p data-key="faqAnswer3">ج: مدة التوصيل من 30 إلى 60 دقيقة حسب الموقع.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-nav-section" data-section="returns">
+                <h4><i class="fas fa-exchange-alt"></i> <span data-key="returns">سياسة الإرجاع</span></h4>
+                <div class="mobile-section-content">
+                    <h5 data-key="returnConditions">شروط الإرجاع</h5>
+                    <ul>
+                        <li data-key="returnCondition1">يجب الإبلاغ عن أي مشكلة خلال ساعة من الاستلام</li>
+                        <li data-key="returnCondition2">يجب أن يكون الطعام غير مفتوح</li>
+                        <li data-key="returnCondition3">يجب أن يكون في غلافه الأصلي</li>
+                        <li data-key="returnCondition4">مدة الإرجاع 2 ساعة من تاريخ الاستلام</li>
+                    </ul>
+                    <h5 data-key="returnSteps">خطوات الإرجاع</h5>
+                    <ol>
+                        <li data-key="returnStep1">الاتصال بخدمة العملاء</li>
+                        <li data-key="returnStep2">تعبئة نموذج الإرجاع</li>
+                        <li data-key="returnStep3">استلام المبلغ خلال 24-48 ساعة</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mobile-nav-section" data-section="privacy">
+                <h4><i class="fas fa-shield-alt"></i> <span data-key="privacy">سياسة الخصوصية</span></h4>
+                <div class="mobile-section-content">
+                    <h5 data-key="dataWeCollect">البيانات التي نجمعها</h5>
+                    <ul>
+                        <li data-key="data1">الاسم وبيانات الاتصال</li>
+                        <li data-key="data2">عنوان التوصيل</li>
+                        <li data-key="data3">بيانات الدفع (محفوظة بشكل آمن)</li>
+                        <li data-key="data4">تفضيلات الطعام</li>
+                    </ul>
+                    <h5 data-key="howWeUseData">كيف نستخدم بياناتك</h5>
+                    <ul>
+                        <li data-key="use1">تجهيز الطلبات والتوصيل</li>
+                        <li data-key="use2">تحسين تجربة الطعام</li>
+                        <li data-key="use3">إرسال عروض خاصة (بموافقتك)</li>
+                        <li data-key="use4">تحليل أنماط الطلبات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الهيرو سيكشن -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-key="heroTitle">تجربة طعام استثنائية تليق بذوقك</h1>
+            <p data-key="heroDesc">اكتشف مجموعتنا الحصرية من الأطباق العالمية والعربية التي صممت بعناية لتليق بالأذواق الراقية. جودة استثنائية ونكهات لا تنسى.</p>
+            <a href="#products" class="btn" data-key="orderNow">اطلب الآن</a>
+        </div>
+    </section>
+
+    <!-- أقسام الطعام -->
+    <div class="container">
+        <div class="food-categories">
+            <button class="category-btn main active" data-category="main">
+                <i class="fas fa-utensils"></i>
+                <span data-key="allFood">جميع الأطباق</span>
+            </button>
+            <button class="category-btn desserts" data-category="desserts">
+                <i class="fas fa-ice-cream"></i>
+                <span data-key="desserts">الحلويات</span>
+            </button>
+            <button class="category-btn drinks" data-category="drinks">
+                <i class="fas fa-cocktail"></i>
+                <span data-key="drinks">المشروبات</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- قسم المنتجات -->
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title" data-key="ourMenu">قائمة طعامنا</h2>
+            <div class="products-grid">
+                <!-- الطبق 1 - رئيسي -->
+                <div class="product-card active" data-category="main">
+                    <div class="product-badge" data-key="new">جديد</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product1Title">بيتزا تروفاتا</h3>
+                        <p class="product-desc" data-key="product1Desc">بيتزا إيطالية فاخرة مع الفطر والجبنة الممتازة</p>
+                        <div class="product-price">$18</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="1">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- الطبق 2 - رئيسي -->
+                <div class="product-card active" data-category="main">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product2Title">ستيك لحم أنغوس</h3>
+                        <p class="product-desc" data-key="product2Desc">ستيك لحم أنغوس مشوي مع صلصة الفلفل الأسود</p>
+                        <div class="product-price">$32</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="2">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- الطبق 3 - حلويات -->
+                <div class="product-card active" data-category="desserts">
+                    <div class="product-badge" data-key="bestseller">الأكثر طلباً</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product3Title">تشيز كيك التوت</h3>
+                        <p class="product-desc" data-key="product3Desc">تشيز كيك كريمي مع صلصة التوت الطازج</p>
+                        <div class="product-price">$12</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="3">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- الطبق 4 - مشروبات -->
+                <div class="product-card active" data-category="drinks">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product4Title">كوكتيل المانجو</h3>
+                        <p class="product-desc" data-key="product4Desc">مزيج منعش من المانجو الطازج والزبادي</p>
+                        <div class="product-price">$8</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="4">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- الطبق 5 - رئيسي -->
+                <div class="product-card active" data-category="main">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1606755962773-d324e3833248?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product5Title">سلمون مشوي</h3>
+                        <p class="product-desc" data-key="product5Desc">سلمون طازج مشوي مع صلصة الليمون والأعشاب</p>
+                        <div class="product-price">$24</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="5">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- الطبق 6 - حلويات -->
+                <div class="product-card active" data-category="desserts">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product6Title">موس الشوكولاتة</h3>
+                        <p class="product-desc" data-key="product6Desc">موس شوكولاتة بلجيكي مع كريمة مخفوقة</p>
+                        <div class="product-price">$10</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="6">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة اتصل بنا -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title" data-key="contactUs">اتصل بنا</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 data-key="address">العنوان</h3>
+                    <p data-key="addressContent">شارع الملك فهد، الرياض، المملكة العربية السعودية</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3 data-key="phone">الهاتف</h3>
+                    <p><a href="tel:+966112345678" data-key="phoneNumber">+966 11 234 5678</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3 data-key="email">البريد الإلكتروني</h3>
+                    <p><a href="mailto:info@eliterestaurant.com" data-key="emailAddress">info@eliterestaurant.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- سلة التسوق -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-key="cartTitle">سلة الطلبات</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- سيتم إضافة العناصر هنا ديناميكياً -->
+        </div>
+        <div class="cart-total" id="cartTotal">المجموع: $0</div>
+        <button class="checkout-btn" id="checkoutBtn">
+            <i class="fab fa-whatsapp"></i> <span data-key="checkout">إتمام الطلب عبر واتساب</span>
+        </button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- نافذة تفاصيل المنتج -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة محتوى الفوتر -->
+    <div class="footer-modal" id="footerModal">
+        <div class="footer-modal-content">
+            <button class="close-footer-modal" id="closeFooterModal">&times;</button>
+            <div class="footer-modal-body" id="footerModalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-key="aboutFooter">عن المطعم</h3>
+                <ul>
+                    <li><a data-key="about" data-content="about">من نحن</a></li>
+                    <li><a data-key="quality" data-content="quality">الجودة والضمان</a></li>
+                    <li><a data-key="blog" data-content="blog">المدونة</a></li>
+                    <li><a data-key="faqFooter" data-content="faq">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="customerService">خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#contact" data-key="contactUs">اتصل بنا</a></li>
+                    <li><a data-key="shipping" data-content="shipping">الشحن والتوصيل</a></li>
+                    <li><a data-key="returns" data-content="returns">الإرجاع والاستبدال</a></li>
+                    <li><a data-key="privacy" data-content="privacy">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="connectWithUs">تواصل معنا</h3>
+                <p data-key="connectDesc">تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والأطباق الجديدة</p>
+                <div class="social-links">
+                    <a href="https://replace.me/instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://replace.me/facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://replace.me/x" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://replace.me/tiktok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://replace.me/whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 <span class="store-name">مطعم النخبة</span>. <span data-key="allRights">جميع الحقوق محفوظة</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // نظام قائمة الهاتف المحمول
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const overlay = document.getElementById('overlay');
+        const mobileNavSections = document.querySelectorAll('.mobile-nav-section');
+
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            hamburgerMenu.classList.add('active');
+        }
+
+        function closeMobileNavFunc() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            
+            // إغلاق جميع الأقسام عند إغلاق القائمة
+            mobileNavSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+
+        hamburgerMenu.addEventListener('click', openMobileNav);
+        closeMobileNav.addEventListener('click', closeMobileNavFunc);
+        overlay.addEventListener('click', closeMobileNavFunc);
+
+        // إغلاق قائمة الهاتف عند النقر على رابط
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileNavFunc);
+        });
+
+        // نظام الأقسام القابلة للطي
+        mobileNavSections.forEach(section => {
+            section.addEventListener('click', function() {
+                // إغلاق جميع الأقسام الأخرى
+                mobileNavSections.forEach(s => {
+                    if (s !== this) {
+                        s.classList.remove('active');
+                    }
+                });
+                // فتح/إغلاق القسم الحالي
+                this.classList.toggle('active');
+            });
+        });
+
+        // نظام اللغات المتكامل
+        const translations = {
+            ar: {
+                storeName: "مطعم النخبة",
+                home: "الرئيسية",
+                products: "قائمة الطعام",
+                contactUs: "اتصل بنا",
+                menu: "القائمة",
+                about: "من نحن",
+                aboutContent: "نحن مطعم النخبة، نقدم أجود أنواع المأكولات العالمية والعربية بأعلى معايير الجودة. مهمتنا هي تقديم تجربة طعام استثنائية تليق بذوقك الرفيع.",
+                vision: "رؤيتنا",
+                visionContent: "أن نكون الوجهة الأولى لعشاق الطعام الفاخر في المنطقة.",
+                mission: "رسالتنا",
+                missionContent: "تقديم تجربة طعام فريدة من خلال أطباق استثنائية تعكس ثقافات متنوعة.",
+                values: "قيمنا",
+                value1: "الجودة والتميز",
+                value2: "الإبداع والابتكار",
+                value3: "الثقة والشفافية",
+                value4: "رضا العملاء أولاً",
+                quality: "الجودة والضمان",
+                qualityContent: "نحن نضمن جودة جميع مكوناتنا ونستخدم أفضل المنتجات الطازجة. نقدم ضمان استرجاع إذا لم تكن راضيًا عن الطعام.",
+                qualityStandards: "معايير الجودة",
+                standard1: "مكونات طازجة 100%",
+                standard2: "اختبارات جودة صارمة",
+                standard3: "تصنيع وفق أعلى المعايير الصحية",
+                standard4: "تغليف فاخر وحماية مثالية",
+                warranties: "الضمانات المقدمة",
+                warranty1: "ضمان جودة الطعام",
+                warranty2: "ضمان الرضا التام",
+                warranty3: "ضمان استرجاع",
+                warranty4: "دعم فني مستمر",
+                faq: "الأسئلة الشائعة",
+                faqContent: "يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول خدماتنا في قسم الأسئلة الشائعة على موقعنا.",
+                foodQuestions: "أسئلة حول الطعام",
+                faqQuestion1: "س: هل يمكنني تخصيص طلبي؟",
+                faqAnswer1: "ج: نعم، يمكنك تخصيص طلبياتك حسب رغبتك. فقط أضف ملاحظاتك عند الطلب.",
+                faqQuestion2: "س: هل تقدمون خيارات نباتية؟",
+                faqAnswer2: "ج: نعم، لدينا مجموعة متنوعة من الأطباق النباتية اللذيذة.",
+                shippingQuestions: "أسئلة حول الشحن والتوصيل",
+                faqQuestion3: "س: ما هي مدة التوصيل؟",
+                faqAnswer3: "ج: مدة التوصيل من 30 إلى 60 دقيقة حسب الموقع.",
+                returns: "سياسة الإرجاع",
+                returnConditions: "شروط الإرجاع",
+                returnCondition1: "يجب الإبلاغ عن أي مشكلة خلال ساعة من الاستلام",
+                returnCondition2: "يجب أن يكون الطعام غير مفتوح",
+                returnCondition3: "يجب أن يكون في غلافه الأصلي",
+                returnCondition4: "مدة الإرجاع 2 ساعة من تاريخ الاستلام",
+                returnSteps: "خطوات الإرجاع",
+                returnStep1: "الاتصال بخدمة العملاء",
+                returnStep2: "تعبئة نموذج الإرجاع",
+                returnStep3: "استلام المبلغ خلال 24-48 ساعة",
+                privacy: "سياسة الخصوصية",
+                dataWeCollect: "البيانات التي نجمعها",
+                data1: "الاسم وبيانات الاتصال",
+                data2: "عنوان التوصيل",
+                data3: "بيانات الدفع (محفوظة بشكل آمن)",
+                data4: "تفضيلات الطعام",
+                howWeUseData: "كيف نستخدم بياناتك",
+                use1: "تجهيز الطلبات والتوصيل",
+                use2: "تحسين تجربة الطعام",
+                use3: "إرسال عروض خاصة (بموافقتك)",
+                use4: "تحليل أنماط الطلبات",
+                heroTitle: "تجربة طعام استثنائية تليق بذوقك",
+                heroDesc: "اكتشف مجموعتنا الحصرية من الأطباق العالمية والعربية التي صممت بعناية لتليق بالأذواق الراقية. جودة استثنائية ونكهات لا تنسى.",
+                orderNow: "اطلب الآن",
+                ourMenu: "قائمة طعامنا",
+                allFood: "جميع الأطباق",
+                desserts: "الحلويات",
+                drinks: "المشروبات",
+                new: "جديد",
+                product1Title: "بيتزا تروفاتا",
+                product1Desc: "بيتزا إيطالية فاخرة مع الفطر والجبنة الممتازة",
+                product1FullDesc: "بيتزا تروفاتا هي تحفة إيطالية تجمع بين الأصالة والحداثة. تحتوي على خلطة فريدة من الفطر الطازج والجبنة الممتازة مع صلصة الطماطم الطبيعية. هذه البيتزا تعكس روح المطبخ الإيطالي الأصيل مع لمسة عصرية تجعلها مناسبة للعشاء العائلي والحفلات. مصنوعة بعناية فائقة وتقدم ساخنة.",
+                product2Title: "ستيك لحم أنغوس",
+                product2Desc: "ستيك لحم أنغوس مشوي مع صلصة الفلفل الأسود",
+                product2FullDesc: "ستيك لحم أنغوس يمثل الأناقة في عالم اللحوم. يجمع بين طراوة اللحم المشوي المثالي ودفء صلصة الفلفل الأسود. مثالي لعشاق اللحوم الذين يبحثون عن نكهة مميزة تعكس ذوقهم الرفيع. مناسب للعشاء الرومانسي والمناسبات الخاصة.",
+                product3Title: "تشيز كيك التوت",
+                product3Desc: "تشيز كيك كريمي مع صلصة التوت الطازج",
+                product3FullDesc: "تشيز كيك التوت هو حلوى نسائية فاخرة تجسد روعة الحلويات العالمية. يمزج بين كريمة التشيز كيك الناعمة وحلاوة صلصة التوت الطازج. حلوى جريئة وأنثوية تناسب الذواقة الذين يبحثون عن تميز في عالم الحلويات.",
+                product4Title: "كوكتيل المانجو",
+                product4Desc: "مزيج منعش من المانجو الطازج والزبادي",
+                product4FullDesc: "كوكتيل المانجو هو مشروب منعش ينقلك إلى أجواء الاستوائية. يجمع بين نضارة المانجو الطازج ونعومة الزبادي مع لمسات خفيفة من العسل. مثالي للصيف والطقس الحار، يمنحك شعوراً بالانتعاش والحيوية.",
+                product5Title: "سلمون مشوي",
+                product5Desc: "سلمون طازج مشوي مع صلصة الليمون والأعشاب",
+                product5FullDesc: "سلمون مشوي هو طبق صحي وراقي يجمع بين جمال المأكولات البحرية ونعومة الصلصة. يناسب محبي الأكل الصحي الذين يبحثون عن طبق مميز يعكس اهتمامهم بالصحة والجودة. مثالي للغداء والعشاء.",
+                product6Title: "موس الشوكولاتة",
+                product6Desc: "موس شوكولاتة بلجيكي مع كريمة مخفوقة",
+                product6FullDesc: "موس الشوكولاتة هو حلوى رجالية قوية وجذابة تمزج بين عمق الشوكولاتة البلجيكية ودفء الكريمة المخفوقة. يناسب عشاق الشوكولاتة الذين يبحثون عن حلوى مميزة تعكس شخصيتهم القوية والواثقة. مثالي بعد العشاء.",
+                addToCart: "أضف إلى السلة",
+                viewDetails: "عرض التفاصيل",
+                bestseller: "الأكثر طلباً",
+                cartTitle: "سلة الطلبات",
+                checkout: "إتمام الطلب عبر واتساب",
+                address: "العنوان",
+                addressContent: "شارع الملك فهد، الرياض، المملكة العربية السعودية",
+                phone: "الهاتف",
+                phoneNumber: "+966 11 234 5678",
+                email: "البريد الإلكتروني",
+                emailAddress: "info@eliterestaurant.com",
+                aboutFooter: "عن المطعم",
+                blog: "المدونة",
+                faqFooter: "الأسئلة الشائعة",
+                customerService: "خدمة العملاء",
+                shipping: "الشحن والتوصيل",
+                connectWithUs: "تواصل معنا",
+                connectDesc: "تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والأطباق الجديدة",
+                allRights: "جميع الحقوق محفوظة",
+                whatsappMessage: "مرحباً، أريد طلب الأطباق التالية:\n",
+                whatsappTotal: "\nالمجموع: $",
+                whatsappInfo: "\n\nالاسم: \nالعنوان: \nرقم الهاتف:"
+            },
+            en: {
+                storeName: "Elite Restaurant",
+                home: "Home",
+                products: "Menu",
+                contactUs: "Contact Us",
+                menu: "Menu",
+                about: "About Us",
+                aboutContent: "We are Elite Restaurant, offering the finest international and Arabic cuisine with the highest quality standards. Our mission is to provide an exceptional dining experience worthy of your refined taste.",
+                vision: "Our Vision",
+                visionContent: "To be the premier destination for fine dining enthusiasts in the region.",
+                mission: "Our Mission",
+                missionContent: "To provide a unique dining experience through exceptional dishes that reflect diverse cultures.",
+                values: "Our Values",
+                value1: "Quality and Excellence",
+                value2: "Creativity and Innovation",
+                value3: "Trust and Transparency",
+                value4: "Customer Satisfaction First",
+                quality: "Quality & Warranty",
+                qualityContent: "We guarantee the quality of all our ingredients and use the best fresh products. We offer a return guarantee if you are not satisfied with the food.",
+                qualityStandards: "Quality Standards",
+                standard1: "100% Fresh Ingredients",
+                standard2: "Rigorous Quality Tests",
+                standard3: "Preparation According to Highest Health Standards",
+                standard4: "Luxurious Packaging and Optimal Protection",
+                warranties: "Warranties Provided",
+                warranty1: "Food Quality Guarantee",
+                warranty2: "Complete Satisfaction Guarantee",
+                warranty3: "Return Guarantee",
+                warranty4: "Continuous Technical Support",
+                faq: "FAQ",
+                faqContent: "You can find answers to the most common questions about our services in the FAQ section on our website.",
+                foodQuestions: "Food Questions",
+                faqQuestion1: "Q: Can I customize my order?",
+                faqAnswer1: "A: Yes, you can customize your orders according to your preference. Just add your notes when ordering.",
+                faqQuestion2: "Q: Do you offer vegetarian options?",
+                faqAnswer2: "A: Yes, we have a variety of delicious vegetarian dishes.",
+                shippingQuestions: "Shipping & Delivery Questions",
+                faqQuestion3: "Q: What is the delivery time?",
+                faqAnswer3: "A: Delivery time is 30 to 60 minutes depending on location.",
+                returns: "Return Policy",
+                returnConditions: "Return Conditions",
+                returnCondition1: "Any problem must be reported within one hour of receipt",
+                returnCondition2: "Food must be unopened",
+                returnCondition3: "Must be in its original packaging",
+                returnCondition4: "Return period is 2 hours from date of receipt",
+                returnSteps: "Return Steps",
+                returnStep1: "Contact customer service",
+                returnStep2: "Fill out return form",
+                returnStep3: "Receive amount within 24-48 hours",
+                privacy: "Privacy Policy",
+                dataWeCollect: "Data We Collect",
+                data1: "Name and contact information",
+                data2: "Delivery address",
+                data3: "Payment data (stored securely)",
+                data4: "Food preferences",
+                howWeUseData: "How We Use Your Data",
+                use1: "Processing orders and delivery",
+                use2: "Improving dining experience",
+                use3: "Sending special offers (with your consent)",
+                use4: "Analyzing order patterns",
+                heroTitle: "Exceptional Dining Experience Worthy of Your Taste",
+                heroDesc: "Discover our exclusive collection of international and Arabic dishes carefully designed to suit sophisticated tastes. Exceptional quality and unforgettable flavors.",
+                orderNow: "Order Now",
+                ourMenu: "Our Menu",
+                allFood: "All Dishes",
+                desserts: "Desserts",
+                drinks: "Drinks",
+                new: "New",
+                product1Title: "Truffata Pizza",
+                product1Desc: "Luxurious Italian pizza with mushrooms and premium cheese",
+                product1FullDesc: "Truffata Pizza is an Italian masterpiece that combines authenticity and modernity. It contains a unique blend of fresh mushrooms and premium cheese with natural tomato sauce. This pizza reflects the authentic spirit of Italian cuisine with a modern touch that makes it suitable for family dinners and parties. Carefully made and served hot.",
+                product2Title: "Angus Beef Steak",
+                product2Desc: "Grilled Angus beef steak with black pepper sauce",
+                product2FullDesc: "Angus Beef Steak represents elegance in the world of meats. It combines the perfect tenderness of grilled meat with the warmth of black pepper sauce. Perfect for meat lovers looking for a distinctive flavor that reflects their refined taste. Suitable for romantic dinners and special occasions.",
+                product3Title: "Berry Cheesecake",
+                product3Desc: "Creamy cheesecake with fresh berry sauce",
+                product3FullDesc: "Berry Cheesecake is a luxurious feminine dessert that embodies the splendor of international desserts. It blends the smoothness of cheesecake cream with the sweetness of fresh berry sauce. A bold and feminine dessert suitable for connoisseurs looking for distinction in the world of desserts.",
+                product4Title: "Mango Cocktail",
+                product4Desc: "Refreshing blend of fresh mango and yogurt",
+                product4FullDesc: "Mango Cocktail is a refreshing drink that transports you to tropical atmospheres. It combines the freshness of fresh mango with the softness of yogurt and light touches of honey. Perfect for summer and hot weather, it gives you a feeling of freshness and vitality.",
+                product5Title: "Grilled Salmon",
+                product5Desc: "Fresh grilled salmon with lemon and herb sauce",
+                product5FullDesc: "Grilled Salmon is a healthy and elegant dish that combines the beauty of seafood with the softness of the sauce. Suitable for health food lovers looking for a distinctive dish that reflects their interest in health and quality. Ideal for lunch and dinner.",
+                product6Title: "Chocolate Mousse",
+                product6Desc: "Belgian chocolate mousse with whipped cream",
+                product6FullDesc: "Chocolate Mousse is a strong and attractive masculine dessert that blends the depth of Belgian chocolate with the warmth of whipped cream. Suitable for chocolate lovers looking for a distinctive dessert that reflects their strong and confident personality. Perfect after dinner.",
+                addToCart: "Add to Cart",
+                viewDetails: "View Details",
+                bestseller: "Bestseller",
+                cartTitle: "Order Cart",
+                checkout: "Complete Order via WhatsApp",
+                address: "Address",
+                addressContent: "King Fahd Road, Riyadh, Saudi Arabia",
+                phone: "Phone",
+                phoneNumber: "+966 11 234 5678",
+                email: "Email",
+                emailAddress: "info@eliterestaurant.com",
+                aboutFooter: "About Restaurant",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Customer Service",
+                shipping: "Shipping & Delivery",
+                connectWithUs: "Connect With Us",
+                connectDesc: "Follow us on social media to know the latest offers and new dishes",
+                allRights: "All Rights Reserved",
+                whatsappMessage: "Hello, I would like to order the following dishes:\n",
+                whatsappTotal: "\nTotal: $",
+                whatsappInfo: "\n\nName: \nAddress: \nPhone Number:"
+            },
+            fr: {
+                storeName: "Restaurant d'Élite",
+                home: "Accueil",
+                products: "Menu",
+                contactUs: "Contactez-nous",
+                menu: "Menu",
+                about: "À propos de nous",
+                aboutContent: "Nous sommes le Restaurant d'Élite, proposant la meilleure cuisine internationale et arabe avec les normes de qualité les plus élevées. Notre mission est de fournir une expérience culinaire exceptionnelle digne de votre goût raffiné.",
+                vision: "Notre Vision",
+                visionContent: "Être la destination principale pour les amateurs de gastronomie dans la région.",
+                mission: "Notre Mission",
+                missionContent: "Fournir une expérience culinaire unique à travers des plats exceptionnels qui reflètent des cultures diverses.",
+                values: "Nos Valeurs",
+                value1: "Qualité et Excellence",
+                value2: "Créativité et Innovation",
+                value3: "Confiance et Transparence",
+                value4: "Satisfaction du Client d'Abord",
+                quality: "Qualité et Garantie",
+                qualityContent: "Nous garantissons la qualité de tous nos ingrédients et utilisons les meilleurs produits frais. Nous offrons une garantie de retour si vous n'êtes pas satisfait de la nourriture.",
+                qualityStandards: "Normes de Qualité",
+                standard1: "Ingrédients 100% frais",
+                standard2: "Tests de qualité rigoureux",
+                standard3: "Préparation selon les normes sanitaires les plus élevées",
+                standard4: "Emballage luxueux et protection optimale",
+                warranties: "Garanties Fournies",
+                warranty1: "Garantie de qualité des aliments",
+                warranty2: "Garantie de satisfaction complète",
+                warranty3: "Garantie de retour",
+                warranty4: "Support technique continu",
+                faq: "FAQ",
+                faqContent: "Vous pouvez trouver des réponses aux questions les plus courantes sur nos services dans la section FAQ de notre site Web.",
+                foodQuestions: "Questions sur la Nourriture",
+                faqQuestion1: "Q: Puis-je personnaliser ma commande?",
+                faqAnswer1: "R: Oui, vous pouvez personnaliser vos commandes selon vos préférences. Ajoutez simplement vos notes lors de la commande.",
+                faqQuestion2: "Q: Proposez-vous des options végétariennes?",
+                faqAnswer2: "R: Oui, nous avons une variété de plats végétariens délicieux.",
+                shippingQuestions: "Questions sur la Livraison",
+                faqQuestion3: "Q: Quel est le délai de livraison?",
+                faqAnswer3: "R: Le délai de livraison est de 30 à 60 minutes selon l'emplacement.",
+                returns: "Politique de Retour",
+                returnConditions: "Conditions de Retour",
+                returnCondition1: "Tout problème doit être signalé dans l'heure suivant la réception",
+                returnCondition2: "La nourriture doit être non ouverte",
+                returnCondition3: "Doit être dans son emballage d'origine",
+                returnCondition4: "La période de retour est de 2 heures à partir de la date de réception",
+                returnSteps: "Étapes de Retour",
+                returnStep1: "Contacter le service client",
+                returnStep2: "Remplir le formulaire de retour",
+                returnStep3: "Recevoir le montant dans les 24-48 heures",
+                privacy: "Politique de Confidentialité",
+                dataWeCollect: "Données que Nous Collectons",
+                data1: "Nom et informations de contact",
+                data2: "Adresse de livraison",
+                data3: "Données de paiement (stockées en toute sécurité)",
+                data4: "Préférences alimentaires",
+                howWeUseData: "Comment Nous Utilisons Vos Données",
+                use1: "Traitement des commandes et livraison",
+                use2: "Amélioration de l'expérience culinaire",
+                use3: "Envoi d'offres spéciales (avec votre consentement)",
+                use4: "Analyse des modèles de commande",
+                heroTitle: "Expérience Culinaire Exceptionnelle Digne de Votre Goût",
+                heroDesc: "Découvrez notre collection exclusive de plats internationaux et arabes soigneusement conçus pour correspondre aux goûts sophistiqués. Qualité exceptionnelle et saveurs inoubliables.",
+                orderNow: "Commander Maintenant",
+                ourMenu: "Notre Menu",
+                allFood: "Tous les Plats",
+                desserts: "Desserts",
+                drinks: "Boissons",
+                new: "Nouveau",
+                product1Title: "Pizza Truffata",
+                product1Desc: "Pizza italienne luxueuse avec champignons et fromage premium",
+                product1FullDesc: "La Pizza Truffata est un chef-d'œuvre italien qui allie authenticité et modernité. Elle contient un mélange unique de champignons frais et de fromage premium avec sauce tomate naturelle. Cette pizza reflète l'esprit authentique de la cuisine italienne avec une touche moderne qui la rend adaptée aux dîners en famille et aux fêtes. Soigneusement préparée et servie chaude.",
+                product2Title: "Steak de Bœuf Angus",
+                product2Desc: "Steak de bœuf Angus grillé avec sauce au poivre noir",
+                product2FullDesc: "Le Steak de Bœuf Angus représente l'élégance dans le monde des viandes. Il combine la tendreté parfaite de la viande grillée avec la chaleur de la sauce au poivre noir. Parfait pour les amateurs de viande à la recherche d'une saveur distinctive qui reflète leur goût raffiné. Adapté aux dîners romantiques et aux occasions spéciales.",
+                product3Title: "Cheesecake aux Baies",
+                product3Desc: "Cheesecake crémeux avec sauce aux baies fraîches",
+                product3FullDesc: "Le Cheesecake aux Baies est un dessert féminin luxueux qui incarne la splendeur des desserts internationaux. Il mélange la douceur de la crème de cheesecake avec la douceur de la sauce aux baies fraîches. Un dessert audacieux et féminin adapté aux connaisseurs à la recherche de distinction dans le monde des desserts.",
+                product4Title: "Cocktail à la Mangue",
+                product4Desc: "Mélange rafraîchissant de mangue fraîche et de yaourt",
+                product4FullDesc: "Le Cocktail à la Mangue est une boisson rafraîchissante qui vous transporte dans des atmosphères tropicales. Il combine la fraîcheur de la mangue fraîche avec la douceur du yaourt et des touches légères de miel. Parfait pour l'été et les temps chauds, il vous donne une sensation de fraîcheur et de vitalité.",
+                product5Title: "Saumon Grillée",
+                product5Desc: "Saumon frais grillé avec sauce au citron et aux herbes",
+                product5FullDesc: "Le Saumon Grillée est un plat sain et élégant qui allie la beauté des fruits de mer à la douceur de la sauce. Convient aux amateurs de nourriture saine à la recherche d'un plat distinctif qui reflète leur intérêt pour la santé et la qualité. Idéal pour le déjeuner et le dîner.",
+                product6Title: "Mousse au Chocolat",
+                product6Desc: "Mousse au chocolat belge avec crème fouettée",
+                product6FullDesc: "La Mousse au Chocolat est un dessert masculin fort et attrayant qui mélange la profondeur du chocolat belge avec la chaleur de la crème fouettée. Convient aux amateurs de chocolat à la recherche d'un dessert distinctif qui reflète leur personnalité forte et confiante. Parfait après le dîner.",
+                addToCart: "Ajouter au Panier",
+                viewDetails: "Voir les Détails",
+                bestseller: "Meilleure Vente",
+                cartTitle: "Panier de Commande",
+                checkout: "Terminer la Commande via WhatsApp",
+                address: "Adresse",
+                addressContent: "Rue Roi Fahd, Riyad, Arabie Saoudite",
+                phone: "Téléphone",
+                phoneNumber: "+966 11 234 5678",
+                email: "E-mail",
+                emailAddress: "info@eliterestaurant.com",
+                aboutFooter: "À Propos du Restaurant",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Service Client",
+                shipping: "Livraison",
+                connectWithUs: "Connectez avec Nous",
+                connectDesc: "Suivez-nous sur les réseaux sociaux pour connaître les dernières offres et nouveaux plats",
+                allRights: "Tous Droits Réservés",
+                whatsappMessage: "Bonjour, je souhaite commander les plats suivants :\n",
+                whatsappTotal: "\nTotal : $",
+                whatsappInfo: "\n\nNom : \nAdresse : \nNuméro de Téléphone :"
+            },
+            de: {
+                storeName: "Elite Restaurant",
+                home: "Startseite",
+                products: "Speisekarte",
+                contactUs: "Kontaktieren Sie uns",
+                menu: "Menü",
+                about: "Über uns",
+                aboutContent: "Wir sind das Elite Restaurant und bieten die feinste internationale und arabische Küche mit den höchsten Qualitätsstandards. Unsere Mission ist es, ein außergewöhnliches kulinarisches Erlebnis zu bieten, das Ihrem raffinierten Geschmack würdig ist.",
+                vision: "Unsere Vision",
+                visionContent: "Das führende Ziel für Feinschmecker in der Region zu sein.",
+                mission: "Unsere Mission",
+                missionContent: "Ein einzigartiges kulinarisches Erlebnis durch außergewöhnliche Gerichte zu bieten, die verschiedene Kulturen widerspiegeln.",
+                values: "Unsere Werte",
+                value1: "Qualität und Exzellenz",
+                value2: "Kreativität und Innovation",
+                value3: "Vertrauen und Transparenz",
+                value4: "Kundenzufriedenheit an erster Stelle",
+                quality: "Qualität & Garantie",
+                qualityContent: "Wir garantieren die Qualität aller unserer Zutaten und verwenden die besten frischen Produkte. Wir bieten eine Rückgabegarantie, wenn Sie mit dem Essen nicht zufrieden sind.",
+                qualityStandards: "Qualitätsstandards",
+                standard1: "100% frische Zutaten",
+                standard2: "Rigorose Qualitätstests",
+                standard3: "Zubereitung nach höchsten Gesundheitsstandards",
+                standard4: "Luxuriöse Verpackung und optimaler Schutz",
+                warranties: "Gewährleistungen",
+                warranty1: "Lebensmittelqualitätsgarantie",
+                warranty2: "Komplette Zufriedenheitsgarantie",
+                warranty3: "Rückgabegarantie",
+                warranty4: "Kontinuierlicher technischer Support",
+                faq: "FAQ",
+                faqContent: "Sie finden Antworten auf die häufigsten Fragen zu unseren Dienstleistungen im FAQ-Bereich unserer Website.",
+                foodQuestions: "Essensfragen",
+                faqQuestion1: "F: Kann ich meine Bestellung anpassen?",
+                faqAnswer1: "A: Ja, Sie können Ihre Bestellungen nach Ihren Wünschen anpassen. Fügen Sie einfach Ihre Notizen bei der Bestellung hinzu.",
+                faqQuestion2: "F: Bieten Sie vegetarische Optionen an?",
+                faqAnswer2: "A: Ja, wir haben eine Vielzahl köstlicher vegetarischer Gerichte.",
+                shippingQuestions: "Versand- und Lieferfragen",
+                faqQuestion3: "F: Wie lange dauert die Lieferung?",
+                faqAnswer3: "A: Die Lieferzeit beträgt 30 bis 60 Minuten, je nach Standort.",
+                returns: "Rückgaberecht",
+                returnConditions: "Rückgabebedingungen",
+                returnCondition1: "Jedes Problem muss innerhalb einer Stunde nach Erhalt gemeldet werden",
+                returnCondition2: "Essen muss ungeöffnet sein",
+                returnCondition3: "Muss in Originalverpackung sein",
+                returnCondition4: "Rückgabefrist beträgt 2 Stunden ab Erhalt",
+                returnSteps: "Rückgabeschritte",
+                returnStep1: "Kundenservice kontaktieren",
+                returnStep2: "Rückgabeformular ausfüllen",
+                returnStep3: "Betrag innerhalb von 24-48 Stunden erhalten",
+                privacy: "Datenschutzrichtlinie",
+                dataWeCollect: "Daten, die wir sammeln",
+                data1: "Name und Kontaktdaten",
+                data2: "Lieferadresse",
+                data3: "Zahlungsdaten (sicher gespeichert)",
+                data4: "Essenspräferenzen",
+                howWeUseData: "Wie wir Ihre Daten verwenden",
+                use1: "Bearbeitung von Bestellungen und Lieferung",
+                use2: "Verbesserung des kulinarischen Erlebnisses",
+                use3: "Senden von Sonderangeboten (mit Ihrer Zustimmung)",
+                use4: "Analyse von Bestellmustern",
+                heroTitle: "Außergewöhnliches kulinarisches Erlebnis, das Ihrem Geschmack würdig ist",
+                heroDesc: "Entdecken Sie unsere exklusive Kollektion internationaler und arabischer Gerichte, die sorgfältig für anspruchsvolle Geschmäcker entworfen wurden. Außergewöhnliche Qualität und unvergessliche Aromen.",
+                orderNow: "Jetzt bestellen",
+                ourMenu: "Unsere Speisekarte",
+                allFood: "Alle Gerichte",
+                desserts: "Desserts",
+                drinks: "Getränke",
+                new: "Neu",
+                product1Title: "Truffata Pizza",
+                product1Desc: "Luxuriöse italienische Pizza mit Pilzen und Premium-Käse",
+                product1FullDesc: "Truffata Pizza ist ein italienisches Meisterwerk, das Authentizität und Moderne vereint. Es enthält eine einzigartige Mischung aus frischen Pilzen und Premium-Käse mit natürlicher Tomatensauce. Diese Pizza spiegelt den authentischen Geist der italienischen Küche mit einem modernen Touch wider, der sie für Familienessen und Partys geeignet macht. Sorgfältig zubereitet und heiß serviert.",
+                product2Title: "Angus Rindfleisch Steak",
+                product2Desc: "Gegrilltes Angus-Rindfleischsteak mit schwarzer Pfeffersauce",
+                product2FullDesc: "Angus Rindfleisch Steak repräsentiert Eleganz in der Welt der Fleischgerichte. Es vereint die perfekte Zartheit von gegrilltem Fleisch mit der Wärme der schwarzen Pfeffersauce. Perfekt für Fleischliebhaber, die nach einem unverwechselbaren Geschmack suchen, der ihren raffinierten Geschmack widerspiegelt. Geeignet für romantische Abendessen und besondere Anlässe.",
+                product3Title: "Beeren Cheesecake",
+                product3Desc: "Cremiger Cheesecake mit frischer Beerensauce",
+                product3FullDesc: "Beeren Cheesecake ist ein luxuriöses Dessert für Damen, das die Pracht internationaler Desserts verkörpert. Es vereint die Weichheit von Cheesecake-Creme mit der Süße frischer Beerensauce. Ein kühnes und feminines Dessert, das für Kenner geeignet ist, die nach Unterscheidung in der Welt der Desserts suchen.",
+                product4Title: "Mango Cocktail",
+                product4Desc: "Erfrischende Mischung aus frischer Mango und Joghurt",
+                product4FullDesc: "Mango Cocktail ist ein erfrischendes Getränk, das Sie in tropische Atmosphären versetzt. Es kombiniert die Frische frischer Mango mit der Weichheit von Joghurt und leichten Honignoten. Perfekt für den Sommer und heißes Wetter, verleiht es Ihnen ein Gefühl von Frische und Vitalität.",
+                product5Title: "Gegrillter Lachs",
+                product5Desc: "Frischer gegrillter Lachs mit Zitronen- und Kräutersauce",
+                product5FullDesc: "Gegrillter Lachs ist ein gesundes und elegantes Gericht, das die Schönheit von Meeresfrüchten mit der Weichheit der Sauce verbindet. Geeignet für Liebhaber gesunder Ernährung, die nach einem unverwechselbaren Gericht suchen, das ihr Interesse an Gesundheit und Qualität widerspiegelt. Ideal für Mittag- und Abendessen.",
+                product6Title: "Schokoladenmousse",
+                product6Desc: "Belgische Schokoladenmousse mit Schlagsahne",
+                product6FullDesc: "Schokoladenmousse ist ein starkes und attraktives Dessert für Herren, das die Tiefe belgischer Schokolade mit der Wärme von Schlagsahne vereint. Geeignet für Schokoladenliebhaber, die nach einem unverwechselbaren Dessert suchen, das ihre starke und selbstbewusste Persönlichkeit widerspiegelt. Perfekt nach dem Abendessen.",
+                addToCart: "In den Warenkorb",
+                viewDetails: "Details anzeigen",
+                bestseller: "Bestseller",
+                cartTitle: "Bestellwagen",
+                checkout: "Bestellung per WhatsApp abschließen",
+                address: "Adresse",
+                addressContent: "König-Fahd-Straße, Riad, Saudi-Arabien",
+                phone: "Telefon",
+                phoneNumber: "+966 11 234 5678",
+                email: "E-Mail",
+                emailAddress: "info@eliterestaurant.com",
+                aboutFooter: "Über das Restaurant",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Kundenservice",
+                shipping: "Versand & Lieferung",
+                connectWithUs: "Verbinden Sie sich mit uns",
+                connectDesc: "Folgen Sie uns in den sozialen Medien, um die neuesten Angebote und neuen Gerichte zu erfahren",
+                allRights: "Alle Rechte vorbehalten",
+                whatsappMessage: "Hallo, ich möchte folgende Gerichte bestellen:\n",
+                whatsappTotal: "\nGesamt: $",
+                whatsappInfo: "\n\nName: \nAdresse: \nTelefonnummer:"
+            },
+            it: {
+                storeName: "Ristorante d'Élite",
+                home: "Home",
+                products: "Menù",
+                contactUs: "Contattaci",
+                menu: "Menù",
+                about: "Chi Siamo",
+                aboutContent: "Siamo il Ristorante d'Élite, offriamo la migliore cucina internazionale e araba con i più alti standard di qualità. La nostra missione è fornire un'esperienza culinaria eccezionale degna del tuo gusto raffinato.",
+                vision: "La Nostra Visione",
+                visionContent: "Essere la destinazione principale per gli appassionati di alta cucina nella regione.",
+                mission: "La Nostra Missione",
+                missionContent: "Fornire un'esperienza culinaria unica attraverso piatti eccezionali che riflettono culture diverse.",
+                values: "I Nostri Valori",
+                value1: "Qualità ed Eccellenza",
+                value2: "Creatività e Innovazione",
+                value3: "Fiducia e Trasparenza",
+                value4: "Soddisfazione del Cliente Prima di Tutto",
+                quality: "Qualità & Garanzia",
+                qualityContent: "Garantiamo la qualità di tutti i nostri ingredienti e utilizziamo i migliori prodotti freschi. Offriamo una garanzia di restituzione se non sei soddisfatto del cibo.",
+                qualityStandards: "Standard di Qualità",
+                standard1: "Ingredienti 100% freschi",
+                standard2: "Test di qualità rigorosi",
+                standard3: "Preparazione secondo i più alti standard sanitari",
+                standard4: "Confezionamento lussuoso e protezione ottimale",
+                warranties: "Garanzie Fornite",
+                warranty1: "Garanzia di qualità del cibo",
+                warranty2: "Garanzia di completa soddisfazione",
+                warranty3: "Garanzia di restituzione",
+                warranty4: "Supporto tecnico continuo",
+                faq: "FAQ",
+                faqContent: "Puoi trovare risposte alle domande più comuni sui nostri servizi nella sezione FAQ del nostro sito web.",
+                foodQuestions: "Domande sul Cibo",
+                faqQuestion1: "D: Posso personalizzare il mio ordine?",
+                faqAnswer1: "R: Sì, puoi personalizzare i tuoi ordini secondo le tue preferenze. Aggiungi semplicemente le tue note durante l'ordine.",
+                faqQuestion2: "D: Offrite opzioni vegetariane?",
+                faqAnswer2: "R: Sì, abbiamo una varietà di deliziosi piatti vegetariani.",
+                shippingQuestions: "Domande su Spedizione e Consegna",
+                faqQuestion3: "D: Qual è il tempo di consegna?",
+                faqAnswer3: "R: Il tempo di consegna è di 30-60 minuti a seconda della posizione.",
+                returns: "Politica di Reso",
+                returnConditions: "Condizioni di Reso",
+                returnCondition1: "Qualsiasi problema deve essere segnalato entro un'ora dalla ricezione",
+                returnCondition2: "Il cibo deve essere non aperto",
+                returnCondition3: "Deve essere nella confezione originale",
+                returnCondition4: "Il periodo di reso è di 2 ore dalla data di ricezione",
+                returnSteps: "Passaggi di Reso",
+                returnStep1: "Contattare il servizio clienti",
+                returnStep2: "Compilare il modulo di reso",
+                returnStep3: "Ricevere l'importo entro 24-48 ore",
+                privacy: "Informativa sulla Privacy",
+                dataWeCollect: "Dati che Raccogliamo",
+                data1: "Nome e informazioni di contatto",
+                data2: "Indirizzo di consegna",
+                data3: "Dati di pagamento (conservati in modo sicuro)",
+                data4: "Preferenze alimentari",
+                howWeUseData: "Come Utilizziamo i Tuoi Dati",
+                use1: "Elaborazione ordini e consegna",
+                use2: "Miglioramento dell'esperienza culinaria",
+                use3: "Invio di offerte speciali (con il tuo consenso)",
+                use4: "Analisi dei modelli di ordine",
+                heroTitle: "Esperienza Culinaria Eccezionale Degna del Tuo Gusto",
+                heroDesc: "Scopri la nostra esclusiva collezione di piatti internazionali e arabi progettati con cura per soddisfare i gusti più sofisticati. Qualità eccezionale e sapori indimenticabili.",
+                orderNow: "Ordina Ora",
+                ourMenu: "Il Nostro Menù",
+                allFood: "Tutti i Piatti",
+                desserts: "Dolci",
+                drinks: "Bevande",
+                new: "Nuovo",
+                product1Title: "Pizza Truffata",
+                product1Desc: "Pizza italiana di lusso con funghi e formaggio premium",
+                product1FullDesc: "La Pizza Truffata è un capolavoro italiano che unisce autenticità e modernità. Contiene una miscela unica di funghi freschi e formaggio premium con salsa di pomodoro naturale. Questa pizza riflette lo spirito autentico della cucina italiana con un tocco moderno che la rende adatta per cene in famiglia e feste. Preparata con cura e servita calda.",
+                product2Title: "Bistecca di Manzo Angus",
+                product2Desc: "Bistecca di manzo Angus alla griglia con salsa al pepe nero",
+                product2FullDesc: "La Bistecca di Manzo Angus rappresenta l'eleganza nel mondo delle carni. Combina la tenerezza perfetta della carne alla griglia con il calore della salsa al pepe nero. Perfetta per gli amanti della carne che cercano un sapore distintivo che rifletta il loro gusto raffinato. Adatta per cene romantiche e occasioni speciali.",
+                product3Title: "Cheesecake alle Bacche",
+                product3Desc: "Cheesecake cremosa con salsa di bacche fresche",
+                product3FullDesc: "La Cheesecake alle Bacche è un dessert femminile di lusso che incarna lo splendore dei dessert internazionali. Miscela la morbidezza della crema di cheesecake con la dolcezza della salsa di bacche fresche. Un dessert audace e femminile adatto ai buongustai che cercano distinzione nel mondo dei dessert.",
+                product4Title: "Cocktail di Mango",
+                product4Desc: "Miscela rinfrescante di mango fresco e yogurt",
+                product4FullDesc: "Il Cocktail di Mango è una bevanda rinfrescante che ti trasporta in atmosfere tropicali. Combina la freschezza del mango fresco con la morbidezza dello yogurt e tocchi leggeri di miele. Perfetto per l'estate e il clima caldo, ti dona una sensazione di freschezza e vitalità.",
+                product5Title: "Salmone alla Griglia",
+                product5Desc: "Salmone fresco alla griglia con salsa al limone e erbe",
+                product5FullDesc: "Il Salmone alla Griglia è un piatto sano ed elegante che unisce la bellezza dei frutti di mare con la morbidezza della salsa. Adatto agli amanti del cibo sano che cercano un piatto distintivo che rifletta il loro interesse per la salute e la qualità. Ideale per pranzo e cena.",
+                product6Title: "Mousse al Cioccolato",
+                product6Desc: "Mousse al cioccolato belga con panna montata",
+                product6FullDesc: "La Mousse al Cioccolato è un dessert maschile forte e attraente che unisce la profondità del cioccolato belga con il calore della panna montata. Adatto agli amanti del cioccolato che cercano un dessert distintivo che rifletta la loro personalità forte e sicura. Perfetto dopo cena.",
+                addToCart: "Aggiungi al Carrello",
+                viewDetails: "Visualizza Dettagli",
+                bestseller: "Bestseller",
+                cartTitle: "Carrello Ordini",
+                checkout: "Completa Ordine tramite WhatsApp",
+                address: "Indirizzo",
+                addressContent: "Via Re Fahd, Riad, Arabia Saudita",
+                phone: "Telefono",
+                phoneNumber: "+966 11 234 5678",
+                email: "Email",
+                emailAddress: "info@eliterestaurant.com",
+                aboutFooter: "Informazioni sul Ristorante",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Servizio Clienti",
+                shipping: "Spedizione & Consegna",
+                connectWithUs: "Connettiti con Noi",
+                connectDesc: "Seguici sui social media per conoscere le ultime offerte e nuovi piatti",
+                allRights: "Tutti i Diritti Riservati",
+                whatsappMessage: "Ciao, vorrei ordinare i seguenti piatti:\n",
+                whatsappTotal: "\nTotale: $",
+                whatsappInfo: "\n\nNome: \nIndirizzo: \nNumero di Telefono:"
+            }
+        };
+
+        // نظام اختيار اللغة
+        const currentLangElement = document.getElementById('currentLang');
+        const langDropdown = document.getElementById('langDropdown');
+        const langOptions = document.querySelectorAll('.lang-option');
+        
+        let currentLang = 'ar';
+
+        // فتح وإغلاق قائمة اللغات
+        currentLangElement.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-down');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-up');
+        });
+
+        // إغلاق قائمة اللغات عند النقر خارجها
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('active');
+            currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+            currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+        });
+
+        // منع إغلاق القائمة عند النقر داخلها
+        langDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // تغيير اللغة
+        langOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                langDropdown.classList.remove('active');
+                currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+                currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+            });
+        });
+
+        // تغيير اللغة
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // تحديث اسم المتجر
+            document.querySelectorAll('.store-name').forEach(element => {
+                element.textContent = translations[lang].storeName;
+            });
+            
+            // تحديث النص الحالي للغة
+            currentLangElement.querySelector('span').textContent = document.querySelector(`.lang-option[data-lang="${lang}"] span`).textContent;
+            
+            // تحديث كل النصوص
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // تغيير اتجاه الصفحة
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        // نظام تصفية المنتجات حسب الفئة
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشاط للزر المختار
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // تصفية المنتجات
+                productCards.forEach(card => {
+                    if (category === 'main' || card.getAttribute('data-category') === category) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // نظام سلة التسوق
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartCount = document.querySelector('.cart-count');
+
+        // فتح وإغلاق السلة
+        cartIcon.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // إضافة منتج إلى السلة
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+            });
+        });
+
+        // تحديث السلة
+        function updateCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price} x ${item.quantity}</div>
+                    </div>
+                    <button class="cart-item-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `${translations[currentLang].cartTitle.split(' ')[0]}: $${total}`;
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // إضافة حدث إزالة العنصر
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        // إتمام الطلب عبر واتساب
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert(translations[currentLang].cartTitle + ' ' + (currentLang === 'ar' ? 'فارغة' : 'is empty'));
+                return;
+            }
+            
+            let message = translations[currentLang].whatsappMessage;
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `- ${item.title} (${item.quantity} x $${item.price})\n`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `${translations[currentLang].whatsappTotal}${total}`;
+            message += translations[currentLang].whatsappInfo;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/966500000000?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        });
+
+        // نظام عرض تفاصيل المنتج
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalBody = document.getElementById('modalBody');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+
+        // فتح نافذة تفاصيل المنتج
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                showProductDetails(productId);
+            });
+        });
+
+        // إغلاق نافذة تفاصيل المنتج
+        closeModal.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض تفاصيل المنتج
+        function showProductDetails(productId) {
+            const productKey = `product${productId}Title`;
+            const productDescKey = `product${productId}FullDesc`;
+            const productPrice = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-price').textContent;
+            const productImage = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-image').style.backgroundImage;
+            
+            modalBody.innerHTML = `
+                <div class="modal-image" style="${productImage}"></div>
+                <div class="modal-details">
+                    <h3>${translations[currentLang][productKey]}</h3>
+                    <div class="product-price">${productPrice}</div>
+                    <p class="product-full-desc">${translations[currentLang][productDescKey]}</p>
+                    <div class="modal-actions">
+                        <button class="add-to-cart">${translations[currentLang].addToCart}</button>
+                    </div>
+                </div>
+            `;
+            
+            // إضافة حدث إضافة إلى السلة داخل النافذة
+            modalBody.querySelector('.add-to-cart').addEventListener('click', function() {
+                const productCard = document.querySelector(`[data-product="${productId}"]`).closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                productModal.classList.remove('active');
+                overlay.classList.remove('active');
+                cartSidebar.classList.add('active');
+            });
+            
+            productModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // نظام نافذة محتوى الفوتر
+        const footerModal = document.getElementById('footerModal');
+        const closeFooterModal = document.getElementById('closeFooterModal');
+        const footerModalBody = document.getElementById('footerModalBody');
+        const footerLinks = document.querySelectorAll('.footer-column a[data-content]');
+
+        // فتح نافذة محتوى الفوتر
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contentKey = this.getAttribute('data-content');
+                showFooterContent(contentKey);
+            });
+        });
+
+        // إغلاق نافذة محتوى الفوتر
+        closeFooterModal.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض محتوى الفوتر
+        function showFooterContent(contentKey) {
+            let content = '';
+            
+            switch(contentKey) {
+                case 'about':
+                    content = `
+                        <h3>${translations[currentLang].about}</h3>
+                        <p>${translations[currentLang].aboutContent}</p>
+                        
+                        <h4>${translations[currentLang].vision}</h4>
+                        <p>${translations[currentLang].visionContent}</p>
+                        
+                        <h4>${translations[currentLang].mission}</h4>
+                        <p>${translations[currentLang].missionContent}</p>
+                        
+                        <h4>${translations[currentLang].values}</h4>
+                        <ul>
+                            <li>${translations[currentLang].value1}</li>
+                            <li>${translations[currentLang].value2}</li>
+                            <li>${translations[currentLang].value3}</li>
+                            <li>${translations[currentLang].value4}</li>
+                        </ul>
+                        
+                        <h4>${currentLang === 'ar' ? 'تاريخنا' : 'Our History'}</h4>
+                        <p>${currentLang === 'ar' ? 'تأسس مطعم النخبة عام 2015، ومنذ ذلك الحين ونحن نسعى لتقديم أفضل تجربة طعام لعملائنا الكرام. نمت علامتنا التجارية بفضل ثقة عملائنا وتفانينا في تقديم الجودة.' : 'Elite Restaurant was established in 2015, and since then we have been striving to provide the best dining experience for our valued customers. Our brand has grown thanks to our customers\' trust and our dedication to quality.'}</p>
+                    `;
+                    break;
+                case 'quality':
+                    content = `
+                        <h3>${translations[currentLang].quality}</h3>
+                        <p>${translations[currentLang].qualityContent}</p>
+                        
+                        <h4>${translations[currentLang].qualityStandards}</h4>
+                        <ul>
+                            <li>${translations[currentLang].standard1}</li>
+                            <li>${translations[currentLang].standard2}</li>
+                            <li>${translations[currentLang].standard3}</li>
+                            <li>${translations[currentLang].standard4}</li>
+                        </ul>
+                        
+                        <h4>${translations[currentLang].warranties}</h4>
+                        <ul>
+                            <li>${translations[currentLang].warranty1}</li>
+                            <li>${translations[currentLang].warranty2}</li>
+                            <li>${translations[currentLang].warranty3}</li>
+                            <li>${translations[currentLang].warranty4}</li>
+                        </ul>
+                        
+                        <h4>${currentLang === 'ar' ? 'عمليات التصنيع' : 'Manufacturing Processes'}</h4>
+                        <p>${currentLang === 'ar' ? 'نحن نتبع أحدث التقنيات في إعداد الطعام، مع الحفاظ على الأساليب التقليدية في الطهي للحصول على أفضل النتائج. كل طبق يمر بمراحل متعددة من الاختبار قبل تقديمه للعملاء.' : 'We follow the latest technologies in food preparation, while maintaining traditional cooking methods to achieve the best results. Each dish goes through multiple testing stages before being served to customers.'}</p>
+                    `;
+                    break;
+                case 'blog':
+                    content = `
+                        <h3>${translations[currentLang].blog}</h3>
+                        <p>${currentLang === 'ar' ? 'مرحباً بكم في مدونة مطعم النخبة، حيث نشارككم أحدث مقالاتنا ونصائحنا حول عالم الطعام.' : 'Welcome to the Elite Restaurant blog, where we share our latest articles and tips about the world of food.'}</p>
+                        
+                        <h4>${currentLang === 'ar' ? 'أحدث المقالات' : 'Latest Articles'}</h4>
+                        <ul>
+                            <li><strong>${currentLang === 'ar' ? 'كيف تختار أفضل المكونات لموسم الصيف:' : 'How to choose the best ingredients for the summer season:'}</strong> ${currentLang === 'ar' ? 'نصائح عملية لاختيار مكونات منعشة تناسب الطقس الحار.' : 'Practical tips for choosing refreshing ingredients suitable for hot weather.'}</li>
+                            <li><strong>${currentLang === 'ar' ? 'أسرار المطبخ الإيطالي:' : 'Secrets of Italian cuisine:'}</strong> ${currentLang === 'ar' ? 'تعرف على تاريخ وخصائص المطبخ الإيطالي الفاخر.' : 'Learn about the history and characteristics of luxurious Italian cuisine.'}</li>
+                            <li><strong>${currentLang === 'ar' ? 'الطعام والمناسبات:' : 'Food and occasions:'}</strong> ${currentLang === 'ar' ? 'دليل شامل لاختيار الطعام المناسب لكل مناسبة.' : 'A comprehensive guide to choosing the right food for every occasion.'}</li>
+                            <li><strong>${currentLang === 'ar' ? 'رحلة الطعام من المطبخ إلى المائدة:' : 'The journey of food from kitchen to table:'}</strong> ${currentLang === 'ar' ? 'كيف يتم إعداد الطعام بأعلى معايير الجودة.' : 'How food is prepared with the highest quality standards.'}</li>
+                        </ul>
+                        
+                        <h4>${currentLang === 'ar' ? 'نصائح الطعام' : 'Food Tips'}</h4>
+                        <p>${currentLang === 'ar' ? 'لضمان أفضل تجربة طعام:' : 'To ensure the best dining experience:'}</p>
+                        <ul>
+                            <li>${currentLang === 'ar' ? 'تناول الطعام طازجاً للحصول على أفضل نكهة' : 'Eat food fresh for the best flavor'}</li>
+                            <li>${currentLang === 'ar' ? 'جرب أطباقاً جديدة لتوسيع آفاقك الغذائية' : 'Try new dishes to expand your culinary horizons'}</li>
+                            <li>${currentLang === 'ar' ? 'استمتع بالطعام ببطء لتذوق النكهات المختلفة' : 'Enjoy food slowly to taste the different flavors'}</li>
+                            <li>${currentLang === 'ar' ? 'شارك تجربتك مع الآخرين' : 'Share your experience with others'}</li>
+                        </ul>
+                        
+                        <p>${currentLang === 'ar' ? 'تابعونا للاطلاع على المزيد من المقالات والنصائح القيمة.' : 'Follow us for more valuable articles and tips.'}</p>
+                    `;
+                    break;
+                case 'faq':
+                    content = `
+                        <h3>${translations[currentLang].faq}</h3>
+                        <p>${translations[currentLang].faqContent}</p>
+                        
+                        <h4>${translations[currentLang].foodQuestions}</h4>
+                        <div>
+                            <p><strong>${translations[currentLang].faqQuestion1}</strong></p>
+                            <p>${translations[currentLang].faqAnswer1}</p>
+                        </div>
+                        <div>
+                            <p><strong>${translations[currentLang].faqQuestion2}</strong></p>
+                            <p>${translations[currentLang].faqAnswer2}</p>
+                        </div>
+                        <div>
+                            <p><strong>${currentLang === 'ar' ? 'س: هل يمكنني طلب أطباق حارة؟' : 'Q: Can I order spicy dishes?'}</strong></p>
+                            <p>${currentLang === 'ar' ? 'ج: نعم، يمكننا تلبية طلباتك للأطباق الحارة حسب رغبتك.' : 'A: Yes, we can accommodate your requests for spicy dishes according to your preference.'}</p>
+                        </div>
+                        
+                        <h4>${translations[currentLang].shippingQuestions}</h4>
+                        <div>
+                            <p><strong>${translations[currentLang].faqQuestion3}</strong></p>
+                            <p>${translations[currentLang].faqAnswer3}</p>
+                        </div>
+                        <div>
+                            <p><strong>${currentLang === 'ar' ? 'س: هل التوصيل مجاني؟' : 'Q: Is delivery free?'}</strong></p>
+                            <p>${currentLang === 'ar' ? 'ج: نعم، التوصيل مجاني للطلبات التي تزيد عن 100 ريال سعودي.' : 'A: Yes, delivery is free for orders over 100 Saudi Riyals.'}</p>
+                        </div>
+                        
+                        <h4>${currentLang === 'ar' ? 'أسئلة حول الدفع' : 'Payment Questions'}</h4>
+                        <div>
+                            <p><strong>${currentLang === 'ar' ? 'س: ما هي وسائل الدفع المتاحة؟' : 'Q: What payment methods are available?'}</strong></p>
+                            <p>${currentLang === 'ar' ? 'ج: نقبل الدفع عن طريق البطاقات الائتمانية، التحويل البنكي، ومدى.' : 'A: We accept payment via credit cards, bank transfer, and Mada.'}</p>
+                        </div>
+                    `;
+                    break;
+                case 'shipping':
+                    content = `
+                        <h3>${translations[currentLang].shipping}</h3>
+                        <p>${currentLang === 'ar' ? 'نحن نحرص على توصيل طلباتكم في أسرع وقت ممكن وبأعلى معايير الجودة.' : 'We strive to deliver your orders as quickly as possible with the highest quality standards.'}</p>
+                        
+                        <h4>${currentLang === 'ar' ? 'مناطق التوصيل' : 'Delivery Areas'}</h4>
+                        <p>${currentLang === 'ar' ? 'نقوم بالتوصيل إلى جميع أحياء مدينة الرياض:' : 'We deliver to all neighborhoods in Riyadh city:'}</p>
+                        <ul>
+                            <li>${currentLang === 'ar' ? 'الرياض - توصيل خلال 30-45 دقيقة' : 'Riyadh - delivery within 30-45 minutes'}</li>
+                            <li>${currentLang === 'ar' ? 'الرياض - توصيل سريع خلال 20-30 دقيقة برسوم إضافية' : 'Riyadh - fast delivery within 20-30 minutes with additional fees'}</li>
+                        </ul>
+                        
+                        <h4>${currentLang === 'ar' ? 'تكاليف الشحن' : 'Shipping Costs'}</h4>
+                        <ul>
+                            <li>${currentLang === 'ar' ? 'الطلبات فوق 100 ريال - توصيل مجاني' : 'Orders over 100 Riyals - free delivery'}</li>
+                            <li>${currentLang === 'ar' ? 'الطلبات أقل من 100 ريال - رسوم شحن 15 ريال' : 'Orders under 100 Riyals - 15 Riyals shipping fee'}</li>
+                            <li>${currentLang === 'ar' ? 'التوصيل السريع (خلال 20-30 دقيقة) - 25 ريال إضافية' : 'Fast delivery (within 20-30 minutes) - additional 25 Riyals'}</li>
+                        </ul>
+                        
+                        <h4>${currentLang === 'ar' ? 'طريقة التوصيل' : 'Delivery Method'}</h4>
+                        <p>${currentLang === 'ar' ? 'نحن نتعامل مع أفضل سائقي التوصيل لضمان وصول طعامكم بأمان وبأعلى جودة. يمكنكم تتبع طلباتكم من خلال الرابط الذي نرسله لكم بعد شحن الطلب.' : 'We work with the best delivery drivers to ensure your food arrives safely and with the highest quality. You can track your orders through the link we send you after shipping the order.'}</p>
+                        
+                        <h4>${currentLang === 'ar' ? 'سياسة التوصيل الدولية' : 'International Delivery Policy'}</h4>
+                        <p>${currentLang === 'ar' ? 'نقوم حالياً بالتوصيل داخل مدينة الرياض فقط. نحن نعمل على توسعة نطاق التوصيل ليشمل مدن أخرى في المستقبل القريب.' : 'We currently deliver within Riyadh city only. We are working to expand the delivery scope to include other cities in the near future.'}</p>
+                    `;
+                    break;
+                case 'returns':
+                    content = `
+                        <h3>${currentLang === 'ar' ? 'سياسة الإرجاع والاستبدال' : 'Return and Exchange Policy'}</h3>
+                        <p>${currentLang === 'ar' ? 'نسعى دائمًا لرضا عملائنا، ولذلك نوفر سياسة مرنة للإرجاع والاستبدال.' : 'We always strive for customer satisfaction, so we provide a flexible return and exchange policy.'}</p>
+                        
+                        <h4>${translations[currentLang].returnConditions}</h4>
+                        <ul>
+                            <li>${translations[currentLang].returnCondition1}</li>
+                            <li>${translations[currentLang].returnCondition2}</li>
+                            <li>${translations[currentLang].returnCondition3}</li>
+                            <li>${translations[currentLang].returnCondition4}</li>
+                            <li>${currentLang === 'ar' ? 'يجب تقديم فاتورة الشراء' : 'Purchase invoice must be provided'}</li>
+                        </ul>
+                        
+                        <h4>${translations[currentLang].returnSteps}</h4>
+                        <ol>
+                            <li>${translations[currentLang].returnStep1}</li>
+                            <li>${translations[currentLang].returnStep2}</li>
+                            <li>${translations[currentLang].returnStep3}</li>
+                        </ol>
+                        
+                        <h4>${currentLang === 'ar' ? 'المنتجات غير القابلة للإرجاع' : 'Non-Returnable Products'}</h4>
+                        <ul>
+                            <li>${currentLang === 'ar' ? 'الطعام المفتوح' : 'Opened food'}</li>
+                            <li>${currentLang === 'ar' ? 'الطعام التالف بسبب سوء الاستخدام' : 'Food damaged due to misuse'}</li>
+                            <li>${currentLang === 'ar' ? 'الطعام الذي لا يحتوي على جميع ملحقاته' : 'Food that does not contain all its accessories'}</li>
+                        </ul>
+                        
+                        <h4>${currentLang === 'ar' ? 'سياسة الاستبدال' : 'Exchange Policy'}</h4>
+                        <p>${currentLang === 'ar' ? 'يمكن استبدال الطعام بطعام آخر بنفس القيمة أو بأعلى مع دفع الفرق خلال ساعتين من تاريخ الاستلام.' : 'Food can be exchanged for other food of the same value or higher with paying the difference within 2 hours of receipt.'}</p>
+                    `;
+                    break;
+                case 'privacy':
+                    content = `
+                        <h3>${translations[currentLang].privacy}</h3>
+                        <p>${currentLang === 'ar' ? 'نحن في مطعم النخبة نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.' : 'At Elite Restaurant, we respect your privacy and are committed to protecting your personal data.'}</p>
+                        
+                        <h4>${translations[currentLang].dataWeCollect}</h4>
+                        <ul>
+                            <li>${translations[currentLang].data1}</li>
+                            <li>${translations[currentLang].data2}</li>
+                            <li>${translations[currentLang].data3}</li>
+                            <li>${translations[currentLang].data4}</li>
+                            <li>${currentLang === 'ar' ? 'سجل الطلبات السابقة' : 'Previous order history'}</li>
+                        </ul>
+                        
+                        <h4>${translations[currentLang].howWeUseData}</h4>
+                        <ul>
+                            <li>${translations[currentLang].use1}</li>
+                            <li>${translations[currentLang].use2}</li>
+                            <li>${translations[currentLang].use3}</li>
+                            <li>${translations[currentLang].use4}</li>
+                            <li>${currentLang === 'ar' ? 'التواصل معكم بشأن الطلبات والاستفسارات' : 'Communicating with you regarding orders and inquiries'}</li>
+                        </ul>
+                        
+                        <h4>${currentLang === 'ar' ? 'حماية البيانات' : 'Data Protection'}</h4>
+                        <p>${currentLang === 'ar' ? 'نحن نستخدم أحدث تقنيات التشفير لحماية بياناتكم. بيانات الدفع الخاصة بكم محفوظة بشكل آمن ولا يمكن الوصول إليها إلا من قبل موظفين مخولين.' : 'We use the latest encryption technologies to protect your data. Your payment data is stored securely and can only be accessed by authorized employees.'}</p>
+                        
+                        <h4>${currentLang === 'ar' ? 'مشاركة البيانات' : 'Data Sharing'}</h4>
+                        <p>${currentLang === 'ar' ? 'نحن لا نبيع أو نؤجر بياناتكم الشخصية لأي طرف ثالث. قد نشارك بعض البيانات مع شركائنا في التوصيل فقط لأغراض توصيل الطلبات.' : 'We do not sell or rent your personal data to any third party. We may share some data with our delivery partners only for order delivery purposes.'}</p>
+                        
+                        <h4>${currentLang === 'ar' ? 'حقوقكم' : 'Your Rights'}</h4>
+                        <p>${currentLang === 'ar' ? 'لديكم الحق في:' : 'You have the right to:'}</p>
+                        <ul>
+                            <li>${currentLang === 'ar' ? 'الوصول إلى بياناتكم الشخصية' : 'Access your personal data'}</li>
+                            <li>${currentLang === 'ar' ? 'طلب تصحيح البيانات غير الدقيقة' : 'Request correction of inaccurate data'}</li>
+                            <li>${currentLang === 'ar' ? 'طلب حذف بياناتكم الشخصية' : 'Request deletion of your personal data'}</li>
+                            <li>${currentLang === 'ar' ? 'الاعتراض على معالجة بياناتكم' : 'Object to the processing of your data'}</li>
+                        </ul>
+                        
+                        <p>${currentLang === 'ar' ? 'لأي استفسارات حول سياسة الخصوصية، يمكنكم التواصل معنا على privacy@eliterestaurant.com' : 'For any inquiries about the privacy policy, you can contact us at privacy@eliterestaurant.com'}</p>
+                    `;
+                    break;
+            }
+            
+            footerModalBody.innerHTML = content;
+            footerModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+    </script>
+</body>
+</html>

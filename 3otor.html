@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عطور الألماس - Diamond Perfumes</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --sunset-clay: #FF9B70;
+            --dark-clay: #9C6B4E;
+            --sienna-brown: #B57A5F;
+            --deep-earth: #8A614C;
+            --burnt-umber: #6F4F3F;
+            --text-light: #F8F5F2;
+            --text-dark: #2A2A2A;
+            --transition: all 0.3s ease;
+            --gold: #E6B85C;
+            --gold-dark: #C99C42;
+            --white: #FFFFFF;
+            --pink: #F8C8D9;
+            --pink-dark: #E91E63;
+            --blue: #C3E5FC;
+            --blue-dark: #0288D1;
+            --light-bg: rgba(255, 255, 255, 0.15);
+            --medium-bg: rgba(255, 255, 255, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), url('https://i.postimg.cc/ZnHbqWnk/Whats-App-Image-2025-10-18-at-11-14-20.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* شريط اللغة الجديد */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .current-lang {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--medium-bg);
+            color: var(--text-dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .current-lang:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .current-lang i {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            width: 180px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            display: none;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-dropdown.active {
+            display: block;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 155, 112, 0.2);
+        }
+
+        .lang-flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        /* الهيدر المعدل */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--text-dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--sunset-clay);
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* القائمة الرئيسية المعدلة */
+        .main-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 10px;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .nav-icon:hover {
+            background: var(--light-bg);
+            color: var(--sunset-clay);
+            transform: translateY(-3px);
+        }
+
+        .nav-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .nav-icon span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .cart-icon:hover {
+            color: var(--sunset-clay);
+            transform: scale(1.1);
+            background: var(--light-bg);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--sunset-clay);
+            color: var(--text-light);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* زر الهامبرجر المحسن في الجهة اليسرى */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            z-index: 1100;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-dark);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* قائمة الهاتف المحمول المحسنة في الجهة اليسرى */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 320px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1099;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-header h3 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+        }
+
+        .close-mobile-nav {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            padding: 5px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .close-mobile-nav:hover {
+            background: var(--light-bg);
+            color: var(--sunset-clay);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: var(--light-bg);
+            color: var(--sunset-clay);
+            border-color: rgba(255, 155, 112, 0.3);
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        /* أقسام القائمة الجانبية */
+        .mobile-nav-sections {
+            margin-top: 20px;
+        }
+
+        .mobile-nav-section {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .mobile-nav-section:hover {
+            background: var(--medium-bg);
+        }
+
+        .mobile-nav-section.active {
+            background: var(--medium-bg);
+            border-color: var(--sunset-clay);
+        }
+
+        .mobile-nav-section h4 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-nav-section h4 i {
+            color: var(--sunset-clay);
+            transition: var(--transition);
+        }
+
+        .mobile-nav-section.active h4 i {
+            transform: rotate(90deg);
+        }
+
+        .mobile-section-content {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-section.active .mobile-section-content {
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* الهيرو سيكشن */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(to right, var(--text-dark), var(--sunset-clay));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: #2A2A2A; /* لون داكن أكثر وضوحًا */
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--sienna-brown), var(--sunset-clay));
+            color: var(--text-light);
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(255, 155, 112, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--sunset-clay), var(--sienna-brown));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 155, 112, 0.5);
+        }
+
+        /* أقسام العطور */
+        .perfume-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .category-btn {
+            background: var(--light-bg);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--medium-bg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-btn.women.active {
+            background: linear-gradient(135deg, var(--pink-dark), var(--pink));
+            border-color: var(--pink);
+        }
+
+        .category-btn.men.active {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+            border-color: var(--blue);
+        }
+
+        .category-btn.all.active {
+            background: linear-gradient(135deg, var(--sienna-brown), var(--sunset-clay));
+            border-color: var(--sunset-clay);
+        }
+
+        /* قسم المنتجات */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--text-dark), var(--sunset-clay));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--text-dark), var(--sunset-clay));
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: none;
+        }
+
+        .product-card.active {
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 155, 112, 0.2);
+            border: 1px solid var(--sunset-clay);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--sienna-brown), var(--sunset-clay));
+            color: var(--text-light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-desc {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, var(--sienna-brown), var(--sunset-clay));
+            color: var(--text-light);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--sunset-clay), var(--sienna-brown));
+        }
+
+        .view-details {
+            background: var(--medium-bg);
+            color: var(--text-dark);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .view-details:hover {
+            background: var(--light-bg);
+            border-color: var(--sunset-clay);
+        }
+
+        /* صفحة اتصل بنا */
+        .contact-section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 155, 112, 0.2);
+            border: 1px solid var(--sunset-clay);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--sunset-clay);
+        }
+
+        /* سلة التسوق */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 380px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .cart-sidebar.active {
+            left: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-header h3 {
+            color: var(--text-dark);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 155, 112, 0.3);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .cart-item-price {
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff5252;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* الفوتر */
+        footer {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-dark);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--sunset-clay);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 155, 112, 0.2);
+            border-radius: 50%;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--sunset-clay);
+            color: var(--text-light);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* نافذة تفاصيل المنتج */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            z-index: 1;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .modal-details h3 {
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-details .product-full-desc {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* نافذة محتوى الفوتر */
+        .footer-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .footer-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .close-footer-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            z-index: 1;
+        }
+
+        .footer-modal-body {
+            margin-top: 2rem;
+        }
+
+        .footer-modal-body h3 {
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-modal-body h4 {
+            color: var(--sunset-clay);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-modal-body p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-modal-body ul, .footer-modal-body ol {
+            color: var(--text-dark);
+            margin-right: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* التجاوب مع جميع الأجهزة */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .perfume-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 80%;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر المعدل -->
+    <header>
+        <div class="nav-container">
+            <button class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <img src="https://i.postimg.cc/J0YqpNBP/Whats-App-Image-2025-11-03-at-12-29-32.jpg" alt="عطور الألماس" class="logo-image">
+                <span class="store-name">عطور الألماس</span>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#home" class="nav-icon">
+                    <i class="fas fa-home"></i>
+                    <span data-key="home">الرئيسية</span>
+                </a>
+                <a href="#products" class="nav-icon">
+                    <i class="fas fa-gem"></i>
+                    <span data-key="products">المنتجات</span>
+                </a>
+                <a href="#contact" class="nav-icon">
+                    <i class="fas fa-phone-alt"></i>
+                    <span data-key="contactUs">اتصل بنا</span>
+                </a>
+            </nav>
+
+            <div class="language-selector">
+                <div class="current-lang" id="currentLang">
+                    <span>العربية</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" data-lang="ar">
+                        <img src="https://flagcdn.com/w40/sa.png" class="lang-flag" alt="العربية">
+                        <span>العربية</span>
+                    </div>
+                    <div class="lang-option" data-lang="en">
+                        <img src="https://flagcdn.com/w40/us.png" class="lang-flag" alt="English">
+                        <span>English</span>
+                    </div>
+                    <div class="lang-option" data-lang="fr">
+                        <img src="https://flagcdn.com/w40/fr.png" class="lang-flag" alt="Français">
+                        <span>Français</span>
+                    </div>
+                    <div class="lang-option" data-lang="de">
+                        <img src="https://flagcdn.com/w40/de.png" class="lang-flag" alt="Deutsch">
+                        <span>Deutsch</span>
+                    </div>
+                    <div class="lang-option" data-lang="it">
+                        <img src="https://flagcdn.com/w40/it.png" class="lang-flag" alt="Italiano">
+                        <span>Italiano</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- قائمة الهاتف المحمول المحسنة في الجهة اليسرى -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h3 data-key="menu">القائمة</h3>
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link" id="mobileHomeLink">
+                <i class="fas fa-home"></i>
+                <span data-key="home">الرئيسية</span>
+            </a>
+            <a href="#products" class="mobile-nav-link" id="mobileProductsLink">
+                <i class="fas fa-gem"></i>
+                <span data-key="products">المنتجات</span>
+            </a>
+            <a href="#contact" class="mobile-nav-link" id="mobileContactLink">
+                <i class="fas fa-phone-alt"></i>
+                <span data-key="contactUs">اتصل بنا</span>
+            </a>
+        </div>
+        
+        <div class="mobile-nav-sections">
+            <div class="mobile-nav-section" data-section="about">
+                <h4><i class="fas fa-users"></i> <span data-key="about">من نحن</span></h4>
+                <div class="mobile-section-content">
+                    <p data-key="aboutContent">نحن برند عطور مشهور مهمتنا ان نجلك انيق وواثق من نفسك. نقدم أجود أنواع العطور الفاخرة التي تعكس شخصيتك الفريدة وتضيف لمسة من الأناقة لحياتك اليومية.</p>
+                    <h5>رؤيتنا</h5>
+                    <p>أن نكون الوجهة الأولى لعشاق العطور الفاخرة في العالم العربي.</p>
+                    <h5>رسالتنا</h5>
+                    <p>تقديم تجربة فريدة للعملاء من خلال عطور استثنائية تعبر عن شخصياتهم.</p>
+                    <h5>قيمنا</h5>
+                    <ul>
+                        <li>الجودة والتميز</li>
+                        <li>الإبداع والابتكار</li>
+                        <li>الثقة والشفافية</li>
+                        <li>رضا العملاء أولاً</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mobile-nav-section" data-section="quality">
+                <h4><i class="fas fa-award"></i> <span data-key="quality">الجودة والضمان</span></h4>
+                <div class="mobile-section-content">
+                    <p data-key="qualityContent">نحن نضمن جودة جميع منتجاتنا ونستخدم أفضل المكونات الطبيعية. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.</p>
+                    <h5>معايير الجودة</h5>
+                    <ul>
+                        <li>مكونات طبيعية 100%</li>
+                        <li>اختبارات جودة صارمة</li>
+                        <li>تصنيع وفق أعلى المعايير</li>
+                        <li>تغليف فاخر وحماية مثالية</li>
+                    </ul>
+                    <h5>الضمانات المقدمة</h5>
+                    <ul>
+                        <li>ضمان جودة المنتج</li>
+                        <li>ضمان الرضا التام</li>
+                        <li>ضمان استرجاع 30 يوم</li>
+                        <li>دعم فني مستمر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mobile-nav-section" data-section="faq">
+                <h4><i class="fas fa-question-circle"></i> <span data-key="faq">الأسئلة الشائعة</span></h4>
+                <div class="mobile-section-content">
+                    <p data-key="faqContent">يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول منتجاتنا وخدماتنا في قسم الأسئلة الشائعة على موقعنا.</p>
+                    <h5>أسئلة حول المنتجات</h5>
+                    <div class="faq-item">
+                        <p><strong>س: كيف أختار العطر المناسب لي؟</strong></p>
+                        <p>ج: ننصحك باختيار العطر الذي يعكس شخصيتك. العطور الخشبية للشخصيات الجادة، والعطور الحلوة للشخصيات المرحة.</p>
+                    </div>
+                    <div class="faq-item">
+                        <p><strong>س: كم تدوم مدة بقاء العطر؟</strong></p>
+                        <p>ج: تختلف مدة البقاء حسب نوع العطر، لكن معظم عطورنا تدوم من 6 إلى 12 ساعة.</p>
+                    </div>
+                    <h5>أسئلة حول الشحن والتوصيل</h5>
+                    <div class="faq-item">
+                        <p><strong>س: ما هي مدة التوصيل؟</strong></p>
+                        <p>ج: مدة التوصيل من 2 إلى 5 أيام عمل حسب الموقع.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-nav-section" data-section="returns">
+                <h4><i class="fas fa-exchange-alt"></i> <span data-key="returns">سياسة الإرجاع</span></h4>
+                <div class="mobile-section-content">
+                    <h5>شروط الإرجاع</h5>
+                    <ul>
+                        <li>يجب أن يكون المنتج في حالته الأصلية</li>
+                        <li>يجب أن يكون غير مستخدم</li>
+                        <li>يجب أن يكون في غلافه الأصلي</li>
+                        <li>مدة الإرجاع 14 يوم من تاريخ الاستلام</li>
+                    </ul>
+                    <h5>خطوات الإرجاع</h5>
+                    <ol>
+                        <li>الاتصال بخدمة العملاء</li>
+                        <li>تعبئة نموذج الإرجاع</li>
+                        <li>إرسال المنتج عبر شركة الشحن</li>
+                        <li>استلام المبلغ خلال 5-7 أيام عمل</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mobile-nav-section" data-section="privacy">
+                <h4><i class="fas fa-shield-alt"></i> <span data-key="privacy">سياسة الخصوصية</span></h4>
+                <div class="mobile-section-content">
+                    <h5>بياناتنا نجمعها</h5>
+                    <ul>
+                        <li>الاسم وبيانات الاتصال</li>
+                        <li>عنوان الشحن</li>
+                        <li>بيانات الدفع (محفوظة بشكل آمن)</li>
+                        <li>تفضيلات التسوق</li>
+                    </ul>
+                    <h5>كيف نستخدم بياناتك</h5>
+                    <ul>
+                        <li>تجهيز الطلبات والشحن</li>
+                        <li>تحسين تجربة التسوق</li>
+                        <li>إرسال عروض خاصة (بموافقتك)</li>
+                        <li>تحليل أنماط الشراء</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الهيرو سيكشن -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-key="heroTitle">عطور فاخرة تعكس أناقتك</h1>
+            <p data-key="heroDesc">اكتشف مجموعتنا الحصرية من العطور الفاخرة التي صممت بعناية لتليق بالأذواق الراقية. جودة استثنائية ورائحة لا تنسى.</p>
+            <a href="#products" class="btn" data-key="shopNow">تسوق الآن</a>
+        </div>
+    </section>
+
+    <!-- أقسام العطور -->
+    <div class="container">
+        <div class="perfume-categories">
+            <button class="category-btn all active" data-category="all">
+                <i class="fas fa-star"></i>
+                <span data-key="allPerfumes">جميع العطور</span>
+            </button>
+            <button class="category-btn women" data-category="women">
+                <i class="fas fa-female"></i>
+                <span data-key="womenPerfumes">عطور نسائية</span>
+            </button>
+            <button class="category-btn men" data-category="men">
+                <i class="fas fa-male"></i>
+                <span data-key="menPerfumes">عطور رجالية</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- قسم المنتجات -->
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title" data-key="ourProducts">منتجاتنا</h2>
+            <div class="products-grid">
+                <!-- المنتج 1 - نسائي -->
+                <div class="product-card active" data-category="women">
+                    <div class="product-badge" data-key="new">جديد</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1547887537-6158d64c35b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product1Title">عطر الليالي العربية</h3>
+                        <p class="product-desc" data-key="product1Desc">مزيج فاخر من العنبر والعود والورود</p>
+                        <div class="product-price">$120</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="1">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- المنتج 2 - رجالي -->
+                <div class="product-card active" data-category="men">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1593990965121-7d5d8cef4c30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product2Title">عطر السهول الذهبية</h3>
+                        <p class="product-desc" data-key="product2Desc">مزيج من الحمضيات والمسك والخشب النادر</p>
+                        <div class="product-price">$95</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="2">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- المنتج 3 - نسائي -->
+                <div class="product-card active" data-category="women">
+                    <div class="product-badge" data-key="bestseller">الأكثر مبيعاً</div>
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1590736969955-1d0c97c7a8c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product3Title">عطر قصر الشرق</h3>
+                        <p class="product-desc" data-key="product3Desc">عطر شرقي برائحة الفانيليا والزعفران</p>
+                        <div class="product-price">$150</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="3">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- المنتج 4 - رجالي -->
+                <div class="product-card active" data-category="men">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1615634376653-703d7b8fc8ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product4Title">عطر نسيم البحر</h3>
+                        <p class="product-desc" data-key="product4Desc">مزيج منعش من رائحة البحر والزهور البيضاء</p>
+                        <div class="product-price">$85</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="4">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- المنتج 5 - نسائي -->
+                <div class="product-card active" data-category="women">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1595425877381-1d8df0a6f541?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product5Title">عطر الورد الملكي</h3>
+                        <p class="product-desc" data-key="product5Desc">مزيج ناعم من الورد والياسمين والفانيليا</p>
+                        <div class="product-price">$110</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="5">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- المنتج 6 - رجالي -->
+                <div class="product-card active" data-category="men">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1612776572906-854144d6d0c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-key="product6Title">عطر الغابة السوداء</h3>
+                        <p class="product-desc" data-key="product6Desc">مزيج قوي من خشب الصندل والمسك والعنبر</p>
+                        <div class="product-price">$135</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-key="addToCart">أضف إلى السلة</button>
+                            <button class="view-details" data-key="viewDetails" data-product="6">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة اتصل بنا -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title" data-key="contactUs">اتصل بنا</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 data-key="address">العنوان</h3>
+                    <p data-key="addressContent">شارع الملك فهد، الرياض، المملكة العربية السعودية</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3 data-key="phone">الهاتف</h3>
+                    <p><a href="tel:+966112345678" data-key="phoneNumber">+966 11 234 5678</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3 data-key="email">البريد الإلكتروني</h3>
+                    <p><a href="mailto:info@diamondperfumes.com" data-key="emailAddress">info@diamondperfumes.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- سلة التسوق -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-key="cartTitle">سلة التسوق</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- سيتم إضافة العناصر هنا ديناميكياً -->
+        </div>
+        <div class="cart-total" id="cartTotal">المجموع: $0</div>
+        <button class="checkout-btn" id="checkoutBtn">
+            <i class="fab fa-whatsapp"></i> <span data-key="checkout">إتمام الطلب عبر واتساب</span>
+        </button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- نافذة تفاصيل المنتج -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة محتوى الفوتر -->
+    <div class="footer-modal" id="footerModal">
+        <div class="footer-modal-content">
+            <button class="close-footer-modal" id="closeFooterModal">&times;</button>
+            <div class="footer-modal-body" id="footerModalBody">
+                <!-- سيتم تعبئة المحتوى هنا ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-key="aboutFooter">عن المتجر</h3>
+                <ul>
+                    <li><a data-key="about" data-content="about">من نحن</a></li>
+                    <li><a data-key="quality" data-content="quality">الجودة والضمان</a></li>
+                    <li><a data-key="blog" data-content="blog">المدونة</a></li>
+                    <li><a data-key="faqFooter" data-content="faq">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="customerService">خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#contact" data-key="contactUs">اتصل بنا</a></li>
+                    <li><a data-key="shipping" data-content="shipping">الشحن والتوصيل</a></li>
+                    <li><a data-key="returns" data-content="returns">الإرجاع والاستبدال</a></li>
+                    <li><a data-key="privacy" data-content="privacy">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-key="connectWithUs">تواصل معنا</h3>
+                <p data-key="connectDesc">تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة</p>
+                <div class="social-links">
+                    <a href="https://replace.me/instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://replace.me/facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://replace.me/x" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://replace.me/tiktok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://replace.me/whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 <span class="store-name">عطور الألماس</span>. <span data-key="allRights">جميع الحقوق محفوظة</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // نظام قائمة الهاتف المحمول
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileNav = document.getElementById('closeMobileNav');
+        const overlay = document.getElementById('overlay');
+        const mobileNavSections = document.querySelectorAll('.mobile-nav-section');
+
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            hamburgerMenu.classList.add('active');
+        }
+
+        function closeMobileNavFunc() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            
+            // إغلاق جميع الأقسام عند إغلاق القائمة
+            mobileNavSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+
+        hamburgerMenu.addEventListener('click', openMobileNav);
+        closeMobileNav.addEventListener('click', closeMobileNavFunc);
+        overlay.addEventListener('click', closeMobileNavFunc);
+
+        // إغلاق قائمة الهاتف عند النقر على رابط
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileNavFunc);
+        });
+
+        // نظام الأقسام القابلة للطي
+        mobileNavSections.forEach(section => {
+            section.addEventListener('click', function() {
+                // إغلاق جميع الأقسام الأخرى
+                mobileNavSections.forEach(s => {
+                    if (s !== this) {
+                        s.classList.remove('active');
+                    }
+                });
+                // فتح/إغلاق القسم الحالي
+                this.classList.toggle('active');
+            });
+        });
+
+        // نظام اللغات المتكامل
+        const translations = {
+            ar: {
+                storeName: "عطور الألماس",
+                home: "الرئيسية",
+                products: "المنتجات",
+                contactUs: "اتصل بنا",
+                menu: "القائمة",
+                about: "من نحن",
+                aboutContent: "نحن برند عطور مشهور مهمتنا ان نجلك انيق وواثق من نفسك. نقدم أجود أنواع العطور الفاخرة التي تعكس شخصيتك الفريدة وتضيف لمسة من الأناقة لحياتك اليومية.",
+                quality: "الجودة والضمان",
+                qualityContent: "نحن نضمن جودة جميع منتجاتنا ونستخدم أفضل المكونات الطبيعية. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.",
+                faq: "الأسئلة الشائعة",
+                faqContent: "يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول منتجاتنا وخدماتنا في قسم الأسئلة الشائعة على موقعنا.",
+                returns: "سياسة الإرجاع",
+                privacy: "سياسة الخصوصية",
+                heroTitle: "عطور فاخرة تعكس أناقتك",
+                heroDesc: "اكتشف مجموعتنا الحصرية من العطور الفاخرة التي صممت بعناية لتليق بالأذواق الراقية. جودة استثنائية ورائحة لا تنسى.",
+                shopNow: "تسوق الآن",
+                ourProducts: "منتجاتنا",
+                allPerfumes: "جميع العطور",
+                womenPerfumes: "عطور نسائية",
+                menPerfumes: "عطور رجالية",
+                new: "جديد",
+                product1Title: "عطر الليالي العربية",
+                product1Desc: "مزيج فاخر من العنبر والعود والورود",
+                product1FullDesc: "عطر الليالي العربية هو تحفة فنية تجمع بين الأصالة والحداثة. يحتوي على خلطة فريدة من العنبر النادر والعود الفاخر مع رائحة الورود الشرقية. هذا العطر يعكس روح الشرق الأصيل مع لمسة عصرية تجعله مناسباً للمناسبات الخاصة والسهرات الراقية. يدوم طوال اليوم ويترك أثراً لا ينسى.",
+                product2Title: "عطر السهول الذهبية",
+                product2Desc: "مزيج من الحمضيات والمسك والخشب النادر",
+                product2FullDesc: "عطر السهول الذهبية يمثل الأناقة الرجالية في أبهى صورها. يجمع بين نضارة الحمضيات ودفء المسك وعمق الأخشاب النادرة. مثالي للرجل العصري الذي يبحث عن عطر يميز شخصيته ويعكس ثقته بنفسه. مناسب للعمل والمناسبات اليومية.",
+                product3Title: "عطر قصر الشرق",
+                product3Desc: "عطر شرقي برائحة الفانيليا والزعفران",
+                product3FullDesc: "قصر الشرق هو عطر نسائي فاخر يجسد روعة التراث الشرقي. يمزج بين حلاوة الفانيليا ورفعة الزعفران مع لمسات من العود والعنبر. عطر جريء وأنثوي يناسب المرأة الواثقة التي تبحث عن تميز في عالم العطور.",
+                product4Title: "عطر نسيم البحر",
+                product4Desc: "مزيج منعش من رائحة البحر والزهور البيضاء",
+                product4FullDesc: "نسيم البحر هو عطر منعش ينقل لك إلى شواطئ البحر المتوسط. يجمع بين نضارة رائحة البحر ونعومة الزهور البيضاء مع لمسات خفيفة من الحمضيات. مثالي للصيف والطقس الحار، يمنحك شعوراً بالانتعاش والحيوية طوال اليوم.",
+                product5Title: "عطر الورد الملكي",
+                product5Desc: "مزيج ناعم من الورد والياسمين والفانيليا",
+                product5FullDesc: "الورد الملكي هو عطر أنثوي رقيق يجمع بين جمال الورد ونعومة الياسمين وحلاوة الفانيليا. يناسب المرأة الراقية التي تفضل العطور الناعمة والأنيقة. مثالي للاستخدام اليومي والمناسبات الرسمية.",
+                product6Title: "عطر الغابة السوداء",
+                product6Desc: "مزيج قوي من خشب الصندل والمسك والعنبر",
+                product6FullDesc: "الغابة السوداء هو عطر رجالي قوي وجذاب يمزج بين عمق خشب الصندل ودفء المسك وغموض العنبر. يناسب الرجل الذي يبحث عن عطر مميز يعكس شخصيته القوية والواثقة. مثالي للمناسبات المسائية والسهرات.",
+                addToCart: "أضف إلى السلة",
+                viewDetails: "عرض التفاصيل",
+                bestseller: "الأكثر مبيعاً",
+                cartTitle: "سلة التسوق",
+                checkout: "إتمام الطلب عبر واتساب",
+                address: "العنوان",
+                addressContent: "شارع الملك فهد، الرياض، المملكة العربية السعودية",
+                phone: "الهاتف",
+                phoneNumber: "+966 11 234 5678",
+                email: "البريد الإلكتروني",
+                emailAddress: "info@diamondperfumes.com",
+                aboutFooter: "عن المتجر",
+                blog: "المدونة",
+                faqFooter: "الأسئلة الشائعة",
+                customerService: "خدمة العملاء",
+                shipping: "الشحن والتوصيل",
+                connectWithUs: "تواصل معنا",
+                connectDesc: "تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة",
+                allRights: "جميع الحقوق محفوظة",
+                whatsappMessage: "مرحباً، أريد طلب المنتجات التالية:\n",
+                whatsappTotal: "\nالمجموع: $",
+                whatsappInfo: "\n\nالاسم: \nالعنوان: \nرقم الهاتف:"
+            },
+            en: {
+                storeName: "Diamond Perfumes",
+                home: "Home",
+                products: "Products",
+                contactUs: "Contact Us",
+                menu: "Menu",
+                about: "About Us",
+                aboutContent: "We are a famous perfume brand whose mission is to make you elegant and confident. We offer the finest luxury perfumes that reflect your unique personality and add a touch of elegance to your daily life.",
+                quality: "Quality & Warranty",
+                qualityContent: "We guarantee the quality of all our products and use the best natural ingredients. We offer a 30-day return guarantee if you are not satisfied with the product.",
+                faq: "FAQ",
+                faqContent: "You can find answers to the most common questions about our products and services in the FAQ section on our website.",
+                returns: "Return Policy",
+                privacy: "Privacy Policy",
+                heroTitle: "Luxury Perfumes Reflecting Your Elegance",
+                heroDesc: "Discover our exclusive collection of luxury perfumes carefully designed to suit sophisticated tastes. Exceptional quality and unforgettable scent.",
+                shopNow: "Shop Now",
+                ourProducts: "Our Products",
+                allPerfumes: "All Perfumes",
+                womenPerfumes: "Women Perfumes",
+                menPerfumes: "Men Perfumes",
+                new: "New",
+                product1Title: "Arabian Nights Perfume",
+                product1Desc: "Luxurious blend of amber, oud and roses",
+                product1FullDesc: "Arabian Nights Perfume is an artistic masterpiece that combines authenticity and modernity. It contains a unique blend of rare amber, luxurious oud, and the scent of oriental roses. This perfume reflects the authentic spirit of the East with a modern touch that makes it suitable for special occasions and elegant evenings. Lasts all day and leaves an unforgettable impression.",
+                product2Title: "Golden Plains Perfume",
+                product2Desc: "Mix of citrus, musk and rare wood",
+                product2FullDesc: "Golden Plains Perfume represents masculine elegance at its finest. It combines the freshness of citrus, the warmth of musk, and the depth of rare woods. Perfect for the modern man looking for a perfume that distinguishes his personality and reflects his self-confidence. Suitable for work and daily occasions.",
+                product3Title: "Eastern Palace Perfume",
+                product3Desc: "Oriental fragrance with vanilla and saffron notes",
+                product3FullDesc: "Eastern Palace is a luxurious women's perfume that embodies the splendor of oriental heritage. It blends the sweetness of vanilla, the elegance of saffron, with touches of oud and amber. A bold and feminine perfume suitable for the confident woman looking for distinction in the world of perfumes.",
+                product4Title: "Sea Breeze Perfume",
+                product4Desc: "Fresh blend of sea scent and white flowers",
+                product4FullDesc: "Sea Breeze is a refreshing perfume that transports you to the Mediterranean beaches. It combines the freshness of the sea scent with the softness of white flowers and light citrus touches. Perfect for summer and hot weather, it gives you a feeling of freshness and vitality throughout the day.",
+                product5Title: "Royal Rose Perfume",
+                product5Desc: "Soft blend of rose, jasmine and vanilla",
+                product5FullDesc: "Royal Rose is a delicate feminine perfume that combines the beauty of rose, the softness of jasmine, and the sweetness of vanilla. Suitable for the elegant woman who prefers soft and stylish perfumes. Ideal for daily use and formal occasions.",
+                product6Title: "Black Forest Perfume",
+                product6Desc: "Strong blend of sandalwood, musk and amber",
+                product6FullDesc: "Black Forest is a strong and attractive men's perfume that blends the depth of sandalwood, the warmth of musk, and the mystery of amber. Suitable for the man looking for a distinctive perfume that reflects his strong and confident personality. Ideal for evening occasions and nights out.",
+                addToCart: "Add to Cart",
+                viewDetails: "View Details",
+                bestseller: "Bestseller",
+                cartTitle: "Shopping Cart",
+                checkout: "Complete Order via WhatsApp",
+                address: "Address",
+                addressContent: "King Fahd Road, Riyadh, Saudi Arabia",
+                phone: "Phone",
+                phoneNumber: "+966 11 234 5678",
+                email: "Email",
+                emailAddress: "info@diamondperfumes.com",
+                aboutFooter: "About Store",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Customer Service",
+                shipping: "Shipping & Delivery",
+                connectWithUs: "Connect With Us",
+                connectDesc: "Follow us on social media to know the latest offers and new products",
+                allRights: "All Rights Reserved",
+                whatsappMessage: "Hello, I would like to order the following products:\n",
+                whatsappTotal: "\nTotal: $",
+                whatsappInfo: "\n\nName: \nAddress: \nPhone Number:"
+            },
+            fr: {
+                storeName: "Parfums Diamant",
+                home: "Accueil",
+                products: "Produits",
+                contactUs: "Contactez-nous",
+                menu: "Menu",
+                about: "À propos de nous",
+                aboutContent: "Nous sommes une marque de parfums renommée dont la mission est de vous rendre élégant et confiant. Nous proposons les parfums de luxe les plus fins qui reflètent votre personnalité unique et ajoutent une touche d'élégance à votre vie quotidienne.",
+                quality: "Qualité et Garantie",
+                qualityContent: "Nous garantissons la qualité de tous nos produits et utilisons les meilleurs ingrédients naturels. Nous offrons une garantie de retour de 30 jours si vous n'êtes pas satisfait du produit.",
+                faq: "FAQ",
+                faqContent: "Vous pouvez trouver des réponses aux questions les plus courantes sur nos produits et services dans la section FAQ de notre site Web.",
+                returns: "Politique de Retour",
+                privacy: "Politique de Confidentialité",
+                heroTitle: "Parfums de Luxe Reflétant Votre Élégance",
+                heroDesc: "Découvrez notre collection exclusive de parfums de luxe soigneusement conçus pour correspondre aux goûts sophistiqués. Qualité exceptionnelle et parfum inoubliable.",
+                shopNow: "Acheter Maintenant",
+                ourProducts: "Nos Produits",
+                allPerfumes: "Tous les Parfums",
+                womenPerfumes: "Parfums Femmes",
+                menPerfumes: "Parfums Hommes",
+                new: "Nouveau",
+                product1Title: "Parfum Nuits Arabes",
+                product1Desc: "Mélange luxueux d'ambre, d'oud et de roses",
+                product1FullDesc: "Le parfum Nuits Arabes est un chef-d'œuvre artistique qui allie authenticité et modernité. Il contient un mélange unique d'ambre rare, d'oud luxueux et du parfum des roses orientales. Ce parfum reflète l'esprit authentique de l'Orient avec une touche moderne qui le rend adapté aux occasions spéciales et aux soirées élégantes. Dure toute la journée et laisse une impression inoubliable.",
+                product2Title: "Parfum Plaines Dorées",
+                product2Desc: "Mélange d'agrumes, de musc et de bois rare",
+                product2FullDesc: "Le parfum Plaines Dorées représente l'élégance masculine à son meilleur. Il combine la fraîcheur des agrumes, la chaleur du musc et la profondeur des bois rares. Parfait pour l'homme moderne à la recherche d'un parfum qui distingue sa personnalité et reflète sa confiance en soi. Adapté au travail et aux occasions quotidiennes.",
+                product3Title: "Parfum Palais Oriental",
+                product3Desc: "Fragrance orientale avec des notes de vanille et de safran",
+                product3FullDesc: "Palais Oriental est un parfum féminin luxueux qui incarne la splendeur du patrimoine oriental. Il mélange la douceur de la vanille, l'élégance du safran, avec des touches d'oud et d'ambre. Un parfum audacieux et féminin adapté à la femme confiante à la recherche de distinction dans le monde des parfums.",
+                product4Title: "Parfum Brise Marine",
+                product4Desc: "Mélange frais de senteur marine et de fleurs blanches",
+                product4FullDesc: "Brise Marine est un parfum rafraîchissant qui vous transporte sur les plages de la Méditerranée. Il combine la fraîcheur de la senteur marine avec la douceur des fleurs blanches et des touches légères d'agrumes. Parfait pour l'été et les temps chauds, il vous donne une sensation de fraîcheur et de vitalité tout au long de la journée.",
+                product5Title: "Parfum Rose Royale",
+                product5Desc: "Mélange doux de rose, jasmin et vanille",
+                product5FullDesc: "Rose Royale est un parfum féminin délicat qui allie la beauté de la rose, la douceur du jasmin et la douceur de la vanille. Convient à la femme élégante qui préfère les parfums doux et élégants. Idéal pour un usage quotidien et les occasions formelles.",
+                product6Title: "Parfum Forêt Noire",
+                product6Desc: "Mélange fort de santal, musc et ambre",
+                product6FullDesc: "Forêt Noire est un parfum masculin fort et attrayant qui mélange la profondeur du santal, la chaleur du musc et le mystère de l'ambre. Convient à l'homme à la recherche d'un parfum distinctif qui reflète sa personnalité forte et confiante. Idéal pour les occasions du soir et les sorties nocturnes.",
+                addToCart: "Ajouter au Panier",
+                viewDetails: "Voir les Détails",
+                bestseller: "Meilleure Vente",
+                cartTitle: "Panier d'Achat",
+                checkout: "Terminer la Commande via WhatsApp",
+                address: "Adresse",
+                addressContent: "Rue Roi Fahd, Riyad, Arabie Saoudite",
+                phone: "Téléphone",
+                phoneNumber: "+966 11 234 5678",
+                email: "E-mail",
+                emailAddress: "info@diamondperfumes.com",
+                aboutFooter: "À Propos du Magasin",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Service Client",
+                shipping: "Livraison",
+                connectWithUs: "Connectez avec Nous",
+                connectDesc: "Suivez-nous sur les réseaux sociaux pour connaître les dernières offres et nouveaux produits",
+                allRights: "Tous Droits Réservés",
+                whatsappMessage: "Bonjour, je souhaite commander les produits suivants :\n",
+                whatsappTotal: "\nTotal : $",
+                whatsappInfo: "\n\nNom : \nAdresse : \nNuméro de Téléphone :"
+            },
+            de: {
+                storeName: "Diamond Parfüms",
+                home: "Startseite",
+                products: "Produkte",
+                contactUs: "Kontaktieren Sie uns",
+                menu: "Menü",
+                about: "Über uns",
+                aboutContent: "Wir sind eine berühmte Parfümmarke, deren Mission es ist, Sie elegant und selbstbewusst zu machen. Wir bieten die feinsten Luxusparfüms an, die Ihre einzigartige Persönlichkeit widerspiegeln und Ihrem täglichen Leben eine Note von Eleganz verleihen.",
+                quality: "Qualität & Garantie",
+                qualityContent: "Wir garantieren die Qualität aller unserer Produkte und verwenden die besten natürlichen Inhaltsstoffe. Wir bieten eine 30-tägige Rückgabegarantie, wenn Sie mit dem Produkt nicht zufrieden sind.",
+                faq: "FAQ",
+                faqContent: "Sie finden Antworten auf die häufigsten Fragen zu unseren Produkten und Dienstleistungen im FAQ-Bereich unserer Website.",
+                returns: "Rückgaberecht",
+                privacy: "Datenschutzrichtlinie",
+                heroTitle: "Luxusparfüms, die Ihre Eleganz widerspiegeln",
+                heroDesc: "Entdecken Sie unsere exklusive Kollektion von Luxusparfüms, die sorgfältig für anspruchsvolle Geschmäcker entworfen wurden. Außergewöhnliche Qualität und unvergesslicher Duft.",
+                shopNow: "Jetzt einkaufen",
+                ourProducts: "Unsere Produkte",
+                allPerfumes: "Alle Parfüms",
+                womenPerfumes: "Damenparfüms",
+                menPerfumes: "Herrenparfüms",
+                new: "Neu",
+                product1Title: "Arabische Nächte Parfüm",
+                product1Desc: "Luxuriöse Mischung aus Amber, Oud und Rosen",
+                product1FullDesc: "Arabische Nächte Parfüm ist ein künstlerisches Meisterwerk, das Authentizität und Moderne vereint. Es enthält eine einzigartige Mischung aus seltenem Amber, luxuriösem Oud und dem Duft orientalischer Rosen. Dieses Parfüm spiegelt den authentischen Geist des Ostens mit einem modernen Touch wider, der es für besondere Anlässe und elegante Abende geeignet macht. Hält den ganzen Tag und hinterlässt einen unvergesslichen Eindruck.",
+                product2Title: "Goldene Ebenen Parfüm",
+                product2Desc: "Mischung aus Zitrus, Moschus und seltenem Holz",
+                product2FullDesc: "Goldene Ebenen Parfüm repräsentiert männliche Eleganz in ihrer schönsten Form. Es vereint die Frische von Zitrus, die Wärme von Moschus und die Tiefe seltener Hölzer. Perfekt für den modernen Mann, der nach einem Parfüm sucht, das seine Persönlichkeit auszeichnet und sein Selbstvertrauen widerspiegelt. Geeignet für Arbeit und tägliche Anlässe.",
+                product3Title: "Östlicher Palast Parfüm",
+                product3Desc: "Orientalischer Duft mit Vanille- und Safrannoten",
+                product3FullDesc: "Östlicher Palast ist ein luxuriöses Damenparfüm, das die Pracht des orientalischen Erbes verkörpert. Es vereint die Süße von Vanille, die Eleganz von Safran mit Noten von Oud und Amber. Ein kühnes und feminines Parfüm, das zur selbstbewussten Frau passt, die nach Unterscheidung in der Welt der Parfüms sucht.",
+                product4Title: "Meeresbrise Parfüm",
+                product4Desc: "Frische Mischung aus Meeresduft und weißen Blüten",
+                product4FullDesc: "Meeresbrise ist ein erfrischendes Parfüm, das Sie an die Strände des Mittelmeers versetzt. Es kombiniert die Frische des Meeresdufts mit der Weichheit weißer Blüten und leichten Zitrusnoten. Perfekt für den Sommer und heißes Wetter, verleiht es Ihnen den ganzen Tag über ein Gefühl von Frische und Vitalität.",
+                product5Title: "Königliche Rose Parfüm",
+                product5Desc: "Sanfte Mischung aus Rose, Jasmin und Vanille",
+                product5FullDesc: "Königliche Rose ist ein zartes Damenparfüm, das die Schönheit der Rose, die Weichheit von Jasmin und die Süße von Vanille vereint. Geeignet für die elegante Frau, die sanfte und stilvolle Parfüms bevorzugt. Ideal für den täglichen Gebrauch und formelle Anlässe.",
+                product6Title: "Schwarzwald Parfüm",
+                product6Desc: "Starke Mischung aus Sandelholz, Moschus und Amber",
+                product6FullDesc: "Schwarzwald ist ein starkes und attraktives Herrenparfüm, das die Tiefe von Sandelholz, die Wärme von Moschus und das Geheimnis von Amber vereint. Geeignet für den Mann, der nach einem markanten Parfüm sucht, das seine starke und selbstbewusste Persönlichkeit widerspiegelt. Ideal für Abendveranstaltungen und Ausgehnächte.",
+                addToCart: "In den Warenkorb",
+                viewDetails: "Details anzeigen",
+                bestseller: "Bestseller",
+                cartTitle: "Warenkorb",
+                checkout: "Bestellung per WhatsApp abschließen",
+                address: "Adresse",
+                addressContent: "König-Fahd-Straße, Riad, Saudi-Arabien",
+                phone: "Telefon",
+                phoneNumber: "+966 11 234 5678",
+                email: "E-Mail",
+                emailAddress: "info@diamondperfumes.com",
+                aboutFooter: "Über den Shop",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Kundenservice",
+                shipping: "Versand & Lieferung",
+                connectWithUs: "Verbinden Sie sich mit uns",
+                connectDesc: "Folgen Sie uns in den sozialen Medien, um die neuesten Angebote und neuen Produkte zu erfahren",
+                allRights: "Alle Rechte vorbehalten",
+                whatsappMessage: "Hallo, ich möchte folgende Produkte bestellen:\n",
+                whatsappTotal: "\nGesamt: $",
+                whatsappInfo: "\n\nName: \nAdresse: \nTelefonnummer:"
+            },
+            it: {
+                storeName: "Profumi Diamante",
+                home: "Home",
+                products: "Prodotti",
+                contactUs: "Contattaci",
+                menu: "Menu",
+                about: "Chi Siamo",
+                aboutContent: "Siamo un famoso brand di profumi la cui missione è renderti elegante e sicuro di te. Offriamo i migliori profumi di lusso che riflettono la tua personalità unica e aggiungono un tocco di eleganza alla tua vita quotidiana.",
+                quality: "Qualità & Garanzia",
+                qualityContent: "Garantiamo la qualità di tutti i nostri prodotti e utilizziamo i migliori ingredienti naturali. Offriamo una garanzia di restituzione di 30 giorni se non sei soddisfatto del prodotto.",
+                faq: "FAQ",
+                faqContent: "Puoi trovare risposte alle domande più comuni sui nostri prodotti e servizi nella sezione FAQ del nostro sito web.",
+                returns: "Politica di Reso",
+                privacy: "Informativa sulla Privacy",
+                heroTitle: "Profumi di Lusso che Riflettono la Tua Eleganza",
+                heroDesc: "Scopri la nostra esclusiva collezione di profumi di lusso progettati con cura per soddisfare i gusti più sofisticati. Qualità eccezionale e profumo indimenticabile.",
+                shopNow: "Acquista Ora",
+                ourProducts: "I Nostri Prodotti",
+                allPerfumes: "Tutti i Profumi",
+                womenPerfumes: "Profumi Femminili",
+                menPerfumes: "Profumi Maschili",
+                new: "Nuovo",
+                product1Title: "Profumo Notti Arabe",
+                product1Desc: "Miscela lussuosa di ambra, oud e rose",
+                product1FullDesc: "Il profumo Notti Arabe è un capolavoro artistico che unisce autenticità e modernità. Contiene una miscela unica di ambra rara, oud di lusso e il profumo di rose orientali. Questo profumo riflette lo spirito autentico dell'Oriente con un tocco moderno che lo rende adatto per occasioni speciali e serate eleganti. Dura tutto il giorno e lascia un'impressione indimenticabile.",
+                product2Title: "Profumo Pianure Dorate",
+                product2Desc: "Miscela di agrumi, muschio e legno raro",
+                product2FullDesc: "Il profumo Pianure Dorate rappresenta l'eleganza maschile al suo meglio. Combina la freschezza degli agrumi, il calore del muschio e la profondità dei legni rari. Perfetto per l'uomo moderno che cerca un profumo che distingua la sua personalità e rifletta la sua sicurezza. Adatto per il lavoro e le occasioni quotidiane.",
+                product3Title: "Profumo Palazzo Orientale",
+                product3Desc: "Fragranza orientale con note di vaniglia e zafferano",
+                product3FullDesc: "Palazzo Orientale è un profumo femminile di lusso che incarna lo splendore del patrimonio orientale. Miscela la dolcezza della vaniglia, l'eleganza dello zafferano, con tocchi di oud e ambra. Un profumo audace e femminile adatto alla donna sicura che cerca distinzione nel mondo dei profumi.",
+                product4Title: "Profumo Brezza Marina",
+                product4Desc: "Miscela fresca di profumo marino e fiori bianchi",
+                product4FullDesc: "Brezza Marina è un profumo rinfrescante che ti trasporta sulle spiagge del Mediterraneo. Combina la freschezza del profumo marino con la morbidezza dei fiori bianchi e tocchi leggeri di agrumi. Perfetto per l'estate e il clima caldo, ti dona una sensazione di freschezza e vitalità per tutto il giorno.",
+                product5Title: "Profumo Rosa Reale",
+                product5Desc: "Miscela morbida di rosa, gelsomino e vaniglia",
+                product5FullDesc: "Rosa Reale è un profumo femminile delicato che combina la bellezza della rosa, la morbidezza del gelsomino e la dolcezza della vaniglia. Adatto alla donna elegante che preferisce profumi morbidi e raffinati. Ideale per l'uso quotidiano e le occasioni formali.",
+                product6Title: "Profumo Foresta Nera",
+                product6Desc: "Miscela forte di sandalo, muschio e ambra",
+                product6FullDesc: "Foresta Nera è un profumo maschile forte e attraente che unisce la profondità del sandalo, il calore del muschio e il mistero dell'ambra. Adatto all'uomo che cerca un profumo distintivo che rifletta la sua personalità forte e sicura. Ideale per le occasioni serali e le uscite notturne.",
+                addToCart: "Aggiungi al Carrello",
+                viewDetails: "Visualizza Dettagli",
+                bestseller: "Bestseller",
+                cartTitle: "Carrello",
+                checkout: "Completa Ordine tramite WhatsApp",
+                address: "Indirizzo",
+                addressContent: "Via Re Fahd, Riad, Arabia Saudita",
+                phone: "Telefono",
+                phoneNumber: "+966 11 234 5678",
+                email: "Email",
+                emailAddress: "info@diamondperfumes.com",
+                aboutFooter: "Informazioni sul Negozio",
+                blog: "Blog",
+                faqFooter: "FAQ",
+                customerService: "Servizio Clienti",
+                shipping: "Spedizione & Consegna",
+                connectWithUs: "Connettiti con Noi",
+                connectDesc: "Seguici sui social media per conoscere le ultime offerte e nuovi prodotti",
+                allRights: "Tutti i Diritti Riservati",
+                whatsappMessage: "Ciao, vorrei ordinare i seguenti prodotti:\n",
+                whatsappTotal: "\nTotale: $",
+                whatsappInfo: "\n\nNome: \nIndirizzo: \nNumero di Telefono:"
+            }
+        };
+
+        // نظام اختيار اللغة
+        const currentLangElement = document.getElementById('currentLang');
+        const langDropdown = document.getElementById('langDropdown');
+        const langOptions = document.querySelectorAll('.lang-option');
+        
+        let currentLang = 'ar';
+
+        // فتح وإغلاق قائمة اللغات
+        currentLangElement.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-down');
+            currentLangElement.querySelector('i').classList.toggle('fa-chevron-up');
+        });
+
+        // إغلاق قائمة اللغات عند النقر خارجها
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('active');
+            currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+            currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+        });
+
+        // منع إغلاق القائمة عند النقر داخلها
+        langDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // تغيير اللغة
+        langOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                langDropdown.classList.remove('active');
+                currentLangElement.querySelector('i').classList.remove('fa-chevron-up');
+                currentLangElement.querySelector('i').classList.add('fa-chevron-down');
+            });
+        });
+
+        // تغيير اللغة
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // تحديث اسم المتجر
+            document.querySelectorAll('.store-name').forEach(element => {
+                element.textContent = translations[lang].storeName;
+            });
+            
+            // تحديث النص الحالي للغة
+            currentLangElement.querySelector('span').textContent = document.querySelector(`.lang-option[data-lang="${lang}"] span`).textContent;
+            
+            // تحديث كل النصوص
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // تغيير اتجاه الصفحة
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        // نظام تصفية المنتجات حسب الفئة
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشاط للزر المختار
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // تصفية المنتجات
+                productCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // نظام سلة التسوق
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartCount = document.querySelector('.cart-count');
+
+        // فتح وإغلاق السلة
+        cartIcon.addEventListener('click', () => {
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // إضافة منتج إلى السلة
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+            });
+        });
+
+        // تحديث السلة
+        function updateCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price} x ${item.quantity}</div>
+                    </div>
+                    <button class="cart-item-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `${translations[currentLang].cartTitle.split(' ')[0]}: $${total}`;
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // إضافة حدث إزالة العنصر
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        // إتمام الطلب عبر واتساب
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert(translations[currentLang].cartTitle + ' ' + (currentLang === 'ar' ? 'فارغة' : 'is empty'));
+                return;
+            }
+            
+            let message = translations[currentLang].whatsappMessage;
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `- ${item.title} (${item.quantity} x $${item.price})\n`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `${translations[currentLang].whatsappTotal}${total}`;
+            message += translations[currentLang].whatsappInfo;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/966500000000?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        });
+
+        // نظام عرض تفاصيل المنتج
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalBody = document.getElementById('modalBody');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+
+        // فتح نافذة تفاصيل المنتج
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                showProductDetails(productId);
+            });
+        });
+
+        // إغلاق نافذة تفاصيل المنتج
+        closeModal.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض تفاصيل المنتج
+        function showProductDetails(productId) {
+            const productKey = `product${productId}Title`;
+            const productDescKey = `product${productId}FullDesc`;
+            const productPrice = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-price').textContent;
+            const productImage = document.querySelector(`[data-product="${productId}"]`).closest('.product-card').querySelector('.product-image').style.backgroundImage;
+            
+            modalBody.innerHTML = `
+                <div class="modal-image" style="${productImage}"></div>
+                <div class="modal-details">
+                    <h3>${translations[currentLang][productKey]}</h3>
+                    <div class="product-price">${productPrice}</div>
+                    <p class="product-full-desc">${translations[currentLang][productDescKey]}</p>
+                    <div class="modal-actions">
+                        <button class="add-to-cart">${translations[currentLang].addToCart}</button>
+                    </div>
+                </div>
+            `;
+            
+            // إضافة حدث إضافة إلى السلة داخل النافذة
+            modalBody.querySelector('.add-to-cart').addEventListener('click', function() {
+                const productCard = document.querySelector(`[data-product="${productId}"]`).closest('.product-card');
+                const title = productCard.querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                const image = productCard.querySelector('.product-image').style.backgroundImage.slice(5, -2);
+                
+                // التحقق إذا كان المنتج موجوداً بالفعل
+                const existingItem = cart.find(item => item.title === title);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        title,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                productModal.classList.remove('active');
+                overlay.classList.remove('active');
+                cartSidebar.classList.add('active');
+            });
+            
+            productModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // نظام نافذة محتوى الفوتر
+        const footerModal = document.getElementById('footerModal');
+        const closeFooterModal = document.getElementById('closeFooterModal');
+        const footerModalBody = document.getElementById('footerModalBody');
+        const footerLinks = document.querySelectorAll('.footer-column a[data-content]');
+
+        // فتح نافذة محتوى الفوتر
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contentKey = this.getAttribute('data-content');
+                showFooterContent(contentKey);
+            });
+        });
+
+        // إغلاق نافذة محتوى الفوتر
+        closeFooterModal.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            footerModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // عرض محتوى الفوتر
+        function showFooterContent(contentKey) {
+            let content = '';
+            
+            switch(contentKey) {
+                case 'about':
+                    content = `
+                        <h3>من نحن</h3>
+                        <p>نحن برند عطور مشهور مهمتنا ان نجلك انيق وواثق من نفسك. نقدم أجود أنواع العطور الفاخرة التي تعكس شخصيتك الفريدة وتضيف لمسة من الأناقة لحياتك اليومية.</p>
+                        
+                        <h4>رؤيتنا</h4>
+                        <p>أن نكون الوجهة الأولى لعشاق العطور الفاخرة في العالم العربي.</p>
+                        
+                        <h4>رسالتنا</h4>
+                        <p>تقديم تجربة فريدة للعملاء من خلال عطور استثنائية تعبر عن شخصياتهم.</p>
+                        
+                        <h4>قيمنا</h4>
+                        <ul>
+                            <li>الجودة والتميز</li>
+                            <li>الإبداع والابتكار</li>
+                            <li>الثقة والشفافية</li>
+                            <li>رضا العملاء أولاً</li>
+                        </ul>
+                        
+                        <h4>تاريخنا</h4>
+                        <p>تأسست عطور الألماس عام 2010، ومنذ ذلك الحين ونحن نسعى لتقديم أفضل العطور الفاخرة لعملائنا الكرام. نمت علامتنا التجارية بفضل ثقة عملائنا وتفانينا في تقديم الجودة.</p>
+                    `;
+                    break;
+                case 'quality':
+                    content = `
+                        <h3>الجودة والضمان</h3>
+                        <p>نحن نضمن جودة جميع منتجاتنا ونستخدم أفضل المكونات الطبيعية. نقدم ضمان استرجاع لمدة 30 يومًا إذا لم تكن راضيًا عن المنتج.</p>
+                        
+                        <h4>معايير الجودة</h4>
+                        <ul>
+                            <li>مكونات طبيعية 100%</li>
+                            <li>اختبارات جودة صارمة</li>
+                            <li>تصنيع وفق أعلى المعايير</li>
+                            <li>تغليف فاخر وحماية مثالية</li>
+                        </ul>
+                        
+                        <h4>الضمانات المقدمة</h4>
+                        <ul>
+                            <li>ضمان جودة المنتج</li>
+                            <li>ضمان الرضا التام</li>
+                            <li>ضمان استرجاع 30 يوم</li>
+                            <li>دعم فني مستمر</li>
+                        </ul>
+                        
+                        <h4>عمليات التصنيع</h4>
+                        <p>نحن نتبع أحدث التقنيات في تصنيع العطور، مع الحفاظ على الأساليب التقليدية في خلط العطور للحصول على أفضل النتائج. كل عطر يمر بمراحل متعددة من الاختبار قبل طرحه في الأسواق.</p>
+                    `;
+                    break;
+                case 'blog':
+                    content = `
+                        <h3>المدونة</h3>
+                        <p>مرحباً بكم في مدونة عطور الألماس، حيث نشارككم أحدث مقالاتنا ونصائحنا حول عالم العطور.</p>
+                        
+                        <h4>أحدث المقالات</h4>
+                        <ul>
+                            <li><strong>كيف تختار العطر المناسب لموسم الصيف:</strong> نصائح عملية لاختيار عطور منعشة تناسب الطقس الحار.</li>
+                            <li><strong>أسرار العطور الشرقية:</strong> تعرف على تاريخ وخصائص العطور الشرقية الفاخرة.</li>
+                            <li><strong>العطور والمناسبات:</strong> دليل شامل لاختيار العطر المناسب لكل مناسبة.</li>
+                            <li><strong>رحلة العطر من الزجاجة إلى الجلد:</strong> كيف يتفاعل العطر مع بشرة كل شخص بشكل مختلف.</li>
+                        </ul>
+                        
+                        <h4>نصائح العناية بالعطور</h4>
+                        <p>لضمان بقاء عطرك لأطول فترة ممكنة:</p>
+                        <ul>
+                            <li>احفظ العطور في مكان بعيد عن أشعة الشمس المباشرة</li>
+                            <li>تجنب حفظ العطور في الحمام بسبب الرطوبة</li>
+                            <li>أغلق زجاجة العطر بإحكام بعد كل استخدام</li>
+                            <li>لا تهز زجاجة العطر بقوة</li>
+                        </ul>
+                        
+                        <p>تابعونا للاطلاع على المزيد من المقالات والنصائح القيمة.</p>
+                    `;
+                    break;
+                case 'faq':
+                    content = `
+                        <h3>الأسئلة الشائعة</h3>
+                        <p>يمكنك العثور على إجابات للأسئلة الأكثر شيوعًا حول منتجاتنا وخدماتنا.</p>
+                        
+                        <h4>أسئلة حول المنتجات</h4>
+                        <div>
+                            <p><strong>س: كيف أختار العطر المناسب لي؟</strong></p>
+                            <p>ج: ننصحك باختيار العطر الذي يعكس شخصيتك. العطور الخشبية للشخصيات الجادة، والعطور الحلوة للشخصيات المرحة.</p>
+                        </div>
+                        <div>
+                            <p><strong>س: كم تدوم مدة بقاء العطر؟</strong></p>
+                            <p>ج: تختلف مدة البقاء حسب نوع العطر، لكن معظم عطورنا تدوم من 6 إلى 12 ساعة.</p>
+                        </div>
+                        <div>
+                            <p><strong>س: هل يمكنني تجربة العطر قبل الشراء؟</strong></p>
+                            <p>ج: نعم، نوفر عينات صغيرة للعديد من عطورنا. يمكنك طلبها مع أي عملية شراء.</p>
+                        </div>
+                        
+                        <h4>أسئلة حول الشحن والتوصيل</h4>
+                        <div>
+                            <p><strong>س: ما هي مدة التوصيل؟</strong></p>
+                            <p>ج: مدة التوصيل من 2 إلى 5 أيام عمل حسب الموقع.</p>
+                        </div>
+                        <div>
+                            <p><strong>س: هل التوصيل مجاني؟</strong></p>
+                            <p>ج: نعم، التوصيل مجاني للطلبات التي تزيد عن 200 ريال سعودي.</p>
+                        </div>
+                        
+                        <h4>أسئلة حول الدفع</h4>
+                        <div>
+                            <p><strong>س: ما هي وسائل الدفع المتاحة؟</strong></p>
+                            <p>ج: نقبل الدفع عن طريق البطاقات الائتمانية، التحويل البنكي، ومدى.</p>
+                        </div>
+                    `;
+                    break;
+                case 'shipping':
+                    content = `
+                        <h3>الشحن والتوصيل</h3>
+                        <p>نحن نحرص على توصيل طلباتكم في أسرع وقت ممكن وبأعلى معايير الجودة.</p>
+                        
+                        <h4>مناطق التوصيل</h4>
+                        <p>نقوم بالتوصيل إلى جميع مدن المملكة العربية السعودية:</p>
+                        <ul>
+                            <li>الرياض - توصيل خلال 24-48 ساعة</li>
+                            <li>جدة، الدمام، الخبر - توصيل خلال 2-3 أيام</li>
+                            <li>باقي المدن - توصيل خلال 3-5 أيام</li>
+                        </ul>
+                        
+                        <h4>تكاليف الشحن</h4>
+                        <ul>
+                            <li>الطلبات فوق 200 ريال - توصيل مجاني</li>
+                            <li>الطلبات أقل من 200 ريال - رسوم شحن 25 ريال</li>
+                            <li>التوصيل السريع (خلال 24 ساعة) - 50 ريال إضافية</li>
+                        </ul>
+                        
+                        <h4>طريقة التوصيل</h4>
+                        <p>نحن نتعامل مع أفضل شركات الشحن لضمان وصول منتجاتكم بأمان. يمكنكم تتبع شحناتكم من خلال الرابط الذي نرسله لكم بعد شحن الطلب.</p>
+                        
+                        <h4>سياسة التوصيل الدولية</h4>
+                        <p>نقوم حالياً بالتوصيل داخل المملكة العربية السعودية فقط. نحن نعمل على توسعة نطاق التوصيل ليشمل دول الخليج في المستقبل القريب.</p>
+                    `;
+                    break;
+                case 'returns':
+                    content = `
+                        <h3>سياسة الإرجاع والاستبدال</h3>
+                        <p>نسعى دائمًا لرضا عملائنا، ولذلك نوفر سياسة مرنة للإرجاع والاستبدال.</p>
+                        
+                        <h4>شروط الإرجاع</h4>
+                        <ul>
+                            <li>يجب أن يكون المنتج في حالته الأصلية</li>
+                            <li>يجب أن يكون غير مستخدم</li>
+                            <li>يجب أن يكون في غلافه الأصلي</li>
+                            <li>مدة الإرجاع 14 يوم من تاريخ الاستلام</li>
+                            <li>يجب تقديم فاتورة الشراء</li>
+                        </ul>
+                        
+                        <h4>خطوات الإرجاع</h4>
+                        <ol>
+                            <li>الاتصال بخدمة العملاء على الرقم 8001234567</li>
+                            <li>تعبئة نموذج الإرجاع الإلكتروني</li>
+                            <li>إرسال المنتج عبر شركة الشحن المحددة</li>
+                            <li>استلام المبلغ خلال 5-7 أيام عمل</li>
+                        </ol>
+                        
+                        <h4>المنتجات غير القابلة للإرجاع</h4>
+                        <ul>
+                            <li>المنتجات المستخدمة</li>
+                            <li>المنتجات التالفة بسبب سوء الاستخدام</li>
+                            <li>المنتجات التي لا تحتوي على جميع ملحقاتها</li>
+                            <li>العينات المجانية</li>
+                        </ul>
+                        
+                        <h4>سياسة الاستبدال</h4>
+                        <p>يمكن استبدال المنتج بمنتج آخر بنفس القيمة أو بأعلى مع دفع الفرق خلال 7 أيام من تاريخ الاستلام.</p>
+                    `;
+                    break;
+                case 'privacy':
+                    content = `
+                        <h3>سياسة الخصوصية</h3>
+                        <p>نحن في عطور الألماس نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.</p>
+                        
+                        <h4>البيانات التي نجمعها</h4>
+                        <ul>
+                            <li>الاسم وبيانات الاتصال</li>
+                            <li>عنوان الشحن</li>
+                            <li>بيانات الدفع (محفوظة بشكل آمن ومشفرة)</li>
+                            <li>تفضيلات التسوق</li>
+                            <li>سجل الطلبات السابقة</li>
+                        </ul>
+                        
+                        <h4>كيف نستخدم بياناتك</h4>
+                        <ul>
+                            <li>تجهيز الطلبات والشحن</li>
+                            <li>تحسين تجربة التسوق</li>
+                            <li>إرسال عروض خاصة (بموافقتك)</li>
+                            <li>تحليل أنماط الشراء لتحسين الخدمات</li>
+                            <li>التواصل معكم بشأن الطلبات والاستفسارات</li>
+                        </ul>
+                        
+                        <h4>حماية البيانات</h4>
+                        <p>نحن نستخدم أحدث تقنيات التشفير لحماية بياناتكم. بيانات الدفع الخاصة بكم محفوظة بشكل آمن ولا يمكن الوصول إليها إلا من قبل موظفين مخولين.</p>
+                        
+                        <h4>مشاركة البيانات</h4>
+                        <p>نحن لا نبيع أو نؤجر بياناتكم الشخصية لأي طرف ثالث. قد نشارك بعض البيانات مع شركائنا في الشحن فقط لأغراض توصيل الطلبات.</p>
+                        
+                        <h4>حقوقكم</h4>
+                        <p>لديكم الحق في:</p>
+                        <ul>
+                            <li>الوصول إلى بياناتكم الشخصية</li>
+                            <li>طلب تصحيح البيانات غير الدقيقة</li>
+                            <li>طلب حذف بياناتكم الشخصية</li>
+                            <li>الاعتراض على معالجة بياناتكم</li>
+                        </ul>
+                        
+                        <p>لأي استفسارات حول سياسة الخصوصية، يمكنكم التواصل معنا على privacy@diamondperfumes.com</p>
+                    `;
+                    break;
+            }
+            
+            footerModalBody.innerHTML = content;
+            footerModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+    </script>
+</body>
+</html>
